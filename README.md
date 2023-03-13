@@ -26,6 +26,10 @@
  ┃ ┃ ┗ 📜index.js
  ┃ ┣ 📂styles
  ┃ ┃ ┗ 📜index.js
+ ┃ ┣ 📂store
+ ┃ ┃ ┗ 📜index.js
+ ┃ ┣ 📂stories
+ ┃ ┃ ┗ 📜Introduction.stories.mdx
  ┃ ┣ 📂utils
  ┃ ┃ ┗ 📜index.js
  ┃ ┣ 📜App.css
