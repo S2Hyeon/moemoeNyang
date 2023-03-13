@@ -102,3 +102,44 @@ Primary.args = {
 ```
 
 5. `yarn storybook`으로 실행하면 작성한 스토리가 추가되어있습니당.
+
+### 폰트
+
+폰트는 subset폰트를 만들어 src/assets/fonts에 저장하였습니다.
+(subset폰트는 사용하는 글자만 저장하여 용량이 적은 폰트입니다.)
+
+src/index.css에 아래와 같이 불러옵니다.
+
+```css
+@font-face {
+  font-family: "Tmoney RoundWind";
+  src: url("./assets/fonts/subset-TmoneyRoundWind-Regular.woff2") format("woff2"),
+    url("./assets/fonts/subset-TmoneyRoundWind-Regular.woff") format("woff"),
+    url("./assets/fonts/subset-TmoneyRoundWind-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tmoney RoundWind";
+  src: url("./assets/fonts/subset-TmoneyRoundWind-ExtraBold.woff2") format("woff2"),
+    url("./assets/fonts/subset-TmoneyRoundWind-ExtraBold.woff") format("woff"),
+    url("./assets/fonts/subset-TmoneyRoundWind-ExtraBold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+```
+
+src/index.css에 아래와 같이 폰트를 적용하였으니 추후 수정시 참고 바랍니다.
+
+```css
+body {
+  line-height: 1;
+  /* 폰트 패밀리를 지정합니다. */
+  font-family: "Tmoney RoundWind", system-ui, -apple-system, /* Firefox supports this but not yet `system-ui` */
+      "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji";
+}
+```
