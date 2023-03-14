@@ -13,6 +13,7 @@
  ┃ ┣ 📜index.html
  ┃ ┗ 📜manifest.json
  ┣ 📂src
+ ┃ ┣ 📂assets
  ┃ ┣ 📂common
  ┃ ┃ ┗ 📜index.js
  ┃ ┣ 📂components
