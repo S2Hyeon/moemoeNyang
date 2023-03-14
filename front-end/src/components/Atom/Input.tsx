@@ -5,6 +5,7 @@ interface iProps {
   placeholder: string;
   bgColor: "gray" | "lisa" | "white";
   boderColor: "gray" | "lisa";
+  type: "text" | "email" | "password";
 }
 
 export const Input = ({
@@ -12,6 +13,7 @@ export const Input = ({
   placeholder = "",
   bgColor = "gray",
   boderColor = "gray",
+  type = "text",
 }: iProps) => {
   const classNameArray: Array<string> = [];
 
@@ -42,7 +44,7 @@ export const Input = ({
       className={`text-xs w-full mb-2 rounded border px-2 py-2 focus:outline-none active:outline-none 
       ${classNameArray.join(" ")}`}
       placeholder={placeholder}
-      type="text"
+      type={type}
     />
   );
 };

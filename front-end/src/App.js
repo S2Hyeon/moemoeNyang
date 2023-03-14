@@ -15,13 +15,7 @@ function App() {
               bgcolor="pink"
             />
           </InputContainer>
-          <input
-            autoFocus=""
-            className="text-xs w-full mb-4 rounded border bg-gray-100 border-gray-300 px-2 py-2 focus:outline-none focus:border-gray-400 active:outline-none"
-            id="password"
-            placeholder="Password"
-            type="password"
-          />
+          <Input bgcolor="pink" placeholder="Password" type="password" />
           <a className=" text-sm text-center bg-blue-300 text-white py-1 rounded font-medium">
             Log In
           </a>
