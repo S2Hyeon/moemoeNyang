@@ -4,44 +4,20 @@
 
 ###### <br><br>
 
-### Front-End 폴더 구조
+### 2023. 3. 13(월)
 
-```
-📦front-end
- ┣ 📂public
- ┃ ┣ 📜favicon.ico
- ┃ ┣ 📜index.html
- ┃ ┗ 📜manifest.json
- ┣ 📂src
- ┃ ┣ 📂common
- ┃ ┃ ┗ 📜index.js
- ┃ ┣ 📂components
- ┃ ┃ ┗ 📜index.js
- ┃ ┣ 📂pages
- ┃ ┃ ┗ 📜index.js
- ┃ ┣ 📂router
- ┃ ┃ ┗ 📜index.js
- ┃ ┣ 📂services
- ┃ ┃ ┣ 📜customApi.js
- ┃ ┃ ┗ 📜index.js
- ┃ ┣ 📂styles
- ┃ ┃ ┗ 📜index.js
- ┃ ┣ 📂store
- ┃ ┃ ┗ 📜index.js
- ┃ ┣ 📂stories
- ┃ ┃ ┗ 📜Introduction.stories.mdx
- ┃ ┣ 📂utils
- ┃ ┃ ┗ 📜index.js
- ┃ ┣ 📜App.css
- ┃ ┣ 📜App.js
- ┃ ┣ 📜App.test.js
- ┃ ┣ 📜index.css
- ┃ ┣ 📜index.js
- ┃ ┗ 📜setupTests.js
- ┣ 📜.gitignore
- ┣ 📜.prettierrc
- ┣ 📜package.json
- ┣ 📜README.md
- ┣ 📜tailwind.config.js
- ┗ 📜yarn.lock
-```
+---
+
+- 피그마 작성
+
+- 프론트 엔드 아키텍처 설계
+
+### 2023. 3. 14(화)
+
+---
+
+- 피그마 작성
+
+    ![](C:\Users\SSAFY\AppData\Roaming\marktext\images\2023-03-14-15-16-21-image.png)
+
+- 중간 발표 구상
