@@ -8,7 +8,7 @@ interface iProps {
   type: "text" | "email" | "password";
 }
 
-export const Input = ({
+const Input = ({
   autoFocus = false,
   placeholder = "",
   bgColor = "gray",
@@ -49,4 +49,4 @@ export const Input = ({
   );
 };
 
-// export default Input;
+export default Input;
