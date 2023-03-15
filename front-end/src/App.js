@@ -10,7 +10,7 @@ import ProfilePage from "./pages/main/ProfilePage";
 import SymptomsPage from "./pages/main/SymptomsPage";
 import NotFound404 from "./pages/NotFound404";
 import SignupPage from "./pages/SignupPage";
-import PrivateRoute from "./utils/PrivateRoute";
+import PrivateRoute from "./router/PrivateRoute";
 
 function App() {
   return (
