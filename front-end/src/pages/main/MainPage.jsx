@@ -1,7 +1,12 @@
 import React from "react";
+import { PostCard } from "../../components/PostCard";
 
 const MainPage = () => {
-  return <div>MainPage</div>;
+  return (
+    <>
+      <PostCard />
+    </>
+  );
 };
 
 export default MainPage;
