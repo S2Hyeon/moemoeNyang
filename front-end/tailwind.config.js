@@ -9,6 +9,7 @@ module.exports = {
         "lisa-300": "#FFD3D3",
         "lisa-200": "#FFE9E9",
         "lisa-100": "#FFF1F1",
+        "snow-500": "#FBFBFB",
       },
     },
   },
