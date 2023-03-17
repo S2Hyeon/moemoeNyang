@@ -28,13 +28,9 @@
 
 - 예비군 훈련 참여로 인한 공가
 
-
-
 ### 2023. 3. 16(목)
 
 ---
-
-
 
 - 발표 준비
   
@@ -177,10 +173,6 @@
     ### 프론트엔드 기술스택
     
     ### 피그마
-
-
-
-
 
 ### 2023. 3. 17(금)
 
@@ -462,3 +454,41 @@ UCC를 담당하는 최종현 교육생,
 ```
 이렇게 발표를 마무리하고, 질의응답 시간 가지도록 하겠습니다.
 ```
+
+
+
+# 중간 발표 자료
+
+---
+
+![001.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\001.png)
+
+![002.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\002.png)
+
+![003.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\003.png)
+
+![004.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\004.png)
+
+![005.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\005.png)
+
+![006.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\006.png)
+
+![007.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\007.png)
+
+![009.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\009.png)
+
+![010.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\010.png)
+
+![011.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\011.png)
+
+![012.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\012.png)
+
+![013.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\013.png)
+
+![014.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\014.png)
+
+![015.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\015.png)
+
+![016.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\016.png)
+
+![017.png](C:\Users\SSAFY\Pictures\모에모에냥_중간_발표_자료_1차_취합\017.png)
