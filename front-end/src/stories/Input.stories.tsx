@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 // @ts-ignore
-import Input from "../components/Atom/Input.tsx";
+import Input from "./Atom/Input.tsx";
 
 export default {
   title: "Input",
