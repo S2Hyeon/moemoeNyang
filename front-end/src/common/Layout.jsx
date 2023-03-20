@@ -1,12 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Navbar from "./footer/Navbar";
+import Header from "./header/Header";
 
 const Layout = () => {
   return (
     <div>
-      <h1>This is App2 Header</h1>
+      <Header className="sticky top-0" />
       <Outlet />
-      <h2>This is App2 Footer</h2>
+      <Navbar className="sticky bottom-0" />
     </div>
   );
 };
