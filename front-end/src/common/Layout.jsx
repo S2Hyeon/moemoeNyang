@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <div>
+    <div className="">
       <h1>This is App2 Header</h1>
       <Outlet />
       <h2>This is App2 Footer</h2>
