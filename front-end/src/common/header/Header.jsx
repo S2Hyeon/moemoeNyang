@@ -10,11 +10,9 @@ export default function Header() {
   };
 
   return (
-    <div>
-      <div className="h-10 flex justify-center items-center  bg-lisa-300">
-        <div>싸피대학교</div>
-        <BsMap onClick={navigateToMap} className="absolute top-3 right-4" />
-      </div>
+    <div className="h-12 flex justify-center items-center  bg-lisa-300">
+      <div className="font-bold text-slate-900">싸피대학교</div>
+      <BsMap onClick={navigateToMap} className="absolute top-3 right-4" />
     </div>
   );
 }

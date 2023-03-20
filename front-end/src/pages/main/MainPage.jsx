@@ -1,10 +1,12 @@
 import React from "react";
-import Board from "../../components/board/Board";
+import { PostCard } from "../../components/PostCard";
 
-export default function MainPage() {
+const MainPage = () => {
   return (
-    <div>
-      <Board />
-    </div>
+    <>
+      <PostCard />
+    </>
   );
-}
+};
+
+export default MainPage;

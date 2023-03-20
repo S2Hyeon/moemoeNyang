@@ -6,9 +6,9 @@ import Header from "./header/Header";
 const Layout = () => {
   return (
     <div>
-      <Header />
+      <Header className="sticky top-0" />
       <Outlet />
-      <Navbar />
+      <Navbar className="sticky bottom-0" />
     </div>
   );
 };
