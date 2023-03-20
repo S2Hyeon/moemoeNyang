@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import CatPage from "./pages/main/CatPage";
 import CatRegisterPage from "./pages/cat/CatRegisterPage";
+import CatDetailPage from "./pages/cat/CatDetailPage";
 import MainPage from "./pages/main/MainPage";
 import MapPage from "./pages/main/MapPage";
 import ProfilePage from "./pages/main/ProfilePage";
@@ -23,6 +24,8 @@ function App() {
         <Route path="main" element={<MainPage />} />
         <Route path="mypage" element={<ProfilePage />} />
         <Route path="catlist" element={<CatPage />} />
+        <Route path="catregister" element={<CatRegisterPage />} />
+        <Route path="catdetail" element={<CatDetailPage />} />
         <Route path="board" element={<Board />} />
         <Route path="symptoms" element={<SymptomsPage />} />
         <Route path="map" element={<MapPage />} />
