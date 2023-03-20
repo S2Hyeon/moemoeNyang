@@ -10,8 +10,8 @@ import ProfilePage from "./pages/main/ProfilePage";
 import SymptomsPage from "./pages/main/SymptomsPage";
 import NotFound404 from "./pages/NotFound404";
 import SignupPage from "./pages/SignupPage";
+import Board from "./pages/main/BoardPage";
 import PrivateRoute from "./router/PrivateRoute";
-
 function App() {
   return (
     <Routes>
@@ -20,8 +20,9 @@ function App() {
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/" element={<PrivateRoute component={<Layout />} />}>
         <Route path="main" element={<MainPage />} />
-        <Route path="profile" element={<ProfilePage />} />
-        <Route path="cat" element={<CatPage />} />
+        <Route path="mypage" element={<ProfilePage />} />
+        <Route path="catlist" element={<CatPage />} />
+        <Route path="board" element={<Board />} />
         <Route path="symptoms" element={<SymptomsPage />} />
         <Route path="map" element={<MapPage />} />
       </Route>

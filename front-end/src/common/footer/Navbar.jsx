@@ -5,14 +5,34 @@ import { RiHospitalLine } from "@react-icons/all-files/ri/RiHospitalLine";
 import { BsPencil } from "@react-icons/all-files/bs/BsPencil";
 import { BsPerson } from "@react-icons/all-files/bs/BsPerson";
 
+import { useNavigate } from "react-router-dom";
+
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const navigateToMain = () => {
+    navigate("/main");
+  };
+  const navigateToCatlist = () => {
+    navigate("/catlist");
+  };
+  const navigateToBoard = () => {
+    navigate("/board");
+  };
+  const navigateToSymptoms = () => {
+    navigate("/symptoms");
+  };
+  const navigateToMypage = () => {
+    navigate("/mypage");
+  };
+
   return (
-    <div className="flex">
-      <AiOutlineHome />
-      <RiBookletLine />
-      <BsPencil />
-      <RiHospitalLine />
-      <BsPerson />
+    <div className="flex my-auto items-center justify-center h-10 bg-slate-100 space-x-11">
+      <AiOutlineHome className="text-slate-900" onClick={navigateToMain} />
+      <RiBookletLine className="text-slate-900" onClick={navigateToCatlist} />
+      <BsPencil className="text-slate-900" onClick={navigateToBoard} />
+      <RiHospitalLine className="text-slate-900" onClick={navigateToSymptoms} />
+      <BsPerson className="text-slate-900" onClick={navigateToMypage} />
     </div>
   );
 }
