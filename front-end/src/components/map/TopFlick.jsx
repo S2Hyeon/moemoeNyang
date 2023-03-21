@@ -1,19 +1,18 @@
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
-import Panel from "./Panel";
+import Panel from "../common/Panel";
+import ProfileRound from "./ProfileRound";
 
 export default function TopFlick({ setTriggered }) {
   const arr = Array.from({ length: 10 });
   return (
-    <Flicking
-      align="prev"
-      circular={true}
-      // onMoveEnd={(e) => {
-      //   console.log(e);
-      // }}
-    >
+    <Flicking align="prev" circular={true}>
       {arr.map((e, i) => {
-        return <Panel key={i} setTriggered={setTriggered} />;
+        return (
+          <Panel key={i}>
+            <ProfileRound setTriggered={setTriggered} />
+          </Panel>
+        );
       })}
     </Flicking>
   );
