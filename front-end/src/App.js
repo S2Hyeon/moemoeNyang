@@ -13,7 +13,9 @@ import SymptomsPage from "./pages/main/SymptomsPage";
 import NotFound404 from "./pages/NotFound404";
 import SignupPage from "./pages/SignupPage";
 import Board from "./pages/main/BoardPage";
+import BoardHashTag from "./../src/components/board/BoardHashTag.jsx";
 import PrivateRoute from "./router/PrivateRoute";
+import PostBoard from "./components/board/PostBoard";
 function App() {
   return (
     <Routes>
@@ -26,7 +28,8 @@ function App() {
         <Route path="catlist" element={<CatPage />} />
         <Route path="catregister" element={<CatRegisterPage />} />
         <Route path="catdetail" element={<CatDetailPage />} />
-        <Route path="board" element={<Board />} />
+        <Route path="board" element={<PostBoard />} />
+        <Route path="board/hashTag" element={<BoardHashTag />} />
         <Route path="symptoms" element={<SymptomsPage />} />
         <Route path="map" element={<MapPage />} />
       </Route>
