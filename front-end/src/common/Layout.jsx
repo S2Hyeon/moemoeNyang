@@ -8,7 +8,7 @@ const Layout = () => {
     <div className="h-max">
       <Header className="absolute top-0" />
       <Outlet />
-      <Navbar className="absolute bottom-0" />
+      <Navbar className="sticky bottom-0" />
     </div>
   );
 };
