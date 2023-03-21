@@ -25,11 +25,8 @@ function App() {
         <Route path="main" element={<MainPage />} />
         <Route path="mypage" element={<MyPage />} />
         <Route path="catlist" element={<CatPage />} />
-<<<<<<< HEAD
         <Route path="catregister" element={<CatRegisterPage />} />
         <Route path="cat/id" element={<CatDetailPage />} />
-=======
->>>>>>> b39187ede55e0d50e850f8319d40999b93997774
         <Route path="board" element={<PostBoard />} />
         <Route path="board/hashTag" element={<BoardHashTag />} />
         {/* <Route path="symptoms" element={<SymptomsPaPge />} /> */}
