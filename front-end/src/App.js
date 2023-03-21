@@ -4,6 +4,8 @@ import AdminPage from "./pages/AdminPage";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import CatPage from "./pages/main/CatPage";
+import CatRegisterPage from "./pages/cat/CatRegisterPage";
+import CatDetailPage from "./pages/cat/CatDetailPage";
 import MainPage from "./pages/main/MainPage";
 import MapPage from "./pages/main/MapPage";
 // import SymptomsPage from "./pages/main/SymptomsPage";
@@ -23,6 +25,11 @@ function App() {
         <Route path="main" element={<MainPage />} />
         <Route path="mypage" element={<MyPage />} />
         <Route path="catlist" element={<CatPage />} />
+<<<<<<< HEAD
+        <Route path="catregister" element={<CatRegisterPage />} />
+        <Route path="cat/id" element={<CatDetailPage />} />
+=======
+>>>>>>> b39187ede55e0d50e850f8319d40999b93997774
         <Route path="board" element={<PostBoard />} />
         <Route path="board/hashTag" element={<BoardHashTag />} />
         {/* <Route path="symptoms" element={<SymptomsPaPge />} /> */}
