@@ -5,10 +5,10 @@ import Header from "./header/Header";
 
 const Layout = () => {
   return (
-    <div>
-      <Header className="sticky top-0" />
+    <div className="h-max">
+      <Header className="absolute top-0" />
       <Outlet />
-      <Navbar className="sticky bottom-0" />
+      <Navbar className="absolute bottom-0" />
     </div>
   );
 };

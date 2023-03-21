@@ -8,12 +8,13 @@ import CatRegisterPage from "./pages/cat/CatRegisterPage";
 import CatDetailPage from "./pages/cat/CatDetailPage";
 import MainPage from "./pages/main/MainPage";
 import MapPage from "./pages/main/MapPage";
-import ProfilePage from "./pages/main/ProfilePage";
-import SymptomsPage from "./pages/main/SymptomsPage";
+// import SymptomsPage from "./pages/main/SymptomsPage";
 import NotFound404 from "./pages/NotFound404";
 import SignupPage from "./pages/SignupPage";
-import Board from "./pages/main/BoardPage";
+import BoardHashTag from "./../src/components/board/BoardHashTag.jsx";
 import PrivateRoute from "./router/PrivateRoute";
+import PostBoard from "./components/board/PostBoard";
+import MyPage from "./pages/mypage/MyPage";
 function App() {
   return (
     <Routes>
@@ -22,12 +23,11 @@ function App() {
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/" element={<PrivateRoute component={<Layout />} />}>
         <Route path="main" element={<MainPage />} />
-        <Route path="mypage" element={<ProfilePage />} />
+        <Route path="mypage" element={<MyPage />} />
         <Route path="catlist" element={<CatPage />} />
-        <Route path="catregister" element={<CatRegisterPage />} />
-        <Route path="catdetail" element={<CatDetailPage />} />
-        <Route path="board" element={<Board />} />
-        <Route path="symptoms" element={<SymptomsPage />} />
+        <Route path="board" element={<PostBoard />} />
+        <Route path="board/hashTag" element={<BoardHashTag />} />
+        {/* <Route path="symptoms" element={<SymptomsPaPge />} /> */}
         <Route path="map" element={<MapPage />} />
       </Route>
       <Route path="/admin" element={<AdminPage />} />
