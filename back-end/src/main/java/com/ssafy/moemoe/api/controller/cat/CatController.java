@@ -154,6 +154,6 @@ public class CatController {
                             .build());
         }
 
-        return null;
+        return ResponseEntity.ok(spots);
     }
 }

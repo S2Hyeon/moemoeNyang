@@ -1,4 +1,4 @@
-package com.ssafy.moemoe.api.response.board;
+package com.ssafy.moemoe.api.response.feedspot;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -9,26 +9,19 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 
-
 @Getter
 @ToString
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class BoardSpotResp {
-
-    private long board_id;
-    private String image;
-    private double lat;
-    private double lng;
+public class FeedSpotMessageResp {
+    private long member_id;
+    private String nickname;
     private LocalDateTime created_at;
 
-
     @Builder
-    public BoardSpotResp(long board_id, String image, double lat, double lng, LocalDateTime created_at) {
-        this.board_id = board_id;
-        this.image = image;
-        this.lat = lat;
-        this.lng = lng;
+    public FeedSpotMessageResp(long member_id, String nickname, LocalDateTime created_at) {
+        this.member_id = member_id;
+        this.nickname = nickname;
         this.created_at = created_at;
     }
 }
