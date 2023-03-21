@@ -1,22 +1,15 @@
-/* global kakao */
-import React, { useCallback, useEffect, useState } from "react";
-import ProfileRound from "../../components/map/ProfileRound";
-import Flicking, { MoveEvent, WillChangeEvent } from "@egjs/react-flicking";
-import Panel from "../../components/common/Panel";
+import React, { useEffect, useState } from "react";
 
-import { PostCard } from "../../components/PostCard";
-import { useNavigate } from "react-router-dom";
 import TopFlick from "../../components/map/TopFlick";
 import BoardFlick from "../../components/map/BoardFlick";
 
 const MapPage = () => {
   const [isHigh, setIsHigh] = useState(false);
   const [triggered, setTriggered] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (triggered) {
-      setIsHigh(!isHigh);
+      setIsHigh((prev) => !prev);
       setTriggered(false);
     }
   }, [triggered]);
