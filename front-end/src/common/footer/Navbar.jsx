@@ -27,7 +27,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="flex my-auto items-center justify-around h-12 bg-slate-100">
+    <div className="flex items-center justify-around h-12 bg-slate-100">
       <AiOutlineHome className="text-slate-900" onClick={navigateToMain} />
       <RiBookletLine className="text-slate-900" onClick={navigateToCatlist} />
       <BsPencil className="text-slate-900" onClick={navigateToBoard} />
