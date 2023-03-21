@@ -5,7 +5,7 @@ import Header from "./header/Header";
 
 const Layout = () => {
   return (
-    <div>
+    <div className="h-max">
       <Header className="absolute top-0" />
       <Outlet />
       <Navbar className="absolute bottom-0" />
