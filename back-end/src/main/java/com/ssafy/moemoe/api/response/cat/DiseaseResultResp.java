@@ -11,28 +11,17 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class CatDetailResp {
-
-    private long cat_id;
+public class DiseaseResultResp {
+    private long disease_id;
     private String name;
-    private int age;
-    private String gender;
-    private int follower_cnt;
+    private String explanation;
     private String image;
-    private double lat;
-    private double lng;
-
 
     @Builder
-    public CatDetailResp(long cat_id, String name, int age, String gender, int follower_cnt, String image, double lat, double lng) {
-        this.cat_id = cat_id;
+    public DiseaseResultResp(long disease_id, String name, String explanation, String image) {
+        this.disease_id = disease_id;
         this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.follower_cnt = follower_cnt;
+        this.explanation = explanation;
         this.image = image;
-        this.lat = lat;
-        this.lng = lng;
     }
-
 }

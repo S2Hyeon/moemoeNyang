@@ -18,15 +18,15 @@ public class CatListResp {
     private int age;
     private String gender;
     private int follower_cnt;
-    private String url;
+    private String image;
 
     @Builder
-    public CatListResp(long cat_id, String name, int age, String gender, int follower_cnt, String url) {
+    public CatListResp(long cat_id, String name, int age, String gender, int follower_cnt, String image) {
         this.cat_id = cat_id;
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.follower_cnt = follower_cnt;
-        this.url = url;
+        this.image = image;
     }
 }
