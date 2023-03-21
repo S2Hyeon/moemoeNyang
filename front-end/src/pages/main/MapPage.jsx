@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-
-import TopFlick from "../../components/map/TopFlick";
-import BoardFlick from "../../components/map/BoardFlick";
+import BoardContent from "../../components/map/bottom-contents/BoardContent";
+import FeedContent from "../../components/map/bottom-contents/FeedContent";
 
 const MapPage = () => {
   const [isHigh, setIsHigh] = useState(false);
@@ -24,15 +23,47 @@ const MapPage = () => {
     console.log("loading kakaomap");
   }, []);
 
+  let bottomContent;
+  const [mode, setMode] = useState("Feed");
+
+  switch (mode) {
+    case "Board":
+      bottomContent = (
+        <BoardContent setTriggered={setTriggered} isHigh={isHigh} />
+      );
+      break;
+    case "Feed":
+      bottomContent = <FeedContent />;
+      break;
+
+    default:
+      break;
+  }
   return (
     <>
       <div className="MapContainer w-screen h-[90vh]">
         <div id="map" className="w-full h-full" />
       </div>
+      <div
+        className="absolute top-14 right-20 bg-slate-400 z-[1]"
+        onClick={() => {
+          setMode("Feed");
+        }}
+      >
+        급식먹쟈
+      </div>
+      <div
+        className="absolute top-14 right-4 bg-slate-400 z-[1]"
+        onClick={() => {
+          setMode("Board");
+        }}
+      >
+        냥이보자
+      </div>
       <div className="z-[1] absolute bottom-[-20px] w-screen flex justify-center">
         <div
-          className={`BottomSheet bg-slate-100 w-[98vw] ${
-            isHigh ? "h-[60vh]" : "h-[20vh]"
+          className={`BottomSheet bg-slate-50 w-[98vw] ${
+            isHigh ? "h-[70vh]" : "h-[20vh]"
           } shadow-md rounded-2xl transition-[height]`}
         >
           <div
@@ -41,12 +72,7 @@ const MapPage = () => {
               setIsHigh(!isHigh);
             }}
           ></div>
-          <div className="BottomContainer mt-6 h-4/5">
-            <TopFlick setTriggered={setTriggered} />
-            <div className={!isHigh && "hidden"}>
-              <BoardFlick />
-            </div>
-          </div>
+          <div className="BottomContainer mt-6 h-4/5">{bottomContent}</div>
         </div>
       </div>
     </>
