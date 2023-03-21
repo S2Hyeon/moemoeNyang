@@ -1,24 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillStar } from "@react-icons/all-files/ai/AiFillStar";
+import ReportModal from "../modal/ReportModal";
 
 export default function BoardHeader() {
+  // 모달창 노출 여부 state
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // 모달창 노출
+  const showModal = () => {
+    setModalOpen(true);
+  };
+
   return (
-    <>
-      <div className="h-12 grid grid-cols-10 items-center mt-1 mb-1">
-        <div className="flex justify-start items-center col-span-6">
-          <img
-            className="w-10 h-10 rounded-full ml-4 "
-            src="https://img.freepik.com/premium-photo/cat-walking-on-the-fence-on-blue-sky_74782-363.jpg?w=996"
-            alt="고양이 프로필 이미지"
-          />
-          <div className="text-lg pl-2">냥냥이</div>
+    <div className="header border-b p-2 flex justify-between items-center">
+      <div className="left flex flex-row items-center">
+        <div
+          class={`rounded-full p-[1.5px] mr-4 ${
+            true
+              ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+              : ""
+          }`}
+        >
+          <div class="rounded-full bg-white wrapper overflow-hidden p-[1.5px] flex justify-center items-center">
+            <div class="rounded-full bg-white wrapper overflow-hidden h-10 w-10">
+              <img
+                alt="고양이프로필이미지"
+                className="_6q-tv h-full object-cover bg-black"
+                data-testid="user-avatar"
+                draggable="false"
+                src="/images/kitten-510651.webp"
+              />
+            </div>
+          </div>
         </div>
-        <div className="flex items-center col-span-3">
-          <AiFillStar className="text-xl text-yellow-300" />
-          <p className="text-lg pl-2">냥집사</p>
+
+        <div className="user-name-and-place flex flex-col">
+          <span className="text-lg font-bold">냥냥이</span>
         </div>
-        <div className="text-xl items-center">🚨</div>
       </div>
-    </>
+
+      <div className="flex right">
+        <div className="flex mr-6 text-center align-baseline">
+          <AiFillStar className="text-3xl mr-1 text-yellow-400" />
+          <span className="text-lg">냥집사</span>
+        </div>
+        <div className="text-xl" onClick={showModal}>
+          🚨
+        </div>
+        {modalOpen && <ReportModal setModalOpen={setModalOpen} />}
+      </div>
+    </div>
   );
 }
