@@ -1,13 +1,18 @@
 /* global kakao */
 import React, { useCallback, useEffect, useState } from "react";
-import ProfileRound from "../../components/ProfileRound";
+import ProfileRound from "../../components/map/ProfileRound";
 import Flicking, { MoveEvent, WillChangeEvent } from "@egjs/react-flicking";
-import Panel from "../../components/Panel";
-import TopFlick from "../../components/TopFlick";
+import Panel from "../../components/common/Panel";
+
+import { PostCard } from "../../components/PostCard";
+import { useNavigate } from "react-router-dom";
+import TopFlick from "../../components/map/TopFlick";
+import BoardFlick from "../../components/map/BoardFlick";
 
 const MapPage = () => {
   const [isHigh, setIsHigh] = useState(false);
   const [triggered, setTriggered] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (triggered) {
@@ -28,7 +33,6 @@ const MapPage = () => {
 
   return (
     <>
-      <div>MapPage</div>
       <div className="MapContainer w-screen h-[90vh]">
         <div id="map" className="w-full h-full" />
       </div>
@@ -46,6 +50,9 @@ const MapPage = () => {
           ></div>
           <div className="BottomContainer mt-6 h-4/5">
             <TopFlick setTriggered={setTriggered} />
+            <div className={!isHigh && "hidden"}>
+              <BoardFlick />
+            </div>
           </div>
         </div>
       </div>
