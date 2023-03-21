@@ -1,6 +1,5 @@
 package com.ssafy.moemoe.api.controller.feedspot;
 
-import com.ssafy.moemoe.api.response.board.CatDetailBoardResp;
 import com.ssafy.moemoe.api.response.feedspot.FeedSpotMarkerResp;
 import com.ssafy.moemoe.api.response.feedspot.FeedSpotMessageResp;
 import org.springframework.http.ResponseEntity;
