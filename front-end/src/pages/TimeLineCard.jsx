@@ -4,14 +4,16 @@ export default function TimeLineCard() {
   const [showDescription, setShowDescription] = useState(false);
 
   return (
-    <div className="grid rounded-xl shadow-xl ml-4 p-4">
-      <div className="flex items-center mr-4">
-        <img
-          className="w-20 h-20"
-          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F9994783359E18E601D"
-          alt="고양이피부병이미지"
-        />
-      </div>
+    <div className="flex rounded-xl shadow-xl ml-4 p-4">
+      {!showDescription && (
+        <div className="flex items-center mr-4">
+          <img
+            className="w-20 h-20"
+            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F9994783359E18E601D"
+            alt="고양이피부병이미지"
+          />
+        </div>
+      )}
       <div>
         <div className="m-1">
           <span className="font-bold">질병명 :</span>
