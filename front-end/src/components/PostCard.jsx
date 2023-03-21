@@ -6,7 +6,7 @@ export const PostCard = ({ onBottom = false }) => {
   return (
     <div
       className={`page-content pt-6 h-full mx-auto ${
-        onBottom ? "max-w-[30vh]" : ""
+        onBottom ? "max-w-[35vh]" : ""
       }`}
     >
       <div className="container flex px-1 h-full">

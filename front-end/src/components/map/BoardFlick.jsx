@@ -1,7 +1,7 @@
 import React from "react";
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
-import Panel from "../../common/Panel";
+import Panel from "../common/Panel";
 import { PostCard } from "../PostCard";
 
 export default function BoardFlick({ isHigh }) {
@@ -17,7 +17,6 @@ export default function BoardFlick({ isHigh }) {
                   <PostCard onBottom={true} />
                 </div>
               </div>
-              {/* </div> */}
             </Panel>
           </div>
         );
