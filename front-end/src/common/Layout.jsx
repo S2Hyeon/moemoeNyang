@@ -1,12 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Navbar from "./footer/Navbar";
+import Header from "./header/Header";
 
 const Layout = () => {
   return (
-    <div className="">
-      <h1>This is App2 Header</h1>
+    <div>
+      <Header className="absolute top-0" />
       <Outlet />
-      <h2>This is App2 Footer</h2>
+      <Navbar className="absolute bottom-0" />
     </div>
   );
 };
