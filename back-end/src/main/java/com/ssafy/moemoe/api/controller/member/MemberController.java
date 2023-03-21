@@ -3,7 +3,6 @@ package com.ssafy.moemoe.api.controller.member;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.api.response.member.MemberActivityResp;
 import com.ssafy.moemoe.api.response.member.MemberDetailResp;
-import com.ssafy.moemoe.api.response.university.UniversityResultResp;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
