@@ -1,5 +1,5 @@
 import React from "react";
-import TimeLineCard from "../TimeLineCard";
+import TimeLineCard from "./TimeLineCard";
 
 export default function SymptomsPage() {
   return (
