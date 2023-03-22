@@ -2,13 +2,44 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-export default function BoardFooter() {
+export default function BoardFooter({ onBottom = false }) {
   const navigate = useNavigate();
 
   const navigateToWalk = () => {
     navigate("/board/hashtag");
   };
 
+  if (onBottom) {
+    return (
+      <div className="card-footer p-4 pt-0">
+        <div className="top">
+          <div className="flex">
+            <div className="my-2 w-full flex flex-row">
+              <span className="text-sm" onClick={navigateToWalk}>
+                #걷기 54%
+              </span>
+            </div>
+            <div className="icons flex flex-row justify-center items-center">
+              <div className="recommend mr-4 flex">
+                <img
+                  src="/images/recommend.png"
+                  className="_8-yf5"
+                  height={30}
+                  width={30}
+                  alt="감정이모지"
+                />
+                <div className="text-center p-1">0</div>
+              </div>
+            </div>
+          </div>
+          <div className="post-date">
+            <span className="text-xs text-gray-900">1 minute ago</span>
+            <div className="caption text-sm font-bold text-center">더보기</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="card-footer p-4 pt-0">
       <div className="top">
