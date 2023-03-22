@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../../components/common/Button";
 import KakaoMap from "../../components/common/KakaoMap";
 
 export default function FeedRegisterPage() {
@@ -18,7 +19,7 @@ export default function FeedRegisterPage() {
           autoFocus={true}
           className={`text-lg font-bold text-center w-full rounded border px-2 py-2 focus:outline-none active:outline-none bg-[#F1EBEB] border-gray-300`}
           style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
-          placeholder="나이"
+          placeholder="급식소 설명"
           rows="4"
           maxLength={80}
           type="number"
@@ -53,6 +54,9 @@ export default function FeedRegisterPage() {
           style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
         >
           <KakaoMap />
+        </div>
+        <div className="하단버튼부">
+          <Button shadow={true}>등록</Button>
         </div>
         {/* <div
         className="w-[335px] h-[335px] absolute left-[28.5px] top-[126.5px] rounded-[10px] bg-[#faeaea] "
