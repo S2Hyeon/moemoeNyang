@@ -11,7 +11,7 @@ const Layout = () => {
       <div className="mb-auto w-screen overflow-scroll">
         <Outlet />
       </div>
-      <Navbar className="w-screen" />
+      <Navbar className="w-screen z-10" />
     </div>
   );
 };
