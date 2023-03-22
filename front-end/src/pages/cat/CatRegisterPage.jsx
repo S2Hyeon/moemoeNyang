@@ -1,78 +1,30 @@
 import React from "react"
 import CatImageRegister from "../../components/cat/CatImageRegister";
+import CatNameButton from "../../components/cat/CatNameButton";
+import CatSexButton from "../../components/cat/CatSexButton";
+import CatAgeButton from "../../components/cat/CatAgeButton";
+
 
 const CatRegisterPage = () => {
     return(
-        <div className="flex justify-center items-center h-screen">
-            <CatImageRegister />
-
-            <button className="w-[335px] h-[41.79px]">
-                <div
-                className="w-[335px] h-[41.79px] absolute left-[28.5px] top-[482.5px] rounded-[10px] bg-[#f1ebeb]"
-                style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
-                />
-                <p className="w-[58px] h-[22px] absolute left-[174px] top-[496px] text-xl font-bold text-left text-black">
-                    이름
-                </p>
-            </button>
-            <button className="w-[335px] h-[41.79px]">
-                <div
-                    className="w-[335px] h-[42px] absolute left-7 top-[544px] rounded-[10px] bg-[#f1ebeb]"
+        // <div className="ml-4 mr-4">
+        <div className="flex justify-center items-center">
+            <div className="w-auto grid gap-4 py-4">
+                <CatImageRegister />
+                <CatNameButton />
+                <CatSexButton />
+                <CatAgeButton />
+                <button 
+                    className="flex justify-center items-center w-[335px] h-[66px] rounded-[30px] bg-[#e87f7f]"
                     style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
-                    />
-                <p className="w-[58px] h-[22px] absolute left-[174px] top-[558px] text-xl font-bold text-left text-black">
-                    성별
-                </p>
-            </button>
-            <button className="w-[335px] h-[41.79px]">
-                <div
-                className="w-[335px] h-[41.79px] absolute left-[27.5px] top-[605.71px] rounded-[10px] bg-[#f1ebeb]"
-                style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
-                />
-                <p className="w-[58px] h-[22px] absolute left-[173px] top-[619px] text-xl font-bold text-left text-black">
-                    나이
-                </p>
-            </button>
-            <button className="w-[335px] h-[66px]">
-                <div
-                className="w-[335px] h-[66px] absolute left-[26.5px] top-[667.5px] rounded-[30px] bg-[#e87f7f]"
-                style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
-                />
-                <p className="w-[58px] h-[35px] absolute left-[172px] top-[690px] text-xl font-bold text-left text-white">
+                    >
+                    <p className="flex justify-center w-[58px] h-[35px] left-[172px] top-[690px] text-xl font-bold text-left text-white">
                     등록
-                </p>
-            </button>
-            
+                    </p>
+                </button>
+            </div>
         </div>
     )
 }
 
 export default CatRegisterPage;
-
-// import React, { useState } from 'react';
-
-// function FileUploadComponent() {
-//   const [file, setFile] = useState(null);
-
-//   function handleFileSelect(e) {
-//     setFile(e.target.files[0]);
-//   }
-
-//   return (
-//     <div>
-//       <label htmlFor="file-input">Select a file:</label>
-//       <input
-//         type="file"
-//         id="file-input"
-//         accept="image/*, video/*"
-//         onChange={handleFileSelect}
-//       />
-//       {file && (
-//         <div>
-//           <p>Selected file: {file.name}</p>
-//           <img src={URL.createObjectURL(file)} alt="Selected file" />
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
