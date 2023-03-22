@@ -33,8 +33,8 @@ function App() {
         <Route path="symptoms" element={<SymptomsPage />} />
         <Route path="map" element={<MapPage />} />
         <Route path="map/feed" element={<FeedRegisterPage />} />
+        <Route path="admin" element={<AdminPage />} />
       </Route>
-      <Route path="/admin" element={<AdminPage />} />
       <Route path="*" element={<NotFound404 />} />
     </Routes>
   );
