@@ -20,7 +20,7 @@ export default function Button({
 
   return (
     <div
-      className={`w-full h-8 rounded-[10px] ${bgColor} flex justify-center items-center`}
+      className={`w-full h-9 rounded-[10px] ${bgColor} flex justify-center items-center`}
       role="button"
       onClick={onClick}
       style={{ boxShadow: shadow && "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
