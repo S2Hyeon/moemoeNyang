@@ -1,7 +1,7 @@
 import { styled } from "@storybook/theming";
 import React from "react";
 
-export const Button = ({
+export const ButtonExample = ({
   primary = false,
   size = "medium",
   backgroundColor = { control: "color" },

@@ -3,7 +3,7 @@ import React from "react";
 export default function ProfileRound({ setTriggered }) {
   return (
     <div
-      className={`rounded-full  h-12 w-12 p-[1.5px] ml-4 ${
+      className={`rounded-full  h-12 w-12 p-[1.5px] ${
         true ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500" : ""
       }`}
       onClick={() => setTriggered(true)}
