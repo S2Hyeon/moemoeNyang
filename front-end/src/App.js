@@ -15,6 +15,7 @@ import BoardHashTag from "./../src/components/board/BoardHashTag.jsx";
 import PrivateRoute from "./router/PrivateRoute";
 import PostBoard from "./components/board/PostBoard";
 import MyPage from "./pages/mypage/MyPage";
+import FeedRegisterPage from "./pages/main/FeedRegisterPage";
 function App() {
   return (
     <Routes>
@@ -31,6 +32,7 @@ function App() {
         <Route path="board/hashTag" element={<BoardHashTag />} />
         <Route path="symptoms" element={<SymptomsPage />} />
         <Route path="map" element={<MapPage />} />
+        <Route path="map/feed" element={<FeedRegisterPage />} />
       </Route>
       <Route path="/admin" element={<AdminPage />} />
       <Route path="*" element={<NotFound404 />} />
