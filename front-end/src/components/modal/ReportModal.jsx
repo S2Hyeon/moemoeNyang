@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as S from "./ModalStyle";
 
 export default function ReportModal({ setModalOpen }) {
-  const [openHashTag, setOpemHashTag] = useState(false);
+  const [openHashTag, setOpenHashTag] = useState(false);
 
   const closeModal = () => {
     setModalOpen(false);
@@ -17,7 +17,7 @@ export default function ReportModal({ setModalOpen }) {
       <div className="text-lg mb-6">고양이 이름이 잘못되었습니다.</div>
       <div
         className="text-lg mb-6"
-        onClick={() => setOpemHashTag(!openHashTag)}
+        onClick={() => setOpenHashTag(!openHashTag)}
       >
         캡션이 잘못되었습니다.
       </div>
