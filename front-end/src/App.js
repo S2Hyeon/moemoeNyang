@@ -13,7 +13,7 @@ import NotFound404 from "./pages/NotFound404";
 import SignupPage from "./pages/SignupPage";
 import BoardHashTag from "./../src/components/board/BoardHashTag.jsx";
 import PrivateRoute from "./router/PrivateRoute";
-import PostBoard from "./components/board/PostBoard";
+import PostBoard from "./pages/board/PostBoard";
 import MyPage from "./pages/mypage/MyPage";
 import FeedRegisterPage from "./pages/main/FeedRegisterPage";
 function App() {
@@ -31,6 +31,7 @@ function App() {
         <Route path="board" element={<PostBoard />} />
         <Route path="board/hashTag" element={<BoardHashTag />} />
         <Route path="symptoms" element={<SymptomsPage />} />
+        <Route path="symptoms/register" element={<SymptomsRegister />} />
         <Route path="map" element={<MapPage />} />
         <Route path="map/feed" element={<FeedRegisterPage />} />
       </Route>
