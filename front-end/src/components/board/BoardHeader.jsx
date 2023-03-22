@@ -33,14 +33,14 @@ export default function BoardHeader({ onBottom = false }) {
     <div className="header border-b p-2 flex justify-between items-center">
       <div className="left flex flex-row items-center">
         <div
-          class={`rounded-full p-[1.5px] mr-4 ${
+          className={`rounded-full p-[1.5px] mr-4 ${
             true
               ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
               : ""
           }`}
         >
-          <div class="rounded-full bg-white wrapper overflow-hidden p-[1.5px] flex justify-center items-center">
-            <div class="rounded-full bg-white wrapper overflow-hidden h-10 w-10">
+          <div className="rounded-full bg-white wrapper overflow-hidden p-[1.5px] flex justify-center items-center">
+            <div className="rounded-full bg-white wrapper overflow-hidden h-10 w-10">
               <img
                 alt="고양이프로필이미지"
                 className="_6q-tv h-full object-cover bg-black"
