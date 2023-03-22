@@ -15,6 +15,7 @@ import BoardHashTag from "./../src/components/board/BoardHashTag.jsx";
 import PrivateRoute from "./router/PrivateRoute";
 import PostBoard from "./pages/board/PostBoard";
 import MyPage from "./pages/mypage/MyPage";
+import SymptomsRegister from "./pages/symptom/SymptomsRegister";
 import FeedRegisterPage from "./pages/main/FeedRegisterPage";
 function App() {
   return (
