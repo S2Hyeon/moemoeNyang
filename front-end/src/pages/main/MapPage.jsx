@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import KakaoMap from "../../components/common/KakaoMap";
+import KakaoMapSdk from "../../components/common/KakaoMapSdk";
 import BoardContent from "../../components/map/bottom-contents/BoardContent";
 import FeedContent from "../../components/map/bottom-contents/FeedContent";
 
@@ -40,7 +41,8 @@ const MapPage = () => {
   return (
     <div onClick={clickOutside}>
       <div className="MapContainer w-screen h-[90vh]">
-        <KakaoMap />
+        {/* <KakaoMap /> */}
+        <KakaoMapSdk />
       </div>
       <div
         className="absolute top-14 right-20 bg-slate-400 z-[1]"
