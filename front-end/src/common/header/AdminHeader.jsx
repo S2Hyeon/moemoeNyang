@@ -10,7 +10,7 @@ export default function AdminHeader() {
   };
 
   return (
-    <div className="h-12 flex justify-center items-center  bg-lisa-300">
+    <div className="h-12 flex flex-shrink-0 justify-center items-center  bg-lisa-300">
       <div className="text-xl font-bold text-slate-900">관리자 페이지</div>
       <BsMap onClick={navigateToMap} className="absolute top-4 right-4" />
     </div>
