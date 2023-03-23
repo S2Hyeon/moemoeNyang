@@ -16,6 +16,8 @@ export default function Input({
       }`}
       placeholder={placeholder}
       type={type}
+      value={value}
+      onChange={onChange}
       disabled={disabled}
     />
   );
