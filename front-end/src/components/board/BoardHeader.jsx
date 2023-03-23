@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { AiFillStar } from "@react-icons/all-files/ai/AiFillStar";
 import ReportModal from "../modal/ReportModal";
 
 export default function BoardHeader({ onBottom = false }) {
@@ -46,7 +45,7 @@ export default function BoardHeader({ onBottom = false }) {
                 className="_6q-tv h-full object-cover bg-black"
                 data-testid="user-avatar"
                 draggable="false"
-                src="/images/kitten-510651.webp"
+                src="https://mimg.segye.com/content/image/2021/06/18/20210618504877.jpg"
               />
             </div>
           </div>
@@ -59,10 +58,14 @@ export default function BoardHeader({ onBottom = false }) {
 
       <div className="flex right">
         <div className="flex mr-6 text-center align-baseline">
-          <AiFillStar className="text-3xl mr-1 text-yellow-400" />
+          <img
+            className="w-7 h-7 mr-2"
+            src="/images/button/FillStar.png"
+            alt="즐겨찾기"
+          />
           <span className="text-lg">냥집사</span>
         </div>
-        <div className="text-xl" onClick={showModal}>
+        <div className="text-xl mr-2" onClick={showModal}>
           🚨
         </div>
         {modalOpen && <ReportModal setModalOpen={setModalOpen} />}

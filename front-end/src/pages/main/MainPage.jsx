@@ -3,7 +3,7 @@ import { PostCard } from "../../components/PostCard";
 
 const MainPage = () => {
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-col flex-wrap">
       <PostCard />
       <PostCard />
       <PostCard />
