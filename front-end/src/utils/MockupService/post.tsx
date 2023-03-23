@@ -50,5 +50,3 @@ const post = (urls: string, ...rest): Object => {
 };
 
 export default post;
-
-console.log(JSON.stringify(post("/auth/sign-up")));
