@@ -27,7 +27,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="flex flex-shrink-0 items-center justify-around h-16 bg-slate-100">
+    <div className="flex flex-shrink-0 items-center justify-around h-12 bg-slate-100">
       <AiOutlineHome className="text-slate-900" onClick={navigateToMain} />
       <RiBookletLine className="text-slate-900" onClick={navigateToCatlist} />
       <BsPencil className="text-slate-900" onClick={navigateToBoard} />
