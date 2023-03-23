@@ -1,7 +1,14 @@
 import React from "react";
 import Input from "../components/common/Input";
+import { postLogin } from "../services/member";
 
 const LoginPage = () => {
+  const onLogin = () => {
+    postLogin("email", "password").then((res) => {
+      alert(JSON.stringify(res));
+    });
+  };
+
   return (
     <div className="flex justify-center items-center h-screen w-screen">
       <div className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-10 w-full">
@@ -13,7 +20,11 @@ const LoginPage = () => {
         <div className="w-2/3">
           <Input placeholder="이메일" type="email" />
           <Input placeholder="비밀번호" type="password" />
-          <div className="w-full h-8 rounded-[10px] bg-[#ffe5e5] flex justify-center items-center">
+          <div
+            className="w-full h-8 rounded-[10px] bg-[#ffe5e5] flex justify-center items-center"
+            role="button"
+            onClick={onLogin}
+          >
             <p className="text-base font-bold text-center text-[#727272]">
               로그인
             </p>
