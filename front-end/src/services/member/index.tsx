@@ -10,7 +10,10 @@ export async function postLogin(email, password) {
 }
 
 interface PostSignupResponse {
-  msg: String;
+  status: number;
+  data: {
+    msg: String;
+  };
 }
 
 export async function postSignup(
