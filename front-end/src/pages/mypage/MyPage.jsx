@@ -4,12 +4,12 @@ import CatList from "../../components/mypage/CatList";
 import ProfileBox from "../../components/mypage/ProfileBox";
 
 export default function Mypage() {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
 
   return (
     <div>
       <ProfileBox />
-      <div className="flex pl-4 pr-4 mb-4">
+      <div className="flex pl-4 pr-4 mb-2">
         <div
           onClick={() => setToggle(true)}
           className={`grid place-items-center ${
