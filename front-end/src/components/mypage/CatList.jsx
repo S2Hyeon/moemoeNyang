@@ -9,7 +9,7 @@ export default function CatList() {
       <CatCard />
       <CatCard />
       <CatCard />
-      <HiPlusCircle className="z-50 absolute text-lisa-500 w-12 h-12 right-8 bottom-14" />
+      <HiPlusCircle className="z-50 absolute text-lisa-500 w-12 h-12 right-6 bottom-16" />
     </div>
   );
 }

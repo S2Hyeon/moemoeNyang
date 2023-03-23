@@ -22,7 +22,7 @@ export default function BoardFooter({ onBottom = false }) {
             <div className="icons flex flex-row justify-center items-center">
               <div className="recommend mr-4 flex">
                 <img
-                  src="/images/recommend.png"
+                  src="/images/emoji/recommend.png"
                   className="_8-yf5"
                   height={30}
                   width={30}
@@ -53,7 +53,7 @@ export default function BoardFooter({ onBottom = false }) {
         <div className="icons flex flex-row justify-center items-center">
           <div className="recommend mr-4">
             <img
-              src="/images/recommend.png"
+              src="/images/emoji/recommend.png"
               className="_8-yf5"
               height={30}
               width={30}
@@ -63,7 +63,7 @@ export default function BoardFooter({ onBottom = false }) {
           </div>
           <div className="like mr-4">
             <img
-              src="/images/like.png"
+              src="/images/emoji/like.png"
               className="_8-yf5"
               height={30}
               width={30}
@@ -73,7 +73,7 @@ export default function BoardFooter({ onBottom = false }) {
           </div>
           <div className="impressed mr-4">
             <img
-              src="/images/impressed.png"
+              src="/images/emoji/impressed.png"
               className="_8-yf5"
               height={30}
               width={30}
@@ -83,7 +83,7 @@ export default function BoardFooter({ onBottom = false }) {
           </div>
           <div className="sad mr-4">
             <img
-              src="/images/sad.png"
+              src="/images/emoji/sad.png"
               className="_8-yf5"
               height={30}
               width={30}
@@ -93,7 +93,7 @@ export default function BoardFooter({ onBottom = false }) {
           </div>
           <div className="sad">
             <img
-              src="/images/sad.png"
+              src="/images/emoji/sad.png"
               className="_8-yf5"
               height={30}
               width={30}

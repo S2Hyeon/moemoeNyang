@@ -22,11 +22,13 @@ export default function ReportModal({ setModalOpen }) {
         캡션이 잘못되었습니다.
       </div>
       {openHashTag && <div>해시태그 리스트</div>}
-      <div
-        className="grid place-items-center bg-lisa-300 w-16 h-8 rounded-lg "
-        onClick={closeModal}
-      >
-        취소
+      <div className="grid place-items-center">
+        <div
+          className="grid place-items-center bg-lisa-300 w-20 h-8 rounded-lg "
+          onClick={closeModal}
+        >
+          취소
+        </div>
       </div>
     </S.Modal>
   );
