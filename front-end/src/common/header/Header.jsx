@@ -15,7 +15,7 @@ export default function Header() {
   if (isAdmin) return <AdminHeader />;
 
   return (
-    <div className="h-12 flex justify-center items-center  bg-lisa-300">
+    <div className="h-16 flex justify-center items-center bg-lisa-300">
       <div className="text-xl font-bold text-slate-900">싸피대학교</div>
       <BsMap onClick={navigateToMap} className="absolute top-4 right-4" />
     </div>
