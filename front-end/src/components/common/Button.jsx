@@ -8,10 +8,15 @@ export default function Button({
 }) {
   let bgColor;
   let fontColor;
+  let border;
 
   switch (style) {
     case "primary":
       bgColor = "bg-[#ffe5e5]";
+      fontColor = "text-[#727272]";
+      break;
+    case "disabled":
+      bgColor = "bg-gray-100";
       fontColor = "text-[#727272]";
       break;
     default:
@@ -20,8 +25,8 @@ export default function Button({
 
   return (
     <div
-      className={`w-full h-9 rounded-[10px] ${bgColor} flex justify-center items-center`}
-      role="button"
+      className={`w-full h-9 rounded-[10px] ${bgColor} flex justify-center items-center border border-slate-300`}
+      role={style === "disabled" ? "none" : "button"}
       onClick={onClick}
       style={{ boxShadow: shadow && "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
     >
