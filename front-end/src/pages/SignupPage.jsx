@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
+import UnivSearchModal from "../components/modal/UnivSearchModal";
 import { getCheckEmail } from "../services/member";
 import useDebounce from "../utils/useDebounce";
 
@@ -49,7 +50,14 @@ const SignupPage = () => {
         });
       }
     });
-  }, [debouncedEmail]);
+  }, [debouncedEmail, email]);
+
+  //대학코드, 대학 모달창
+  const [university, setUniversity] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const showModal = () => {
+    setModalOpen(true);
+  };
 
   const [nickname, setNickname] = useState("");
   //닉네임무결성
@@ -119,7 +127,7 @@ const SignupPage = () => {
         passwordConfirmError: "",
       }));
     }
-  }, [passwordConfirm]);
+  }, [passwordConfirm, password]);
 
   //무결성검증 결과
   const [canSubmit, setCanSubmit] = useState(false);
@@ -128,7 +136,7 @@ const SignupPage = () => {
     else if (email && nickname && password && passwordConfirm) {
       setCanSubmit(true);
     }
-  }, [errorMessage]);
+  }, [errorMessage, email, nickname, password, passwordConfirm]);
 
   return (
     <div className="flex justify-center items-center h-screen w-screen">
@@ -156,11 +164,18 @@ const SignupPage = () => {
               autoFocus={true}
               placeholder="소속학교"
               type="text"
+              value={university}
               disabled={true}
             />
             <div className="w-2/5">
-              <Button>인증하기</Button>
+              <Button onClick={showModal}>검색하기</Button>
             </div>
+            {modalOpen && (
+              <UnivSearchModal
+                setModalOpen={setModalOpen}
+                setUniversity={setUniversity}
+              />
+            )}
           </div>
           <Input
             placeholder="닉네임"
