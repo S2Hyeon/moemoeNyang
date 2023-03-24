@@ -15,7 +15,7 @@ const get = (urls: string, ...rest): Object => {
   switch (url) {
     case "/auth/check-email":
       res.data = {
-        msg: "N",
+        msg: "Y",
       };
       break;
 

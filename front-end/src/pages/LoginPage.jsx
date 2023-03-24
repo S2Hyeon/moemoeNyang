@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import Input from "../components/common/Input";
 import { postLogin } from "../services/member";
 import { getCookie, setCookie } from "../utils/handleCookies";
+import { AlertError, AlertWarning } from "../utils/alertToastify";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const onLogin = () => {
-    if (!email || !password) return alert("정보를 입력해주세요");
+    if (!email || !password) return AlertWarning("정보를 입력해주세요");
     if (!(email.includes("@") && email.includes("."))) {
-      return alert("잘못된 이메일입니다.");
+      return AlertWarning("잘못된 이메일입니다.");
     }
     postLogin(email, password).then((res) => {
       const accessToken = res.data.access_token;
@@ -60,7 +63,11 @@ const LoginPage = () => {
           <p className="text-[15px] text-left text-[#727272]">
             아직 계정이 없으신가요?
           </p>
-          <p className="flex-grow-0 flex-shrink-0 w-[60px] h-[27px] text-[15px] font-bold text-left text-[#ff7f7f]">
+          <p
+            className="flex-grow-0 flex-shrink-0 w-[60px] h-[27px] text-[15px] font-bold text-left text-[#ff7f7f]"
+            onClick={() => navigate("/signup")}
+            role="button"
+          >
             회원가입
           </p>
         </div>
