@@ -69,6 +69,31 @@ export async function getCheckEmail(
   }
 }
 
+export interface University {
+  university_id: Number;
+  name: String;
+  address: String;
+}
+
+interface GetSearchUnivsResponse {
+  status: Number;
+  data: {
+    universities: Array<University>;
+  };
+}
+
+export async function getSearchUnivs(
+  keyword: String,
+): Promise<GetSearchUnivsResponse> {
+  try {
+    const response = await ApiMock.get(`/univs/${keyword}`);
+    console.log(response);
+    return response as GetSearchUnivsResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 const Member = {
   postLogin,
   postSignup,
