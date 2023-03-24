@@ -3500,3 +3500,42 @@ This generated password is for development use only. Your security configuration
 2023-03-24 16:36:18.479 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
 2023-03-24 16:36:18.480 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
 2023-03-24 16:36:18.482 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-24 16:45:56.679 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-24 16:45:56.680 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-24 16:45:56.683 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-24 16:45:56.684 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-24 16:45:56.686 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-24 16:51:00.598 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-24 16:51:00.599 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-24 16:51:00.601 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-24 16:51:00.601 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-24 16:51:00.603 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-24 16:51:27.478 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-24 16:51:27.479 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-24 16:51:27.481 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-24 16:51:27.481 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-24 16:51:27.482 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-24 16:51:46.266 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-24 16:51:46.267 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-24 16:51:46.268 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-24 16:51:46.268 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-24 16:51:46.270 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-24 16:52:10.215 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-24 16:52:10.215 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-24 16:52:10.216 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-24 16:52:10.216 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-24 16:52:10.217 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-24 17:02:45.466 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-24 17:02:45.467 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-24 17:02:45.469 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-24 17:02:45.470 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-24 17:02:45.471 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-24 17:03:21.016 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-24 17:03:21.017 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-24 17:03:21.019 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-24 17:03:21.019 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-24 17:03:21.021 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-24 17:03:52.628 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-24 17:03:52.628 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-24 17:03:52.630 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-24 17:03:52.630 DEBUG 8080 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]

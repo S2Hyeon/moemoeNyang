@@ -1,19 +1,6 @@
 // import { ApiMock } from "../../utils/customApi"; //목업 API를 불러옴
 import Api from "../../utils/customApi"; // 목업 API가 아닌 찐 API 쓸 때
 
-
-/* --------타입스크립트를 사용하지 않는 경우-------- */
-
-// export async function postLogin(email, password) {
-//   try {
-//     const response = await ApiMock.post("/auth/login", { email, password });
-//     return response;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-
 /* --------타입스크립트를 사용하는 경우-------- */
 
 //응답 객체의 타입을 정의한다. API 명세서의 Response 부분 참고
