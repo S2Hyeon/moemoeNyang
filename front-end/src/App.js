@@ -17,6 +17,7 @@ import PostBoard from "./pages/board/PostBoard";
 import MyPage from "./pages/mypage/MyPage";
 import SymptomsRegister from "./pages/symptom/SymptomsRegister";
 import FeedRegisterPage from "./pages/main/FeedRegisterPage";
+import HospitalMap from "./components/map/HospitalMap";
 function App() {
   return (
     <Routes>
@@ -34,6 +35,7 @@ function App() {
         <Route path="symptoms" element={<SymptomsPage />} />
         <Route path="symptoms/register" element={<SymptomsRegister />} />
         <Route path="map" element={<MapPage />} />
+        <Route path="map/hospital" element={<HospitalMap />} />
         <Route path="map/feed" element={<FeedRegisterPage />} />
         <Route path="admin" element={<AdminPage />} />
       </Route>
