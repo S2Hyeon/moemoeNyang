@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "../components/common/Input";
 import { postLogin } from "../services/member";
+import { getCookie, setCookie } from "../utils/handleCookies";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const onLogin = () => {
-    postLogin("email", "password").then((res) => {
-      alert(JSON.stringify(res));
+    if (!email || !password) return alert("정보를 입력해주세요");
+    if (!(email.includes("@") && email.includes("."))) {
+      return alert("잘못된 이메일입니다.");
+    }
+    postLogin(email, password).then((res) => {
+      const accessToken = res.data.access_token;
+      setCookie("accessToken", accessToken, 180);
     });
   };
 
@@ -18,8 +27,22 @@ const LoginPage = () => {
           className="absolute -top-3/4 flex-grow-0 flex-shrink-0 w-[134px] h-[143px] object-cover"
         />
         <div className="w-2/3">
-          <Input placeholder="이메일" type="email" />
-          <Input placeholder="비밀번호" type="password" />
+          <Input
+            placeholder="이메일"
+            type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+          <Input
+            placeholder="비밀번호"
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
           <div
             className="w-full h-8 rounded-[10px] bg-[#ffe5e5] flex justify-center items-center"
             role="button"

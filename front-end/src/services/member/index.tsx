@@ -1,9 +1,23 @@
 import { ApiMock } from "../../utils/customApi";
 
-export async function postLogin(email, password) {
+interface LoginResponse {
+  status: number;
+  data: {
+    access_token: String;
+    nickname: String;
+    email: String;
+  };
+}
+
+export async function postLogin(
+  // 함수의 파라미터로 받을 값의 타입을 정의함
+  email: String,
+  password: String,
+): Promise<LoginResponse | undefined> {
+  //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
     const response = await ApiMock.post("/auth/login", { email, password });
-    return response;
+    return response as LoginResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
     console.error(error);
   }
