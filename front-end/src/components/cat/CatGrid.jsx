@@ -5,7 +5,7 @@ export default function CatGrid() {
     const [images, setImages] = useState([])
 
     useEffect(() => {
-        axios.get('https://api.unsplash.com/photos/?client_id=YOUR_ACCESS_KEY')
+        axios.get('')
             .then(response => {
                 setImages(response.data)
             })
