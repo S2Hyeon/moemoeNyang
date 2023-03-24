@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -19,6 +20,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,13 +33,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 @AllArgsConstructor
 @Builder
 @Table
-public class User implements UserDetails {
+public class Member implements UserDetails {
 
     private static final long serialVersionUID = 6014984039564979072L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue
+    @Type(type = "uuid-char")
+    @Column(name = "member_id", columnDefinition = "BINARY(32)")
+    private UUID memberId;
 
     @Column(nullable = false, unique = true)
     private String uid; // 회원 ID (JWT 토큰 내 정보)
