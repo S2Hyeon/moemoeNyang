@@ -50,10 +50,12 @@ const SignupPage = () => {
         });
       }
     });
-  }, [debouncedEmail, email]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedEmail]); //불필요한 서버 요청을 줄이기 위해 react-hooks/exhaustive-deps 비활성화
 
   //대학코드, 대학 모달창
-  const [university, setUniversity] = useState(null);
+  const [university, setUniversity] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const showModal = () => {
     setModalOpen(true);
@@ -164,7 +166,7 @@ const SignupPage = () => {
               autoFocus={true}
               placeholder="소속학교"
               type="text"
-              value={university}
+              value={university.name}
               disabled={true}
             />
             <div className="w-2/5">
