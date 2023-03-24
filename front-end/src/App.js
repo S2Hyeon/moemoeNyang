@@ -17,30 +17,34 @@ import PostBoard from "./pages/board/PostBoard";
 import MyPage from "./pages/mypage/MyPage";
 import SymptomsRegister from "./pages/symptom/SymptomsRegister";
 import FeedRegisterPage from "./pages/main/FeedRegisterPage";
-import HospitalMap from "./components/map/HospitalMap";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
-      <Route path="/" element={<PrivateRoute component={<Layout />} />}>
-        <Route path="main" element={<MainPage />} />
-        <Route path="mypage" element={<MyPage />} />
-        <Route path="catlist" element={<CatPage />} />
-        <Route path="catregister" element={<CatRegisterPage />} />
-        <Route path="cat/id" element={<CatDetailPage />} />
-        <Route path="board" element={<PostBoard />} />
-        <Route path="board/hashTag" element={<BoardHashTag />} />
-        <Route path="symptoms" element={<SymptomsPage />} />
-        <Route path="symptoms/register" element={<SymptomsRegister />} />
-        <Route path="map" element={<MapPage />} />
-        <Route path="map/hospital" element={<HospitalMap />} />
-        <Route path="map/feed" element={<FeedRegisterPage />} />
-        <Route path="admin" element={<AdminPage />} />
-      </Route>
-      <Route path="*" element={<NotFound404 />} />
-    </Routes>
+    <>
+      <ToastContainer />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/" element={<PrivateRoute component={<Layout />} />}>
+          <Route path="main" element={<MainPage />} />
+          <Route path="mypage" element={<MyPage />} />
+          <Route path="catlist" element={<CatPage />} />
+          <Route path="catregister" element={<CatRegisterPage />} />
+          <Route path="cat/id" element={<CatDetailPage />} />
+          <Route path="board" element={<PostBoard />} />
+          <Route path="board/hashTag" element={<BoardHashTag />} />
+          <Route path="symptoms" element={<SymptomsPage />} />
+          <Route path="symptoms/register" element={<SymptomsRegister />} />
+          <Route path="map" element={<MapPage />} />
+          <Route path="map/feed" element={<FeedRegisterPage />} />
+          <Route path="admin" element={<AdminPage />} />
+        </Route>
+        <Route path="*" element={<NotFound404 />} />
+      </Routes>
+    </>
   );
 }
 
