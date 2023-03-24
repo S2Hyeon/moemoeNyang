@@ -36,6 +36,8 @@ const get = (urls: string, ...rest): Object => {
       };
       break;
 
+
+
     default:
       break;
   }
