@@ -1,5 +1,5 @@
 import React from "react";
-import CatCard from "../../components/mypage/CatCard";
+import CatCard from "../../components/cat/CatCard";
 import { HiPlusCircle } from "@react-icons/all-files/hi/HiPlusCircle";
 import { useNavigate } from "react-router-dom";
 
