@@ -1,6 +1,7 @@
 import React from "react"
 import KakaoMap from "../../components/common/KakaoMap";
 import CatProfileBox from "../../components/cat/CatProfileBox";
+import CatGrid from "../../components/cat/CatGrid";
 
 export default function CatDetailPage() {
     return(
@@ -13,6 +14,9 @@ export default function CatDetailPage() {
             style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
             >
             <KakaoMap />
+            </div>
+            <div>
+                <CatGrid />
             </div>
             </div>
         </div>
