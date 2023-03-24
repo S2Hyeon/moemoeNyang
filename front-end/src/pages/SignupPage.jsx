@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import UnivSearchModal from "../components/modal/UnivSearchModal";
-import { getCheckEmail } from "../services/member";
+import { getCheckEmail, postSignup } from "../services/member";
+import { AlertSuccess } from "../utils/alertToastify";
 import useDebounce from "../utils/useDebounce";
 
 const SignupPage = () => {
+  const navigate = useNavigate();
   const [errorMap, setErrorMap] = useState({
     emailError: "",
     nicknameError: "",
@@ -55,7 +58,7 @@ const SignupPage = () => {
   }, [debouncedEmail]); //불필요한 서버 요청을 줄이기 위해 react-hooks/exhaustive-deps 비활성화
 
   //대학코드, 대학 모달창
-  const [university, setUniversity] = useState("");
+  const [university, setUniversity] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const showModal = () => {
     setModalOpen(true);
@@ -135,10 +138,26 @@ const SignupPage = () => {
   const [canSubmit, setCanSubmit] = useState(false);
   useEffect(() => {
     if (errorMessage) return setCanSubmit(false);
-    else if (email && nickname && password && passwordConfirm) {
+    else if (
+      email &&
+      nickname &&
+      university.university_id &&
+      password &&
+      passwordConfirm
+    ) {
       setCanSubmit(true);
+    } else {
+      console.log({});
     }
-  }, [errorMessage, email, nickname, password, passwordConfirm]);
+  }, [errorMessage, email, nickname, university, password, passwordConfirm]);
+
+  const onSubmit = () => {
+    if (!canSubmit) return;
+    postSignup(email, password, nickname, university.university_id).then(() => {
+      AlertSuccess("회원가입에 성공하였습니다.");
+      navigate("/login");
+    });
+  };
 
   return (
     <div className="flex justify-center items-center h-screen w-screen">
@@ -166,7 +185,7 @@ const SignupPage = () => {
               autoFocus={true}
               placeholder="소속학교"
               type="text"
-              value={university.name}
+              value={university ? university.name : ""}
               disabled={true}
             />
             <div className="w-2/5">
@@ -203,7 +222,9 @@ const SignupPage = () => {
               setPasswordConfirm(e.target.value);
             }}
           />
-          <Button style={canSubmit ? "primary" : "disabled"}>가입하기</Button>
+          <Button style={canSubmit ? "primary" : "disabled"} onClick={onSubmit}>
+            가입하기
+          </Button>
           <div className="h-5 my-4">
             <p className="BottomMessage text-[12px] text-center font-bold  text-lisa-500">
               {errorMessage}
@@ -214,7 +235,10 @@ const SignupPage = () => {
           <p className="text-[15px] text-left text-[#727272]">
             기존 계정으로 로그인하시겠어요?
           </p>
-          <p className="flex-grow-0 flex-shrink-0 w-[60px] h-[27px] text-[15px] font-bold text-left text-[#ff7f7f]">
+          <p
+            className="flex-grow-0 flex-shrink-0 w-[60px] h-[27px] text-[15px] font-bold text-left text-[#ff7f7f]"
+            onClick={() => navigate("/login")}
+          >
             로그인
           </p>
         </div>

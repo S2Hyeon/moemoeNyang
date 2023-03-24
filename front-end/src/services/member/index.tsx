@@ -87,8 +87,22 @@ export async function getSearchUnivs(
 ): Promise<GetSearchUnivsResponse> {
   try {
     const response = await ApiMock.get(`/univs/${keyword}`);
-    console.log(response);
     return response as GetSearchUnivsResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+interface FindPasswordResponse {
+  status: number;
+  data: { msg: string };
+}
+export async function postFindPassword(
+  email: String,
+): Promise<FindPasswordResponse> {
+  try {
+    const response = await ApiMock.post(`/auth/find-pwd`, { email });
+    return response as FindPasswordResponse;
   } catch (error) {
     console.error(error);
   }
@@ -97,6 +111,8 @@ export async function getSearchUnivs(
 const Member = {
   postLogin,
   postSignup,
+  getCheckEmail,
+  getSearchUnivs,
 };
 
 export default Member;
