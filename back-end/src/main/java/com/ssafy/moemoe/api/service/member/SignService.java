@@ -2,8 +2,11 @@ package com.ssafy.moemoe.api.service.member;
 
 
 import com.ssafy.moemoe.api.request.member.SignUpReq;
+import com.ssafy.moemoe.api.request.member.UpdateMemberReq;
 import com.ssafy.moemoe.db.dto.SignInResultDto;
 import com.ssafy.moemoe.db.dto.SignUpResultDto;
+
+import java.util.UUID;
 
 // 예제 13.24
 public interface SignService {
@@ -16,4 +19,5 @@ public interface SignService {
 
     void changePasswordByEmail(String email, String newPassword);
 
+    void updateMember(UUID memberId, UpdateMemberReq form);
 }

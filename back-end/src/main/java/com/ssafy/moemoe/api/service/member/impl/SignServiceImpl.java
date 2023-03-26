@@ -1,6 +1,7 @@
 package com.ssafy.moemoe.api.service.member.impl;
 
 import com.ssafy.moemoe.api.request.member.SignUpReq;
+import com.ssafy.moemoe.api.request.member.UpdateMemberReq;
 import com.ssafy.moemoe.api.service.member.SignService;
 import com.ssafy.moemoe.common.CommonResponse;
 import com.ssafy.moemoe.config.security.JwtTokenProvider;
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 
 // 예제 13.25
@@ -52,6 +54,16 @@ public class SignServiceImpl implements SignService {
     public void changePasswordByEmail(String email, String newPassword) {
         Member member = memberRepository.findByEmail(email);
         member.setPassword(passwordEncoder.encode(newPassword));
+        memberRepository.save(member);
+    }
+
+    @Override
+    public void updateMember(UUID memberId, UpdateMemberReq form) {
+        Member member = memberRepository.findByMemberId(memberId);
+        LOGGER.info("[getSignUpResult] 회원 가입 정보 전달");
+        member.setNickname(form.getNickname());
+        member.setUniversity_id(form.getUniversityId());
+        member.setPassword(passwordEncoder.encode(form.getPassword()));
         memberRepository.save(member);
     }
 
