@@ -1,23 +1,19 @@
 package com.ssafy.moemoe.api.controller.auth;
 
+import com.ssafy.moemoe.api.request.member.SignUpReq;
+import com.ssafy.moemoe.api.service.member.SignService;
 import com.ssafy.moemoe.db.dto.SignInResultDto;
 import com.ssafy.moemoe.db.dto.SignUpResultDto;
-import com.ssafy.moemoe.api.service.member.SignService;
-import io.swagger.annotations.ApiParam;
-import java.util.HashMap;
-import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 // 예제 13.28
 @RestController
@@ -33,31 +29,25 @@ public class SignController {
     }
 
     @PostMapping(value = "/sign-in")
-    public SignInResultDto signIn(
-            @ApiParam(value = "ID", required = true) @RequestParam String id,
-            @ApiParam(value = "Password", required = true) @RequestParam String password)
+    public SignInResultDto signIn(@RequestBody SignUpReq form)
             throws RuntimeException {
-        LOGGER.info("[signIn] 로그인을 시도하고 있습니다. id : {}, pw : ****", id);
-        SignInResultDto signInResultDto = signService.signIn(id, password);
+        LOGGER.info("[signIn] 로그인을 시도하고 있습니다. id : {}, pw : ****", form.getEmail());
+        SignInResultDto signInResultDto = signService.signIn(form.getEmail(), form.getPassword());
 
         if (signInResultDto.getCode() == 0) {
-            LOGGER.info("[signIn] 정상적으로 로그인되었습니다. id : {}, token : {}", id,
+            LOGGER.info("[signIn] 정상적으로 로그인되었습니다. id : {}, token : {}", form.getEmail(),
                     signInResultDto.getToken());
         }
         return signInResultDto;
     }
 
     @PostMapping(value = "/sign-up")
-    public SignUpResultDto signUp(
-            @ApiParam(value = "ID", required = true) @RequestParam String id,
-            @ApiParam(value = "비밀번호", required = true) @RequestParam String password,
-            @ApiParam(value = "이름", required = true) @RequestParam String name,
-            @ApiParam(value = "권한", required = true) @RequestParam String role) {
-        LOGGER.info("[signUp] 회원가입을 수행합니다. id : {}, password : ****, name : {}, role : {}", id,
-                name, role);
-        SignUpResultDto signUpResultDto = signService.signUp(id, password, name, role);
+    public SignUpResultDto signUp(@RequestBody SignUpReq form) {
+        LOGGER.info("[signUp] 회원가입을 수행합니다. id : {}, password : ****, name : {}",form.getEmail(), form.getNickname());
 
-        LOGGER.info("[signUp] 회원가입을 완료했습니다. id : {}", id);
+        SignUpResultDto signUpResultDto = signService.signUp(form);
+
+        LOGGER.info("[signUp] 회원가입을 완료했습니다. id : {}", form.getEmail());
         return signUpResultDto;
     }
 
@@ -66,7 +56,7 @@ public class SignController {
         throw new RuntimeException("접근이 금지되었습니다.");
     }
 
-    @ExceptionHandler(value = RuntimeException.class)
+//    @ExceptionHandler(value = RuntimeException.class)
     public ResponseEntity<Map<String, String>> ExceptionHandler(RuntimeException e) {
         HttpHeaders responseHeaders = new HttpHeaders();
         //responseHeaders.add(HttpHeaders.CONTENT_TYPE, "application/json");

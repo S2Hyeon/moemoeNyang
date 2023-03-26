@@ -1,19 +1,21 @@
 package com.ssafy.moemoe.api.service.member.impl;
 
-import java.util.Collections;
-
+import com.ssafy.moemoe.api.request.member.SignUpReq;
 import com.ssafy.moemoe.api.service.member.SignService;
 import com.ssafy.moemoe.common.CommonResponse;
 import com.ssafy.moemoe.config.security.JwtTokenProvider;
 import com.ssafy.moemoe.db.dto.SignInResultDto;
 import com.ssafy.moemoe.db.dto.SignUpResultDto;
-import com.ssafy.moemoe.db.entity.Member;
-import com.ssafy.moemoe.db.repository.UserRepository;
+import com.ssafy.moemoe.db.entity.member.Member;
+import com.ssafy.moemoe.db.repository.member.MemberRepository;
+import com.ssafy.moemoe.db.repository.university.UniversityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 
 // 예제 13.25
@@ -22,43 +24,37 @@ public class SignServiceImpl implements SignService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(SignServiceImpl.class);
 
-    public UserRepository userRepository;
+    public MemberRepository memberRepository;
+    public UniversityRepository universityRepository;
     public JwtTokenProvider jwtTokenProvider;
     public PasswordEncoder passwordEncoder;
 
     @Autowired
-    public SignServiceImpl(UserRepository userRepository, JwtTokenProvider jwtTokenProvider,
+    public SignServiceImpl(MemberRepository memberRepository, JwtTokenProvider jwtTokenProvider,
                            PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
+        this.memberRepository = memberRepository;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
-    public SignUpResultDto signUp(String id, String password, String name, String role) {
+    public SignUpResultDto signUp(SignUpReq form) {
         LOGGER.info("[getSignUpResult] 회원 가입 정보 전달");
-        Member member;
-        if (role.equalsIgnoreCase("admin")) {
-            member = Member.builder()
-                    .uid(id)
-                    .name(name)
-                    .password(passwordEncoder.encode(password))
-                    .roles(Collections.singletonList("ROLE_ADMIN"))
-                    .build();
-        } else {
-            member = Member.builder()
-                    .uid(id)
-                    .name(name)
-                    .password(passwordEncoder.encode(password))
-                    .roles(Collections.singletonList("ROLE_USER"))
-                    .build();
-        }
+        Member member = Member.builder()
+                .email(form.getEmail())
+                .nickname(form.getNickname())
+                .password(passwordEncoder.encode(form.getPassword()))
+                .created_at(LocalDateTime.now())
+//                .university(universityRepository.findById(form.getUniversityId()))
+                .university_id(form.getUniversityId())
+                .badge_id(1)
+                .build();
 
-        Member savedMember = userRepository.save(member);
+        Member savedMember = memberRepository.save(member);
         SignUpResultDto signUpResultDto = new SignInResultDto();
 
         LOGGER.info("[getSignUpResult] userEntity 값이 들어왔는지 확인 후 결과값 주입");
-        if (!savedMember.getName().isEmpty()) {
+        if (!savedMember.getNickname().isEmpty()) {
             LOGGER.info("[getSignUpResult] 정상 처리 완료");
             setSuccessResult(signUpResultDto);
         } else {
@@ -71,7 +67,7 @@ public class SignServiceImpl implements SignService {
     @Override
     public SignInResultDto signIn(String id, String password) throws RuntimeException {
         LOGGER.info("[getSignInResult] signDataHandler 로 회원 정보 요청");
-        Member member = userRepository.getByUid(id);
+        Member member = memberRepository.getByEmail(id);
         LOGGER.info("[getSignInResult] Id : {}", id);
 
         LOGGER.info("[getSignInResult] 패스워드 비교 수행");
@@ -82,7 +78,7 @@ public class SignServiceImpl implements SignService {
 
         LOGGER.info("[getSignInResult] SignInResultDto 객체 생성");
         SignInResultDto signInResultDto = SignInResultDto.builder()
-                .token(jwtTokenProvider.createToken(String.valueOf(member.getUid()),
+                .token(jwtTokenProvider.createToken(String.valueOf(member.getEmail()),
                         member.getRoles()))
                 .build();
 

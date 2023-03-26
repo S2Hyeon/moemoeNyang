@@ -1,29 +1,20 @@
-package com.ssafy.moemoe.db.entity;
+package com.ssafy.moemoe.db.entity.member;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.Type;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 // 예제 13.5
 @Entity
@@ -37,21 +28,39 @@ public class Member implements UserDetails {
 
     private static final long serialVersionUID = 6014984039564979072L;
 
-    @Id
-    @GeneratedValue
-    @Type(type = "uuid-char")
-    @Column(name = "member_id", columnDefinition = "BINARY(32)")
+    @Id @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name="uuid2", strategy = "uuid2")
+    @Column(name = "member_id", columnDefinition = "BINARY(16)")
     private UUID memberId;
 
+//    자꾸 null 뱉어대서 주석처리
+//    @ManyToOne
+//    @JoinColumn(name = "university_id")
+//    private University university;
+    @Column(nullable = false)
+    private long university_id;
+
+//    자꾸 null 뱉어대서 주석처리
+//    @ManyToOne
+//    @JoinColumn(name = "badge_id")
+//    private Badge badge;
+    @Column(nullable = false)
+    private long badge_id;
+
     @Column(nullable = false, unique = true)
-    private String uid; // 회원 ID (JWT 토큰 내 정보)
+    private String email; // 회원 ID (JWT 토큰 내 정보)
 
     @JsonProperty(access = Access.WRITE_ONLY) // Json 결과로 출력하지 않을 데이터에 대해 해당 어노테이션 설정 값 추가
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
-    private String name;
+    private String nickname;
+
+    @Column(nullable = false)
+    private LocalDateTime created_at;
+
+    private LocalDateTime entered_at;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
@@ -70,7 +79,7 @@ public class Member implements UserDetails {
     @JsonProperty(access = Access.WRITE_ONLY)
     @Override
     public String getUsername() {
-        return this.uid;
+        return this.email;
     }
 
     /**

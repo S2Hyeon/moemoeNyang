@@ -1,15 +1,11 @@
 package com.ssafy.moemoe.config.security;
 
+import com.ssafy.moemoe.db.entity.member.Member;
+import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.Date;
-import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +15,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.Date;
+import java.util.List;
 
 /**
  * JWT 토큰을 생성하고 유효성을 검증하는 컴포넌트 클래스 JWT 는 여러 암호화 알고리즘을 제공하고 알고리즘과 비밀키를 가지고 토큰을 생성
@@ -36,6 +39,7 @@ public class JwtTokenProvider {
 
     private final Logger LOGGER = LoggerFactory.getLogger(JwtTokenProvider.class);
     private final UserDetailsService userDetailsService; // Spring Security 에서 제공하는 서비스 레이어
+    private final MemberRepository memberRepository;
 
     @Value("${springboot.jwt.secret}")
     private String secretKey = "secretKey";
@@ -58,14 +62,23 @@ public class JwtTokenProvider {
     // JWT 토큰 생성
     public String createToken(String userUid, List<String> roles) {
         LOGGER.info("[createToken] 토큰 생성 시작");
-        Claims claims = Jwts.claims().setSubject(userUid);
-        claims.put("roles", roles);
+//        Claims claims = Jwts.claims().setSubject(userUid); sub클레임 필요없어서 주석처리
+        Claims claims = Jwts.claims();
+        Member member = memberRepository.getByEmail(userUid);
+        //여기서 token에 필요한 정보들을 담을 수 있음
+//        claims.put("roles", roles);
+        claims.put("email", userUid);
+        claims.put("member_id", member.getMemberId());
+//        claims.put("university_id", member.getUniversity().getId());
+        claims.put("university_id", member.getUniversity_id());
+        claims.put("nickname", member.getNickname());
 
         Date now = new Date();
         String token = Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + tokenValidMillisecond))
+
                 .signWith(SignatureAlgorithm.HS256, secretKey) // 암호화 알고리즘, secret 값 세팅
                 .compact();
 

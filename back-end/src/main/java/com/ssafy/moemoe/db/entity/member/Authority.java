@@ -1,8 +1,11 @@
-package com.ssafy.moemoe.db.entity;
+package com.ssafy.moemoe.db.entity.member;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "`authority`")
