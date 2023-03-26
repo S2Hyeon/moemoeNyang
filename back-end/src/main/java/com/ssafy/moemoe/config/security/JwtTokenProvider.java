@@ -62,8 +62,8 @@ public class JwtTokenProvider {
     // JWT 토큰 생성
     public String createToken(String userUid, List<String> roles) {
         LOGGER.info("[createToken] 토큰 생성 시작");
-//        Claims claims = Jwts.claims().setSubject(userUid); sub클레임 필요없어서 주석처리
-        Claims claims = Jwts.claims();
+        Claims claims = Jwts.claims().setSubject(userUid); //sub가 필요없긴 하지만 쓰는 메소드가 있어서 일단 쓰기로
+//        Claims claims = Jwts.claims();
         Member member = memberRepository.getByEmail(userUid);
         //여기서 token에 필요한 정보들을 담을 수 있음
 //        claims.put("roles", roles);
@@ -116,6 +116,7 @@ public class JwtTokenProvider {
      */
     public String resolveToken(HttpServletRequest request) {
         LOGGER.info("[resolveToken] HTTP 헤더에서 Token 값 추출");
+//        return request.getHeader("X-AUTH-TOKEN");
         return request.getHeader("X-AUTH-TOKEN");
     }
 

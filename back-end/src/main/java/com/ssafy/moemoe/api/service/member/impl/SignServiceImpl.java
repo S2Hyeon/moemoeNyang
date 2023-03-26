@@ -31,10 +31,11 @@ public class SignServiceImpl implements SignService {
 
     @Autowired
     public SignServiceImpl(MemberRepository memberRepository, JwtTokenProvider jwtTokenProvider,
-                           PasswordEncoder passwordEncoder) {
+                           PasswordEncoder passwordEncoder, UniversityRepository universityRepository) {
         this.memberRepository = memberRepository;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordEncoder = passwordEncoder;
+        this.universityRepository = universityRepository;
     }
 
     //이메일 중복체크
