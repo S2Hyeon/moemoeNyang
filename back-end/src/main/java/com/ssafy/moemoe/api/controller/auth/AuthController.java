@@ -17,18 +17,18 @@ import java.util.Map;
 
 // 예제 13.28
 @RestController
-@RequestMapping("/sign-api")
-public class SignController {
+@RequestMapping("/auth")
+public class AuthController {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(SignController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
     private final SignService signService;
 
     @Autowired
-    public SignController(SignService signService) {
+    public AuthController(SignService signService) {
         this.signService = signService;
     }
 
-    @PostMapping(value = "/sign-in")
+    @PostMapping(value = "/login")
     public SignInResultDto signIn(@RequestBody SignUpReq form)
             throws RuntimeException {
         LOGGER.info("[signIn] 로그인을 시도하고 있습니다. id : {}, pw : ****", form.getEmail());
@@ -56,6 +56,7 @@ public class SignController {
         throw new RuntimeException("접근이 금지되었습니다.");
     }
 
+//    정확히 오류가 어디 떴는지 보기위해 주석처리함
 //    @ExceptionHandler(value = RuntimeException.class)
     public ResponseEntity<Map<String, String>> ExceptionHandler(RuntimeException e) {
         HttpHeaders responseHeaders = new HttpHeaders();
