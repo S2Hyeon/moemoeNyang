@@ -48,6 +48,13 @@ public class SignServiceImpl implements SignService {
     }
 
     @Override
+    public void changePasswordByEmail(String email, String newPassword) {
+        Member member = memberRepository.findByEmail(email);
+        member.setPassword(passwordEncoder.encode(newPassword));
+        memberRepository.save(member);
+    }
+
+    @Override
     public SignUpResultDto signUp(SignUpReq form) {
         LOGGER.info("[getSignUpResult] 회원 가입 정보 전달");
         Member member = Member.builder()

@@ -14,4 +14,6 @@ public interface SignService {
 
     String checkDuplicateEmail(String email);
 
+    void changePasswordByEmail(String email, String newPassword);
+
 }

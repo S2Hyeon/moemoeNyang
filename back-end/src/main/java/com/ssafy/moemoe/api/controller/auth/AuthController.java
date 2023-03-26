@@ -1,5 +1,6 @@
 package com.ssafy.moemoe.api.controller.auth;
 
+import com.ssafy.moemoe.api.request.member.SignInReq;
 import com.ssafy.moemoe.api.request.member.SignUpReq;
 import com.ssafy.moemoe.api.service.member.SignService;
 import com.ssafy.moemoe.db.dto.SignInResultDto;
@@ -30,7 +31,7 @@ public class AuthController {
     }
 
     @PostMapping(value = "/login")
-    public SignInResultDto signIn(@RequestBody SignUpReq form)
+    public SignInResultDto signIn(@RequestBody SignInReq form)
             throws RuntimeException {
         LOGGER.info("[signIn] 로그인을 시도하고 있습니다. id : {}, pw : ****", form.getEmail());
         SignInResultDto signInResultDto = signService.signIn(form.getEmail(), form.getPassword());
@@ -52,13 +53,21 @@ public class AuthController {
         return signUpResultDto;
     }
 
-//    /auth/check-email?email=String
     @GetMapping(value = "/check-email")
     public ResponseEntity<Map<String, String>> checkDuplicateEmail(
             @ApiParam(value = "email", required = true) @RequestParam String email){
         Map<String, String> map = new HashMap<>();
         String YorN = signService.checkDuplicateEmail(email); //중복되면Y, 아니면N
         map.put("msg", YorN);
+        return ResponseEntity.ok(map);
+    }
+
+    @PostMapping(value = "/reset-pwd")
+    public ResponseEntity<Map<String, String>> resetPassword(@RequestBody SignInReq form) {
+        LOGGER.info("[resetPW] 패스워드 변경을 시도하고 있습니다. id : {}, pw : ****", form.getEmail());
+        signService.changePasswordByEmail(form.getEmail(), form.getPassword());
+        Map<String, String> map = new HashMap<>();
+        map.put("msg", "비밀번호를 재설정 했습니다.");
         return ResponseEntity.ok(map);
     }
 
