@@ -50,26 +50,14 @@ public class CatController {
 
     //특정 고양이 상세 조회
     @GetMapping("/{catId}")
-    public ResponseEntity<?> getCat(@PathVariable Long catId) {
-        // catId를 이용해 Cat 객체를 가져오는 코드
-        //Cat cat = catService.getCatById(catId);
+    public ResponseEntity<?> getCat(HttpServletRequest request, @PathVariable Long catId) {
+        // request를 이용한 멤버아이디 가져오기 추가 예정
 
-//        if (cat == null) {
-//            // 존재하지 않는 catId에 대한 요청일 경우 404 응답을 보냅니다.
-//            return ResponseEntity.notFound().build();
-//        }
-
-        CatDetailResp cat = CatDetailResp.builder()
-                .cat_id(1)
-                .name("볼록이")
-                .gender("M")
-                .age(7)
-                .follower_cnt(10)
-                .image(tiredCatImage)
-                .lat(37.501258)
-                .lng(127.039516)
-                .build();
-        return ResponseEntity.ok(cat);
+        CatDetailResp catDetailResp = catService.getCat(catId);
+        if(catDetailResp == null) {
+            return new ResponseEntity<>("고양이가 조회에 실패했습니다.", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(catDetailResp, HttpStatus.OK);
     }
 
     //고양이 상세페이지에서 게시글 조회

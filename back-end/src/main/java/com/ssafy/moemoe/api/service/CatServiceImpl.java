@@ -1,6 +1,7 @@
 package com.ssafy.moemoe.api.service;
 
 import com.ssafy.moemoe.api.request.CatInfoReq;
+import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.db.entity.Cat;
 import com.ssafy.moemoe.db.repository.CatCustomRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -34,6 +36,14 @@ public class CatServiceImpl implements CatService{
     @Override
     public List<CatListResp> getCats(String memberId, Long universityId) {
         return catCustomRepository.getCats(UUID.fromString(memberId), universityId);
+    }
+
+    @Override
+    public CatDetailResp getCat(Long catId) {
+        Optional<Cat> cat = catRepository.findCatByCatId(catId);
+        // 위도, 경도 값은 게시판 레포에서 얻어온다.
+        return cat.map(catDetail -> toCatDetailResp(catDetail, 37.501258F, 127.039516F)).orElse(null);
+
     }
 
 
