@@ -41,42 +41,11 @@ public class CatController {
 
     //고양이 리스트 조회
     @GetMapping("")
-    public ResponseEntity<?> getCats(@RequestParam Long universityId) {
-        List<CatListResp> cats = new ArrayList<>();
-        cats.add(CatListResp.builder()
-                        .cat_id(1)
-                        .name("볼록이")
-                        .gender("M")
-                        .age(7)
-                        .follower_cnt(10)
-                        .image(tiredCatImage)
-                        .build());
-        cats.add(CatListResp.builder()
-                .cat_id(2)
-                .name("오목이")
-                .gender("F")
-                .age(7)
-                .follower_cnt(10)
-                .image(tiredCatImage)
-                .build());
-        cats.add(CatListResp.builder()
-                .cat_id(3)
-                .name("울퉁이")
-                .gender("F")
-                .age(7)
-                .follower_cnt(10)
-                .image(tiredCatImage)
-                .build());
-        cats.add(CatListResp.builder()
-                .cat_id(4)
-                .name("불퉁이")
-                .gender("M")
-                .age(7)
-                .follower_cnt(10)
-                .image(tiredCatImage)
-                .build());
-        return ResponseEntity.ok(cats);
-//        return null;
+    public ResponseEntity<?> getCats(HttpServletRequest request, @RequestParam Long universityId) {
+        // request를 이용한 멤버아이디 가져오기 추가 예정
+
+        List<CatListResp> cats = catService.getCats("member UUID", universityId);
+        return new ResponseEntity<>(cats, HttpStatus.OK);
     }
 
     //특정 고양이 상세 조회
