@@ -1,24 +1,43 @@
 package com.ssafy.moemoe.api.controller.cat;
 
+import com.ssafy.moemoe.api.request.CatInfoReq;
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.board.CatDetailBoardResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseResultResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseTimeline;
+import com.ssafy.moemoe.api.service.CatService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/cats")
 public class CatController {
 
     final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
+    private final CatService catService;
 
+    @PostMapping("")
+    public ResponseEntity<?> insertCat(HttpServletRequest request, CatInfoReq catInfoReq) {
+        // request를 이용한 멤버아이디 가져오기 추가 예정
+
+        boolean result = catService.insertCat("멤버 UUID", catInfoReq);
+        if(result) {
+            return new ResponseEntity<>("고양이가 등록되었습니다.", HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>("고양이가 등록에 실패했습니다.", HttpStatus.BAD_REQUEST);
+        }
+    }
 
     //고양이 리스트 조회
     @GetMapping("")
