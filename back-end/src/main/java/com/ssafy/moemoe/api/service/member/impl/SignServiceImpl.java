@@ -37,6 +37,16 @@ public class SignServiceImpl implements SignService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    //이메일 중복체크
+    @Override
+    public String checkDuplicateEmail(String email) {
+        if (memberRepository.existsByEmail(email)) { //이메일이 있는지?
+            return "Y"; //있음 = 중복된 이메일
+        } else {
+            return "N"; //없음 = 가입 가능한 이메일
+        }
+    }
+
     @Override
     public SignUpResultDto signUp(SignUpReq form) {
         LOGGER.info("[getSignUpResult] 회원 가입 정보 전달");

@@ -12,4 +12,6 @@ public interface SignService {
 
     SignInResultDto signIn(String id, String password) throws RuntimeException;
 
+    String checkDuplicateEmail(String email);
+
 }

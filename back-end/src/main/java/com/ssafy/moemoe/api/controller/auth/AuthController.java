@@ -4,6 +4,7 @@ import com.ssafy.moemoe.api.request.member.SignUpReq;
 import com.ssafy.moemoe.api.service.member.SignService;
 import com.ssafy.moemoe.db.dto.SignInResultDto;
 import com.ssafy.moemoe.db.dto.SignUpResultDto;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,16 @@ public class AuthController {
 
         LOGGER.info("[signUp] 회원가입을 완료했습니다. id : {}", form.getEmail());
         return signUpResultDto;
+    }
+
+//    /auth/check-email?email=String
+    @GetMapping(value = "/check-email")
+    public ResponseEntity<Map<String, String>> checkDuplicateEmail(
+            @ApiParam(value = "email", required = true) @RequestParam String email){
+        Map<String, String> map = new HashMap<>();
+        String YorN = signService.checkDuplicateEmail(email); //중복되면Y, 아니면N
+        map.put("msg", YorN);
+        return ResponseEntity.ok(map);
     }
 
     @GetMapping(value = "/exception")
