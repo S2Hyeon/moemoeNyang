@@ -41,6 +41,12 @@ const post = (urls: string, ...rest): Object => {
       };
       break;
 
+    case "/auth/find-pwd":
+      res.data = {
+        msg: "입력하신 이메일로 메일을 보내드렸습니다.",
+      };
+      break;
+
     default:
       break;
   }

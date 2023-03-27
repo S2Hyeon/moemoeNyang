@@ -2,17 +2,17 @@ import React from "react";
 import BoardFooter from "./board/BoardFooter";
 import BoardHeader from "./board/BoardHeader";
 
-export const PostCard = ({ onBottom = false }) => {
+export const PostCard = ({ onBottom = false, postInfo }) => {
   return (
     <div>
       <div className="feed-item">
-        <BoardHeader onBottom={onBottom} />
+        <BoardHeader onBottom={onBottom} postInfo={postInfo} />
         <img
           className="aspect-square object-cover"
-          src="https://src.hidoc.co.kr/image/lib/2022/5/12/1652337370806_0.jpg"
+          src={postInfo.image}
           alt="고양이게시물이미지"
         />
-        <BoardFooter onBottom={onBottom} />
+        <BoardFooter onBottom={onBottom} postInfo={postInfo} />
       </div>
     </div>
   );
