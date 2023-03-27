@@ -55,7 +55,7 @@ public class BoardServiceImpl implements BoardService {
                 .content(boardSaveReq.getContent()).image(img).member(member).university(university).cat(cat).build());
 
 
-        return BoardResp.builder().boardId(board.getBoard_id()).catId(cat.getCatId()).universityId(university.getId()).memberNickname(member.getNickname())
+        return BoardResp.builder().boardId(board.getBoardId()).catId(cat.getCatId()).universityId(university.getUniversityId()).memberNickname(member.getNickname())
                 .lat(board.getLat()).lng(board.getLng()).content(board.getContent()).build();
     }
 
