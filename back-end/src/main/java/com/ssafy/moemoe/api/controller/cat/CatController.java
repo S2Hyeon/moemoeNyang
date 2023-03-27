@@ -1,87 +1,63 @@
 package com.ssafy.moemoe.api.controller.cat;
 
+import com.ssafy.moemoe.api.request.CatInfoReq;
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.board.CatDetailBoardResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseResultResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseTimeline;
+import com.ssafy.moemoe.api.service.cat.CatService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/cats")
 public class CatController {
 
     final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
+    private final CatService catService;
 
+    @PostMapping("")
+    public ResponseEntity<?> insertCat(HttpServletRequest request, CatInfoReq catInfoReq) {
+        // request를 이용한 멤버아이디 가져오기 추가 예정
+
+        boolean result = catService.insertCat("멤버 UUID", catInfoReq);
+        if(result) {
+            return new ResponseEntity<>("고양이가 등록되었습니다.", HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>("고양이가 등록에 실패했습니다.", HttpStatus.BAD_REQUEST);
+        }
+    }
 
     //고양이 리스트 조회
     @GetMapping("")
-    public ResponseEntity<?> getCats(@RequestParam Long universityId) {
-        List<CatListResp> cats = new ArrayList<>();
-        cats.add(CatListResp.builder()
-                        .cat_id(1)
-                        .name("볼록이")
-                        .gender("M")
-                        .age(7)
-                        .follower_cnt(10)
-                        .image(tiredCatImage)
-                        .build());
-        cats.add(CatListResp.builder()
-                .cat_id(2)
-                .name("오목이")
-                .gender("F")
-                .age(7)
-                .follower_cnt(10)
-                .image(tiredCatImage)
-                .build());
-        cats.add(CatListResp.builder()
-                .cat_id(3)
-                .name("울퉁이")
-                .gender("F")
-                .age(7)
-                .follower_cnt(10)
-                .image(tiredCatImage)
-                .build());
-        cats.add(CatListResp.builder()
-                .cat_id(4)
-                .name("불퉁이")
-                .gender("M")
-                .age(7)
-                .follower_cnt(10)
-                .image(tiredCatImage)
-                .build());
-        return ResponseEntity.ok(cats);
-//        return null;
+    public ResponseEntity<?> getCats(HttpServletRequest request, @RequestParam Long universityId) {
+        // request를 이용한 멤버아이디 가져오기 추가 예정
+
+        List<CatListResp> cats = catService.getCats("member UUID", universityId);
+        return new ResponseEntity<>(cats, HttpStatus.OK);
     }
 
     //특정 고양이 상세 조회
     @GetMapping("/{catId}")
-    public ResponseEntity<?> getCat(@PathVariable Long catId) {
-        // catId를 이용해 Cat 객체를 가져오는 코드
-        //Cat cat = catService.getCatById(catId);
+    public ResponseEntity<?> getCat(HttpServletRequest request, @PathVariable Long catId) {
+        // request를 이용한 멤버아이디 가져오기 추가 예정
 
-//        if (cat == null) {
-//            // 존재하지 않는 catId에 대한 요청일 경우 404 응답을 보냅니다.
-//            return ResponseEntity.notFound().build();
-//        }
-
-        CatDetailResp cat = CatDetailResp.builder()
-                .cat_id(1)
-                .name("볼록이")
-                .gender("M")
-                .age(7)
-                .follower_cnt(10)
-                .image(tiredCatImage)
-                .lat(37.501258)
-                .lng(127.039516)
-                .build();
-        return ResponseEntity.ok(cat);
+        CatDetailResp catDetailResp = catService.getCat(catId);
+        if(catDetailResp == null) {
+            return new ResponseEntity<>("고양이가 조회에 실패했습니다.", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(catDetailResp, HttpStatus.OK);
     }
 
     //고양이 상세페이지에서 게시글 조회
