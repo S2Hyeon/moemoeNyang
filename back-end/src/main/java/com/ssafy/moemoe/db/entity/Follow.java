@@ -1,5 +1,6 @@
 package com.ssafy.moemoe.db.entity;
 
+import com.ssafy.moemoe.db.entity.member.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

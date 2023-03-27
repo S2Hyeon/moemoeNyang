@@ -15,7 +15,7 @@ public class Badge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long badge_id;
+    private Long badgeId;
 
     private String image; //사진 url
 }

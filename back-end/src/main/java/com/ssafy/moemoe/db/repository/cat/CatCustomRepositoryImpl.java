@@ -23,7 +23,6 @@ public class CatCustomRepositoryImpl implements CatCustomRepository {
     @Override
     public List<CatListResp> getCats(UUID memberId, Long universityId) {
 
-
         return query
                 .select(new QCatListResp(cat, follow.cat.catId))
                 .from(cat)

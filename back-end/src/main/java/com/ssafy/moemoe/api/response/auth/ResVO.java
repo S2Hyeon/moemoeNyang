@@ -1,9 +1,9 @@
 package com.ssafy.moemoe.api.response.auth;
 
-import java.util.ArrayList;
-
 import lombok.Builder;
 import lombok.ToString;
+
+import java.util.ArrayList;
 
 @ToString
 public class ResVO {
