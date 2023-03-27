@@ -19,6 +19,7 @@ import SymptomsRegister from "./pages/symptom/SymptomsRegister";
 import FeedRegisterPage from "./pages/main/FeedRegisterPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ModifyUserInfo from "./pages/mypage/ModifyUserInfo";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/" element={<PrivateRoute component={<Layout />} />}>
           <Route path="main" element={<MainPage />} />
           <Route path="mypage" element={<MyPage />} />
+          <Route path="mypage/modify" element={<ModifyUserInfo />} />
           <Route path="catlist" element={<CatPage />} />
           <Route path="catregister" element={<CatRegisterPage />} />
           <Route path="cat/id" element={<CatDetailPage />} />
