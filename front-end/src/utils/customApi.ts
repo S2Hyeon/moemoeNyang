@@ -1,6 +1,7 @@
 import axios from "axios";
 import MockupService from "./MockupService";
 import getHeaders from "./getHeaders";
+import { getCookie } from "./handleCookies";
 
 export const ApiMock = MockupService;
 
