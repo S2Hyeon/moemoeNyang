@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 // 예제 13.7
-public interface MemberRepository extends JpaRepository<Member, Long> {
+public interface MemberRepository extends JpaRepository<Member, UUID> {
 
     Member findByMemberId(UUID memberId);
     Member getByEmail(String email);

@@ -1,10 +1,6 @@
 package com.ssafy.moemoe.db.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 // 예제 13.30
 @Data
