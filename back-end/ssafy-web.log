@@ -4354,3 +4354,39 @@ This generated password is for development use only. Your security configuration
 2023-03-27 15:12:34.340 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
 2023-03-27 15:12:34.340 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
 2023-03-27 15:12:34.341 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-27 17:14:46.351 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-27 17:14:46.353 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-27 17:14:46.358 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-27 17:14:46.364 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-27 17:14:46.364 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-27 17:14:46.368 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-27 17:14:46.370 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-27 17:14:46.372 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-27 17:14:49.725 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/members", parameters={}
+2023-03-27 17:14:49.726 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-27 17:14:49.726 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-27 17:14:49.731 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-27 17:14:49.732 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-27 17:14:49.733 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-27 17:14:49.734 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-27 17:14:49.734 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-27 17:16:52.556 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-27 17:16:52.556 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-27 17:16:52.557 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-27 17:16:52.557 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-27 17:16:52.558 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-27 17:16:57.554 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-27 17:16:57.554 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-27 17:16:57.555 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-27 17:16:57.555 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-27 17:16:57.556 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-27 17:17:09.554 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-27 17:17:09.555 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-27 17:17:09.555 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-27 17:17:09.555 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-27 17:17:09.556 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-27 17:17:34.557 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-27 17:17:34.558 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-27 17:17:34.559 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-27 17:17:34.559 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-27 17:17:34.560 DEBUG 6544 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

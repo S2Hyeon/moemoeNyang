@@ -45,9 +45,36 @@ export async function postUserInfo(
   }
 }
 
+interface GetUserBadgeResponse {
+  status: number;
+  data: {
+    "user_activitis":{
+      "feed_cnt":Number,
+      "post_cnt":Number,
+      "cat_regist_cnt":Number,
+      "react_cnt":Number,
+      "disease_regist_cnt":Number,
+      "report_cnt":Number,
+      "login_days_cnt":Number,
+    }
+  };
+}
+
+export async function getUserBadge(
+): Promise<GetUserBadgeResponse | undefined> {
+  try {
+    const response = await Api.post("/members/badge");
+    return response as GetUserBadgeResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
 const User = {
   getUserInfo, 
   postUserInfo,
+  getUserBadge,
 };
 
 export default User;
