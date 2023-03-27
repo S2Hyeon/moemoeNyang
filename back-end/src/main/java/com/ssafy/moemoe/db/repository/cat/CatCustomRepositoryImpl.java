@@ -25,13 +25,13 @@ public class CatCustomRepositoryImpl implements CatCustomRepository {
 
 
         return query
-                .select(new QCatListResp(cat.catId, cat.name, cat.age, cat.gender, cat.followerCnt, cat.image, follow.catId))
+                .select(new QCatListResp(cat, follow.cat.catId))
                 .from(cat)
-                .leftJoin(follow)
-                .on(cat.catId.eq(follow.catId), follow.memberId.eq(memberId))
-                .where(cat.isActive.eq(1), cat.universityId.eq(universityId))
+                .leftJoin(follow).fetchJoin()
+                .on(cat.catId.eq(follow.cat.catId), follow.member.memberId.eq(memberId))
+                .where(cat.isActive.eq(1), cat.university.universityId.eq(universityId))
                 .groupBy(cat.catId)
-                .orderBy(follow.catId.count().desc(), cat.followerCnt.desc())
+                .orderBy(follow.cat.catId.count().desc(), cat.followerCnt.desc())
                 .fetch();
     }
 }
