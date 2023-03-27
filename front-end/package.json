@@ -29,6 +29,7 @@
     "react-router-dom": "^6.9.0",
     "react-scripts": "^5.0.1",
     "react-toastify": "^9.1.2",
+    "redux-persist": "^6.0.0",
     "styled-components": "^5.3.9",
     "web-vitals": "^2.1.0"
   },
@@ -46,6 +47,7 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@types/react-redux": "^7.1.25",
+    "@types/redux-persist": "^4.3.1",
     "@types/styled-components": "^5.1.26",
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "^8.32.0",
