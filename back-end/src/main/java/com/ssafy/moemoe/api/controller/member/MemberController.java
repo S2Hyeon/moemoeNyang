@@ -7,6 +7,7 @@ import com.ssafy.moemoe.api.response.member.MemberActivityResp;
 import com.ssafy.moemoe.api.response.member.MemberDetailResp;
 import com.ssafy.moemoe.api.service.member.SignService;
 import com.ssafy.moemoe.api.service.university.UniversityService;
+import com.ssafy.moemoe.common.util.TokenUtils;
 import com.ssafy.moemoe.db.entity.university.University;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -32,9 +33,6 @@ public class MemberController {
     private final UniversityService universityService;
     private final SignService signService;
 
-    @Value("${springboot.jwt.secret}")
-    private String secretKey = "secretKey";
-
     @Autowired
     public MemberController(UniversityService universityService, SignService signService) {
         this.universityService = universityService;
@@ -59,14 +57,10 @@ public class MemberController {
 
     @GetMapping("")
     public ResponseEntity<?> getMember(HttpServletRequest request) {
-
-        //여기 아래부터 클래스로 따로 뺴는게 더 깔끔할 것임.
-        String jwtToken = request.getHeader("X-AUTH-TOKEN");
-        Claims claims = Jwts.parser().setSigningKey(secretKey.getBytes()).parseClaimsJws(jwtToken).getBody();
+        Claims claims = TokenUtils.getClaimsFromRequest(request);
         String email = claims.get("email").toString();
         String nickname = claims.get("nickname").toString();
         long universityId = Long.parseLong(claims.get("university_id").toString());
-        //여기까지...
 
         University university = universityService.getUniversity(universityId);
         LOGGER.info("토큰에서 꺼낸 닉네임 : {}, 대학교ID : {}",nickname, universityId);
@@ -81,10 +75,7 @@ public class MemberController {
 
     @PutMapping("")
     public ResponseEntity<?> updateMember(HttpServletRequest request, @RequestBody UpdateMemberReq form) {
-
-        //여기 아래부터 클래스로 따로 뺴는게 더 깔끔할 것임.
-        String jwtToken = request.getHeader("X-AUTH-TOKEN");
-        Claims claims = Jwts.parser().setSigningKey(secretKey.getBytes()).parseClaimsJws(jwtToken).getBody();
+        Claims claims = TokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
         signService.updateMember(memberId, form);
 
