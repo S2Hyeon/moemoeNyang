@@ -32,6 +32,12 @@ const MapPage = () => {
       break;
   }
 
+  const [catList, setCatList] = useState([]);
+  useEffect(() => {
+    if (catList.length) return;
+    // getCatList();
+  }, [catList]);
+
   const bottomSlideRef = useRef();
   const clickOutside = (e) => {
     if (e.target !== bottomSlideRef.current && isHigh === true) {
