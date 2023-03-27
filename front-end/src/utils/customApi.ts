@@ -1,5 +1,6 @@
 import axios from "axios";
 import MockupService from "./MockupService";
+import getHeaders from "./getHeaders";
 
 export const ApiMock = MockupService;
 
@@ -7,6 +8,17 @@ const Api = axios;
 
 Api.defaults.baseURL = "http://localhost:8081/api";
 Api.defaults.withCredentials = true;
+
+Api.interceptors.request.use(
+  (config) => {
+    const { Authorization } = getHeaders();
+    config.headers.Authorization = Authorization;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
 
 Api.interceptors.response.use(
   (response) => {
