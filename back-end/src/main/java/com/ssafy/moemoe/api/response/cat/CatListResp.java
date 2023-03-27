@@ -15,18 +15,18 @@ public class CatListResp {
     private String name;
     private Integer age;
     private Character gender;
-    private Long follower_cnt;
+    private Long followerCnt;
     private String image;
 
     private Long isFollowing;
 
     @QueryProjection
-    public CatListResp(Long catId, String name, Integer age, Character gender, Long follower_cnt, String image, Long isFollowing) {
+    public CatListResp(Long catId, String name, Integer age, Character gender, Long followerCnt, String image, Long isFollowing) {
         this.catId = catId;
         this.name = name;
         this.age = age;
         this.gender = gender;
-        this.follower_cnt = follower_cnt;
+        this.followerCnt = followerCnt;
         this.image = image;
         this.isFollowing = isFollowing;
     }

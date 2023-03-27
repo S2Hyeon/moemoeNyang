@@ -1,15 +1,16 @@
 package com.ssafy.moemoe.db.entity;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
+@DynamicInsert
 @Getter
 public class Follow {
     @Id
@@ -30,4 +31,9 @@ public class Follow {
     @JoinColumn(name = "cat_id", insertable = false, updatable = false)
     private Cat cat;
 
+    @Builder
+    public Follow(UUID memberId, Long catId) {
+        this.memberId = memberId;
+        this.catId = catId;
+    }
 }
