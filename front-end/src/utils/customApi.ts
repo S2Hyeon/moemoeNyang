@@ -6,7 +6,7 @@ export const ApiMock = MockupService;
 
 const Api = axios;
 
-Api.defaults.baseURL = "http://localhost:8080/api/v1";
+Api.defaults.baseURL = "http://localhost:8081/api";
 Api.defaults.withCredentials = true;
 
 Api.interceptors.request.use(
