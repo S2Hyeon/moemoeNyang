@@ -98,16 +98,16 @@ public class MemberController {
 
         List<CatListResp> follows = new ArrayList<>();
 
-        for (int i = 1; i < 5; i++) {
-            follows.add(CatListResp.builder()
-                    .cat_id(i)
-                    .name("뚱냥이")
-                    .gender("M")
-                    .image(tiredCatImage)
-                    .age((int) ((Math.random() * 10000) % 10))
-                    .follower_cnt((int) ((Math.random() * 10000) % 50))
-                    .build());
-        }
+//        for (int i = 1; i < 5; i++) {
+//            follows.add(CatListResp.builder()
+//                    .cat_id(i)
+//                    .name("뚱냥이")
+//                    .gender("M")
+//                    .image(tiredCatImage)
+//                    .age((int) ((Math.random() * 10000) % 10))
+//                    .follower_cnt((int) ((Math.random() * 10000) % 50))
+//                    .build());
+//        }
 
         return ResponseEntity.ok(follows);
     }

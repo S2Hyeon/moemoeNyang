@@ -86,4 +86,20 @@ public class Board {
         this.cat = cat;
     }
 
+    public void updateRecommend(Long recommend) {
+        this.recommend = recommend;
+    }
+    public void updateGood(Long good) {
+        this.good = good;
+    }
+    public void updateImpressed(Long impressed) {
+        this.impressed = impressed;
+    }
+    public void updateSad(Long sad) {
+        this.sad = sad;
+    }
+    public void updateAngry(Long angry) {
+        this.angry = angry;
+    }
+
 }

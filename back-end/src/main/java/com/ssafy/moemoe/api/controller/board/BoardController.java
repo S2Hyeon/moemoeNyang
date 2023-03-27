@@ -1,6 +1,7 @@
 package com.ssafy.moemoe.api.controller.board;
 
 import com.ssafy.moemoe.api.request.board.BoardSaveReq;
+import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
 import com.ssafy.moemoe.api.request.board.TagSaveReq;
 import com.ssafy.moemoe.api.response.board.BoardDetailResp;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
@@ -10,6 +11,7 @@ import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.member.MemberDetailResp;
 import com.ssafy.moemoe.api.service.S3Uploader;
 import com.ssafy.moemoe.api.service.board.BoardService;
+import com.ssafy.moemoe.common.model.BaseResponseBody;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.swagger.annotations.ApiOperation;
@@ -144,9 +146,28 @@ public class BoardController {
             @ApiResponse(code = 404, message = "사용자 없음"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity<Page<BoardLoadResp>> findInterviewByCategoryAndWord(@RequestParam Long universityId, @RequestParam String tagName,
+    public ResponseEntity<Page<BoardLoadResp>> searchAllBoard(@RequestParam Long universityId, @RequestParam String tagName,
                                                                               @PageableDefault(size = 20) Pageable pageable) {
 
         return ResponseEntity.status(200).body(boardService.searchAllBoard(universityId, tagName, pageable));
+    }
+
+    @PatchMapping("/emotion")
+    @ApiOperation(value = "게시물 이모지 클릭", notes = "게시물의 이모지 등록이 가능하다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 401, message = "인증 실패"),
+            @ApiResponse(code = 404, message = "사용자 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<? extends BaseResponseBody> registerEmotion(HttpServletRequest request, @RequestBody @Valid ReactionDetailReq reactionDetailReq) {
+
+        String jwtToken = request.getHeader("X-AUTH-TOKEN");
+        Claims claims = Jwts.parser().setSigningKey(secretKey.getBytes()).parseClaimsJws(jwtToken).getBody();
+        UUID member_id = UUID.fromString(claims.get("member_id").toString());
+
+        boardService.updateReaction(member_id, reactionDetailReq);
+
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "게시물 이모지 등록 완료!"));
     }
 }
