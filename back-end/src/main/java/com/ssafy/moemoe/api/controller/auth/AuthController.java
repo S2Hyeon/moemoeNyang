@@ -48,7 +48,7 @@ public class AuthController {
         LOGGER.info("[signUp] 회원가입을 수행합니다. id : {}, password : ****, name : {}",form.getEmail(), form.getNickname());
 
         SignUpResultDto signUpResultDto = signService.signUp(form);
-
+        
         LOGGER.info("[signUp] 회원가입을 완료했습니다. id : {}", form.getEmail());
         return signUpResultDto;
     }

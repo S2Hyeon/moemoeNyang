@@ -2,6 +2,7 @@ package com.ssafy.moemoe.db.entity.member;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.ssafy.moemoe.db.entity.university.University;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
@@ -34,18 +35,18 @@ public class Member implements UserDetails {
     private UUID memberId;
 
 //    자꾸 null 뱉어대서 주석처리
-//    @ManyToOne
-//    @JoinColumn(name = "university_id")
-//    private University university;
-    @Column(nullable = false)
-    private long university_id;
+    @ManyToOne
+    @JoinColumn(name = "university_id")
+    private University university;
+//    @Column(nullable = false)
+//    private long university_id;
 
 //    자꾸 null 뱉어대서 주석처리
-//    @ManyToOne
-//    @JoinColumn(name = "badge_id")
-//    private Badge badge;
-    @Column(nullable = false)
-    private long badge_id;
+    @ManyToOne
+    @JoinColumn(name = "badge_id")
+    private Badge badge;
+//    @Column(nullable = false)
+//    private long badge_id;
 
     @Column(nullable = false, unique = true)
     private String email; // 회원 ID (JWT 토큰 내 정보)
