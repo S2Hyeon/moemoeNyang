@@ -1,39 +1,26 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-
-const cat = [
-  {
-    id: 1,
-    name: "냥냥이",
-    avatar:
-      "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtEMUl%2FbtrDc6957nj%2FNwJoDw0EOapJNDSNRNZK8K%2Fimg.jpg",
-  },
-  {
-    id: 2,
-    name: "냐용이",
-    avatar:
-      "https://img.freepik.com/free-photo/portrait-of-adorable-domestic-cat_23-2149167104.jpg?size=626&ext=jpg&ga=GA1.2.324650718.1679278990&semt=sph",
-  },
-  {
-    id: 3,
-    name: "쇼숏",
-    avatar: "https://src.hidoc.co.kr/image/lib/2022/5/12/1652337370806_0.jpg",
-  },
-  {
-    id: 4,
-    name: "젤링",
-    avatar:
-      "https://img.freepik.com/free-photo/white-cat-lies-on-woman-s-knees_8353-539.jpg?w=900&t=st=1679450698~exp=1679451298~hmac=f2715d41c51752c2e5480efa25c5018705d564dba252a11b1f1ae43311b82035",
-  },
-];
+import { getCatList } from "../../services/cats";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Dropdown() {
-  const [selected, setSelected] = useState(cat[0]);
+  const [selected, setSelected] = useState([]);
+  const [catList, setCatList] = useState([]);
+
+  useEffect(() => {
+    getCatList().then((res) => setCatList(res.data));
+  }, []);
+
+  useEffect(() => {
+    if (!catList.length) return;
+    console.log("cat list 불러오기");
+    console.log(catList);
+    setSelected(catList[0]);
+  }, [catList]);
 
   return (
     <Listbox value={selected} onChange={setSelected}>
@@ -43,7 +30,7 @@ export default function Dropdown() {
             <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-lisa-400 sm:text-sm sm:leading-6">
               <span className="flex items-center mt-1 mb-1">
                 <img
-                  src={selected.avatar}
+                  src={selected.image}
                   alt=""
                   className="h-5 w-5 flex-shrink-0 rounded-full"
                 />
@@ -65,22 +52,22 @@ export default function Dropdown() {
               leaveTo="opacity-0"
             >
               <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {cat.map((person) => (
+                {catList.map((cat) => (
                   <Listbox.Option
-                    key={person.id}
+                    key={cat.id}
                     className={({ active }) =>
                       classNames(
                         active ? "bg-indigo-600 text-white" : "text-gray-900",
                         "relative cursor-default select-none py-2 pl-3 pr-9",
                       )
                     }
-                    value={person}
+                    value={cat}
                   >
                     {({ selected, active }) => (
                       <>
                         <div className="flex items-center">
                           <img
-                            src={person.avatar}
+                            src={cat.image}
                             alt=""
                             className="h-5 w-5 flex-shrink-0 rounded-full"
                           />
@@ -90,7 +77,7 @@ export default function Dropdown() {
                               "ml-3 block truncate",
                             )}
                           >
-                            {person.name}
+                            {cat.name}
                           </span>
                         </div>
 
