@@ -1,4 +1,4 @@
-package com.ssafy.moemoe.db.repository;
+package com.ssafy.moemoe.db.repository.cat;
 
 import com.ssafy.moemoe.db.entity.Cat;
 import org.springframework.data.jpa.repository.JpaRepository;

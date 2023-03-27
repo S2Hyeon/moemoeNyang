@@ -1,4 +1,4 @@
-package com.ssafy.moemoe.db.repository;
+package com.ssafy.moemoe.db.repository.cat;
 
 import com.ssafy.moemoe.api.response.cat.CatListResp;
 import org.springframework.stereotype.Repository;

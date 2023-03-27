@@ -1,6 +1,6 @@
-package com.ssafy.moemoe.api.controller.cat;
+package com.ssafy.moemoe.api.controller.follow;
 
-import com.ssafy.moemoe.api.service.FollowService;
+import com.ssafy.moemoe.api.service.follow.FollowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

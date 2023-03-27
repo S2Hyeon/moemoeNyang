@@ -1,4 +1,4 @@
-package com.ssafy.moemoe.api.service;
+package com.ssafy.moemoe.api.service.follow;
 
 import com.ssafy.moemoe.db.entity.Follow;
 
@@ -12,8 +12,8 @@ public interface FollowService {
 
     default Follow toEntity(UUID memberId, Long catId) {
         return Follow.builder()
-                .memberId(memberId)
-                .catId(catId)
+//                .memberId(memberId) 멤버, 고양이 엔티티로 넘길 예정
+//                .catId(catId)
                 .build();
     }
 }

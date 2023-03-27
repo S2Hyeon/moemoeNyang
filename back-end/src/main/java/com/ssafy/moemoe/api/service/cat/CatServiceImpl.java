@@ -1,11 +1,11 @@
-package com.ssafy.moemoe.api.service;
+package com.ssafy.moemoe.api.service.cat;
 
 import com.ssafy.moemoe.api.request.CatInfoReq;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.db.entity.Cat;
-import com.ssafy.moemoe.db.repository.CatCustomRepository;
-import com.ssafy.moemoe.db.repository.CatRepository;
+import com.ssafy.moemoe.db.repository.cat.CatCustomRepository;
+import com.ssafy.moemoe.db.repository.cat.CatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,8 +24,7 @@ public class CatServiceImpl implements CatService{
 
     @Override
     public boolean insertCat(String memberId, CatInfoReq catInfoReq) {
-        // 멤버 유효성 검사 추가 예정
-
+        // 멤버 유효성 검사 추가 예정, university 엔티티 인자로 넘길 예정
         Cat cat = toEntity(catInfoReq);
 
         catRepository.save(cat);

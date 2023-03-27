@@ -1,4 +1,4 @@
-package com.ssafy.moemoe.db.repository;
+package com.ssafy.moemoe.db.repository.follow;
 
 import com.ssafy.moemoe.db.entity.Follow;
 import org.springframework.data.jpa.repository.JpaRepository;

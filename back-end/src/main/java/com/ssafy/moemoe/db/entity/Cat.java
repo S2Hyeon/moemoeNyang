@@ -16,11 +16,8 @@ public class Cat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long catId;
 
-    @Column(name = "university_id")
-    private Long universityId;
-
-    @OneToOne
-    @JoinColumn(name = "university_id", insertable = false, updatable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "university_id")
     private University university;
 
     private String name;
@@ -33,8 +30,8 @@ public class Cat {
     private Integer isActive;
 
     @Builder
-    public Cat(Long universityId, String name, Integer age, Character gender, String image) {
-        this.universityId = universityId;
+    public Cat(University university, String name, Integer age, Character gender, String image) {
+        this.university = university;
         this.name = name;
         this.age = age;
         this.gender = gender;

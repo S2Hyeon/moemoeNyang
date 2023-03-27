@@ -1,4 +1,4 @@
-package com.ssafy.moemoe.api.service;
+package com.ssafy.moemoe.api.service.cat;
 
 import com.ssafy.moemoe.api.request.CatInfoReq;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
@@ -17,7 +17,7 @@ public interface CatService {
 
     default Cat toEntity(CatInfoReq catInfoReq) {
         return Cat.builder()
-                .universityId(catInfoReq.getUniversityId())
+//                .university(catInfoReq.getUniversityId()) university 엔티티로 들어갈 예정
                 .name(catInfoReq.getName())
                 .age(catInfoReq.getAge())
                 .gender(catInfoReq.getGender())
