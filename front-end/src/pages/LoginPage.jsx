@@ -25,9 +25,16 @@ const LoginPage = () => {
       return AlertWarning("잘못된 이메일입니다.");
     }
     postLogin(email, password).then((res) => {
-      const member = res.data;
+      const { access_token, university_id, nickname, email } = res.data;
       const accessToken = member.access_token;
-      dispatch(setMemberObject(member));
+      dispatch(
+        setMemberObject({
+          accessToken: access_token,
+          universityId: university_id,
+          nickname: nickname,
+          email: email,
+        }),
+      );
       setCookie("accessToken", accessToken, 180);
     });
   };
