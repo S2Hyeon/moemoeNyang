@@ -13,8 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/feedspots")
@@ -56,21 +58,25 @@ public class FeedSpotController {
     @GetMapping("/{feedspotId}")
     public ResponseEntity<?> getFeedSpotFeeds(@PathVariable Long feedspotId) {
 
-        List<FeedSpotMessageResp> messages = new ArrayList<>();
+        List<FeedSpotMessageResp> feeds = feedSpotService.getFeeds(feedspotId);
 
-        for (int i = 1; i <= 9; i++) {
-            messages.add(FeedSpotMessageResp.builder()
-                    .member_id(i)
-                    .nickname("노찌노찌")
-                    .created_at(LocalDateTime.now().minusMinutes(i * 5))
-                    .build());
-        }
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("feeds",feeds);
 
-        return ResponseEntity.ok(messages);
+        return ResponseEntity.ok(resultMap);
     }
 
+    @PostMapping("/{feedspotId}")
+    public ResponseEntity<?> createFeed(HttpServletRequest request,
+                                        @PathVariable Long feedspotId) {
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
+        feedSpotService.createFeed(memberId, feedspotId);
 
-
+        Map<String, String> resultMap = new HashMap<>();
+        resultMap.put("msg", "먹이 급여가 등록되었습니다.");
+        return ResponseEntity.ok(resultMap);
+    }
 
 
 }

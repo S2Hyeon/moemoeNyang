@@ -2,7 +2,10 @@ package com.ssafy.moemoe.api.service.feedspot;
 
 import com.ssafy.moemoe.api.request.feedspot.RegistFeedSpotReq;
 import com.ssafy.moemoe.api.response.feedspot.FeedSpotMarkerResp;
+import com.ssafy.moemoe.api.response.feedspot.FeedSpotMessageResp;
+import com.ssafy.moemoe.db.entity.feedspot.Feed;
 import com.ssafy.moemoe.db.entity.feedspot.FeedSpot;
+import com.ssafy.moemoe.db.repository.feedspot.FeedRepository;
 import com.ssafy.moemoe.db.repository.feedspot.FeedSpotRepository;
 import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import com.ssafy.moemoe.db.repository.university.UniversityRepository;
@@ -10,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -21,8 +25,8 @@ public class FeedSpotServiceImpl implements FeedSpotService {
 
     private final FeedSpotRepository feedSpotRepository;
     private final UniversityRepository universityRepository;
-
     private final MemberRepository memberRepository;
+    private final FeedRepository feedSpotFeedRepository;
 
 
 
@@ -58,6 +62,32 @@ public class FeedSpotServiceImpl implements FeedSpotService {
                     .build());
         }
 
+        return respList;
+    }
+
+    @Override
+    public Long createFeed(UUID memberId, Long feedspotId) {
+        Feed feed = Feed.builder()
+                .feedTime(LocalDateTime.now())
+                .feedspot(feedSpotRepository.findById(feedspotId).get())
+                .member(memberRepository.findByMemberId(memberId))
+                .build();
+        feedSpotFeedRepository.save(feed);
+        return feed.getFeedTimelineId();
+    }
+
+    @Override
+    public List<FeedSpotMessageResp> getFeeds(Long feedspotId) {
+        List<Feed> feeds = feedSpotFeedRepository.findByFeedspotFeedspotId(feedspotId);
+        List<FeedSpotMessageResp> respList = new ArrayList<>();
+        for (Feed f : feeds) {
+            UUID uid = f.getMember().getMemberId();
+            respList.add(FeedSpotMessageResp.builder()
+                    .created_at(LocalDateTime.now())
+                    .member_id(uid)
+                    .nickname(memberRepository.findByMemberId(uid).getNickname())
+                    .build());
+        }
         return respList;
     }
 }
