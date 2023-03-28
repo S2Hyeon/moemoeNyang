@@ -39,10 +39,6 @@ const LoginPage = () => {
     });
   };
 
-  useEffect(() => {
-    console.log(member);
-  }, [member]);
-
   const onForget = () => {
     if (!email) return AlertWarning("정보를 입력해주세요");
     if (!(email.includes("@") && email.includes("."))) {
