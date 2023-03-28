@@ -23,7 +23,7 @@ import java.util.List;
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long boardId = null;
+    private Long boardId;
 
     private Float lat;
 
@@ -54,13 +54,13 @@ public class Board {
 
     // OneToMany 관계 설정
     @OneToMany(mappedBy = "board")
-    private List<Tag> tagList = new ArrayList<>();
+    private List<Tag> tagList;
 
     @OneToMany(mappedBy = "board")
-    private List<Reaction> reactionList = new ArrayList<>();
+    private List<Reaction> reactionList;
 
     @OneToMany(mappedBy = "board")
-    private List<ReportBoard> reportBoardList = new ArrayList<>();
+    private List<ReportBoard> reportBoardList;
 
     // ManyToOne 관계 설정
     @ManyToOne(fetch = FetchType.LAZY)
@@ -84,6 +84,22 @@ public class Board {
         this.member = member;
         this.university = university;
         this.cat = cat;
+    }
+
+    public void updateRecommend(Long recommend) {
+        this.recommend = recommend;
+    }
+    public void updateGood(Long good) {
+        this.good = good;
+    }
+    public void updateImpressed(Long impressed) {
+        this.impressed = impressed;
+    }
+    public void updateSad(Long sad) {
+        this.sad = sad;
+    }
+    public void updateAngry(Long angry) {
+        this.angry = angry;
     }
 
 }

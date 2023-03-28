@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Reaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reactionId = null;
+    private Long reactionId;
 
     private String reat;
 

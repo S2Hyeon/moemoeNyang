@@ -4,8 +4,9 @@ import com.ssafy.moemoe.db.entity.Follow;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 public interface FollowRepository extends JpaRepository<Follow, Long> {
 
-    Optional<Follow> findByMemberIDAndCatId(String memberId, Long catId);
+    Optional<Follow> findByMember_MemberIdAndCat_CatId(UUID memberId, Long catId);
 }

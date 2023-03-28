@@ -1,6 +1,7 @@
 package com.ssafy.moemoe.api.service.board;
 
 import com.ssafy.moemoe.api.request.board.BoardSaveReq;
+import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
 import com.ssafy.moemoe.api.request.board.TagSaveReq;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardResp;
@@ -21,10 +22,11 @@ public interface BoardService {
 
     Page<BoardLoadResp> searchAllBoard(Long universityId, String tagName, Pageable pageable);
 
-    // 이모지 취소
-//    void deleteReaction(String email, Long interview_id);
-
     // 이모지 달기
-//    void updateReaction(Long user_id, InterviewStateReq interviewStateReq);
+    void updateReaction(UUID member_id, ReactionDetailReq reactionDetailReq);
+
+    // 이모지 취소
+    void deleteReaction(UUID member_id, ReactionDetailReq reactionDetailReq);
+
 
 }

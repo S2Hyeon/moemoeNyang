@@ -15,7 +15,7 @@ import java.util.Date;
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long tagId = null;
+    private Long tagId;
 
     private String name;
 
