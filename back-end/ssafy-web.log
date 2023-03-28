@@ -5834,3 +5834,770 @@ This generated password is for development use only. Your security configuration
 2023-03-28 11:58:12.930 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
 2023-03-28 11:58:12.930 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CatDetailResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/i (truncated)...]
 2023-03-28 11:58:12.931 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:11.570 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 12:06:11.571 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 12:06:11.572 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:11.590 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 12:06:11.591 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 12:06:11.593 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:11.594 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-28 12:06:11.596 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:19.747 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:06:19.749 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:06:19.749 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:19.752 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:06:19.752 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:06:19.753 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:19.753 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:06:19.755 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:20.564 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/1/boards", parameters={}
+2023-03-28 12:06:20.567 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 12:06:20.567 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:20.575 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/1", parameters={}
+2023-03-28 12:06:20.576 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 12:06:20.578 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:20.579 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/1/boards", parameters={}
+2023-03-28 12:06:20.579 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 12:06:20.580 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:20.580 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatDetailBoardResp(board_id=1, image=https://i.ibb.co/9q6ZT22/image.jpg), CatDetailBoardResp(board_ (truncated)...]
+2023-03-28 12:06:20.581 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:20.583 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/1", parameters={}
+2023-03-28 12:06:20.585 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 12:06:20.585 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:20.585 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CatDetailResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/i (truncated)...]
+2023-03-28 12:06:20.586 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:22.767 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 12:06:22.767 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 12:06:22.769 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:22.771 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-28 12:06:22.772 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:24.354 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:06:24.354 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:06:24.355 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:24.355 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:06:24.356 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:25.487 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/3/boards", parameters={}
+2023-03-28 12:06:25.488 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/3", parameters={}
+2023-03-28 12:06:25.489 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 12:06:25.489 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 12:06:25.490 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:25.490 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:25.495 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/3", parameters={}
+2023-03-28 12:06:25.496 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 12:06:25.496 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/3/boards", parameters={}
+2023-03-28 12:06:25.497 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 12:06:25.497 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:25.497 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CatDetailResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/i (truncated)...]
+2023-03-28 12:06:25.497 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:25.498 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatDetailBoardResp(board_id=1, image=https://i.ibb.co/9q6ZT22/image.jpg), CatDetailBoardResp(board_ (truncated)...]
+2023-03-28 12:06:25.498 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:25.498 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:29.140 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 12:06:29.141 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 12:06:29.142 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:29.144 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-28 12:06:29.145 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:31.052 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:06:31.052 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:06:31.054 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:31.054 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:06:31.055 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:32.967 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/members", parameters={}
+2023-03-28 12:06:32.968 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 12:06:32.969 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:32.990 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-28 12:06:32.991 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 12:06:32.992 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:32.993 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-28 12:06:32.993 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:06:34.379 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:06:34.379 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:06:34.380 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:06:34.380 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:06:34.380 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:40:38.076 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:40:38.077 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:40:38.079 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:40:38.079 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:40:38.081 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:40:45.752 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:40:45.752 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:40:45.753 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:40:45.754 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:40:45.754 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:41:46.588 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-28 12:41:46.589 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 12:41:46.590 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:41:46.590 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-28 12:41:46.592 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:41:47.856 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:41:47.856 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:41:47.857 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:41:47.857 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:41:47.858 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:42:12.840 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:42:12.841 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:42:12.842 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:42:12.842 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:42:12.843 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:42:17.012 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:42:17.012 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:42:17.014 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:42:17.014 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:42:17.015 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:42:22.623 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:42:22.623 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:42:22.624 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:42:22.625 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:42:22.626 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:42:28.176 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-28 12:42:28.176 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 12:42:28.177 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:42:28.177 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-28 12:42:28.178 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:42:29.242 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:42:29.242 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:42:29.243 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:42:29.243 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:42:29.244 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:42:34.167 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:42:34.167 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:42:34.168 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:42:34.169 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:42:34.170 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:42:56.701 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-28 12:42:56.702 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 12:42:56.703 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:42:56.704 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-28 12:42:56.705 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:42:57.564 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:42:57.565 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:42:57.565 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:42:57.566 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:42:57.566 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:42:58.532 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/1/boards", parameters={}
+2023-03-28 12:42:58.533 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 12:42:58.533 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/1", parameters={}
+2023-03-28 12:42:58.534 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 12:42:58.534 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:42:58.534 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatDetailBoardResp(board_id=1, image=https://i.ibb.co/9q6ZT22/image.jpg), CatDetailBoardResp(board_ (truncated)...]
+2023-03-28 12:42:58.535 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:42:58.535 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CatDetailResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/i (truncated)...]
+2023-03-28 12:42:58.535 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:42:58.536 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:01.231 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-28 12:43:01.232 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 12:43:01.233 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:01.233 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-28 12:43:01.233 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:02.102 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:43:02.103 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:43:02.103 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:02.103 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:43:02.104 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:02.677 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/2/boards", parameters={}
+2023-03-28 12:43:02.678 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/2", parameters={}
+2023-03-28 12:43:02.678 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 12:43:02.678 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 12:43:02.679 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:02.679 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CatDetailResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/i (truncated)...]
+2023-03-28 12:43:02.679 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:02.680 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:02.684 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/2/boards", parameters={}
+2023-03-28 12:43:02.685 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 12:43:02.685 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:02.686 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatDetailBoardResp(board_id=1, image=https://i.ibb.co/9q6ZT22/image.jpg), CatDetailBoardResp(board_ (truncated)...]
+2023-03-28 12:43:02.686 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:04.588 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-28 12:43:04.589 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 12:43:04.590 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:04.590 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-28 12:43:04.591 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:05.681 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:43:05.682 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:43:05.685 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:05.685 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:43:05.686 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:06.347 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/4/boards", parameters={}
+2023-03-28 12:43:06.348 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/4", parameters={}
+2023-03-28 12:43:06.349 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 12:43:06.350 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 12:43:06.350 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:06.351 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:06.356 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/4", parameters={}
+2023-03-28 12:43:06.356 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/4/boards", parameters={}
+2023-03-28 12:43:06.356 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 12:43:06.356 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 12:43:06.357 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:06.357 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:06.357 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatDetailBoardResp(board_id=1, image=https://i.ibb.co/9q6ZT22/image.jpg), CatDetailBoardResp(board_ (truncated)...]
+2023-03-28 12:43:06.358 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CatDetailResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/i (truncated)...]
+2023-03-28 12:43:06.358 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:06.358 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:08.190 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-28 12:43:08.191 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 12:43:08.193 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:08.193 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-28 12:43:08.193 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:09.342 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:43:09.342 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:43:09.343 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:09.343 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:43:09.344 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:09.880 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/3/boards", parameters={}
+2023-03-28 12:43:09.880 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/3", parameters={}
+2023-03-28 12:43:09.880 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 12:43:09.881 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 12:43:09.882 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:09.882 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:09.882 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CatDetailResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/i (truncated)...]
+2023-03-28 12:43:09.882 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatDetailBoardResp(board_id=1, image=https://i.ibb.co/9q6ZT22/image.jpg), CatDetailBoardResp(board_ (truncated)...]
+2023-03-28 12:43:09.882 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:09.882 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:11.291 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-28 12:43:11.292 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 12:43:11.293 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:11.294 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-28 12:43:11.295 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:14.672 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:43:14.673 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:43:14.674 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:14.674 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:43:14.675 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:24.646 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:43:24.646 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:43:24.647 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:24.648 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:43:24.649 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:25.220 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/1", parameters={}
+2023-03-28 12:43:25.220 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/1/boards", parameters={}
+2023-03-28 12:43:25.221 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 12:43:25.221 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 12:43:25.221 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:25.221 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:25.221 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatDetailBoardResp(board_id=1, image=https://i.ibb.co/9q6ZT22/image.jpg), CatDetailBoardResp(board_ (truncated)...]
+2023-03-28 12:43:25.221 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CatDetailResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/i (truncated)...]
+2023-03-28 12:43:25.222 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:25.222 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:43:26.695 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-28 12:43:26.696 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 12:43:26.697 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:43:26.697 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-28 12:43:26.698 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:44:45.973 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:44:45.974 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:44:45.975 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:44:45.975 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:44:45.976 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:47:11.705 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 12:47:11.705 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 12:47:11.707 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:47:11.708 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-28 12:47:11.709 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:47:18.608 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:47:18.609 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:47:18.609 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:47:18.610 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:47:18.610 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:55:07.548 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 12:55:07.549 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 12:55:07.551 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:55:07.553 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-28 12:55:07.555 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 12:55:10.489 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 12:55:10.489 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 12:55:10.490 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 12:55:10.491 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 12:55:10.491 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 13:30:01.300 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/undefined/disease", parameters={}
+2023-03-28 13:30:01.302 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/undefined/disease", parameters={}
+2023-03-28 13:30:01.302 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:30:01.304 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:30:01.304 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 13:30:01.305 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 13:30:01.305 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/undefined/disease", parameters={}
+2023-03-28 13:30:01.306 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:30:01.307 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 13:30:01.311 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/undefined/disease", parameters={}
+2023-03-28 13:30:01.311 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:30:01.316 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+2023-03-28 13:30:01.317  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2023-03-28 13:30:01.317 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 13:30:01.318 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 13:30:01.320 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 13:30:01.322 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 13:30:01.322 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 13:30:01 KST 2023, status=400, error=Bad Request, path=/api/cats/undefined/dis (truncated)...]
+2023-03-28 13:30:01.324 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 13:30:01.326 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/undefined/disease", parameters={}
+2023-03-28 13:30:01.326 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:30:01.327 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+2023-03-28 13:30:01.327  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2023-03-28 13:30:01.327 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 13:30:01.328 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 13:30:01.328 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 13:30:01.328 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 13:30:01.328 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 13:30:01 KST 2023, status=400, error=Bad Request, path=/api/cats/undefined/dis (truncated)...]
+2023-03-28 13:30:01.329 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 13:30:01.330 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/undefined/disease", parameters={}
+2023-03-28 13:30:01.331 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:30:01.331 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+2023-03-28 13:30:01.331  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2023-03-28 13:30:01.331 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 13:30:01.333 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 13:30:01.333 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 13:30:01.333 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 13:30:01.333 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 13:30:01 KST 2023, status=400, error=Bad Request, path=/api/cats/undefined/dis (truncated)...]
+2023-03-28 13:30:01.333 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 13:30:47.130 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/undefined/disease", parameters={}
+2023-03-28 13:30:47.132 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:30:47.134 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+2023-03-28 13:30:47.135  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2023-03-28 13:30:47.135 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 13:30:47.137 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 13:30:47.137 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 13:30:47.138 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 13:30:47.139 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 13:30:47 KST 2023, status=400, error=Bad Request, path=/api/cats/undefined/dis (truncated)...]
+2023-03-28 13:30:47.140 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 13:31:20.444 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/undefined/disease", parameters={}
+2023-03-28 13:31:20.445 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:31:20.447 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+2023-03-28 13:31:20.447  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2023-03-28 13:31:20.448 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 13:31:20.448 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 13:31:20.449 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 13:31:20.449 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 13:31:20.450 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 13:31:20 KST 2023, status=400, error=Bad Request, path=/api/cats/undefined/dis (truncated)...]
+2023-03-28 13:31:20.451 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 13:31:52.301 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/undefined/disease", parameters={}
+2023-03-28 13:31:52.302 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:31:52.303 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+2023-03-28 13:31:52.304  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2023-03-28 13:31:52.304 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 13:31:52.305 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 13:31:52.305 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 13:31:52.306 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 13:31:52.306 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 13:31:52 KST 2023, status=400, error=Bad Request, path=/api/cats/undefined/dis (truncated)...]
+2023-03-28 13:31:52.307 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 13:32:20.790 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/undefined/disease", parameters={}
+2023-03-28 13:32:20.791 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:32:20.792 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+2023-03-28 13:32:20.793  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2023-03-28 13:32:20.793 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 13:32:20.794 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 13:32:20.794 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 13:32:20.795 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 13:32:20.795 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 13:32:20 KST 2023, status=400, error=Bad Request, path=/api/cats/undefined/dis (truncated)...]
+2023-03-28 13:32:20.796 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 13:33:59.916 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/:catId/disease", parameters={}
+2023-03-28 13:33:59.919 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:33:59.919 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 13:33:59.928 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/:catId/disease", parameters={}
+2023-03-28 13:33:59.928 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 13:33:59.929 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"
+2023-03-28 13:33:59.929  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"]
+2023-03-28 13:33:59.930 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 13:33:59.931 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 13:33:59.931 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 13:33:59.932 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 13:33:59.932 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 13:33:59 KST 2023, status=400, error=Bad Request, path=/api/cats/:catId/diseas (truncated)...]
+2023-03-28 13:33:59.933 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 14:05:27.090 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 14:05:27.091 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 14:05:27.092 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:05:27.098 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 14:05:27.098 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 14:05:27.100 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:05:27.103 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-28 14:05:27.105 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:05:28.925 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/:catId/disease", parameters={}
+2023-03-28 14:05:28.926 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 14:05:28.928 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"
+2023-03-28 14:05:28.928  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"]
+2023-03-28 14:05:28.928 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 14:05:28.929 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 14:05:28.930 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 14:05:28.930 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:05:28.931 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 14:05:28 KST 2023, status=400, error=Bad Request, path=/api/cats/:catId/diseas (truncated)...]
+2023-03-28 14:05:28.931 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 14:29:26.118 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats?universityId=12", parameters={masked}
+2023-03-28 14:29:26.118 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/:catId/disease", parameters={}
+2023-03-28 14:29:26.119 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 14:29:26.119 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 14:29:26.120 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:29:26.120 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"
+2023-03-28 14:29:26.120  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"]
+2023-03-28 14:29:26.121 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 14:29:26.122 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 14:29:26.123 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 14:29:26.125 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:29:26.125 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 14:29:26 KST 2023, status=400, error=Bad Request, path=/api/cats/:catId/diseas (truncated)...]
+2023-03-28 14:29:26.126 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 14:29:26.126 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 14:29:26.126 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 14:29:26.127 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:29:26.127 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 14:29:26.128 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:29:40.528 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 14:29:40.528 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 14:29:40.529 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/:catId/disease", parameters={}
+2023-03-28 14:29:40.529 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 14:29:40.529 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:29:40.530 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"
+2023-03-28 14:29:40.530 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 14:29:40.530  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"]
+2023-03-28 14:29:40.530 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 14:29:40.530 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:29:40.531 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 14:29:40.531 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 14:29:40.531 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:29:40.532 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 14:29:40 KST 2023, status=400, error=Bad Request, path=/api/cats/:catId/diseas (truncated)...]
+2023-03-28 14:29:40.533 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 14:34:35.518 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 14:34:35.519 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 14:34:35.519 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/:catId/disease", parameters={}
+2023-03-28 14:34:35.520 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:34:35.520 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 14:34:35.521 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:34:35.521 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 14:34:35.523 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:34:35.527 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/:catId/disease", parameters={}
+2023-03-28 14:34:35.528 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 14:34:35.529 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"
+2023-03-28 14:34:35.529  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"]
+2023-03-28 14:34:35.531 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 14:34:35.531 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 14:34:35.531 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 14:34:35.532 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:34:35.532 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 14:34:35 KST 2023, status=400, error=Bad Request, path=/api/cats/:catId/diseas (truncated)...]
+2023-03-28 14:34:35.533 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 14:35:32.536 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 14:35:32.536 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/:catId/disease", parameters={}
+2023-03-28 14:35:32.536 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 14:35:32.536 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 14:35:32.537 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:35:32.537 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 14:35:32.538 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"
+2023-03-28 14:35:32.538 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:35:32.539  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"]
+2023-03-28 14:35:32.539 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 14:35:32.539 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 14:35:32.540 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 14:35:32.540 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:35:32.541 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 14:35:32 KST 2023, status=400, error=Bad Request, path=/api/cats/:catId/diseas (truncated)...]
+2023-03-28 14:35:32.543 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 14:36:07.528 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/:catId/disease", parameters={}
+2023-03-28 14:36:07.529 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 14:36:07.529 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 14:36:07.529 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 14:36:07.530 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:36:07.530 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"
+2023-03-28 14:36:07.530 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 14:36:07.531  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"]
+2023-03-28 14:36:07.531 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 14:36:07.531 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 14:36:07.531 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:36:07.532 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 14:36:07.533 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:36:07.533 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 14:36:07 KST 2023, status=400, error=Bad Request, path=/api/cats/:catId/diseas (truncated)...]
+2023-03-28 14:36:07.534 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 14:57:57.014 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 14:57:57.015 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 14:57:57.017 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:57:57.017 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 14:57:57.019 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:57:57.135 ERROR 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/api] threw exception
+
+org.springframework.security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String "//"
+	at org.springframework.security.web.firewall.StrictHttpFirewall.rejectedBlocklistedUrls(StrictHttpFirewall.java:535) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.firewall.StrictHttpFirewall.getFirewalledRequest(StrictHttpFirewall.java:505) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:206) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2023-03-28 14:57:57.140 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for OPTIONS "/api/error", parameters={}
+2023-03-28 14:57:57.143 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 14:57:57.144 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 500
+2023-03-28 14:58:47.275 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 14:58:47.275 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 14:58:47.275 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/1/disease", parameters={}
+2023-03-28 14:58:47.277 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:58:47.277 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 14:58:47.277 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 14:58:47.278 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:58:47.278 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:58:47.285 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/1/disease", parameters={}
+2023-03-28 14:58:47.286 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 14:58:47.343 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:58:47.394 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [DiseaseResultResp(disease_id=1, name=엄청 아픈 병, explanation=엄청 아프니까 빨리 병원을 데려가세요. 병원에 데려갈 때는 조심히 들고 가주 (truncated)...]
+2023-03-28 14:58:47.395 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:58:58.338 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 14:58:58.338 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 14:58:58.342 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:58:58.342 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 14:58:58.343 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:58:58.344 ERROR 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/api] threw exception
+
+org.springframework.security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String "//"
+	at org.springframework.security.web.firewall.StrictHttpFirewall.rejectedBlocklistedUrls(StrictHttpFirewall.java:535) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.firewall.StrictHttpFirewall.getFirewalledRequest(StrictHttpFirewall.java:505) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:206) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2023-03-28 14:58:58.345 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for OPTIONS "/api/error", parameters={}
+2023-03-28 14:58:58.346 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 14:58:58.347 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 500
+2023-03-28 14:58:59.773 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 14:58:59.773 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 14:58:59.774 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:58:59.775 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 14:58:59.775 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/1/disease", parameters={}
+2023-03-28 14:58:59.776 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:58:59.777 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 14:58:59.778 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:58:59.779 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [DiseaseResultResp(disease_id=1, name=엄청 아픈 병, explanation=엄청 아프니까 빨리 병원을 데려가세요. 병원에 데려갈 때는 조심히 들고 가주 (truncated)...]
+2023-03-28 14:58:59.779 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 14:59:06.276 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 14:59:06.276 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 14:59:06.277 ERROR 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/api] threw exception
+
+org.springframework.security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String "//"
+	at org.springframework.security.web.firewall.StrictHttpFirewall.rejectedBlocklistedUrls(StrictHttpFirewall.java:535) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.firewall.StrictHttpFirewall.getFirewalledRequest(StrictHttpFirewall.java:505) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:206) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2023-03-28 14:59:06.279 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 14:59:06.279 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for OPTIONS "/api/error", parameters={}
+2023-03-28 14:59:06.280 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 14:59:06.279 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 14:59:06.281 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 500
+2023-03-28 14:59:06.281 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:30:53.513 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 15:30:53.514 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 15:30:53.516 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:30:53.522 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 15:30:53.522 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 15:30:53.527 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:30:53.537 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-28 15:30:53.541 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:30:55.760 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats?universityId=12", parameters={masked}
+2023-03-28 15:30:55.761 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 15:30:55.763 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:30:55.763 ERROR 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/api] threw exception
+
+org.springframework.security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String "//"
+	at org.springframework.security.web.firewall.StrictHttpFirewall.rejectedBlocklistedUrls(StrictHttpFirewall.java:535) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.firewall.StrictHttpFirewall.getFirewalledRequest(StrictHttpFirewall.java:505) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:206) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.6.jar:5.7.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.24.jar:5.3.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.70.jar:9.0.70]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2023-03-28 15:30:55.768 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for OPTIONS "/api/error", parameters={}
+2023-03-28 15:30:55.769 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 15:30:55.770 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 500
+2023-03-28 15:30:55.770 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 15:30:55.770 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 15:30:55.770 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:30:55.770 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 15:30:55.771 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:42:31.262 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 15:42:31.263 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 15:42:31.267 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:42:31.270 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-28 15:42:31.273 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:42:37.612 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 15:42:37.612 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 15:42:37.613 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:42:37.613 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 15:42:37.614 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:42:39.522 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/3/boards", parameters={}
+2023-03-28 15:42:39.523 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/3", parameters={}
+2023-03-28 15:42:39.524 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 15:42:39.525 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 15:42:39.526 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:42:39.526 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:42:39.551 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/3/boards", parameters={}
+2023-03-28 15:42:39.551 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCatBoards(Long)
+2023-03-28 15:42:39.552 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/3", parameters={}
+2023-03-28 15:42:39.552 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCat(Long)
+2023-03-28 15:42:39.552 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:42:39.552 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatDetailBoardResp(board_id=1, image=https://i.ibb.co/9q6ZT22/image.jpg), CatDetailBoardResp(board_ (truncated)...]
+2023-03-28 15:42:39.553 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:42:39.553 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:42:39.553 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CatDetailResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/i (truncated)...]
+2023-03-28 15:42:39.554 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:42:45.560 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 15:42:45.560 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 15:42:45.561 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:42:45.561 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 15:42:45.562 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:42:55.502 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 15:42:55.503 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 15:42:55.504 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:42:55.505 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-28 15:42:55.507 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:43:16.177 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 15:43:16.178 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 15:43:16.179 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:43:16.180 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 15:43:16.181 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:43:25.366 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 15:43:25.366 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 15:43:25.368 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:43:25.369 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-28 15:43:25.371 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:43:27.015 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 15:43:27.015 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/cats/:catId/disease", parameters={}
+2023-03-28 15:43:27.015 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 15:43:27.016 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:43:27.017 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 15:43:27.017 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 15:43:27.017 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:43:27.017 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:43:27.021 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/:catId/disease", parameters={}
+2023-03-28 15:43:27.021 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 15:43:27.027 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"
+2023-03-28 15:43:27.029  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"]
+2023-03-28 15:43:27.030 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 15:43:27.030 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 15:43:27.031 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 15:43:27.036 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:43:27.039 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 15:43:27 KST 2023, status=400, error=Bad Request, path=/api/cats/:catId/diseas (truncated)...]
+2023-03-28 15:43:27.045 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 15:43:32.751 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/boards?universityId=1&tagName=%27%27", parameters={masked}
+2023-03-28 15:43:32.751 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.board.BoardController#getBoards(Long, String)
+2023-03-28 15:43:32.752 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:43:32.758 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[BoardDetailResp(board_id=1, university_id=1, cat=CatDetailResp(cat_id=1, name=피곤냥이, age=0, gender=n (truncated)...]
+2023-03-28 15:43:32.761 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:43:33.582 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/members", parameters={}
+2023-03-28 15:43:33.582 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 15:43:33.584 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:43:33.594 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/members", parameters={}
+2023-03-28 15:43:33.594 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.member.MemberController#getMember()
+2023-03-28 15:43:33.595 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:43:33.596 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [MemberDetailResp(member_id=null, university_id=0, university_name=서울사이버대학교, reward_id=0, email=null, (truncated)...]
+2023-03-28 15:43:33.597 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:43:38.947 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 15:43:38.947 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 15:43:38.957 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:43:38.957 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 15:43:38.958 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:44:08.372 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 15:44:08.372 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 15:44:08.374 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:44:08.375 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 15:44:08.375 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:44:48.097 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 15:44:48.098 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 15:44:48.099 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/cats/:catId/disease", parameters={}
+2023-03-28 15:44:48.100 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getDiseaseResult(Long)
+2023-03-28 15:44:48.100 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:44:48.100 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 15:44:48.101 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-03-28 15:44:48.102 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<?> com.ssafy.moemoe.api.controller.cat.CatController.getDiseaseResult(java.lang.Long): Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"
+2023-03-28 15:44:48.102  WARN 3144 --- [http-nio-0.0.0.0-8081-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":catId"]
+2023-03-28 15:44:48.102 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-03-28 15:44:48.103 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/api/error", parameters={}
+2023-03-28 15:44:48.103 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-03-28 15:44:48.104 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:44:48.104 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Mar 28 15:44:48 KST 2023, status=400, error=Bad Request, path=/api/cats/:catId/diseas (truncated)...]
+2023-03-28 15:44:48.105 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-9] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-03-28 15:44:52.161 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/cats?universityId=12", parameters={masked}
+2023-03-28 15:44:52.161 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.moemoe.api.controller.cat.CatController#getCats(Long)
+2023-03-28 15:44:52.162 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2023-03-28 15:44:52.162 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
+2023-03-28 15:44:52.164 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
