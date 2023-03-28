@@ -146,8 +146,6 @@ const SignupPage = () => {
       passwordConfirm
     ) {
       setCanSubmit(true);
-    } else {
-      console.log({});
     }
   }, [errorMessage, email, nickname, university, password, passwordConfirm]);
 

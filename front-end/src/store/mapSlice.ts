@@ -65,8 +65,6 @@ const mapSlice = createSlice({
     },
     setBottomToggle: (state, action?: { payload: boolean }) => {
       const { payload } = action || null;
-      console.log(typeof payload);
-      console.log(payload);
       if (typeof payload === "boolean") state.isBottomHigh = payload;
       else state.isBottomHigh = !state.isBottomHigh;
     },
