@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import KakaoMap from "../../components/common/KakaoMap";
 import KakaoMapSdk from "../../components/common/KakaoMapSdk";
 import BoardContent from "../../components/map/bottom-contents/BoardContent";
@@ -6,45 +7,38 @@ import FeedContent from "../../components/map/bottom-contents/FeedContent";
 import { getCatList } from "../../services/cats";
 import { getMainPostList } from "../../services/main";
 import { typedUseSelector } from "../../store";
+import { setBottomToggle, setCatList } from "../../store/mapSlice";
 
 const MapPage = () => {
-  const [isHigh, setIsHigh] = useState(false);
-  const [triggered, setTriggered] = useState(false);
+  const dispatch = useDispatch();
+  const isHigh = typedUseSelector((state) => state.map.isBottomHigh);
   const [selectedCat, setSelectedCat] = useState(null);
+  const bottomSlideRef = useRef();
+
+  const clickOutside = (e) => {
+    if (!bottomSlideRef.current.contains(e.target) && isHigh === true) {
+      dispatch(setBottomToggle(false));
+    }
+  };
 
   const { universityId } = typedUseSelector(
     (state) => state.member.memberObject,
   );
-  const [catList, setCatList] = useState([]);
+
+  const catList = typedUseSelector((state) => state.map.catList);
   useEffect(() => {
+    if (catList.length) return;
     getCatList(universityId).then((res) => {
-      const newCatList = res.data;
-      setCatList(newCatList);
+      dispatch(setCatList(res.data));
     });
   }, []);
-
-  useEffect(() => {
-    if (triggered) {
-      setIsHigh((prev) => !prev);
-      setTriggered(false);
-    }
-  }, [triggered]);
 
   let bottomContent;
   const [mode, setMode] = useState("Feed");
 
   switch (mode) {
     case "Board":
-      bottomContent = (
-        <BoardContent
-          setTriggered={setTriggered}
-          isHigh={isHigh}
-          catList={catList}
-          selectedCat={selectedCat}
-          setSelectedCat={setSelectedCat}
-          universityId={universityId}
-        />
-      );
+      bottomContent = <BoardContent />;
       break;
     case "Feed":
       bottomContent = <FeedContent />;
@@ -54,16 +48,9 @@ const MapPage = () => {
       break;
   }
 
-  const bottomSlideRef = useRef();
-  const clickOutside = (e) => {
-    if (e.target !== bottomSlideRef.current && isHigh === true) {
-      setIsHigh(false);
-    }
-  };
   return (
     <div onClick={clickOutside}>
       <div className="MapContainer w-screen h-[90vh]">
-        {/* <KakaoMap /> */}
         <KakaoMapSdk />
       </div>
       <div
@@ -83,8 +70,8 @@ const MapPage = () => {
         냥이보자
       </div>
       <div
-        ref={bottomSlideRef}
         className="z-[1] absolute bottom-[46px] w-screen flex justify-center pt-6 overflow-hidden"
+        ref={bottomSlideRef}
       >
         <div
           className={`BottomSheet bg-slate-50 w-[98vw] ${
@@ -94,7 +81,7 @@ const MapPage = () => {
           <div
             className="absolute top-[0px] left-1/2 transform -translate-x-1/2 rounded-full bg-orange-300 w-12 h-12"
             onClick={() => {
-              setIsHigh(!isHigh);
+              dispatch(setBottomToggle());
             }}
           ></div>
           <div className="BottomContainer mt-6 h-4/5">{bottomContent}</div>
