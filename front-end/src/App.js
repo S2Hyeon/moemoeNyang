@@ -19,34 +19,37 @@ import SymptomsRegister from "./pages/symptom/SymptomsRegister";
 import FeedRegisterPage from "./pages/main/FeedRegisterPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ModifyUserInfo from "./pages/mypage/ModifyUserInfo";
+import { Provider } from "react-redux";
+import store, { persistor } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
   return (
-    <>
-      <ToastContainer />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/" element={<PrivateRoute component={<Layout />} />}>
-          <Route path="main" element={<MainPage />} />
-          <Route path="mypage" element={<MyPage />} />
-          <Route path="mypage/modify" element={<ModifyUserInfo />} />
-          <Route path="catlist" element={<CatPage />} />
-          <Route path="catregister" element={<CatRegisterPage />} />
-          <Route path="cat/id" element={<CatDetailPage />} />
-          <Route path="board" element={<PostBoard />} />
-          <Route path="board/hashTag" element={<BoardHashTag />} />
-          <Route path="symptoms" element={<SymptomsPage />} />
-          <Route path="symptoms/register" element={<SymptomsRegister />} />
-          <Route path="map" element={<MapPage />} />
-          <Route path="map/feed" element={<FeedRegisterPage />} />
-          <Route path="admin" element={<AdminPage />} />
-        </Route>
-        <Route path="*" element={<NotFound404 />} />
-      </Routes>
-    </>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <ToastContainer />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/" element={<PrivateRoute component={<Layout />} />}>
+            <Route path="main" element={<MainPage />} />
+            <Route path="mypage" element={<MyPage />} />
+            <Route path="catlist" element={<CatPage />} />
+            <Route path="catregister" element={<CatRegisterPage />} />
+            <Route path="cat/id" element={<CatDetailPage />} />
+            <Route path="board" element={<PostBoard />} />
+            <Route path="board/hashTag" element={<BoardHashTag />} />
+            <Route path="symptoms" element={<SymptomsPage />} />
+            <Route path="symptoms/register" element={<SymptomsRegister />} />
+            <Route path="map" element={<MapPage />} />
+            <Route path="map/feed" element={<FeedRegisterPage />} />
+            <Route path="admin" element={<AdminPage />} />
+          </Route>
+          <Route path="*" element={<NotFound404 />} />
+        </Routes>
+      </PersistGate>
+    </Provider>
   );
 }
 
