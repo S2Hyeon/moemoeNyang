@@ -20,8 +20,9 @@ export default function Navbar() {
     navigate("/board");
   };
   const navigateToSymptoms = () => {
-    navigate("/symptoms");
+    navigate("/cats/:catId/diseases");
   };
+
   const navigateToMypage = () => {
     navigate("/mypage");
   };

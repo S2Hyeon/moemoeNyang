@@ -7,7 +7,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Dropdown() {
+export default function Dropdown({ setCatId }) {
   const [selected, setSelected] = useState([]);
   const [catList, setCatList] = useState([]);
 
@@ -20,6 +20,7 @@ export default function Dropdown() {
     console.log("cat list 불러오기");
     console.log(catList);
     setSelected(catList[0]);
+    // setCatIdx(selected);
   }, [catList]);
 
   return (
