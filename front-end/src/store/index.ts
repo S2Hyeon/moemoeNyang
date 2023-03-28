@@ -6,6 +6,7 @@ import {
 } from "react-redux";
 import sessionStorage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
+import mapSlice from "./mapSlice";
 
 const persistConfig = {
   key: "root",
@@ -14,6 +15,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   member: memberSlice.reducer,
+  map: mapSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
