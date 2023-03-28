@@ -1,5 +1,6 @@
 package com.ssafy.moemoe.db.entity.feedspot;
 
+import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import lombok.*;
 
@@ -23,6 +24,10 @@ public class FeedSpot {
     @JoinColumn(name = "university_id")
     private University university;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
     @Column(nullable = false)
     private String name;
 
@@ -42,8 +47,9 @@ public class FeedSpot {
     private boolean isActive;
 
     @Builder
-    public FeedSpot(University university, String name, String description, String image, Float lat, Float lng, boolean isActive) {
+    public FeedSpot(University university, Member member, String name, String description, String image, Float lat, Float lng, boolean isActive) {
         this.university = university;
+        this.member = member;
         this.name = name;
         this.description = description;
         this.image = image;

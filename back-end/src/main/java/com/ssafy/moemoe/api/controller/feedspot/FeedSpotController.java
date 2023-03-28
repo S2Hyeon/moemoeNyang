@@ -6,16 +6,15 @@ import com.ssafy.moemoe.api.response.feedspot.FeedSpotMarkerResp;
 import com.ssafy.moemoe.api.response.feedspot.FeedSpotMessageResp;
 import com.ssafy.moemoe.api.service.feedspot.FeedSpotService;
 import com.ssafy.moemoe.common.util.TokenUtils;
+import io.jsonwebtoken.Claims;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/feedspots")
@@ -34,9 +33,12 @@ public class FeedSpotController {
 
 
     @PostMapping("/feedspots")
-    public ResponseEntity<?> registFeedSpot(@RequestParam Long universityId,
+    public ResponseEntity<?> registFeedSpot(HttpServletRequest request,
+                                            @RequestParam Long universityId,
                                             @RequestBody RegistFeedSpotReq form) {
-        feedSpotService.registFeedSpot(universityId, form);
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
+        feedSpotService.registFeedSpot(memberId,universityId, form);
 
         Map<String, String> map = new HashMap<>();
         map.put("msg", "급식소가 등록되었습니다.");
