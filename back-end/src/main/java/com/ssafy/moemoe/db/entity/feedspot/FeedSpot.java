@@ -20,7 +20,7 @@ public class FeedSpot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long feedspotId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "university_id")
     private University university;
 

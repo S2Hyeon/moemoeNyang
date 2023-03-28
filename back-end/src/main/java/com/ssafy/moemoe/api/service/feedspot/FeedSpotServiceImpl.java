@@ -1,6 +1,7 @@
 package com.ssafy.moemoe.api.service.feedspot;
 
 import com.ssafy.moemoe.api.request.feedspot.RegistFeedSpotReq;
+import com.ssafy.moemoe.api.response.feedspot.FeedSpotMarkerResp;
 import com.ssafy.moemoe.db.entity.feedspot.FeedSpot;
 import com.ssafy.moemoe.db.repository.feedspot.FeedSpotRepository;
 import com.ssafy.moemoe.db.repository.member.MemberRepository;
@@ -9,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -37,5 +40,24 @@ public class FeedSpotServiceImpl implements FeedSpotService {
                 .build();
         feedSpotRepository.save(feedSpot);
         return feedSpot.getFeedspotId();
+    }
+
+    @Override
+    public List<FeedSpotMarkerResp> getFeedSpots(Long universityId) {
+        List<FeedSpot> feedSpotList = feedSpotRepository.findByUniversityUniversityId(universityId);
+        List<FeedSpotMarkerResp> respList = new ArrayList<>();
+        for (FeedSpot f : feedSpotList) {
+            respList.add(FeedSpotMarkerResp.builder()
+                    .feedspot_id(f.getFeedspotId())
+                    .name(f.getName())
+                    .description(f.getDescription())
+                    .image(f.getImage())
+                    .lng(f.getLng())
+                    .lat(f.getLat())
+                    //.recentFeedTime()
+                    .build());
+        }
+
+        return respList;
     }
 }

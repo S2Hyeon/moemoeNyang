@@ -47,22 +47,10 @@ public class FeedSpotController {
 
     @GetMapping("")
     public ResponseEntity<?> getFeedSpots(@RequestParam Long universityId) {
-
-        List<FeedSpotMarkerResp> feedSpots = new ArrayList<>();
-        for (int i = 1; i <= 6; i++) {
-            feedSpots.add(FeedSpotMarkerResp.builder()
-                    .feedspot_id(i)
-                    .name("젤리급식소")
-                    .description("여기 고양이는 많이 먹으니까 자주 주셔야돼요")
-                    .image(tiredCatImage)
-                    .lat(37.501258)
-                    .lng(127.039516)
-                    .recentFeedTime(LocalDateTime.now().minusMinutes(60 * i))
-                    .isActive(1)
-                    .build());
-        }
-
-        return ResponseEntity.ok(feedSpots);
+        List<FeedSpotMarkerResp> feedSpots = feedSpotService.getFeedSpots(universityId);
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("feedspots", feedSpots);
+        return ResponseEntity.ok(resultMap);
     }
 
     @GetMapping("/{feedspotId}")
