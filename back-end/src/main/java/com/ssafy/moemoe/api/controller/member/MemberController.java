@@ -10,12 +10,10 @@ import com.ssafy.moemoe.api.service.university.UniversityService;
 import com.ssafy.moemoe.common.util.TokenUtils;
 import com.ssafy.moemoe.db.entity.university.University;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,10 +31,13 @@ public class MemberController {
     private final UniversityService universityService;
     private final SignService signService;
 
+    private final TokenUtils tokenUtils;
+
     @Autowired
-    public MemberController(UniversityService universityService, SignService signService) {
+    public MemberController(UniversityService universityService, SignService signService, TokenUtils tokenUtils) {
         this.universityService = universityService;
         this.signService =signService;
+        this.tokenUtils = tokenUtils;
     }
 
     @GetMapping("/badge")
@@ -57,7 +58,7 @@ public class MemberController {
 
     @GetMapping("")
     public ResponseEntity<?> getMember(HttpServletRequest request) {
-        Claims claims = TokenUtils.getClaimsFromRequest(request);
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
         String email = claims.get("email").toString();
         String nickname = claims.get("nickname").toString();
         long universityId = Long.parseLong(claims.get("university_id").toString());
@@ -75,7 +76,7 @@ public class MemberController {
 
     @PutMapping("")
     public ResponseEntity<?> updateMember(HttpServletRequest request, @RequestBody UpdateMemberReq form) {
-        Claims claims = TokenUtils.getClaimsFromRequest(request);
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
         signService.updateMember(memberId, form);
 

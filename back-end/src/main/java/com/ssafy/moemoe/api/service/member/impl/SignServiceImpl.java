@@ -8,6 +8,7 @@ import com.ssafy.moemoe.config.security.JwtTokenProvider;
 import com.ssafy.moemoe.db.dto.SignInResultDto;
 import com.ssafy.moemoe.db.dto.SignUpResultDto;
 import com.ssafy.moemoe.db.entity.member.Member;
+import com.ssafy.moemoe.db.repository.member.BadgeRepository;
 import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import com.ssafy.moemoe.db.repository.university.UniversityRepository;
 import org.slf4j.Logger;
@@ -29,15 +30,18 @@ public class SignServiceImpl implements SignService {
     public MemberRepository memberRepository;
     public UniversityRepository universityRepository;
     public JwtTokenProvider jwtTokenProvider;
+    public BadgeRepository badgeRepository;
     public PasswordEncoder passwordEncoder;
 
     @Autowired
     public SignServiceImpl(MemberRepository memberRepository, JwtTokenProvider jwtTokenProvider,
-                           PasswordEncoder passwordEncoder, UniversityRepository universityRepository) {
+                           PasswordEncoder passwordEncoder, UniversityRepository universityRepository,
+                            BadgeRepository badgeRepository) {
         this.memberRepository = memberRepository;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordEncoder = passwordEncoder;
         this.universityRepository = universityRepository;
+        this.badgeRepository = badgeRepository;
     }
 
     //이메일 중복체크
@@ -62,8 +66,9 @@ public class SignServiceImpl implements SignService {
         Member member = memberRepository.findByMemberId(memberId);
         LOGGER.info("[getSignUpResult] 회원 가입 정보 전달");
         member.setNickname(form.getNickname());
-        member.setUniversity_id(form.getUniversityId());
+        member.setUniversity(universityRepository.getById(form.getUniversityId()));
         member.setPassword(passwordEncoder.encode(form.getPassword()));
+
         memberRepository.save(member);
     }
 
@@ -75,9 +80,8 @@ public class SignServiceImpl implements SignService {
                 .nickname(form.getNickname())
                 .password(passwordEncoder.encode(form.getPassword()))
                 .created_at(LocalDateTime.now())
-//                .university(universityRepository.findById(form.getUniversityId()))
-                .university_id(form.getUniversityId())
-                .badge_id(1)
+                .university(universityRepository.getById(form.getUniversityId()))
+                .badge(badgeRepository.findById(1L).get()) //디폴트 뱃지로 설정
                 .build();
 
         Member savedMember = memberRepository.save(member);
