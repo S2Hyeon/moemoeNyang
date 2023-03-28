@@ -3,7 +3,7 @@ package com.ssafy.moemoe.api.response.cat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.querydsl.core.annotations.QueryProjection;
-import com.ssafy.moemoe.db.entity.Cat;
+import com.ssafy.moemoe.db.entity.cat.Cat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

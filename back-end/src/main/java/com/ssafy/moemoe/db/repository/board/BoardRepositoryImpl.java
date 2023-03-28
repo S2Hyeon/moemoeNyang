@@ -5,7 +5,7 @@ import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.QBoardLoadResp;
-import com.ssafy.moemoe.db.entity.QCat;
+import com.ssafy.moemoe.db.entity.cat.QCat;
 import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.board.QBoard;
 import com.ssafy.moemoe.db.entity.board.QTag;

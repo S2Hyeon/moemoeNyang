@@ -1,6 +1,6 @@
 package com.ssafy.moemoe.api.controller.cat;
 
-import com.ssafy.moemoe.api.request.CatInfoReq;
+import com.ssafy.moemoe.api.request.cat.CatInfoReq;
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.board.CatDetailBoardResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
@@ -8,7 +8,9 @@ import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseResultResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseTimeline;
 import com.ssafy.moemoe.api.service.cat.CatService;
-import lombok.RequiredArgsConstructor;
+import com.ssafy.moemoe.common.util.TokenUtils;
+import io.jsonwebtoken.Claims;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,20 +19,27 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/cats")
 public class CatController {
 
     final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
     private final CatService catService;
+    private final TokenUtils tokenUtils;
+    @Autowired
+    public CatController(CatService catService, TokenUtils tokenUtils) {
+        this.catService = catService;
+        this.tokenUtils = tokenUtils;
+    }
 
     @PostMapping("")
-    public ResponseEntity<?> insertCat(HttpServletRequest request, CatInfoReq catInfoReq) {
-        // request를 이용한 멤버아이디 가져오기 추가 예정
+    public ResponseEntity<?> insertCat(HttpServletRequest request, @RequestBody CatInfoReq catInfoReq) {
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
 
-        boolean result = catService.insertCat("멤버 UUID", catInfoReq);
+        boolean result = catService.insertCat(memberId, catInfoReq);
         if(result) {
             return new ResponseEntity<>("고양이가 등록되었습니다.", HttpStatus.OK);
         }
@@ -42,18 +51,22 @@ public class CatController {
     //고양이 리스트 조회
     @GetMapping("")
     public ResponseEntity<?> getCats(HttpServletRequest request, @RequestParam Long universityId) {
-        // request를 이용한 멤버아이디 가져오기 추가 예정
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
 
-        List<CatListResp> cats = catService.getCats("member UUID", universityId);
+        List<CatListResp> cats = catService.getCats(memberId, universityId);
+        if(cats == null)
+            return new ResponseEntity<>("고양이 리스트를 조회에 실패하였습니다.", HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(cats, HttpStatus.OK);
     }
 
     //특정 고양이 상세 조회
     @GetMapping("/{catId}")
     public ResponseEntity<?> getCat(HttpServletRequest request, @PathVariable Long catId) {
-        // request를 이용한 멤버아이디 가져오기 추가 예정
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
 
-        CatDetailResp catDetailResp = catService.getCat(catId);
+        CatDetailResp catDetailResp = catService.getCat(memberId, catId);
         if(catDetailResp == null) {
             return new ResponseEntity<>("고양이가 조회에 실패했습니다.", HttpStatus.NOT_FOUND);
         }

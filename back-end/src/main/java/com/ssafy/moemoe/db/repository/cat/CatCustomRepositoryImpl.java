@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.UUID;
 
-import static com.ssafy.moemoe.db.entity.QCat.cat;
-import static com.ssafy.moemoe.db.entity.QFollow.follow;
+import static com.ssafy.moemoe.db.entity.cat.QCat.cat;
+import static com.ssafy.moemoe.db.entity.follow.QFollow.follow;
 
 @Repository
 public class CatCustomRepositoryImpl implements CatCustomRepository {

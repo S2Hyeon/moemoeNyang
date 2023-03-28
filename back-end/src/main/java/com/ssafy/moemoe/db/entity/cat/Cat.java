@@ -1,5 +1,6 @@
-package com.ssafy.moemoe.db.entity;
+package com.ssafy.moemoe.db.entity.cat;
 
+import com.ssafy.moemoe.api.request.cat.CatInfoReq;
 import com.ssafy.moemoe.db.entity.university.University;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,11 +32,15 @@ public class Cat {
     private Integer isActive;
 
     @Builder
-    public Cat(University university, String name, Integer age, Character gender, String image) {
+    public Cat(CatInfoReq catInfoReq, University university) {
         this.university = university;
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.image = image;
+        this.name = catInfoReq.getName();
+        this.age = catInfoReq.getAge();
+        this.gender = catInfoReq.getGender();
+        this.image = catInfoReq.getImage();
+    }
+
+    public void updateFollowCnt(Long followerCnt) {
+        this.followerCnt = followerCnt;
     }
 }

@@ -1,10 +1,9 @@
-package com.ssafy.moemoe.api.request;
+package com.ssafy.moemoe.api.request.cat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @Builder
@@ -17,5 +16,5 @@ public class CatInfoReq {
     private String name;
     private Integer age;
     private Character gender;
-    private MultipartFile image;
+    private String image;
 }
