@@ -70,7 +70,7 @@ public class JwtTokenProvider {
         claims.put("email", userUid);
         claims.put("member_id", member.getMemberId());
 //        claims.put("university_id", member.getUniversity().getId());
-        claims.put("university_id", member.getUniversity().getId());
+        claims.put("university_id", member.getUniversity().getUniversityId());
         claims.put("nickname", member.getNickname());
 
         Date now = new Date();
