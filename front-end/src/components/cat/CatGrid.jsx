@@ -5,7 +5,7 @@ export default function CatGrid() {
     const [images, setImages] = useState([])
 
     useEffect(() => {
-        axios.get('')
+        axios.get('/cats/{catId}')
             .then(response => {
                 setImages(response.data)
             })
@@ -25,4 +25,6 @@ export default function CatGrid() {
             
         </div>
     )
+
+    
 }

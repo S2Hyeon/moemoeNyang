@@ -3,10 +3,25 @@ import KakaoMap from "../../components/common/KakaoMap";
 import KakaoMapSdk from "../../components/common/KakaoMapSdk";
 import BoardContent from "../../components/map/bottom-contents/BoardContent";
 import FeedContent from "../../components/map/bottom-contents/FeedContent";
+import { getCatList } from "../../services/cats";
+import { getMainPostList } from "../../services/main";
+import { typedUseSelector } from "../../store";
 
 const MapPage = () => {
   const [isHigh, setIsHigh] = useState(false);
   const [triggered, setTriggered] = useState(false);
+  const [selectedCat, setSelectedCat] = useState(null);
+
+  const { universityId } = typedUseSelector(
+    (state) => state.member.memberObject,
+  );
+  const [catList, setCatList] = useState([]);
+  useEffect(() => {
+    getCatList(universityId).then((res) => {
+      const newCatList = res.data;
+      setCatList(newCatList);
+    });
+  }, []);
 
   useEffect(() => {
     if (triggered) {
@@ -21,7 +36,14 @@ const MapPage = () => {
   switch (mode) {
     case "Board":
       bottomContent = (
-        <BoardContent setTriggered={setTriggered} isHigh={isHigh} />
+        <BoardContent
+          setTriggered={setTriggered}
+          isHigh={isHigh}
+          catList={catList}
+          selectedCat={selectedCat}
+          setSelectedCat={setSelectedCat}
+          universityId={universityId}
+        />
       );
       break;
     case "Feed":
