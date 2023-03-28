@@ -18,14 +18,14 @@ public class MemberDetailResp {
     UUID member_id;
     long university_id;
     private String university_name;
-    long reward_id;
+    long badge_id;
     String email;
     private String nickname;
     @Builder
-    public MemberDetailResp(String nickname, String university_name, long university_id, long reward_id, String email, UUID member_id) {
+    public MemberDetailResp(String nickname, String university_name, long university_id, long badge_id, String email, UUID member_id) {
         this.member_id = member_id;
         this.university_id = university_id;
-        this.reward_id = reward_id;
+        this.badge_id = badge_id;
         this.email = email;
         this.nickname = nickname;
         this.university_name = university_name;
