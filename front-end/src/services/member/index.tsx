@@ -5,6 +5,7 @@ interface LoginResponse {
   status: number;
   data: {
     access_token: string;
+    university_id: number;
     nickname: string;
     email: string;
   };

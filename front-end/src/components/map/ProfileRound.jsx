@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default function ProfileRound({ setTriggered }) {
+export default function ProfileRound({
+  setTriggered,
+  image,
+  catId,
+  selectedCat,
+}) {
+  const [selected, setSelected] = useState(false);
+
+  useEffect(() => {
+    if (selectedCat?.cat_id === catId) {
+      setSelected(true);
+    } else {
+      setSelected(false);
+    }
+  }, [selectedCat]);
   return (
     <div
       className={`rounded-full  h-12 w-12 p-[1.5px] ${
-        true ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500" : ""
+        selected
+          ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+          : ""
       }`}
       onClick={() => setTriggered(true)}
     >
@@ -15,7 +31,8 @@ export default function ProfileRound({ setTriggered }) {
             className="_6q-tv h-full object-cover bg-black"
             data-testid="user-avatar"
             draggable="false"
-            src="/images/kitten-510651.webp"
+            // src="/images/kitten-510651.webp"
+            src={image}
           />
         </div>
       </div>

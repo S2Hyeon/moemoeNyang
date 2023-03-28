@@ -51,8 +51,48 @@ export async function getMainPostList(
   }
 }
 
+
+
+interface PatchEmotionResponse {
+  status: number;
+  data: {
+		"boardId" : Number,
+		"emotion" : String,
+  };
+}
+
+export async function patchEmotion(
+  // 함수의 파라미터로 받을 값의 타입을 정의함
+): Promise<PatchEmotionResponse | undefined> { //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
+  try {
+    const response = await Api.patch("/boards/emotion");
+    return response as PatchEmotionResponse;    //마지막으로 응답객체 response에 타입을 덮어씌워줌
+  } catch (error) {
+    // console.error(error);
+  }
+}
+
+interface DeleteEmotionResponse {
+  status: number;
+  data: {
+  };
+}
+
+export async function deleteEmotion(
+  // 함수의 파라미터로 받을 값의 타입을 정의함
+	boardId : number,
+): Promise<DeleteEmotionResponse | undefined> { //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
+  try {
+    const response = await Api.delete(`/boards/emotion/${boardId}`);
+    return response as DeleteEmotionResponse;    //마지막으로 응답객체 response에 타입을 덮어씌워줌
+  } catch (error) {
+    // console.error(error);
+  }
+}
+
 const Main = {
   getMainPostList,
+	patchEmotion,
 };
 
 export default Main;

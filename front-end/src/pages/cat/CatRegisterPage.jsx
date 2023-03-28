@@ -1,5 +1,6 @@
 import React from "react"
-import CatImageRegister from "../../components/cat/CatImageRegister";
+// import CatImageRegister from "../../components/cat/CatImageRegister";
+import ImgUpload from "../../components/upload/ImgUpload";
 import CatNameButton from "../../components/cat/CatNameButton";
 import CatSexButton from "../../components/cat/CatSexButton";
 import CatAgeButton from "../../components/cat/CatAgeButton";
@@ -10,7 +11,8 @@ const CatRegisterPage = () => {
         // <div className="ml-4 mr-4">
         <div className="flex justify-center items-center">
             <div className="w-auto grid gap-4 py-4">
-                <CatImageRegister />
+                {/* <CatImageRegister /> */}
+                <ImgUpload />
                 <CatNameButton />
                 <CatSexButton />
                 <CatAgeButton />

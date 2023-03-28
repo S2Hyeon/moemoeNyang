@@ -1,12 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function CatImageRegister() {
+    const [image, setImage] = useState(null);
+    
+    // const handleImageChange = (e) => {
+    //   setImage(URL.createObjectURL(e.target.files[0]));
+    // }
+
+    // const handleImageChange = (e) => {
+    //   setImage(URL.createObjectURL(e.target.files[0]));
+    //   document.getElementById("svg-icon").style.display = "none";
+    // };
+
+    const handleImageChange = (e) => {
+      setImage(URL.createObjectURL(e.target.files[0]));
+      document.getElementById("cat-image-register").style.display = "none";
+    };
+
+    
+    // const divStyle = {
+    //   width: "100%",
+    //   height: "100%",
+    //   borderRadius: "10px",
+    //   backgroundColor: "#faeaea",
+    //   boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)",
+    // };
+
+    const imgStyle = {
+      objectFit: "cover",
+      width: "100%",
+      height: "100%",
+      borderRadius: "10px",
+    };
+
     return (
         <div
         className="w-[335px] h-[335px] rounded-[10px] bg-[#faeaea]"
         style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
       >
-        <label For="dropzone-file">
+      <label For="dropzone-file">
+      {/* <div style={divStyle}>
+      <label htmlFor="dropzone-file"> */}
           <svg
             width={37}
             height={37}
@@ -26,7 +60,9 @@ export default function CatImageRegister() {
             />
           </svg>
         </label>
-        <input id="dropzone-file" type="file" class="hidden" />
+        <input id="dropzone-file" type="file" class="hidden" onChange={handleImageChange} />
+        {/* {image && <img src={image} alt="Preview" />} */}
+        {image && <img src={image} alt="Preview" style={imgStyle} />}
       </div>
     )
 }

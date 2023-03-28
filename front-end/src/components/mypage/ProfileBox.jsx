@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { RiSettings4Fill } from "@react-icons/all-files/ri/RiSettings4Fill";
+import { getUserInfo, postUserInfo } from "../../services/mypage";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfileBox() {
+  const navigate = useNavigate();
+
+  const navigateToModifyUserInfo = () => {
+    navigate("/mypage/modify");
+  };
+
+  const [userInfo, setUserInfo] = useState([]);
+
+  useEffect(() => {
+    getUserInfo().then((res) => setUserInfo(res.data));
+  }, []);
+
+  useEffect(() => {
+    if (!userInfo.length) return;
+    console.log("user Info 불러오기");
+    console.log(userInfo);
+  }, [userInfo]);
+
   return (
     <div className="flex items-center relative p-5">
       <img
@@ -10,10 +30,13 @@ export default function ProfileBox() {
         alt="대표배지이미지"
       />
       <div className="ml-4">
-        <div className="font-bold text-2xl mb-2">냥냥집사</div>
-        <div className="font-bold text-sm">싸피대학교</div>
+        <div className="font-bold text-2xl mb-2">{userInfo.nickname}</div>
+        <div className="font-bold text-sm">{userInfo.university_name}</div>
       </div>
-      <RiSettings4Fill className="absolute top-4 right-6 text-lisa-500 w-6 h-6" />
+      <RiSettings4Fill
+        onClick={navigateToModifyUserInfo}
+        className="absolute top-4 right-6 text-lisa-500 w-6 h-6"
+      />
     </div>
   );
 }
