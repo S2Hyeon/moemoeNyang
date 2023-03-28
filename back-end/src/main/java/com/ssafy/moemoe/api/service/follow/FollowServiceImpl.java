@@ -27,7 +27,7 @@ public class FollowServiceImpl implements FollowService {
     @Override
     public boolean deleteFollow(String memberId, Long catId) {
         // 멤버 유효성 검사 추가 예정;
-        Optional<Follow> follow = followRepository.findByMemberIDAndCatId(memberId, catId);
+        Optional<Follow> follow = followRepository.findByMember_MemberIdAndCat_CatId(UUID.fromString(memberId), catId);
         if(follow.isPresent()) {
             followRepository.deleteById(follow.get().getFollowId());
         }

@@ -21,11 +21,11 @@ import java.util.Map;
 public class ReportBoard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reportBoardId = null;
+    private Long reportBoardId;
 
     @Type(type = "json")
     @Column(columnDefinition = "json")
-    private Map<String, Object> data = new HashMap<>();
+    private Map<String, Object> data;
 
 //    private static ReportBoard of(Map<String, Object> data) {
 //        return new ReportBoard(null, data);
