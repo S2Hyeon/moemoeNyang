@@ -15,20 +15,20 @@ import java.util.UUID;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class MemberDetailResp {
 
-    UUID member_id;
-    long university_id;
-    private String university_name;
-    long badge_id;
+    UUID memberId;
+    long universityId;
+    private String universityName;
+    long badgeId;
     String email;
     private String nickname;
     @Builder
-    public MemberDetailResp(String nickname, String university_name, long university_id, long badge_id, String email, UUID member_id) {
-        this.member_id = member_id;
-        this.university_id = university_id;
-        this.badge_id = badge_id;
+    public MemberDetailResp(String nickname, String universityName, long universityId, long badgeId, String email, UUID memberId) {
+        this.memberId = memberId;
+        this.universityId = universityId;
+        this.badgeId = badgeId;
         this.email = email;
         this.nickname = nickname;
-        this.university_name = university_name;
+        this.universityName = universityName;
     }
 
 }
