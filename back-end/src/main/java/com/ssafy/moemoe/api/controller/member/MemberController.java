@@ -69,7 +69,7 @@ public class MemberController {
         return ResponseEntity.ok(
                 MemberDetailResp.builder()
                         .nickname(nickname)
-                        .university_name(university.getName())
+                        .universityName(university.getName())
                         .build()
         );
     }
