@@ -11,7 +11,7 @@ export default function FeedContent() {
           style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
         >
           <img src="image-19.png" className="w-[113px] h-28  object-cover" />
-          <p className="w-52 h-28 grid left-[147px] top-[338px] text-[10px] text-left text-black py-2 gap-1">
+          <div className="w-52 h-28 grid left-[147px] top-[338px] text-[10px] text-left text-black py-2 gap-1">
             <div>
               <span className="w-52 h-28 text-[10px] font-bold text-left text-black">
                 급식소명
@@ -46,7 +46,7 @@ export default function FeedContent() {
                 급여합니다. 간식은 주지 마세요 ㅠㅠ
               </span>
             </div>
-          </p>
+          </div>
         </div>
         <div
           className="FeedSpotInfo h-[35vh] left-[15.5px] top-[321.5px] rounded-[10px] bg-white flex justify-around pt-2"

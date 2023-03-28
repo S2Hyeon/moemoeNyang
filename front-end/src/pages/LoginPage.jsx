@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../components/common/Input";
 import { postFindPassword, postLogin } from "../services/member";
 import { getCookie, setCookie } from "../utils/handleCookies";
@@ -6,8 +6,14 @@ import { AlertError, AlertSuccess, AlertWarning } from "../utils/alertToastify";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/common/Button";
 
+import { useDispatch } from "react-redux";
+import { setMemberObject } from "../store/memberSlice";
+import { typedUseSelector } from "../store";
+
 const LoginPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const member = typedUseSelector((state) => state.member.memberObject);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isForgotPassword, setIsForgetPassword] = useState(false);
@@ -19,10 +25,23 @@ const LoginPage = () => {
       return AlertWarning("잘못된 이메일입니다.");
     }
     postLogin(email, password).then((res) => {
-      const accessToken = res.data.access_token;
+      const { access_token, university_id, nickname, email } = res.data;
+      const accessToken = member.access_token;
+      dispatch(
+        setMemberObject({
+          accessToken: access_token,
+          universityId: university_id,
+          nickname: nickname,
+          email: email,
+        }),
+      );
       setCookie("accessToken", accessToken, 180);
     });
   };
+
+  useEffect(() => {
+    console.log(member);
+  }, [member]);
 
   const onForget = () => {
     if (!email) return AlertWarning("정보를 입력해주세요");
