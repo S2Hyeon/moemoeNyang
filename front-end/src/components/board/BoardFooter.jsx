@@ -2,7 +2,7 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-export default function BoardFooter({ onBottom = false }) {
+export default function BoardFooter({ onBottom = false, postInfo }) {
   const navigate = useNavigate();
 
   const navigateToWalk = () => {
@@ -10,31 +10,44 @@ export default function BoardFooter({ onBottom = false }) {
   };
 
   if (onBottom) {
+    const { angry, good, impressed, recommend, sad } = postInfo;
+    const emojiMap = { angry, good, impressed, recommend, sad };
+    const [maxEmoji, maxEmojiCount] = Object.entries(emojiMap).sort((a, b) => {
+      const res = b[1] - a[1];
+      if (res === 0) {
+        return b[0] - a[0];
+      }
+      return res;
+    })[0];
+
     return (
       <div className="card-footer p-4 pt-0">
         <div className="top">
           <div className="flex">
             <div className="my-2 w-full flex flex-row">
               <span className="text-sm" onClick={navigateToWalk}>
-                #걷기 54%
+                {`#${postInfo.tags[0]["name"]} ${postInfo.tags[0][
+                  "rate"
+                ].toFixed(0)}%`}
               </span>
             </div>
             <div className="icons flex flex-row justify-center items-center">
-              <div className="recommend mr-4 flex">
+              <div className="MaxImoji mr-4 flex">
                 <img
-                  src="/images/emoji/recommend.png"
+                  src={`/images/emoji/${maxEmoji}.png`}
                   className="_8-yf5"
                   height={30}
                   width={30}
                   alt="감정이모지"
                 />
-                <div className="text-center p-1">0</div>
+                <div className="text-center p-1">{maxEmojiCount}</div>
               </div>
             </div>
           </div>
           <div className="post-date">
             <span className="text-xs text-gray-900">1 minute ago</span>
-            <div className="caption text-sm font-bold text-center">더보기</div>
+            <div className="caption text-sm">{postInfo.content}</div>
+            {/* <div className="caption text-sm font-bold text-center">더보기</div> */}
           </div>
         </div>
       </div>
@@ -44,11 +57,16 @@ export default function BoardFooter({ onBottom = false }) {
     <div className="card-footer p-4 pt-0">
       <div className="top">
         <div className="my-2 w-full flex flex-row justify-around">
-          <span className="text-sm" onClick={navigateToWalk}>
-            #걷기 54%
-          </span>
-          <span className="text-sm">#팔 휘두르기 21%</span>
-          <span className="text-sm">#앉기 6%</span>
+          {postInfo.tags.map((tag) => {
+            return (
+              <div>
+                <span className="font-bold text-sm" onClick={navigateToWalk}>
+                  # {tag.name}
+                </span>
+                <span className="text-sm"> {tag.rate}% </span>
+              </div>
+            );
+          })}
         </div>
         <div className="icons flex flex-row justify-center items-center">
           <div className="recommend mr-4">
@@ -103,10 +121,7 @@ export default function BoardFooter({ onBottom = false }) {
           </div>
         </div>
 
-        <div className="caption text-sm">
-          <b>apple </b>
-          new Iphone release ✨
-        </div>
+        <div className="caption text-sm">{postInfo.content}</div>
         <div className="post-date mt-1">
           <span className="text-xs text-gray-900">1 minute ago</span>
         </div>

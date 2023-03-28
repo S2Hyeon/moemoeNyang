@@ -1,18 +1,44 @@
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
+import { useEffect } from "react";
 import Panel from "../common/Panel";
 import ProfileRound from "./ProfileRound";
+import { shallowEqual, useDispatch } from "react-redux";
+import { setSelectedCat } from "../../store/mapSlice";
+import { typedUseSelector } from "../../store";
 
-export default function TopFlick({ setTriggered }) {
-  const arr = Array.from({ length: 10 });
+export default function TopFlick(
+  {
+    // setTriggered,
+    // catList,
+    // setSelectedCat,
+    // selectedCat,
+  },
+) {
+  const dispatch = useDispatch();
+  const catList = typedUseSelector((state) => state.map.catList, shallowEqual);
+
   return (
     <Flicking align="prev" circular={true}>
-      {arr.map((e, i) => {
+      {catList.map((element, i) => {
+        const { cat_id: catId, name, image } = element;
+
         return (
-          <Panel key={i}>
-            <div className="text-center text-xs ml-3">
-              <ProfileRound setTriggered={setTriggered} />
-              <div>안냥이</div>
+          <Panel key={catId}>
+            <div
+              className="text-center text-xs ml-3"
+              onClick={() => {
+                dispatch(setSelectedCat(element));
+                // setSelectedCat(element);
+              }}
+            >
+              <ProfileRound
+                // setTriggered={setTriggered}
+                image={image}
+                // selectedCat={selectedCat}
+                catId={catId}
+              />
+              <div>{name}</div>
             </div>
           </Panel>
         );
