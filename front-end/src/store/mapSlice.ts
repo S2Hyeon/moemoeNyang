@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 export interface MapInfoType {
   lat: number;
   lng: number;
@@ -8,28 +7,28 @@ export interface MapInfoType {
 
 export interface CatType {
   cat_id: Number;
-  name: String;
+  name: string;
   age: Number;
-  gender: String;
+  gender: string;
   follower_cnt: Number;
-  image: String;
+  image: string;
 }
 
 export interface PostType {
   board_id: Number;
   cat: {
     cat_id: Number;
-    image: String;
+    image: string;
     name: Number;
   };
   member: {
-    image: String;
-    nickname: String;
+    image: string;
+    nickname: string;
   };
   image: Number;
   tags: [
     {
-      name: String;
+      name: string;
       rate: Number;
     },
   ];
@@ -40,9 +39,26 @@ export interface PostType {
     sad: Number;
     angry: Number;
   };
-  myEmotion: String;
-  content: String;
-  created_at: String;
+  myEmotion: string;
+  content: string;
+  created_at: string;
+}
+
+export interface FeedType {
+  feedspot_id: number;
+  name: string;
+  description: string;
+  image: string;
+  lat: number;
+  lng: number;
+  recent_feed_time: number;
+  isActive: number;
+}
+
+export interface FeedHistory {
+  member_id: number;
+  nickname: string;
+  created_at: number;
 }
 
 const initialState = {
@@ -51,6 +67,9 @@ const initialState = {
   isBottomHigh: false,
   catList: [] as Array<CatType>,
   postList: [] as Array<PostType>,
+  feedsList: [] as Array<FeedType>,
+  selectedFeed: null as FeedType,
+  selectedFeedHistory: null as FeedHistory,
 };
 
 const mapSlice = createSlice({
@@ -74,6 +93,12 @@ const mapSlice = createSlice({
     setPostList: (state, action: { payload: Array<PostType> }) => {
       state.postList = action.payload;
     },
+    setFeedsList: (state, action: { payload: Array<FeedType> }) => {
+      state.feedsList = action.payload;
+    },
+    setSelectedFeed: (state, action: { payload: FeedType }) => {
+      state.selectedFeed = action.payload;
+    },
   },
 });
 
@@ -84,4 +109,6 @@ export const {
   setBottomToggle,
   setCatList,
   setPostList,
+  setFeedsList,
+  setSelectedFeed,
 } = mapSlice.actions;

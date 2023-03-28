@@ -12,7 +12,7 @@ const get = (urls: string, ...rest): Object => {
     },
   };
 
-  switch (url) { 
+  switch (url) {
     case "/auth/check-email":
       res.data = {
         msg: "Y",
@@ -78,13 +78,13 @@ const get = (urls: string, ...rest): Object => {
 
     case "/cat":
       res.data = {
-        "cat_id":1,
-        "name":"또롱이",
-        "age":1,
-        "gender":"male",
-        "follower_cnt":"3",
-        "image":"image"
-      }
+        cat_id: 1,
+        name: "또롱이",
+        age: 1,
+        gender: "male",
+        follower_cnt: "3",
+        image: "image",
+      };
 
     default:
       break;
