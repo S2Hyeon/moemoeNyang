@@ -22,6 +22,7 @@ export default function CatGrid() {
                     <img className="w-100% height-100% object-fit-cover" src={image.urls.small} alt={image.alt_description} />
                 </div>
             ))}
+            
         </div>
     )
 
