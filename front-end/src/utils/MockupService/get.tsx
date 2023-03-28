@@ -76,7 +76,6 @@ const get = (urls: string, ...rest): Object => {
       };
       break;
 
-<<<<<<< HEAD
     case "/cat":
       res.data = {
         "cat_id":1,
@@ -86,9 +85,6 @@ const get = (urls: string, ...rest): Object => {
         "follower_cnt":"3",
         "image":"image"
       }
-=======
-
->>>>>>> a30c208b19f03cdb0ed12dfc7a5716cbf59aea33
 
     default:
       break;
