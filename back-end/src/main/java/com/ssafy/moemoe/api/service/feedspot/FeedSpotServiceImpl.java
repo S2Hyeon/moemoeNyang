@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -51,6 +52,13 @@ public class FeedSpotServiceImpl implements FeedSpotService {
         List<FeedSpot> feedSpotList = feedSpotRepository.findByUniversityUniversityId(universityId);
         List<FeedSpotMarkerResp> respList = new ArrayList<>();
         for (FeedSpot f : feedSpotList) {
+            Optional<LocalDateTime> recent = feedSpotFeedRepository.findMostRecentCreatedAtByFeedspotId(f.getFeedspotId());
+            LocalDateTime time;
+            if(recent.isPresent()){ //최근 급여내역이 있으면
+                time = recent.get();
+            } else { //급여 내역이 없으면
+                time = LocalDateTime.MIN; //가장 작은 값을 넣어서 등록된 글이 없음을 알려주기
+            }
             respList.add(FeedSpotMarkerResp.builder()
                     .feedspot_id(f.getFeedspotId())
                     .name(f.getName())
@@ -58,7 +66,7 @@ public class FeedSpotServiceImpl implements FeedSpotService {
                     .image(f.getImage())
                     .lng(f.getLng())
                     .lat(f.getLat())
-                    //.recentFeedTime()
+                    .recentFeedTime(time)
                     .build());
         }
 
@@ -68,7 +76,7 @@ public class FeedSpotServiceImpl implements FeedSpotService {
     @Override
     public Long createFeed(UUID memberId, Long feedspotId) {
         Feed feed = Feed.builder()
-                .feedTime(LocalDateTime.now())
+                .createdAt(LocalDateTime.now())
                 .feedspot(feedSpotRepository.findById(feedspotId).get())
                 .member(memberRepository.findByMemberId(memberId))
                 .build();

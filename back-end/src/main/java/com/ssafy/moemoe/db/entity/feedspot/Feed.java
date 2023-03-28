@@ -30,6 +30,6 @@ public class Feed {
 
     // 먹이준 시간
     @Column(nullable = false)
-    private LocalDateTime feedTime;
+    private LocalDateTime createdAt;
 
 }
