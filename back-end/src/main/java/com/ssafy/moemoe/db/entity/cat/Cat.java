@@ -32,12 +32,12 @@ public class Cat {
     private Integer isActive;
 
     @Builder
-    public Cat(CatInfoReq catInfoReq, University university) {
+    public Cat(CatInfoReq catInfoReq, University university, String image) {
         this.university = university;
         this.name = catInfoReq.getName();
         this.age = catInfoReq.getAge();
         this.gender = catInfoReq.getGender();
-        this.image = catInfoReq.getImage();
+        this.image = image;
     }
 
     public void updateFollowCnt(Long followerCnt) {
