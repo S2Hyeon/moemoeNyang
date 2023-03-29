@@ -38,6 +38,10 @@ const post = (urls: string, ...rest): Object => {
         access_token: "엑세스토큰개쩔어",
         nickname: "닉네임개쩔어",
         email: "eamil@email.com",
+<<<<<<< HEAD
+=======
+        university_id: 1,
+>>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
       };
       break;
 
