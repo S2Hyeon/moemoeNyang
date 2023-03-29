@@ -4,20 +4,28 @@ import "@egjs/react-flicking/dist/flicking.css";
 import Panel from "../common/Panel";
 import { PostCard } from "../PostCard";
 import { typedUseSelector } from "../../store";
+import { setCenterPosition } from "../../store/mapSlice";
+import { useDispatch } from "react-redux";
 
 export default function BoardFlick() {
   const arr = Array.from({ length: 10 });
+  const dispatch = useDispatch();
   const postList = typedUseSelector((state) => state.map.postList);
   const [selectedPost, setSelectedPost] = useState(postList[0]);
+  const willChange = (e) => {
+    const newPost = postList[e.index];
+    const { lat, lng } = newPost;
+    const newPosition = {
+      //작은 화면에서 가운데 정렬을 못하겠어서 하드코딩해버림
+      lat: lat - 0.0024,
+      lng,
+    };
+    setSelectedPost(newPost);
+    dispatch(setCenterPosition(newPosition));
+  };
 
   return (
-    <Flicking
-      align="prev"
-      circular={true}
-      onWillChange={(e) => {
-        setSelectedPost(postList[e.index]);
-      }}
-    >
+    <Flicking align="prev" circular={true} onWillChange={willChange}>
       {postList &&
         postList.map((postInfo, i) => {
           return (
