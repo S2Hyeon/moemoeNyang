@@ -37,7 +37,11 @@ function App() {
             <Route path="mypage" element={<MyPage />} />
             <Route path="catlist" element={<CatPage />} />
             <Route path="catregister" element={<CatRegisterPage />} />
+<<<<<<< HEAD
             <Route path="cat/:catId" element={<CatDetailPage />} />
+=======
+            <Route path="cat/id" element={<CatDetailPage />} />
+>>>>>>> af335cace52712f4d8c30d384a370293d84ac79b
             <Route path="board" element={<PostBoard />} />
             <Route path="board/hashTag" element={<BoardHashTag />} />
             <Route path="symptoms" element={<SymptomsPage />} />
