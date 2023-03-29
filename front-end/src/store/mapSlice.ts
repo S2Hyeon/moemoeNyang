@@ -16,33 +16,32 @@ export interface CatType {
 }
 
 export interface PostType {
-  board_id: Number;
-  cat: {
-    cat_id: Number;
-    image: String;
-    name: Number;
-  };
-  member: {
-    image: String;
-    nickname: String;
-  };
-  image: Number;
-  tags: [
-    {
-      name: String;
-      rate: Number;
-    },
-  ];
-  emotions: {
-    recommand: Number;
-    good: Number;
-    impressed: Number;
-    sad: Number;
-    angry: Number;
-  };
-  myEmotion: String;
-  content: String;
-  created_at: String;
+  boardId: number;
+  catId: number;
+  catImage: string;
+  catName: string;
+  memberNickname: string;
+  boardImage: number;
+  tags: Array<{
+    name: string;
+    rate: number;
+  }>;
+  lat: number;
+  lng: number;
+  recommand: number;
+  good: number;
+  impressed: number;
+  sad: number;
+  angry: number;
+  myEmotion: string;
+  content: string;
+  createdAt: string;
+}
+
+export interface CatPositionType {
+  boardId: string;
+  catImage: string;
+  latlng: { lat: number; lng: number };
 }
 
 const initialState = {
@@ -51,6 +50,12 @@ const initialState = {
   isBottomHigh: false,
   catList: [] as Array<CatType>,
   postList: [] as Array<PostType>,
+  catPositions: [] as Array<CatPositionType>,
+  centerPosition: {
+    lat: 37.550749,
+    lng: 126.941303,
+  },
+  selectedPostId: -1,
 };
 
 const mapSlice = createSlice({
@@ -74,6 +79,18 @@ const mapSlice = createSlice({
     setPostList: (state, action: { payload: Array<PostType> }) => {
       state.postList = action.payload;
     },
+    setCatPositions: (state, action: { payload: Array<CatPositionType> }) => {
+      state.catPositions = action.payload;
+    },
+    setCenterPosition: (
+      state,
+      action: { payload: { lat: number; lng: number } },
+    ) => {
+      state.centerPosition = action.payload;
+    },
+    setSelectedPostId: (state, action: { payload: number }) => {
+      state.selectedPostId = action.payload;
+    },
   },
 });
 
@@ -84,4 +101,7 @@ export const {
   setBottomToggle,
   setCatList,
   setPostList,
+  setCatPositions,
+  setCenterPosition,
+  setSelectedPostId,
 } = mapSlice.actions;
