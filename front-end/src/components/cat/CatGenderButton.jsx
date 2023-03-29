@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // 추후 선택형으로 수정 예정
-function CatSexButton() {
+function CatGenderButton() {
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   
@@ -35,4 +35,4 @@ function CatSexButton() {
   );
 }
 
-export default CatSexButton;
+export default CatGenderButton;

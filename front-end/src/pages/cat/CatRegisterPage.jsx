@@ -2,7 +2,7 @@ import React from "react"
 // import CatImageRegister from "../../components/cat/CatImageRegister";
 import ImgUpload from "../../components/upload/ImgUpload";
 import CatNameButton from "../../components/cat/CatNameButton";
-import CatSexButton from "../../components/cat/CatSexButton";
+import CatGenderButton from "../../components/cat/CatGenderButton";
 import CatAgeButton from "../../components/cat/CatAgeButton";
 
 
@@ -14,7 +14,7 @@ const CatRegisterPage = () => {
                 {/* <CatImageRegister /> */}
                 <ImgUpload />
                 <CatNameButton />
-                <CatSexButton />
+                <CatGenderButton />
                 <CatAgeButton />
                 <button 
                     className="flex justify-center items-center w-[335px] h-[66px] rounded-[30px] bg-[#e87f7f]"

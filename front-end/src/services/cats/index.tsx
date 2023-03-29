@@ -77,10 +77,45 @@ export async function getCatImages(
   }
 }
 
+
+interface PostCatRegistResponse {
+  status: Number,
+  data : {
+    "universityId":Number,
+    "name":String,
+    "age":Number,
+    "gender":"M"|"F",
+    "image":String // <<< 이부분 게시글이랑 같은거
+    }
+  }
+
+export async function postCatRegist(
+  universityId:Number,
+  name:String,
+  age:Number,
+  gender:"M"|"F",
+  image:String
+): Promise<PostCatRegistResponse | undefined> {
+  try {
+    const response = await Api.post("/cats", {
+      universityId,
+      name,
+      age,
+      gender,
+      image,
+    });
+    return response as PostCatRegistResponse;
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+
 const Cats = {
   getCatList,
   getCatDetail,
   getCatImages,
+  postCatRegist,
 };
 
 export default Cats;
