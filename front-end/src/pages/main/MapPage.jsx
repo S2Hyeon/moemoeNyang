@@ -22,7 +22,7 @@ const MapPage = () => {
   };
 
   const { universityId } = typedUseSelector(
-    (state) => state.member.memberObject,
+    (state) => state.member?.memberObject,
   );
 
   const catList = typedUseSelector((state) => state.map.catList);

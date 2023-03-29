@@ -8,9 +8,9 @@ import { AlertError } from "../utils/alertToastify";
 const Layout = () => {
   const member = typedUseSelector((state) => state.member.memberObject);
 
-  if (!member) {
-    return <Navigate to="/login" {...AlertError("로그인이 필요하다냥")} />;
-  }
+  // if (!member) {
+  //   return <Navigate to="/login" {...AlertError("로그인이 필요하다냥")} />;
+  // }
 
   // 테일윈드 레이아웃 https://stackoverflow.com/questions/59812003/tailwindcss-fixed-sticky-footer-on-the-bottom
   return (
