@@ -7,11 +7,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-<<<<<<< HEAD
 export default function Dropdown() {
-=======
-export default function Dropdown({ setCatId }) {
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
   const [selected, setSelected] = useState([]);
   const [catList, setCatList] = useState([]);
 
@@ -24,10 +20,6 @@ export default function Dropdown({ setCatId }) {
     console.log("cat list 불러오기");
     console.log(catList);
     setSelected(catList[0]);
-<<<<<<< HEAD
-=======
-    // setCatIdx(selected);
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
   }, [catList]);
 
   return (

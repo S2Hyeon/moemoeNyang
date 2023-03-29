@@ -1,13 +1,6 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-<<<<<<< HEAD
     "jsx": "react"
-=======
-    "jsx": "react",
-    "types": [
-      "kakao.maps.d.ts",
-    ]
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
   }
 }

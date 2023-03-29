@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
-=======
-import React, { useEffect, useState } from "react";
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
 import ReportModal from "../modal/ReportModal";
-import { postFollow, deleteUnFollow } from "../../services/main";
 
 export default function BoardHeader({ onBottom = false, postInfo }) {
   // 모달창 노출 여부 state
@@ -15,24 +10,6 @@ export default function BoardHeader({ onBottom = false, postInfo }) {
     setModalOpen(true);
   };
 
-<<<<<<< HEAD
-=======
-  const [isFollowing, setIsFollowing] = useState(postInfo.cat.isFollowing);
-
-  function onClickFollowBtn() {
-    if (isFollowing) {
-      console.log("delete UnFollow");
-      deleteUnFollow(postInfo.cat.cat_id);
-    } else {
-      console.log("post Follow");
-      postFollow(postInfo.cat.cat_id);
-    }
-    setIsFollowing(!isFollowing);
-  }
-
-  useEffect(() => {}, [postInfo.cat.isFollowing]);
-
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
   if (onBottom) {
     return (
       <div className="header border-b p-2 flex justify-between items-center">
@@ -101,20 +78,12 @@ export default function BoardHeader({ onBottom = false, postInfo }) {
         <div className="flex mr-6 text-center align-baseline">
           {postInfo.cat.isFollowing === null ? (
             <img
-<<<<<<< HEAD
-=======
-              onClick={onClickFollowBtn}
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
               className="w-7 h-7 mr-2"
               src="/images/button/Star.png"
               alt="즐겨찾기"
             />
           ) : (
             <img
-<<<<<<< HEAD
-=======
-              onClick={onClickFollowBtn}
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
               className="w-7 h-7 mr-2"
               src="/images/button/FillStar.png"
               alt="즐겨찾기"
