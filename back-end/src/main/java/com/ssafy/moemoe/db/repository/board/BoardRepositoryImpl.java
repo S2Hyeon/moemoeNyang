@@ -37,9 +37,10 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom {
         List<BoardLoadResp> content = jpaQueryFactory
                 .select(new QBoardLoadResp(qBoard, qCat, qMember, qUniversity))
                 .from(qBoard)
+                .leftJoin(qBoard.tagList, qTag)
                 .leftJoin(qBoard.cat, qCat)
-                .leftJoin(qBoard.university, qUniversity)
                 .leftJoin(qBoard.member, qMember)
+                .leftJoin(qBoard.university, qUniversity)
 //                .where(wordEq(word), categoryEq(categoryName), qInterview.interviewState.eq(4), qApplicant.user.id.isNull().or(qApplicant.user.id.ne(user_id)))
                 .where(tagNameEq(tagName), qUniversity.universityId.eq(universityId))
                 .orderBy(qBoard.createdAt.asc())
@@ -56,6 +57,11 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom {
     }
 
     private BooleanExpression tagNameEq(String tagName) {
-        return tagName.isEmpty() ? null : qTag.name.contains(tagName);
+        if(tagName == null){
+            return null;
+        }else{
+            return qTag.name.eq(tagName);
+        }
+//        return tagName.isEmpty() ? null :
     }
 }

@@ -17,7 +17,7 @@ public class Reaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reactionId;
 
-    private String reat;
+    private String react;
 
     // ManyToOne 관계 설정
     @ManyToOne(fetch = FetchType.LAZY)
@@ -29,8 +29,8 @@ public class Reaction {
     private Member member;
 
     @Builder
-    private Reaction(String reat, Board board, Member member) {
-        this.reat = reat;
+    private Reaction(String react, Board board, Member member) {
+        this.react = react;
         this.board = board;
         this.member = member;
     }
