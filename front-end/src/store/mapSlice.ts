@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-<<<<<<< HEAD
 
-=======
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
 export interface MapInfoType {
   lat: number;
   lng: number;
@@ -11,85 +8,40 @@ export interface MapInfoType {
 
 export interface CatType {
   cat_id: Number;
-<<<<<<< HEAD
   name: String;
   age: Number;
   gender: String;
   follower_cnt: Number;
   image: String;
-=======
-  name: string;
-  age: Number;
-  gender: string;
-  follower_cnt: Number;
-  image: string;
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
 }
 
 export interface PostType {
-  board_id: Number;
-  cat: {
-    cat_id: Number;
-<<<<<<< HEAD
-    image: String;
-    name: Number;
-  };
-  member: {
-    image: String;
-    nickname: String;
-=======
-    image: string;
-    name: Number;
-  };
-  member: {
-    image: string;
-    nickname: string;
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
-  };
-  image: Number;
-  tags: [
-    {
-<<<<<<< HEAD
-      name: String;
-=======
-      name: string;
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
-      rate: Number;
-    },
-  ];
-  emotions: {
-    recommand: Number;
-    good: Number;
-    impressed: Number;
-    sad: Number;
-    angry: Number;
-  };
-<<<<<<< HEAD
-  myEmotion: String;
-  content: String;
-  created_at: String;
-=======
-  myEmotion: string;
-  content: string;
-  created_at: string;
-}
-
-export interface FeedType {
-  feedspot_id: number;
-  name: string;
-  description: string;
-  image: string;
+  boardId: number;
+  catId: number;
+  catImage: string;
+  catName: string;
+  memberNickname: string;
+  boardImage: number;
+  tags: Array<{
+    name: string;
+    rate: number;
+  }>;
   lat: number;
   lng: number;
-  recent_feed_time: number;
-  isActive: number;
+  recommand: number;
+  good: number;
+  impressed: number;
+  sad: number;
+  angry: number;
+  myEmotion: string;
+  content: string;
+  createdAt: string;
 }
 
-export interface FeedHistory {
-  member_id: number;
-  nickname: string;
-  created_at: number;
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
+export interface CatPositionType {
+  boardId: string;
+  catImage: string;
+  latlng: { lat: number; lng: number };
 }
 
 const initialState = {
@@ -98,12 +50,12 @@ const initialState = {
   isBottomHigh: false,
   catList: [] as Array<CatType>,
   postList: [] as Array<PostType>,
-<<<<<<< HEAD
-=======
-  feedsList: [] as Array<FeedType>,
-  selectedFeed: null as FeedType,
-  selectedFeedHistory: null as FeedHistory,
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
+  catPositions: [] as Array<CatPositionType>,
+  centerPosition: {
+    lat: 37.550749,
+    lng: 126.941303,
+  },
+  selectedPostId: -1,
 };
 
 const mapSlice = createSlice({
@@ -127,15 +79,18 @@ const mapSlice = createSlice({
     setPostList: (state, action: { payload: Array<PostType> }) => {
       state.postList = action.payload;
     },
-<<<<<<< HEAD
-=======
-    setFeedsList: (state, action: { payload: Array<FeedType> }) => {
-      state.feedsList = action.payload;
+    setCatPositions: (state, action: { payload: Array<CatPositionType> }) => {
+      state.catPositions = action.payload;
     },
-    setSelectedFeed: (state, action: { payload: FeedType }) => {
-      state.selectedFeed = action.payload;
+    setCenterPosition: (
+      state,
+      action: { payload: { lat: number; lng: number } },
+    ) => {
+      state.centerPosition = action.payload;
     },
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
+    setSelectedPostId: (state, action: { payload: number }) => {
+      state.selectedPostId = action.payload;
+    },
   },
 });
 
@@ -146,9 +101,7 @@ export const {
   setBottomToggle,
   setCatList,
   setPostList,
-<<<<<<< HEAD
-=======
-  setFeedsList,
-  setSelectedFeed,
->>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
+  setCatPositions,
+  setCenterPosition,
+  setSelectedPostId,
 } = mapSlice.actions;
