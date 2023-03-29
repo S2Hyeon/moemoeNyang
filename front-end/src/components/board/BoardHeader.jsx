@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReportModal from "../modal/ReportModal";
+import { postFollow, deleteUnFollow } from "../../services/main";
 
 export default function BoardHeader({ onBottom = false, postInfo }) {
   // 모달창 노출 여부 state
@@ -9,6 +10,21 @@ export default function BoardHeader({ onBottom = false, postInfo }) {
   const showModal = () => {
     setModalOpen(true);
   };
+
+  const [isFollowing, setIsFollowing] = useState(postInfo.cat.isFollowing);
+
+  function onClickFollowBtn() {
+    if (isFollowing) {
+      console.log("delete UnFollow");
+      deleteUnFollow(postInfo.cat.cat_id);
+    } else {
+      console.log("post Follow");
+      postFollow(postInfo.cat.cat_id);
+    }
+    setIsFollowing(!isFollowing);
+  }
+
+  useEffect(() => {}, [postInfo.cat.isFollowing]);
 
   if (onBottom) {
     return (
@@ -78,12 +94,14 @@ export default function BoardHeader({ onBottom = false, postInfo }) {
         <div className="flex mr-6 text-center align-baseline">
           {postInfo.cat.isFollowing === null ? (
             <img
+              onClick={onClickFollowBtn}
               className="w-7 h-7 mr-2"
               src="/images/button/Star.png"
               alt="즐겨찾기"
             />
           ) : (
             <img
+              onClick={onClickFollowBtn}
               className="w-7 h-7 mr-2"
               src="/images/button/FillStar.png"
               alt="즐겨찾기"

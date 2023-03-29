@@ -19,8 +19,8 @@ export default function Navbar() {
   const navigateToBoard = () => {
     navigate("/board");
   };
-  const navigateToSymptoms = () => {
-    navigate("/cats/:catId/diseases");
+  const navigateToSymptomRegister = () => {
+    navigate("/symptoms/register");
   };
 
   const navigateToMypage = () => {
@@ -32,7 +32,10 @@ export default function Navbar() {
       <AiOutlineHome className="text-slate-900" onClick={navigateToMain} />
       <RiBookletLine className="text-slate-900" onClick={navigateToCatlist} />
       <BsPencil className="text-slate-900" onClick={navigateToBoard} />
-      <RiHospitalLine className="text-slate-900" onClick={navigateToSymptoms} />
+      <RiHospitalLine
+        className="text-slate-900"
+        onClick={navigateToSymptomRegister}
+      />
       <BsPerson className="text-slate-900" onClick={navigateToMypage} />
     </div>
   );

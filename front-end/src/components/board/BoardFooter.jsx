@@ -59,7 +59,7 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
         <div className="my-2 w-full flex flex-row justify-around">
           {postInfo.tags.map((tag) => {
             return (
-              <div>
+              <div key={tag.name}>
                 <span className="font-bold text-sm" onClick={navigateToWalk}>
                   # {tag.name}
                 </span>

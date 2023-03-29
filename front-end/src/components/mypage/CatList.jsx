@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CatCard from "./CatCard";
-import { getCatList } from "../../services/cats";
+import { getFollowList } from "../../services/mypage";
 import { HiPlusCircle } from "@react-icons/all-files/hi/HiPlusCircle";
 import { useNavigate } from "react-router-dom";
 
@@ -8,12 +8,12 @@ export default function CatList() {
   const [catList, setCatList] = useState([]);
 
   useEffect(() => {
-    getCatList().then((res) => setCatList(res.data));
+    getFollowList().then((res) => setCatList(res.data));
   }, []);
 
   useEffect(() => {
     if (!catList.length) return;
-    console.log("cat list 불러오기");
+    console.log("follow cat list 불러오기");
     console.log(catList);
   }, [catList]);
 
@@ -28,8 +28,8 @@ export default function CatList() {
     <div className="flex flex-wrap pl-4 pr-4">
       {catList.map((cat) => {
         return (
-          <div className="" onClick={() => navigateToCatDetail(cat.cat_id)}>
-            <CatCard catInfo={cat} key={cat.cat_id} />
+          <div key={cat.cat_id} onClick={() => navigateToCatDetail(cat.cat_id)}>
+            <CatCard catInfo={cat} />
           </div>
         );
       })}

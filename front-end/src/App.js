@@ -15,6 +15,7 @@ import BoardHashTag from "./../src/components/board/BoardHashTag.jsx";
 import PrivateRoute from "./router/PrivateRoute";
 import PostBoard from "./pages/board/PostBoard";
 import MyPage from "./pages/mypage/MyPage";
+import ModifyUserInfo from "./pages/mypage/ModifyUserInfo";
 import SymptomsRegister from "./pages/symptom/SymptomsRegister";
 import FeedRegisterPage from "./pages/main/FeedRegisterPage";
 import { ToastContainer } from "react-toastify";
@@ -36,6 +37,7 @@ function App() {
           <Route path="/" element={<PrivateRoute component={<Layout />} />}>
             <Route path="main" element={<MainPage />} />
             <Route path="mypage" element={<MyPage />} />
+            <Route path="mypage/modify" element={<ModifyUserInfo />} />
             <Route path="catlist" element={<CatPage />} />
             <Route path="catregister" element={<CatRegisterPage />} />
             <Route path="cat/:catId" element={<CatDetailPage />} />
