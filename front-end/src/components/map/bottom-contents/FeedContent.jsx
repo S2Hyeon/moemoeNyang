@@ -1,10 +1,72 @@
+<<<<<<< HEAD
 import React from "react";
+=======
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getFeedsList } from "../../../services/map";
+import { typedUseSelector } from "../../../store";
+import { setFeedsList, setSelectedFeed } from "../../../store/mapSlice";
+import timeParser from "../../../utils/timeParser";
+>>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
 import Button from "../../common/Button";
 
 export default function FeedContent() {
   //채팅창디자인 https://codepen.io/robstinson/pen/oNLaLMN
+<<<<<<< HEAD
   return (
     <div>
+=======
+
+  const dispatch = useDispatch();
+  //시작시 스크롤을 가장 아래로 내립니다.
+  const chattingRef = useRef();
+  useEffect(() => {
+    chattingRef.current.scrollTop = chattingRef.current.scrollHeight;
+  }, []);
+
+  const feedsList = typedUseSelector((state) => state.map.feedsList);
+  const selectedFeed = typedUseSelector((state) => state.map.selectedFeed);
+  const [feedTimeMessage, setFeedTimeMessgae] = useState("");
+
+  const universityId = typedUseSelector(
+    (state) => state.member.memberObject.universityId,
+  );
+  const user = typedUseSelector((state) => state.member.memberObject);
+  useEffect(() => {
+    if (feedsList.length) return;
+    getFeedsList(1).then((res) => {
+      dispatch(setFeedsList(res.data));
+      dispatch(setSelectedFeed(res.data[0]));
+    });
+  }, []);
+
+  const onFeedSelect = (element) => {
+    dispatch(setSelectedFeed(element));
+  };
+
+  useEffect(() => {
+    setFeedTimeMessgae(timeParser(selectedFeed.recent_feed_time));
+  }, [selectedFeed]);
+
+  if (!selectedFeed) return <></>;
+  return (
+    <div>
+      <div className="flex 임시로 만든 선택창">
+        {feedsList.map((element, index) => {
+          return (
+            <div
+              className="mr-5"
+              key={element.feedspot_id}
+              onClick={() => {
+                onFeedSelect(element);
+              }}
+            >
+              {element.feedspot_id}
+            </div>
+          );
+        })}
+      </div>
+>>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
       <div className="grid gap-3 w-11/12 mx-auto pt-2">
         <div
           className="FeedSpotInfo  h-32 left-[15.5px] top-[321.5px] rounded-[10px] bg-white flex justify-around py-2"
@@ -17,11 +79,16 @@ export default function FeedContent() {
                 급식소명
               </span>
               <span className="w-52 h-28 text-[10px] text-left text-black">
+<<<<<<< HEAD
                 : 자연과학대
+=======
+                : {selectedFeed.name}
+>>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
               </span>
             </div>
             <div>
               <span className="w-52 h-28 text-[10px] font-bold text-left text-black">
+<<<<<<< HEAD
                 급식소 등록일자
               </span>
               <span className="w-52 h-28 text-[10px] text-left text-black">
@@ -44,6 +111,29 @@ export default function FeedContent() {
               <span className="w-52 h-28 text-xs text-left text-black">
                 자연과학대에서 관리하는 급식소입니다. 매일 오후 2시에
                 급여합니다. 간식은 주지 마세요 ㅠㅠ
+=======
+                최종 배식일
+              </span>
+              <span className="w-52 h-28 text-[10px] text-left text-black">
+                : {feedTimeMessage}
+              </span>
+            </div>
+            {/* <div>
+              <span className="w-52 h-28 text-[10px] font-bold text-left text-black">
+                급식소 설명
+              </span>
+              <span className="w-52 h-28 text-[10px] text-left text-black">
+                : {selectedFeed.}
+              </span>
+            </div> */}
+            <div>
+              <span className="w-52 h-28 text-xs font-bold text-left text-black">
+                급식소 설명
+              </span>
+              <br />
+              <span className="w-52 h-28 text-xs text-left text-black">
+                {selectedFeed.description}
+>>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
               </span>
             </div>
           </div>
@@ -53,7 +143,14 @@ export default function FeedContent() {
           style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
         >
           <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
+<<<<<<< HEAD
             <div className="flex flex-col flex-grow h-0 p-4 overflow-auto">
+=======
+            <div
+              className="flex flex-col flex-grow h-0 p-4 overflow-auto"
+              ref={chattingRef}
+            >
+>>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
               <div className="상대가쓴밥줬어요 flex w-full mt-2 space-x-3 max-w-xs">
                 <div className="pr-5">
                   <div className="text-sm font-bold text-gray-500 leading-none py-1">
