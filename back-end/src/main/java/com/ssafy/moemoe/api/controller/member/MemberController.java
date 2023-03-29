@@ -5,23 +5,28 @@ import com.ssafy.moemoe.api.request.member.UpdateMemberReq;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.api.response.member.MemberActivityResp;
 import com.ssafy.moemoe.api.response.member.MemberDetailResp;
+import com.ssafy.moemoe.api.service.follow.FollowService;
 import com.ssafy.moemoe.api.service.member.SignService;
 import com.ssafy.moemoe.api.service.university.UniversityService;
 import com.ssafy.moemoe.common.util.TokenUtils;
 import com.ssafy.moemoe.db.entity.university.University;
 import io.jsonwebtoken.Claims;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @Slf4j
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/members")
 public class MemberController {
 
@@ -30,15 +35,9 @@ public class MemberController {
 
     private final UniversityService universityService;
     private final SignService signService;
-
+    private final FollowService followService;
     private final TokenUtils tokenUtils;
 
-    @Autowired
-    public MemberController(UniversityService universityService, SignService signService, TokenUtils tokenUtils) {
-        this.universityService = universityService;
-        this.signService =signService;
-        this.tokenUtils = tokenUtils;
-    }
 
     @GetMapping("/badge")
     public ResponseEntity<?> getMemberActivity() {
@@ -86,22 +85,14 @@ public class MemberController {
     }
 
     @GetMapping("/follow-list")
-    public ResponseEntity<?> getMemberFollows() {
+    public ResponseEntity<?> getFollows(HttpServletRequest request) {
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
+        List<CatListResp> follows = followService.getFollows(memberId);
 
-        List<CatListResp> follows = new ArrayList<>();
-
-//        for (int i = 1; i < 5; i++) {
-//            follows.add(CatListResp.builder()
-//                    .cat_id(i)
-//                    .name("뚱냥이")
-//                    .gender("M")
-//                    .image(tiredCatImage)
-//                    .age((int) ((Math.random() * 10000) % 10))
-//                    .follower_cnt((int) ((Math.random() * 10000) % 50))
-//                    .build());
-//        }
-
-        return ResponseEntity.ok(follows);
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("cats", follows);
+        return ResponseEntity.ok(resultMap);
     }
 
 }

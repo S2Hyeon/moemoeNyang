@@ -1,5 +1,6 @@
 package com.ssafy.moemoe.api.service.follow;
 
+import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.follow.Follow;
 import com.ssafy.moemoe.db.entity.member.Member;
@@ -12,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -52,5 +55,22 @@ public class FollowServiceImpl implements FollowService {
         cat.updateFollowCnt(cat.getFollowerCnt() - 1);
         followRepository.deleteById(follow.getFollowId());
         return true;
+    }
+
+    @Override
+    public List<CatListResp> getFollows(UUID memberId) {
+        List<Cat> cats = followRepository.findCatsByMemberId(memberId);
+        List<CatListResp> respList = new ArrayList<>();
+        for (Cat c : cats) {
+            respList.add(CatListResp.builder()
+                    .followerCnt(c.getFollowerCnt())
+                    .age(c.getAge())
+                    .name(c.getName())
+                    .gender(c.getGender())
+                    .catId(c.getCatId())
+                    .image(c.getImage())
+                    .build());
+        }
+        return respList;
     }
 }
