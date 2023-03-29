@@ -1,6 +1,6 @@
 package com.ssafy.moemoe.db.repository.follow;
 
-import com.ssafy.moemoe.db.entity.Follow;
+import com.ssafy.moemoe.db.entity.follow.Follow;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,5 +1,6 @@
-package com.ssafy.moemoe.db.entity;
+package com.ssafy.moemoe.db.entity.follow;
 
+import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.member.Member;
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.ssafy.moemoe.api.request;
+package com.ssafy.moemoe.api.request.cat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
