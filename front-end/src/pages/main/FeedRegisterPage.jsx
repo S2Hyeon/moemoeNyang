@@ -35,7 +35,7 @@ export default function FeedRegisterPage() {
               viewBox="0 0 37 37"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-[37px] h-[37px] relative left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] "
+              className="w-[37px] h-[37px] relative left-1/2 top-1/2 translate-x-[-50%] -y-[-50%] "
               preserveAspectRatio="none"
             >
               <path
