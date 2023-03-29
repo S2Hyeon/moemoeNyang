@@ -21,9 +21,9 @@ const MapPage = () => {
     }
   };
 
-  const { universityId } = typedUseSelector(
-    (state) => state.member?.memberObject,
-  );
+  const { universityId } = typedUseSelector((state) => {
+    return state.member.memberObject;
+  });
 
   const catList = typedUseSelector((state) => state.map.catList);
 
@@ -47,6 +47,13 @@ const MapPage = () => {
     default:
       break;
   }
+
+  /*
+  1. 대학교 정보 불러와서 대학교 위치를 center로 넘겨주기 - 대학교 위치를 넘겨줄 수가 없음. 선택된 고양이의 마지막 게시글을 center로 해야할듯.
+  2. 고양이가 선택되면, 고양이 사진을 마커에 넣기
+  3. 게시글 목록에 있는 위치들을 기반으로 지도 위에 마커 추가하기
+  4. '급식소 Visible'이 켜지면 급식소들의 위치도 마커 추가하기
+  */
 
   return (
     <div onClick={clickOutside}>
