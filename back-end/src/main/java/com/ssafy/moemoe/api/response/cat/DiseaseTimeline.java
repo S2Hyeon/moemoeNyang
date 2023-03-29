@@ -2,7 +2,6 @@ package com.ssafy.moemoe.api.response.cat;
 
 import lombok.Builder;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 public class DiseaseTimeline {

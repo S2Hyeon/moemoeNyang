@@ -2,7 +2,6 @@ package com.ssafy.moemoe.api.response.university;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.ssafy.moemoe.api.controller.university.UniversityController;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
