@@ -125,9 +125,54 @@ export async function deleteEmotion(
   }
 }
 
+interface PostFollowResponse {
+  status: number;
+  data: {
+        "catId": Number,
+  };
+}
+
+export async function postFollow(
+  // 함수의 파라미터로 받을 값의 타입을 정의함
+    catId : number,
+): Promise<PostFollowResponse | undefined> { //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
+  try {
+    const response = await Api.post(`/cats/follow`, {
+            catId : Number,
+        });
+    return response as PostFollowResponse;    //마지막으로 응답객체 response에 타입을 덮어씌워줌
+  } catch (error) {
+    // console.error(error);
+  }
+}
+
+interface DeleteUnFollowResponse {
+  status: number;
+  data: {
+        "catId": Number,
+  };
+}
+
+export async function deleteUnFollow(
+  // 함수의 파라미터로 받을 값의 타입을 정의함
+    catId : number,
+): Promise<DeleteUnFollowResponse | undefined> { //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
+  try {
+    const response = await Api.delete(`/cats/follow/${catId}`);
+    return response as DeleteUnFollowResponse;    //마지막으로 응답객체 response에 타입을 덮어씌워줌
+  } catch (error) {
+    // console.error(error);
+  }
+}
+
+
+
+
 const Main = {
   getMainPostList,
-  patchEmotion,
+    patchEmotion,
+    postFollow,
+    deleteUnFollow,
 };
 
 export default Main;

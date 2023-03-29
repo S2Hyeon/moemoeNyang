@@ -2,31 +2,33 @@ package com.ssafy.moemoe.api.response.cat;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import lombok.Builder;
-import lombok.Getter;
+import com.querydsl.core.annotations.QueryProjection;
+import com.ssafy.moemoe.db.entity.cat.Cat;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@Getter
-@ToString
+@Data
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class CatListResp {
 
-    private long cat_id;
+    private Long catId;
     private String name;
-    private int age;
-    private String gender;
-    private int follower_cnt;
+    private Integer age;
+    private Character gender;
+    private Long followerCnt;
     private String image;
 
-    @Builder
-    public CatListResp(long cat_id, String name, int age, String gender, int follower_cnt, String image) {
-        this.cat_id = cat_id;
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.follower_cnt = follower_cnt;
-        this.image = image;
+    private Long isFollowing;
+
+    @QueryProjection
+    public CatListResp(Cat cat, Long isFollowing) {
+        this.catId = cat.getCatId();
+        this.name = cat.getName();
+        this.age = cat.getAge();
+        this.gender = cat.getGender();
+        this.followerCnt = cat.getFollowerCnt();
+        this.image = cat.getImage();
+        this.isFollowing = isFollowing;
     }
 }

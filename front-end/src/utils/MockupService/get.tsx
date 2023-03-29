@@ -12,7 +12,11 @@ const get = (urls: string, ...rest): Object => {
     },
   };
 
+<<<<<<< HEAD
   switch (url) { 
+=======
+  switch (url) {
+>>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
     case "/auth/check-email":
       res.data = {
         msg: "Y",
@@ -78,6 +82,7 @@ const get = (urls: string, ...rest): Object => {
 
     case "/cat":
       res.data = {
+<<<<<<< HEAD
         "cat_id":1,
         "name":"또롱이",
         "age":1,
@@ -85,6 +90,15 @@ const get = (urls: string, ...rest): Object => {
         "follower_cnt":"3",
         "image":"image"
       }
+=======
+        cat_id: 1,
+        name: "또롱이",
+        age: 1,
+        gender: "male",
+        follower_cnt: "3",
+        image: "image",
+      };
+>>>>>>> 3cc6aa94bafbc731c5de292e8f06125e8cd00e21
 
     default:
       break;

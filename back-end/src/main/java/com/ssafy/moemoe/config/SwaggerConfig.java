@@ -39,7 +39,7 @@ public class SwaggerConfig {
                 .consumes(getConsumeContentTypes())
                 .produces(getProduceContentTypes())
                 .apiInfo(swaggerInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("com.ssafy.interview.api.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.ssafy.moemoe.api.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .useDefaultResponseMessages(false)
@@ -67,7 +67,7 @@ public class SwaggerConfig {
     public static final String AUTHORIZATION_SCOPE_GLOBAL_DESC = "accessEverything";
 
     private ApiKey apiKey() {
-        return new ApiKey(SECURITY_SCHEMA_NAME, "Authorization", "header");
+        return new ApiKey(SECURITY_SCHEMA_NAME, "X-AUTH-TOKEN", "header");
     }
 
     private SecurityContext securityContext() {
