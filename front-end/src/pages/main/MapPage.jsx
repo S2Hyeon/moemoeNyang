@@ -26,12 +26,12 @@ const MapPage = () => {
   );
 
   const catList = typedUseSelector((state) => state.map.catList);
-  useEffect(() => {
-    if (catList.length) return;
+
+  if (!catList.length) {
     getCatList(universityId).then((res) => {
       dispatch(setCatList(res.data));
     });
-  }, []);
+  }
 
   let bottomContent;
   const [mode, setMode] = useState("Feed");
