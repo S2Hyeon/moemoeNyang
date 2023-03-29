@@ -45,6 +45,12 @@ public class BoardLoadResp {
     @ApiModelProperty(name = "Tags")
     private List<TagLoadResp> tags;
 
+    @ApiModelProperty(name = "lat")
+    private Float lat;
+
+    @ApiModelProperty(name = "lng")
+    private Float lng;
+
     @ApiModelProperty(name = "recommend")
     private Long recommend;
 
@@ -72,6 +78,8 @@ public class BoardLoadResp {
         this.catName = cat.getName();
         this.memberNickname = member.getNickname();
         this.boardImage = board.getImage();
+        this.lat = board.getLat();
+        this.lng = board.getLng();
         this.recommend = board.getRecommend();
         this.good = board.getGood();
         this.impressed = board.getImpressed();

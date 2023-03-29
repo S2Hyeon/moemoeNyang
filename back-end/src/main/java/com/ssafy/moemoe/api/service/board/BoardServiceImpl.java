@@ -96,9 +96,9 @@ public class BoardServiceImpl implements BoardService {
     public void updateReaction(UUID member_id, ReactionDetailReq reactionDetailReq) {
         Member member = memberRepository.findById(member_id).orElseThrow(() -> new IllegalArgumentException("해당 유저는 없습니다. id=" + member_id));
         Board board = boardRepository.findById(reactionDetailReq.getBoardId()).orElseThrow(() -> new IllegalArgumentException("해당 게시물은 없습니다. id=" + reactionDetailReq.getBoardId()));
-        String reat = reactionDetailReq.getEmotion();
+        String react = reactionDetailReq.getEmotion();
 
-        switch (reat) {
+        switch (react) {
             case "recommend":
                 board.updateRecommend(board.getRecommend() + 1);
                 break;
@@ -119,7 +119,7 @@ public class BoardServiceImpl implements BoardService {
         }
 
         // Reaction 생성
-        reactionRepository.save(Reaction.builder().reat(reat).board(board).member(member).build());
+        reactionRepository.save(Reaction.builder().react(react).board(board).member(member).build());
     }
 
     @Override

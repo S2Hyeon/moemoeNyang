@@ -16,10 +16,8 @@ import javax.validation.constraints.NotBlank;
 @Builder
 public class ReactionDetailReq {
     @ApiModelProperty(example = "", name = "boardId")
-    @NotBlank(message = "boardId를 확인해주세요.")
     private Long boardId;
 
     @ApiModelProperty(example = "", name = "emotion")
-    @NotBlank(message = "emotion을 확인해주세요.")
     private String emotion;
 }

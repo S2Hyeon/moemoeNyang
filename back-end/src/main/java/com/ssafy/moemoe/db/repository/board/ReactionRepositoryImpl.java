@@ -26,7 +26,7 @@ public class ReactionRepositoryImpl implements ReactionRepositoryCustom {
         Long findDoneId = jpaQueryFactory
                 .select(qReaction.reactionId)
                 .from(qReaction)
-                .where(reatEq(reactionDetailReq.getEmotion()), qReaction.member.memberId.eq(member_id), qReaction.board.boardId.eq(reactionDetailReq.getBoardId()))
+                .where(reactEq(reactionDetailReq.getEmotion()), qReaction.member.memberId.eq(member_id), qReaction.board.boardId.eq(reactionDetailReq.getBoardId()))
                 .fetchOne();
 
         long affectedRows = jpaQueryFactory
@@ -35,8 +35,8 @@ public class ReactionRepositoryImpl implements ReactionRepositoryCustom {
                 .execute();
     }
 
-    private BooleanExpression reatEq(String reat) {
-        return reat.isEmpty() ? null : qReaction.reat.contains(reat);
+    private BooleanExpression reactEq(String react) {
+        return react.isEmpty() ? null : qReaction.react.contains(react);
     }
 
 }

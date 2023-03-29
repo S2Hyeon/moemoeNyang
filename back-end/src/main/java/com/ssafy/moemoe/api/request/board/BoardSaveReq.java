@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Board 생성 API ([POST] /boards) 요청에 필요한 리퀘스트 바디 정의.
@@ -35,4 +36,6 @@ public class BoardSaveReq {
     @ApiModelProperty(example = "", name = "내용")
     @NotNull(message = "content를 확인해주세요.")
     private String content;
+    @ApiModelProperty(example = "", name = "태그 저장 리스트")
+    private List<TagSaveReq> tagSaveList;
 }
