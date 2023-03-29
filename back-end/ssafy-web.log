@@ -6601,6 +6601,7 @@ org.springframework.security.web.firewall.RequestRejectedException: The request 
 2023-03-28 15:44:52.162 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
 2023-03-28 15:44:52.162 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CatListResp(cat_id=1, name=볼록이, age=7, gender=M, follower_cnt=10, image=https://i.ibb.co/9q6ZT22/im (truncated)...]
 2023-03-28 15:44:52.164 DEBUG 3144 --- [http-nio-0.0.0.0-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+<<<<<<< HEAD
 2023-03-28 15:54:44.097  WARN 3144 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m6s330ms360µs).
 2023-03-28 16:32:45.540  WARN 3144 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=30m1s339ms708µs900ns).
 2023-03-28 16:56:41.463  INFO 3144 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
@@ -6645,3 +6646,5 @@ This generated password is for development use only. Your security configuration
 2023-03-29 09:52:24.654  INFO 17544 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-03-29 09:52:24.657  INFO 17544 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-03-29 09:52:24.660  INFO 17544 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+=======
+>>>>>>> 24fb8ca86d6f66e2f8d1cef52a61a47925559f8d

@@ -3,9 +3,11 @@ import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
 import Panel from "../common/Panel";
 import { PostCard } from "../PostCard";
+import { typedUseSelector } from "../../store";
 
-export default function BoardFlick({ isHigh, postList }) {
+export default function BoardFlick() {
   const arr = Array.from({ length: 10 });
+  const postList = typedUseSelector((state) => state.map.postList);
   const [selectedPost, setSelectedPost] = useState(postList[0]);
 
   return (
