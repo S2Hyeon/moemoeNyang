@@ -41,7 +41,8 @@ public class CatServiceImpl implements CatService{
             return false;
 
         LOGGER.info("========insertCat : memberId {}, catInfoReq {}", memberId, catInfoReq);
-        Cat cat = new Cat(catInfoReq, university);
+        String image = "S3로 부터 받아오는 url";
+        Cat cat = new Cat(catInfoReq, university, image);
         catRepository.save(cat);
         return true;
     }
