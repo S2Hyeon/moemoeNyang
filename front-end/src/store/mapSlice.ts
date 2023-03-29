@@ -55,6 +55,7 @@ const initialState = {
     lat: 37.550749,
     lng: 126.941303,
   },
+  selectedPostId: -1,
 };
 
 const mapSlice = createSlice({
@@ -87,6 +88,9 @@ const mapSlice = createSlice({
     ) => {
       state.centerPosition = action.payload;
     },
+    setSelectedPostId: (state, action: { payload: number }) => {
+      state.selectedPostId = action.payload;
+    },
   },
 });
 
@@ -99,4 +103,5 @@ export const {
   setPostList,
   setCatPositions,
   setCenterPosition,
+  setSelectedPostId,
 } = mapSlice.actions;

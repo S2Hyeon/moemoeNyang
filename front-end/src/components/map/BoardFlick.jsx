@@ -21,6 +21,7 @@ export default function BoardFlick() {
       lng,
     };
     setSelectedPost(newPost);
+    dispatch(setSelectedPostId(newPost.boardId));
     dispatch(setCenterPosition(newPosition));
   };
 

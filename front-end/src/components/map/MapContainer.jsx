@@ -10,6 +10,7 @@ export default function MapContainer() {
 
   const catPositions = typedUseSelector((state) => state.map.catPositions);
   const centerPosition = typedUseSelector((state) => state.map.centerPosition);
+  const selectedPostId = typedUseSelector((state) => state.map.selectedPostId);
 
   useEffect(() => {
     dispatch(setCenterPosition(catPositions[0].latlng));
@@ -26,20 +27,26 @@ export default function MapContainer() {
     <div className="MapContainer w-screen h-[90vh]">
       <KakaoMapSdk center={centerPosition} isPanto={true}>
         {catPositions &&
-          catPositions.map((position, index) => (
-            <CustomOverlayMap
-              key={`${index.toString() + "id" + position.boardId}`}
-              position={position.latlng}
-            >
-              <div className="w-[78px] h-[66px]">
-                <img src="/images/map/pin.png" className="object-cover" />
-                <img
-                  src={position.catImage}
-                  className="w-[37px] h-[37px] relative left-1/2 -top-[57%] translate-x-[-50%] translate-y-[-50%] rounded-[54px] object-cover"
-                />
-              </div>
-            </CustomOverlayMap>
-          ))}
+          catPositions.map((position, index) => {
+            let imageUrl = "/images/map/pin.png";
+            if (position.boardId === selectedPostId) {
+              imageUrl = "/images/map/selected-pin.png";
+            }
+            return (
+              <CustomOverlayMap
+                key={`${index.toString() + "id" + position.boardId}`}
+                position={position.latlng}
+              >
+                <div className="w-[78px] h-[66px]">
+                  <img src="/images/map/pin.png" className="object-cover" />
+                  <img
+                    src={position.catImage}
+                    className="w-[37px] h-[37px] relative left-1/2 -top-[57%] translate-x-[-50%] translate-y-[-50%] rounded-[54px] object-cover"
+                  />
+                </div>
+              </CustomOverlayMap>
+            );
+          })}
       </KakaoMapSdk>
     </div>
   );
