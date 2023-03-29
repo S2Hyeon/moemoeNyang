@@ -4,14 +4,21 @@ import "@egjs/react-flicking/dist/flicking.css";
 import Panel from "../common/Panel";
 import { PostCard } from "../PostCard";
 import { typedUseSelector } from "../../store";
-import { setCenterPosition } from "../../store/mapSlice";
+import { setCenterPosition, setSelectedPostId } from "../../store/mapSlice";
 import { useDispatch } from "react-redux";
 
 export default function BoardFlick() {
   const arr = Array.from({ length: 10 });
   const dispatch = useDispatch();
   const postList = typedUseSelector((state) => state.map.postList);
-  const [selectedPost, setSelectedPost] = useState(postList[0]);
+
+  const [selectedPost, setSelectedPost] = useState(() => postList[0]);
+
+  useEffect(() => {
+    if (!selectedPost) return;
+    dispatch(setSelectedPostId(selectedPost.boardId));
+  }, [selectedPost]);
+
   const willChange = (e) => {
     const newPost = postList[e.index];
     const { lat, lng } = newPost;
@@ -21,7 +28,6 @@ export default function BoardFlick() {
       lng,
     };
     setSelectedPost(newPost);
-    dispatch(setSelectedPostId(newPost.boardId));
     dispatch(setCenterPosition(newPosition));
   };
 
