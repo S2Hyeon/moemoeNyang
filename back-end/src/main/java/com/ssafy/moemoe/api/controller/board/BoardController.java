@@ -77,7 +77,7 @@ public class BoardController {
             @ApiResponse(code = 500, message = "서버 오류")
     })
     public ResponseEntity<Page<BoardLoadResp>> searchAllBoard(@RequestParam Long universityId, @RequestParam(required = false) String tagName,
-                                                              @PageableDefault(size = 3) Pageable pageable) {
+                                                              @PageableDefault(size = 20) Pageable pageable) {
 
         return ResponseEntity.status(200).body(boardService.searchAllBoard(universityId, tagName, pageable));
     }
