@@ -1,6 +1,7 @@
 package com.ssafy.moemoe.api.controller.board;
 
 import com.ssafy.moemoe.api.request.board.BoardSaveReq;
+import com.ssafy.moemoe.api.request.board.MultipartFileReq;
 import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardResp;
@@ -19,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -49,12 +51,13 @@ public class BoardController {
     public ResponseEntity<BoardResp> create(
             HttpServletRequest request,
             @RequestBody BoardSaveReq boardSaveReq,
-            @RequestPart @ApiParam(value = "file", required = true) MultipartFile image) throws IOException {
+            @ModelAttribute @Valid MultipartFileReq multipartFileReq) throws IOException {
         Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
 
+        MultipartFile multipartFile = multipartFileReq.getImage();
         //이미지 업로드
-//        String img = s3Uploader.upload(image, "profile");
+//        String img = s3Uploader.upload(, "profile");
 //        logger.info("url >>> " + img);
 
         String img = "url";
@@ -116,6 +119,20 @@ public class BoardController {
         boardService.deleteReaction(memberId, reactionDetailReq);
 
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "게시물 이모지 취소 완료!"));
+    }
+
+    @PostMapping(path = "/disease", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ApiOperation(value = "질병분석 - 피부", notes = "이미지를 전달하여 분석한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 401, message = "인증 실패"),
+            @ApiResponse(code = 404, message = "사용자 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<? extends BaseResponseBody> analysisDisease(
+            @ModelAttribute @Valid MultipartFileReq multipartFileReq) {
+
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "이미지를 전달 완료!"));
     }
 
     //    final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
