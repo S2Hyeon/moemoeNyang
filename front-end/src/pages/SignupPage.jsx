@@ -43,7 +43,7 @@ const SignupPage = () => {
 
     getCheckEmail(debouncedEmail).then((res) => {
       const { msg } = res.data;
-      if (msg === "Y") {
+      if (msg === "N") {
         setErrorMap((prev) => {
           return { ...prev, emailError: "" };
         });

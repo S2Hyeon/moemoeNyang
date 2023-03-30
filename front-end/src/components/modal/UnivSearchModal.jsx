@@ -11,8 +11,10 @@ export default function UnivSearchModal({ setModalOpen, setUniversity }) {
   const debouncedInput = useDebounce(input);
   useEffect(() => {
     if (!debouncedInput) return;
-    getSearchUnivs("debouncedInput").then((res) => {
-      setUnivArray(res.data.universities);
+    getSearchUnivs(debouncedInput).then((res) => {
+      console.log(res);
+      if (res.data.length) return;
+      setUnivArray(res.data);
     });
   }, [debouncedInput]);
 
