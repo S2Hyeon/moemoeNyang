@@ -1,12 +1,13 @@
 package com.ssafy.moemoe.db.entity.disease;
 
 
-import lombok.Builder;
+import lombok.Getter;
 
 import javax.persistence.*;
 
 
 @Entity
+@Getter
 //@Builder
 @Table(name = "disease_list")
 public class Disease {
