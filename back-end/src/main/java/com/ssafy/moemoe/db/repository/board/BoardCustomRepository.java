@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * Board 모델 관련 디비 쿼리 생성을 위한 JPA Query Method 인터페이스 정의.
  */
 @Repository
-public interface BoardRepositoryCustom { // Board 생성 Method
+public interface BoardCustomRepository { // Board 생성 Method
 
     /**
      * 메인페이지 - 게시물 리스트 조회

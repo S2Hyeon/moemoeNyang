@@ -11,7 +11,7 @@ import java.util.Optional;
  * Board 모델 관련 디비 쿼리 생성을 위한 JPA Query Method 인터페이스 정의.
  */
 @Repository
-public interface BoardRepository extends JpaRepository<Board, Long>, BoardRepositoryCustom {
+public interface BoardRepository extends JpaRepository<Board, Long>, BoardCustomRepository {
 
     List<Board> findTop10ByCat_CatIdOrderByCreatedAtDesc(Long catId);
     Optional<Board> findTop1ByCat_CatIdOrderByCreatedAtDesc(Long catId);
