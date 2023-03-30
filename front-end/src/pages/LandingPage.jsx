@@ -4,6 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    //0.5초 후 로그인 화면으로 이동합니다.
+    setTimeout(() => {
+      navigate("/login");
+    }, 500);
+  }, []);
 
   const navigateToMain = () => {
     navigate("/main");
