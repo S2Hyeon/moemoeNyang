@@ -1,6 +1,7 @@
 package com.ssafy.moemoe.api.controller.cat;
 
 import com.ssafy.moemoe.api.request.cat.CatInfoReq;
+import com.ssafy.moemoe.api.request.disease.DiseaseTimelineRegistReq;
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.board.CatDetailBoardResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
@@ -8,8 +9,10 @@ import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseResultResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseTimeline;
 import com.ssafy.moemoe.api.service.cat.CatService;
+import com.ssafy.moemoe.api.service.disease.DiseaseService;
 import com.ssafy.moemoe.common.util.TokenUtils;
 import io.jsonwebtoken.Claims;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,22 +20,17 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/cats")
 public class CatController {
 
     final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
     private final CatService catService;
+    private final DiseaseService diseaseService;
     private final TokenUtils tokenUtils;
-    @Autowired
-    public CatController(CatService catService, TokenUtils tokenUtils) {
-        this.catService = catService;
-        this.tokenUtils = tokenUtils;
-    }
 
     @PostMapping("")
     public ResponseEntity<?> insertCat(HttpServletRequest request, @RequestBody CatInfoReq catInfoReq) {
@@ -102,6 +100,25 @@ public class CatController {
 
         return ResponseEntity.ok(result);
     }
+
+    //질병 검사 결과 등록
+    @PostMapping("/{catId}/disease")
+    public ResponseEntity<?> registDiseaseResult(HttpServletRequest request,
+                                                 @PathVariable Long catId,
+                                                 @RequestBody DiseaseTimelineRegistReq form) {
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
+        Long result = diseaseService.registDiseaseTimeline(memberId, catId, form);
+
+        Map<String, Object> resultMap = new HashMap<>();
+        if (result == null) {
+            resultMap.put("msg","검사 결과가 등록되었습니다.");
+            return ResponseEntity.ok(resultMap);
+        } else {
+            return new ResponseEntity<>("검사 결과 등록에 실패했습니다.", HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
     @GetMapping("/{catId}/diseases")
     public ResponseEntity<?> getDiseaseTimelines(@PathVariable Long catId) {
