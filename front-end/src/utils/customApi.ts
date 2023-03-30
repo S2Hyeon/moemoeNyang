@@ -13,8 +13,11 @@ Api.defaults.withCredentials = true;
 
 Api.interceptors.request.use(
   (config) => {
-    const { Authorization } = getHeaders();
-    config.headers.Authorization = Authorization;
+    // const { Authorization } = getHeaders();
+    // config.headers.Authorization = Authorization;
+    const accessToken = getCookie("accessToken");
+    config.headers["X-AUTH-TOKEN"] = accessToken;
+    console.log(config.headers);
     return config;
   },
   (error) => {
