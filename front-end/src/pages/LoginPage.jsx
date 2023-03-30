@@ -9,6 +9,7 @@ import Button from "../components/common/Button";
 import { useDispatch } from "react-redux";
 import { setMemberObject } from "../store/memberSlice";
 import { typedUseSelector } from "../store";
+import { getUserInfo } from "../services/mypage";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -25,16 +26,36 @@ const LoginPage = () => {
       return AlertWarning("잘못된 이메일입니다.");
     }
     postLogin(email, password).then((res) => {
-      const { access_token, university_id, nickname, email } = res.data;
-      dispatch(
-        setMemberObject({
-          accessToken: access_token,
-          universityId: university_id,
-          nickname: nickname,
-          email: email,
-        }),
-      );
-      setCookie("accessToken", access_token, 180);
+      const accessToken = res.data.token;
+      getUserInfo().then((res) => {
+        dispatch(
+          setMemberObject({
+            accessToken,
+            universityId: res.data.university_id,
+            nickname: res.data.nickname,
+            email: res.data.email,
+          }),
+        );
+
+        /*
+        badge_id: number;
+        email: string | null;
+        member_id: string | null;
+        nickname: string;
+        university_id: number;
+        university_name: string;
+        */
+      });
+      // const { access_token, university_id, nickname, email } = res.data;
+      // dispatch(
+      //   setMemberObject({
+      //     accessToken: access_token,
+      //     universityId: university_id,
+      //     nickname: nickname,
+      //     email: email,
+      //   }),
+      // );
+      // setCookie("accessToken", access_token, 180);
     });
   };
 

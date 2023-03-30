@@ -11,8 +11,9 @@ export default function UnivSearchModal({ setModalOpen, setUniversity }) {
   const debouncedInput = useDebounce(input);
   useEffect(() => {
     if (!debouncedInput) return;
-    getSearchUnivs("debouncedInput").then((res) => {
-      setUnivArray(res.data.universities);
+    getSearchUnivs(debouncedInput).then((res) => {
+      if (!res.data) return;
+      setUnivArray(res.data);
     });
   }, [debouncedInput]);
 
@@ -47,7 +48,7 @@ export default function UnivSearchModal({ setModalOpen, setUniversity }) {
               return (
                 <div
                   className="flex items-baseline mb-1"
-                  key={e.id}
+                  key={e.universityId}
                   onClick={() => {
                     setSelected(e);
                   }}

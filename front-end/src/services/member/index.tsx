@@ -1,13 +1,15 @@
-import { ApiMock } from "../../utils/customApi";
+import Api from "../../utils/customApi";
 import { setCookie } from "../../utils/handleCookies";
 
 interface LoginResponse {
   status: number;
   data: {
-    access_token: string;
-    university_id: number;
-    nickname: string;
-    email: string;
+    token: string;
+    msg: string;
+    // access_token: string;
+    // university_id: number;
+    // nickname: string;
+    // email: string;
   };
 }
 
@@ -18,11 +20,11 @@ export async function postLogin(
 ): Promise<LoginResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
-    const response = (await ApiMock.post("/auth/login", {
+    const response = (await Api.post("/auth/login", {
       email,
       password,
     })) as LoginResponse;
-    const { access_token: accessToken } = response.data;
+    const { token: accessToken } = response.data;
     setCookie("accessToken", accessToken, 3);
     return response as LoginResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
@@ -44,7 +46,7 @@ export async function postSignup(
   university_id: number,
 ): Promise<PostSignupResponse | undefined> {
   try {
-    const response = await ApiMock.post("/auth/sign-up", {
+    const response = await Api.post("/auth/sign-up", {
       email,
       password,
       nickname,
@@ -69,7 +71,7 @@ export async function getCheckEmail(
 ): Promise<CheckEmailResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
-    const response = await ApiMock.get(`/auth/check-email?email=${email}`);
+    const response = await Api.get(`/auth/check-email?email=${email}`);
     return response as CheckEmailResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
     console.error(error);
@@ -77,23 +79,23 @@ export async function getCheckEmail(
 }
 
 export interface University {
-  university_id: number;
+  universityId: number;
   name: string;
   address: string;
+  lat: number;
+  lng: number;
 }
 
 interface GetSearchUnivsResponse {
   status: number;
-  data: {
-    universities: Array<University>;
-  };
+  data: Array<University>;
 }
 
 export async function getSearchUnivs(
   keyword: string,
 ): Promise<GetSearchUnivsResponse> {
   try {
-    const response = await ApiMock.get(`/univs/${keyword}`);
+    const response = await Api.get(`/univs/${keyword}`);
     return response as GetSearchUnivsResponse;
   } catch (error) {
     console.error(error);
@@ -108,7 +110,7 @@ export async function postFindPassword(
   email: string,
 ): Promise<FindPasswordResponse> {
   try {
-    const response = await ApiMock.post(`/auth/find-pwd`, { email });
+    const response = await Api.post(`/auth/find-pwd`, { email });
     return response as FindPasswordResponse;
   } catch (error) {
     console.error(error);
