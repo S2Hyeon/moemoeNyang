@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 export interface MapInfoType {
   lat: number;
   lng: number;
@@ -8,11 +7,11 @@ export interface MapInfoType {
 
 export interface CatType {
   cat_id: Number;
-  name: String;
+  name: string;
   age: Number;
-  gender: String;
+  gender: string;
   follower_cnt: Number;
-  image: String;
+  image: string;
 }
 
 export interface PostType {
@@ -38,6 +37,23 @@ export interface PostType {
   createdAt: string;
 }
 
+export interface FeedType {
+  feedspot_id: number;
+  name: string;
+  description: string;
+  image: string;
+  lat: number;
+  lng: number;
+  recent_feed_time: number;
+  isActive: number;
+}
+
+export interface FeedHistory {
+  member_id: number;
+  nickname: string;
+  created_at: number;
+}
+
 export interface CatPositionType {
   boardId: string;
   catImage: string;
@@ -50,6 +66,9 @@ const initialState = {
   isBottomHigh: false,
   catList: [] as Array<CatType>,
   postList: [] as Array<PostType>,
+  feedsList: [] as Array<FeedType>,
+  selectedFeed: null as FeedType,
+  selectedFeedHistory: null as FeedHistory,
   catPositions: [] as Array<CatPositionType>,
   centerPosition: {
     lat: 37.550749,
@@ -79,6 +98,12 @@ const mapSlice = createSlice({
     setPostList: (state, action: { payload: Array<PostType> }) => {
       state.postList = action.payload;
     },
+    setFeedsList: (state, action: { payload: Array<FeedType> }) => {
+      state.feedsList = action.payload;
+    },
+    setSelectedFeed: (state, action: { payload: FeedType }) => {
+      state.selectedFeed = action.payload;
+    },
     setCatPositions: (state, action: { payload: Array<CatPositionType> }) => {
       state.catPositions = action.payload;
     },
@@ -101,6 +126,8 @@ export const {
   setBottomToggle,
   setCatList,
   setPostList,
+  setFeedsList,
+  setSelectedFeed,
   setCatPositions,
   setCenterPosition,
   setSelectedPostId,
