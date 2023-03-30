@@ -10,7 +10,9 @@ import { useDispatch } from "react-redux";
 export default function BoardFlick() {
   const arr = Array.from({ length: 10 });
   const dispatch = useDispatch();
-  const postList = typedUseSelector((state) => state.map.postList);
+  const postList = typedUseSelector((state) => {
+    return state.map.postList;
+  });
 
   const [selectedPost, setSelectedPost] = useState(() => postList[0]);
 
