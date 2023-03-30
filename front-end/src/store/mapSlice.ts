@@ -69,7 +69,14 @@ const initialState = {
   feedsList: [] as Array<FeedType>,
   selectedFeed: null as FeedType,
   selectedFeedHistory: null as FeedHistory,
-  catPositions: [] as Array<CatPositionType>,
+  catPositions: [
+    {
+      boardId: "noresult",
+      catImage:
+        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdribbble.com%2Ftags%2Fno_results_ui&psig=AOvVaw14gw5CRlJ6FlKhbILGandQ&ust=1680251087766000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCIjnmKudg_4CFQAAAAAdAAAAABAH",
+      latlng: { lat: 37.550749, lng: 126.941303 },
+    },
+  ] as Array<CatPositionType>,
   centerPosition: {
     lat: 37.550749,
     lng: 126.941303,
@@ -105,7 +112,19 @@ const mapSlice = createSlice({
       state.selectedFeed = action.payload;
     },
     setCatPositions: (state, action: { payload: Array<CatPositionType> }) => {
-      state.catPositions = action.payload;
+      //예외처리
+      if (!action.payload.length) {
+        state.catPositions = [
+          {
+            boardId: "noresult",
+            catImage:
+              "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdribbble.com%2Ftags%2Fno_results_ui&psig=AOvVaw14gw5CRlJ6FlKhbILGandQ&ust=1680251087766000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCIjnmKudg_4CFQAAAAAdAAAAABAH",
+            latlng: { lat: 37.550749, lng: 126.941303 },
+          },
+        ];
+      } else {
+        state.catPositions = action.payload;
+      }
     },
     setCenterPosition: (
       state,
