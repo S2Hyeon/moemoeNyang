@@ -85,7 +85,9 @@ interface PostCatRegistResponse {
     "name":String,
     "age":Number,
     "gender":"M"|"F",
-    "image":String // <<< 이부분 게시글이랑 같은거
+    "image": String, // <<< 이부분 게시글이랑 같은거
+    "lat": Number,  // 고양이 등록시 이미지의 메타데이터를 이용해 첫 게시글 작성
+    "lng": Number,
     }
   }
 
@@ -94,7 +96,9 @@ export async function postCatRegist(
   name:String,
   age:Number,
   gender:"M"|"F",
-  image:String
+  image:String,
+  lat:Number,
+  lng:Number,
 ): Promise<PostCatRegistResponse | undefined> {
   try {
     const response = await Api.post("/cats", {
@@ -103,6 +107,8 @@ export async function postCatRegist(
       age,
       gender,
       image,
+      lat,
+      lng,
     });
     return response as PostCatRegistResponse;
   } catch (error) {

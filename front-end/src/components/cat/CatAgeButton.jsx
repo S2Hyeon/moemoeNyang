@@ -4,7 +4,6 @@ function CatAgeButton() {
   const [inputVisible, setInputVisible] = useState(false);
   const [age, setAge] = useState("")
 
-  
   const handleClick = () => {
     setInputVisible(true);
   };
@@ -18,7 +17,7 @@ function CatAgeButton() {
   };
   
   return (
-    <div>
+    <div className="mb-4" style={{ position: "relative", width: "335px", height: "41.79px" }}>
       {inputVisible ? (
         <input
           type="number"

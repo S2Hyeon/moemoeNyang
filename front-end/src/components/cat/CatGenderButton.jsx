@@ -3,14 +3,14 @@ import { useState } from "react";
 // 추후 선택형으로 수정 예정
 function CatGenderButton() {
   const [inputVisible, setInputVisible] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [gender, setGender] = useState("");
   
   const handleClick = () => {
     setInputVisible(true);
   };
   
   const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+    setGender(e.target.value);
   };
   
   const handleInputBlur = () => {
@@ -18,20 +18,45 @@ function CatGenderButton() {
   };
   
   return (
-    <div>
+    <div className="mb-4" style={{ position: "relative", width: "335px", height: "41.79px" }}>
       {inputVisible ? (
         <input
           type="text"
-          placeholder="성별을 입력해 주세요."
-          value={inputValue}
+          placeholder="이름을 입력해 주세요."
+          value={gender}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[335px] pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          style={{ position: "absolute", top: 0, left: 0 }}
         />
       ) : (
-        <button style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }} class="rounded-full w-[335px] h-[41.79px] bg-[#f1ebeb] px-5 py-3 text-base mb-3 font-medium text-black transition duration-200 active:bg-[#e2d5d5]" onClick={handleClick}>{inputValue || "성별"}</button>
+    <div className="flex justify-center items-baseline flex-wrap">
+        <div className="flex ">
+            <button className="text-base  rounded-r-none  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+         
+        bg-gray-100 
+        
+        border duration-200 ease-in-out 
+        border-gray-600 transition">
+                <div className="flex leading-5">
+                    
+                    남아 </div>
+            </button>
+            <button className="text-base  rounded-l-none border-l-0  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+        hover:bg-teal-200  
+        bg-teal-100 
+        
+        border duration-200 ease-in-out 
+        border-teal-600 transition">
+                <div className="flex leading-5">
+                  여아
+                    
+                </div>
+            </button>
+        </div>
+        </div>
       )}
-    </div>
+      </div>
   );
 }
 
