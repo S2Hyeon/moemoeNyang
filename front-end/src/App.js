@@ -39,8 +39,8 @@ function App() {
             <Route path="catregister" element={<CatRegisterPage />} />
             <Route path="cat/id" element={<CatDetailPage />} />
             <Route path="board" element={<PostBoard />} />
-            <Route path="board/hashTag" element={<BoardHashTag />} />
-            <Route path="symptoms" element={<SymptomsPage />} />
+            <Route path="board/:tagName" element={<BoardHashTag />} />
+            <Route path="cats/:catId/diseases" element={<SymptomsPage />} />
             <Route path="symptoms/register" element={<SymptomsRegister />} />
             <Route path="map" element={<MapPage />} />
             <Route path="map/feed" element={<FeedRegisterPage />} />

@@ -10,6 +10,21 @@ export default function BoardHeader({ onBottom = false, postInfo }) {
     setModalOpen(true);
   };
 
+  const [isFollowing, setIsFollowing] = useState(postInfo.cat.isFollowing);
+
+  function onClickFollowBtn() {
+    if (isFollowing) {
+      console.log("delete UnFollow", postInfo.cat.cat_id);
+      deleteUnFollow(postInfo.cat.cat_id);
+    } else {
+      console.log("post Follow", postInfo.cat.cat_id);
+      postFollow(postInfo.cat.cat_id);
+    }
+    setIsFollowing(!isFollowing);
+  }
+
+  useEffect(() => {}, [postInfo.cat.isFollowing]);
+
   if (onBottom) {
     return (
       <div className="header border-b p-2 flex justify-between items-center">

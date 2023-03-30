@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getMainPostList } from "../../../services/main";
+import { getMainBoardList } from "../../../services/main";
 import { typedUseSelector } from "../../../store";
 import { setCatPositions, setPostList } from "../../../store/mapSlice";
 import BoardFlick from "../BoardFlick";
