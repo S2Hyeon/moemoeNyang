@@ -8,7 +8,7 @@ export default function PostBoard() {
       <Dropdown />
       <ImgUpload />
       <div className="grid place-items-center w-full h-10 mt-4 mb-4 bg-lisa-200 rounded-xl">
-        <span className="font-bold text-slate-500">행 동 분 석</span>
+        <span className="font-bold text-slate-500">분 석</span>
       </div>
     </div>
   );

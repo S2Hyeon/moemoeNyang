@@ -15,33 +15,26 @@ export interface CatType {
 }
 
 export interface PostType {
-  board_id: Number;
-  cat: {
-    cat_id: Number;
-    image: string;
-    name: Number;
-  };
-  member: {
-    image: string;
-    nickname: string;
-  };
-  image: Number;
-  tags: [
-    {
-      name: string;
-      rate: Number;
-    },
-  ];
-  emotions: {
-    recommand: Number;
-    good: Number;
-    impressed: Number;
-    sad: Number;
-    angry: Number;
-  };
+  boardId: number;
+  catId: number;
+  catImage: string;
+  catName: string;
+  memberNickname: string;
+  boardImage: number;
+  tags: Array<{
+    name: string;
+    rate: number;
+  }>;
+  lat: number;
+  lng: number;
+  recommand: number;
+  good: number;
+  impressed: number;
+  sad: number;
+  angry: number;
   myEmotion: string;
   content: string;
-  created_at: string;
+  createdAt: string;
 }
 
 export interface FeedType {
@@ -61,6 +54,12 @@ export interface FeedHistory {
   created_at: number;
 }
 
+export interface CatPositionType {
+  boardId: string;
+  catImage: string;
+  latlng: { lat: number; lng: number };
+}
+
 const initialState = {
   mapInfo: null as MapInfoType,
   selectedCat: null as CatType,
@@ -70,6 +69,12 @@ const initialState = {
   feedsList: [] as Array<FeedType>,
   selectedFeed: null as FeedType,
   selectedFeedHistory: null as FeedHistory,
+  catPositions: [] as Array<CatPositionType>,
+  centerPosition: {
+    lat: 37.550749,
+    lng: 126.941303,
+  },
+  selectedPostId: -1,
 };
 
 const mapSlice = createSlice({
@@ -99,6 +104,18 @@ const mapSlice = createSlice({
     setSelectedFeed: (state, action: { payload: FeedType }) => {
       state.selectedFeed = action.payload;
     },
+    setCatPositions: (state, action: { payload: Array<CatPositionType> }) => {
+      state.catPositions = action.payload;
+    },
+    setCenterPosition: (
+      state,
+      action: { payload: { lat: number; lng: number } },
+    ) => {
+      state.centerPosition = action.payload;
+    },
+    setSelectedPostId: (state, action: { payload: number }) => {
+      state.selectedPostId = action.payload;
+    },
   },
 });
 
@@ -111,4 +128,7 @@ export const {
   setPostList,
   setFeedsList,
   setSelectedFeed,
+  setCatPositions,
+  setCenterPosition,
+  setSelectedPostId,
 } = mapSlice.actions;

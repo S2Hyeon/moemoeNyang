@@ -26,7 +26,6 @@ const LoginPage = () => {
     }
     postLogin(email, password).then((res) => {
       const { access_token, university_id, nickname, email } = res.data;
-      const accessToken = member.access_token;
       dispatch(
         setMemberObject({
           accessToken: access_token,
@@ -35,7 +34,7 @@ const LoginPage = () => {
           email: email,
         }),
       );
-      setCookie("accessToken", accessToken, 180);
+      setCookie("accessToken", access_token, 180);
     });
   };
 

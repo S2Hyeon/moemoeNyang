@@ -15,7 +15,6 @@ import BoardHashTag from "./../src/components/board/BoardHashTag.jsx";
 import PrivateRoute from "./router/PrivateRoute";
 import PostBoard from "./pages/board/PostBoard";
 import MyPage from "./pages/mypage/MyPage";
-import ModifyUserInfo from "./pages/mypage/ModifyUserInfo";
 import SymptomsRegister from "./pages/symptom/SymptomsRegister";
 import FeedRegisterPage from "./pages/main/FeedRegisterPage";
 import { ToastContainer } from "react-toastify";
@@ -23,7 +22,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import store, { persistor } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
-import HospitalMap from "./pages/symptom/HospitalMap";
 
 function App() {
   return (
@@ -37,17 +35,15 @@ function App() {
           <Route path="/" element={<PrivateRoute component={<Layout />} />}>
             <Route path="main" element={<MainPage />} />
             <Route path="mypage" element={<MyPage />} />
-            <Route path="mypage/modify" element={<ModifyUserInfo />} />
             <Route path="catlist" element={<CatPage />} />
             <Route path="catregister" element={<CatRegisterPage />} />
-            <Route path="cat/:catId" element={<CatDetailPage />} />
+            <Route path="cat/id" element={<CatDetailPage />} />
             <Route path="board" element={<PostBoard />} />
             <Route path="board/:tagName" element={<BoardHashTag />} />
             <Route path="cats/:catId/diseases" element={<SymptomsPage />} />
             <Route path="symptoms/register" element={<SymptomsRegister />} />
             <Route path="map" element={<MapPage />} />
             <Route path="map/feed" element={<FeedRegisterPage />} />
-            <Route path="map/hospital" element={<HospitalMap />} />
             <Route path="admin" element={<AdminPage />} />
           </Route>
           <Route path="*" element={<NotFound404 />} />

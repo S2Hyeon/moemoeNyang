@@ -2,7 +2,7 @@ import React from "react";
 
 export default function CatCard({ catInfo }) {
   return (
-    <div className="flex flex-col rounded-xl shadow-lg w-[41vw] m-2">
+    <div className="flex flex-col w-2/5 rounded-xl shadow-lg m-4">
       <div className="relative">
         <img
           className="rounded-t-xl w-full h-32"

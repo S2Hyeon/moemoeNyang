@@ -28,7 +28,7 @@ export default function SymptomsRegister() {
         className="grid place-items-center w-full h-10 mt-4 mb-4 bg-lisa-200 rounded-xl"
         onClick={showModal}
       >
-        <span className="font-bold text-slate-500">질 병 분 석</span>
+        <span className="font-bold text-slate-500">분 석</span>
       </div>
       {modalOpen && <Asymptomatic setModalOpen={setModalOpen} />}
     </div>

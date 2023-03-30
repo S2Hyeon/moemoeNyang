@@ -37,8 +37,8 @@ const post = (urls: string, ...rest): Object => {
       res.data = {
         access_token: "엑세스토큰개쩔어",
         nickname: "닉네임개쩔어",
-        email: "eamil@email.com",
         university_id: 1,
+        email: "eamil@email.com",
       };
       break;
 

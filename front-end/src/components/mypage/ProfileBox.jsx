@@ -26,7 +26,7 @@ export default function ProfileBox() {
     <div className="flex items-center relative p-5">
       <img
         className="w-20"
-        src={`/images/badgeImg/cat_regist_cnt_${userInfo.reward_id + 1}.png`}
+        src="/images/badgeImg/cat_1.png"
         alt="대표배지이미지"
       />
       <div className="ml-4">
