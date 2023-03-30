@@ -1,6 +1,7 @@
 package com.ssafy.moemoe.api.service.cat;
 
 import com.ssafy.moemoe.api.request.cat.CatInfoReq;
+import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.db.entity.cat.Cat;
@@ -14,6 +15,8 @@ public interface CatService {
     List<CatListResp> getCats(UUID memberId, Long universityId);
 
     CatDetailResp getCat(UUID memberId, Long catId);
+
+    List<BoardSpotResp> getCatSpots(UUID memberId, Long catId);
 
 
     default CatDetailResp toCatDetailResp(Cat cat, Float lat, Float lng) {
