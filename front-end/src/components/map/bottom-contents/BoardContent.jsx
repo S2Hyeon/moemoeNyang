@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getMainPostList } from "../../../services/main";
+import { getMainBoardList } from "../../../services/main";
 import { typedUseSelector } from "../../../store";
 import { setCatPositions, setPostList } from "../../../store/mapSlice";
 import BoardFlick from "../BoardFlick";
@@ -32,7 +32,7 @@ export default function BoardContent(
   useEffect(() => {
     const args = [universityId, ""];
     if (selectedCatId) args.push(selectedCatId);
-    getMainPostList(...args).then((res) => {
+    getMainBoardList(...args).then((res) => {
       const postList = res.data;
       dispatch(setPostList(postList));
       const positions = postList.map((e) => {

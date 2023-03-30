@@ -2,7 +2,7 @@ import React from "react";
 import BoardFooter from "./board/BoardFooter";
 import BoardHeader from "./board/BoardHeader";
 
-export const PostCard = ({ onBottom = false, postInfo }) => {
+export const PostCard = ({ onBottom = false, postInfo, tagName }) => {
   return (
     <div className="FeedItem">
       <BoardHeader onBottom={onBottom} postInfo={postInfo} />
