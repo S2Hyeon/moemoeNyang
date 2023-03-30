@@ -1,5 +1,6 @@
 package com.ssafy.moemoe.api.request.board;
 
+import com.ssafy.moemoe.db.entity.cat.Cat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -38,4 +39,12 @@ public class BoardSaveReq {
     private String content;
     @ApiModelProperty(example = "", name = "태그 저장 리스트")
     private List<TagSaveReq> tagSaveList;
+
+    public BoardSaveReq(Cat cat, Float lat, Float lng) {
+        this.catId = cat.getCatId();
+        this.universityId = cat.getUniversity().getUniversityId();
+        this.lat = lat;
+        this.lng = lng;
+        this.content = "초기 문구";
+    }
 }

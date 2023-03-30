@@ -16,14 +16,14 @@ import java.util.UUID;
  */
 public interface BoardService {
     // 게시물 생성
-    BoardResp createBoard(UUID member_id, String img, BoardSaveReq boardSaveReq);
+    BoardResp createBoard(UUID memberId, String img, BoardSaveReq boardSaveReq);
 
-    void createTag(Long board_id, List<TagSaveReq> tagSaveReqs);
+    void createTag(Long boardId, List<TagSaveReq> tagSaveReqs);
 
-    Page<BoardLoadResp> searchAllBoard(Long universityId, String tagName, Pageable pageable);
+    Page<BoardLoadResp> searchAllBoard(UUID memberId, Long universityId, String tagName, Pageable pageable);
 
     // 이모지 달기
-    void updateReaction(UUID member_id, ReactionDetailReq reactionDetailReq);
+    void updateReaction(UUID memberId, ReactionDetailReq reactionDetailReq);
 
     // 이모지 취소
     void deleteReaction(UUID member_id, ReactionDetailReq reactionDetailReq);
