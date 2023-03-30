@@ -33,7 +33,7 @@ export default function BoardContent(
     const args = [universityId, ""];
     if (selectedCatId) args.push(selectedCatId);
     getMainBoardList(...args).then((res) => {
-      const postList = res.data;
+      const postList = res.data.content;
       dispatch(setPostList(postList));
       const positions = postList.map((e) => {
         return {
