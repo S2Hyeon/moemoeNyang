@@ -4,10 +4,12 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.querydsl.core.annotations.QueryProjection;
 import com.ssafy.moemoe.db.entity.cat.Cat;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class CatListResp {
@@ -20,6 +22,18 @@ public class CatListResp {
     private String image;
 
     private Long isFollowing;
+
+    @Builder
+    public CatListResp(Long catId, String name, Integer age, Character gender, Long followerCnt, String image, Long isFollowing) {
+        this.catId = catId;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.followerCnt = followerCnt;
+        this.image = image;
+        this.isFollowing = isFollowing;
+    }
+
 
     @QueryProjection
     public CatListResp(Cat cat, Long isFollowing) {
