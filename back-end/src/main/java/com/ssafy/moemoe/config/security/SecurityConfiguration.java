@@ -44,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 여기서 token이 필요없는 요청들을 정의할 수 있음.
                  */
                 .antMatchers("/auth/**").permitAll() // 가입 및 로그인 주소는 허용
+                .antMatchers("/univs/**").permitAll() // 대학교 관련 요청은 허용
                 .antMatchers(HttpMethod.GET, "/product/**").permitAll() // product로 시작하는 Get 요청은 허용
 
                 .antMatchers("**exception**").permitAll()
