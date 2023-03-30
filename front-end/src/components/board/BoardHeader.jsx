@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReportModal from "../modal/ReportModal";
+import { deleteUnFollow, postFollow } from "../../services/main";
 
 export default function BoardHeader({ onBottom = false, postInfo }) {
   // 모달창 노출 여부 state

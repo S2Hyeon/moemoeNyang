@@ -32,7 +32,7 @@ export default function BoardContent(
   useEffect(() => {
     const args = [universityId, ""];
     if (selectedCatId) args.push(selectedCatId);
-    getMainPostList(...args).then((res) => {
+    getMainBoardList(...args).then((res) => {
       const postList = res.data;
       dispatch(setPostList(postList));
       const positions = postList.map((e) => {

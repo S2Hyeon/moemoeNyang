@@ -40,7 +40,7 @@ interface PostListResponse {
   };
 }
 */
-interface PostListResponse {
+interface GetBoardListResponse {
   status: number;
   data: {
     content: Array<PostType>;
@@ -96,7 +96,7 @@ interface PatchEmotionResponse {
   };
 }
 
-export async function patchEmotion(): Promise<
+export async function patchEmotion(
   // 함수의 파라미터로 받을 값의 타입을 정의함
   boardId: Number,
   emotion: String,
