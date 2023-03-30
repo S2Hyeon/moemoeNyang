@@ -2,14 +2,21 @@ import Api from "../../utils/customApi";
 
 interface GetUserInfoResponse {
   status: number;
+  // data: {
+  //   "nickname":String,
+  //   "university_name":String
+  // };
   data: {
-    "nickname":String,
-    "university_name":String
+    badge_id: number;
+    email: string | null;
+    member_id: string | null;
+    nickname: string;
+    university_id: number;
+    university_name: string;
   };
 }
 
-export async function getUserInfo(
-): Promise<GetUserInfoResponse | undefined> {
+export async function getUserInfo(): Promise<GetUserInfoResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
     const response = await Api.get("/members");
@@ -22,9 +29,9 @@ export async function getUserInfo(
 interface PostUserInfoResponse {
   status: number;
   data: {
-    "nickname":String,
-    "university_id":Number,
-    "password":String,
+    nickname: String;
+    university_id: Number;
+    password: String;
   };
 }
 
@@ -48,20 +55,21 @@ export async function postUserInfo(
 interface GetUserBadgeResponse {
   status: number;
   data: {
-    "user_activitis":{
-      "feed_cnt":Number,
-      "post_cnt":Number,
-      "cat_regist_cnt":Number,
-      "react_cnt":Number,
-      "disease_regist_cnt":Number,
-      "report_cnt":Number,
-      "login_days_cnt":Number,
-    }
+    user_activitis: {
+      feed_cnt: Number;
+      post_cnt: Number;
+      cat_regist_cnt: Number;
+      react_cnt: Number;
+      disease_regist_cnt: Number;
+      report_cnt: Number;
+      login_days_cnt: Number;
+    };
   };
 }
 
-export async function getUserBadge(
-): Promise<GetUserBadgeResponse | undefined> {
+export async function getUserBadge(): Promise<
+  GetUserBadgeResponse | undefined
+> {
   try {
     const response = await Api.post("/members/badge");
     return response as GetUserBadgeResponse;
@@ -70,9 +78,8 @@ export async function getUserBadge(
   }
 }
 
-
 const User = {
-  getUserInfo, 
+  getUserInfo,
   postUserInfo,
   getUserBadge,
 };
