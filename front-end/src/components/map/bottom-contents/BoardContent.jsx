@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getMainPostList } from "../../../services/main";
 import { typedUseSelector } from "../../../store";
-import { setPostList } from "../../../store/mapSlice";
+import { setCatPositions, setPostList } from "../../../store/mapSlice";
 import BoardFlick from "../BoardFlick";
 import TopFlick from "../TopFlick";
 
@@ -33,7 +33,16 @@ export default function BoardContent(
     const args = [universityId, ""];
     if (selectedCatId) args.push(selectedCatId);
     getMainPostList(...args).then((res) => {
-      dispatch(setPostList(res.data));
+      const postList = res.data;
+      dispatch(setPostList(postList));
+      const positions = postList.map((e) => {
+        return {
+          boardId: e.board_id,
+          catImage: e.cat.image,
+          latlng: { lat: e.lat, lng: e.lng },
+        };
+      });
+      dispatch(setCatPositions(positions));
     });
   }, [selectedCatId]);
 
