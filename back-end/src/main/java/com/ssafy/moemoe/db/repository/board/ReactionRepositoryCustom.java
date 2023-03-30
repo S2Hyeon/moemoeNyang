@@ -20,4 +20,12 @@ public interface ReactionRepositoryCustom {
      */
     void deleteReation(UUID member_id, ReactionDetailReq reactionDetailReq);
 
+    /**
+     * 게시물의 이모지 등록한지 체크
+     *
+     * @param memberId
+     * @param boardId
+     */
+    String checkReation(UUID memberId, Long boardId);
+
 }

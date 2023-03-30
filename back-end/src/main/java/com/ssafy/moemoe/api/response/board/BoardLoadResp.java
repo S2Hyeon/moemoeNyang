@@ -66,6 +66,12 @@ public class BoardLoadResp {
     @ApiModelProperty(name = "angry")
     private Long angry;
 
+    @ApiModelProperty(name = "myEmotion")
+    private String myEmotion;
+
+    @ApiModelProperty(name = "content")
+    private String content;
+
     @ApiModelProperty(name = "createdAt")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private LocalDateTime createdAt;
@@ -85,6 +91,7 @@ public class BoardLoadResp {
         this.impressed = board.getImpressed();
         this.sad = board.getSad();
         this.angry = board.getAngry();
+        this.content = board.getContent();
         this.createdAt = board.getCreatedAt();
     }
 }

@@ -35,6 +35,15 @@ public class ReactionRepositoryImpl implements ReactionRepositoryCustom {
                 .execute();
     }
 
+    @Override
+    public String checkReation(UUID memberId, Long boardId) {
+        return jpaQueryFactory
+                .select(qReaction.react)
+                .from(qReaction)
+                .where(qReaction.member.memberId.eq(memberId), qReaction.board.boardId.eq(boardId))
+                .fetchOne();
+    }
+
     private BooleanExpression reactEq(String react) {
         return react.isEmpty() ? null : qReaction.react.contains(react);
     }

@@ -35,18 +35,12 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class BoardServiceImpl implements BoardService {
-    @Autowired
-    BoardRepository boardRepository;
-    @Autowired
-    TagRepository tagRepository;
-    @Autowired
-    MemberRepository memberRepository;
-    @Autowired
-    UniversityRepository universityRepository;
-    @Autowired
-    ReactionRepository reactionRepository;
-    @Autowired
-    CatRepository catRepository;
+    private final BoardRepository boardRepository;
+    private final TagRepository tagRepository;
+    private final MemberRepository memberRepository;
+    private final UniversityRepository universityRepository;
+    private final ReactionRepository reactionRepository;
+    private final CatRepository catRepository;
 
     @Override
     @Transactional
@@ -65,8 +59,8 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
-    public void createTag(Long board_id, List<TagSaveReq> tagSaveReqs) {
-        Board board = boardRepository.findById(board_id).orElseThrow(() -> new IllegalArgumentException("해당 게시물은 없습니다. id=" + board_id));
+    public void createTag(Long boardId, List<TagSaveReq> tagSaveReqs) {
+        Board board = boardRepository.findById(boardId).orElseThrow(() -> new IllegalArgumentException("해당 게시물은 없습니다. id=" + boardId));
 
         List<Tag> tags = new ArrayList<>();
 
@@ -80,11 +74,12 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Page<BoardLoadResp> searchAllBoard(Long universityId, String tagName, Pageable pageable) {
+    public Page<BoardLoadResp> searchAllBoard(UUID memberId, Long universityId, String tagName, Pageable pageable) {
         Page<BoardLoadResp> page = boardRepository.findBoardByIdAndTag(universityId, tagName, pageable);
         List<BoardLoadResp> list = page.getContent();
 
         for (BoardLoadResp cur : list) {
+            cur.setMyEmotion(reactionRepository.checkReation(memberId, cur.getBoardId()));
             cur.setTags(tagRepository.findByBoardId(cur.getBoardId()));
         }
 
@@ -93,8 +88,8 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
-    public void updateReaction(UUID member_id, ReactionDetailReq reactionDetailReq) {
-        Member member = memberRepository.findById(member_id).orElseThrow(() -> new IllegalArgumentException("해당 유저는 없습니다. id=" + member_id));
+    public void updateReaction(UUID memberId, ReactionDetailReq reactionDetailReq) {
+        Member member = memberRepository.findById(memberId).orElseThrow(() -> new IllegalArgumentException("해당 유저는 없습니다. id=" + memberId));
         Board board = boardRepository.findById(reactionDetailReq.getBoardId()).orElseThrow(() -> new IllegalArgumentException("해당 게시물은 없습니다. id=" + reactionDetailReq.getBoardId()));
         String react = reactionDetailReq.getEmotion();
 
@@ -124,7 +119,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional
-    public void deleteReaction(UUID member_id, ReactionDetailReq reactionDetailReq) {
+    public void deleteReaction(UUID memberId, ReactionDetailReq reactionDetailReq) {
         Board board = boardRepository.findById(reactionDetailReq.getBoardId()).orElseThrow(() -> new IllegalArgumentException("해당 게시물은 없습니다. id=" + reactionDetailReq.getBoardId()));
         String reat = reactionDetailReq.getEmotion();
 
@@ -149,7 +144,7 @@ public class BoardServiceImpl implements BoardService {
         }
 
         // 해당 이모지 삭제
-        reactionRepository.deleteReation(member_id, reactionDetailReq);
+        reactionRepository.deleteReation(memberId, reactionDetailReq);
     }
 
 }
