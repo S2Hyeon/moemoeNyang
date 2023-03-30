@@ -7,6 +7,7 @@ import com.ssafy.moemoe.api.response.feedspot.FeedSpotMessageResp;
 import com.ssafy.moemoe.api.service.feedspot.FeedSpotService;
 import com.ssafy.moemoe.common.util.TokenUtils;
 import io.jsonwebtoken.Claims;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/feedspots")
 public class FeedSpotController {
 
@@ -28,10 +30,6 @@ public class FeedSpotController {
     private final FeedSpotService feedSpotService;
     private final TokenUtils tokenUtils;
 
-    public FeedSpotController(FeedSpotService feedSpotService, TokenUtils tokenUtils) {
-        this.feedSpotService = feedSpotService;
-        this.tokenUtils = tokenUtils;
-    }
 
 
     @PostMapping("/feedspots")
