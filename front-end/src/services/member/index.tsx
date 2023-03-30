@@ -4,10 +4,12 @@ import { setCookie } from "../../utils/handleCookies";
 interface LoginResponse {
   status: number;
   data: {
-    access_token: string;
-    university_id: number;
-    nickname: string;
-    email: string;
+    token: string;
+    msg: string;
+    // access_token: string;
+    // university_id: number;
+    // nickname: string;
+    // email: string;
   };
 }
 
@@ -22,7 +24,7 @@ export async function postLogin(
       email,
       password,
     })) as LoginResponse;
-    const { access_token: accessToken } = response.data;
+    const { token: accessToken } = response.data;
     setCookie("accessToken", accessToken, 3);
     return response as LoginResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
@@ -77,9 +79,11 @@ export async function getCheckEmail(
 }
 
 export interface University {
-  university_id: number;
+  universityId: number;
   name: string;
   address: string;
+  lat: number;
+  lng: number;
 }
 
 interface GetSearchUnivsResponse {

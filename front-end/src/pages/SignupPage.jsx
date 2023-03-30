@@ -141,7 +141,7 @@ const SignupPage = () => {
     else if (
       email &&
       nickname &&
-      university.university_id &&
+      university.universityId &&
       password &&
       passwordConfirm
     ) {
@@ -151,10 +151,13 @@ const SignupPage = () => {
 
   const onSubmit = () => {
     if (!canSubmit) return;
-    postSignup(email, password, nickname, university.university_id).then(() => {
-      AlertSuccess("회원가입에 성공하였습니다.");
-      navigate("/login");
-    });
+    postSignup(email, password, nickname, university.universityId).then(
+      (res) => {
+        console.log(res);
+        AlertSuccess("회원가입에 성공하였습니다.");
+        navigate("/login");
+      },
+    );
   };
 
   return (
