@@ -39,7 +39,6 @@ const post = (urls: string, ...rest): Object => {
         nickname: "닉네임개쩔어",
         university_id: 1,
         email: "eamil@email.com",
-        university_id: 1,
       };
       break;
 
