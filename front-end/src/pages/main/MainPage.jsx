@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { PostCard } from "../../components/PostCard";
-import { getMainPostList } from "../../services/main";
+import { getMainBoardList } from "../../services/main";
 
 const MainPage = () => {
   const [postList, setPostList] = useState([]);
 
   useEffect(() => {
-    getMainPostList().then((res) => setPostList(res.data));
+    getMainBoardList().then((res) => setPostList(res.data));
   }, []);
 
   useEffect(() => {

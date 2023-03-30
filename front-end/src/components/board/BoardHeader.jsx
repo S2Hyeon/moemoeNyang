@@ -15,10 +15,10 @@ export default function BoardHeader({ onBottom = false, postInfo }) {
 
   function onClickFollowBtn() {
     if (isFollowing) {
-      console.log("delete UnFollow");
+      console.log("delete UnFollow", postInfo.cat.cat_id);
       deleteUnFollow(postInfo.cat.cat_id);
     } else {
-      console.log("post Follow");
+      console.log("post Follow", postInfo.cat.cat_id);
       postFollow(postInfo.cat.cat_id);
     }
     setIsFollowing(!isFollowing);
