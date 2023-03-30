@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface MemberType {
   accessToken: string;
+  memberId: number;
   universityId: number;
   nickname: string;
   email: string;

@@ -153,7 +153,6 @@ const SignupPage = () => {
     if (!canSubmit) return;
     postSignup(email, password, nickname, university.universityId).then(
       (res) => {
-        console.log(res);
         AlertSuccess("회원가입에 성공하였습니다.");
         navigate("/login");
       },
