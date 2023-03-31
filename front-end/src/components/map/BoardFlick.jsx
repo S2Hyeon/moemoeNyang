@@ -25,8 +25,7 @@ export default function BoardFlick() {
     const newPost = postList[e.index];
     const { lat, lng } = newPost;
     const newPosition = {
-      //작은 화면에서 가운데 정렬을 못하겠어서 하드코딩해버림
-      lat: lat - 0.0024,
+      lat: lat,
       lng,
     };
     setSelectedPost(newPost);

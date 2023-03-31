@@ -22,10 +22,14 @@ export default function MapContainer() {
   //   latlng.lat = latlng.lat + Math.random() / 1000;
   //   dispatch(setCenterPosition(latlng));
   // }, [catPositions]);
-
+  const isHigh = typedUseSelector((state) => state.map.isBottomHigh);
   return (
-    <div className="MapContainer w-screen h-[90vh]">
-      <KakaoMapSdk center={centerPosition} isPanto={true}>
+    <div className={`MapContainer w-screen h-[90vh]`}>
+      <KakaoMapSdk
+        center={centerPosition}
+        isPanto={true}
+        className={isHigh ? "w-full h-2/5" : "w-full h-5/6"}
+      >
         {catPositions &&
           catPositions.map((position, index) => {
             let imageUrl = "/images/map/pin.png";
