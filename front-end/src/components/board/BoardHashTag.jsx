@@ -9,7 +9,7 @@ export default function BoardHashTag() {
   const [tagList, setTagList] = useState([]);
 
   useEffect(() => {
-    getMainBoardList(tagName).then((res) => setTagList(res.data.content));
+    getMainBoardList(tagName).then((res) => setTagList(res.data));
   }, []);
 
   useEffect(() => {

@@ -7,7 +7,7 @@ const MainPage = () => {
 
   useEffect(() => {
     getMainBoardList().then((res) => {
-      setPostList(res.data.content);
+      setPostList(res.data);
     });
   }, []);
 
