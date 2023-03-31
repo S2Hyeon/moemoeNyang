@@ -1,4 +1,5 @@
 // import { ApiMock } from "../../utils/customApi"; //목업 API를 불러옴
+import { typedUseSelector } from "../../store";
 import Api from "../../utils/customApi"; // 목업 API가 아닌 찐 API 쓸 때
 
 /* --------타입스크립트를 사용하는 경우-------- */
@@ -13,7 +14,8 @@ interface CatListResponse {
       "age":Number,
       "gender":String,
       "follower_cnt":Number,
-      "image":String
+      "image":String,
+      "is_following":Number // 숫자이면 팔로잉중, null이면 팔로잉중이 아님
     }>
 	}
 }
@@ -23,7 +25,7 @@ export async function getCatList(
   universityId: Number,
 ): Promise<CatListResponse | undefined> { //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
-    const response = await Api.get("/cats?universityId=12");
+    const response = await Api.get(`/cats?universityId=${universityId}`);
     // console.log(JSON.stringify(response))
     return response as CatListResponse;    //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {

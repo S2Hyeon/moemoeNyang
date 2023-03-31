@@ -11,7 +11,7 @@ interface GetDiseaseResponse {
   };
 }
 
-export async function getDeisease(
+export async function getDisease(
 ): Promise<GetDiseaseResponse | undefined> {
   try {
     const response = await Api.get("/cats/12/disease");
@@ -41,7 +41,7 @@ interface GetDiseaseListResponse {
   };
 }
 
-export async function getDeiseaseList(
+export async function getDiseaseList(
 ): Promise<GetDiseaseListResponse | undefined> {
   try {
     const response = await Api.get("/cats/4/diseases");
@@ -53,8 +53,8 @@ export async function getDeiseaseList(
 
 
 const Symptom = {
-  getDeisease,
-  getDeiseaseList,
+  getDisease,
+  getDiseaseList,
 };
 
 export default Symptom;
