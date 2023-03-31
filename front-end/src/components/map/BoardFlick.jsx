@@ -18,7 +18,7 @@ export default function BoardFlick() {
 
   useEffect(() => {
     if (!selectedPost) return;
-    dispatch(setSelectedPostId(selectedPost.boardId));
+    dispatch(setSelectedPostId(selectedPost.board_id));
   }, [selectedPost]);
 
   const willChange = (e) => {

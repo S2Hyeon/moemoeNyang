@@ -133,6 +133,7 @@ const mapSlice = createSlice({
       state.centerPosition = action.payload;
     },
     setSelectedPostId: (state, action: { payload: number }) => {
+      console.log(action.payload);
       state.selectedPostId = action.payload;
     },
   },
