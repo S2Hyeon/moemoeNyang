@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Board 전체 정보 조회 API ([GET] /) 요청에 대한 응답값 정의.
@@ -34,7 +35,7 @@ public class BoardLoadResp {
     private MemberDetailResp member;
 
     @ApiModelProperty(name = "Tags")
-    private TagResp tags;
+    private List<TagLoadResp> tags;
 
     @ApiModelProperty(name = "lat")
     private Float lat;

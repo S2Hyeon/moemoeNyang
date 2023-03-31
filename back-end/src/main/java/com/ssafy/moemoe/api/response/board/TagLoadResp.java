@@ -25,14 +25,14 @@ public class TagLoadResp {
     private String name;
     @ApiModelProperty(name = "rate")
     private Float rate;
-    @ApiModelProperty(name = "board")
-    private Board board;
+    @ApiModelProperty(name = "board_id")
+    private Long boardId;
 
     @QueryProjection
     public TagLoadResp(Tag tag) {
         this.tagId = tag.getTagId();
         this.name = tag.getName();
         this.rate = tag.getRate();
-        this.board = tag.getBoard();
+        this.boardId = tag.getBoard().getBoardId();
     }
 }

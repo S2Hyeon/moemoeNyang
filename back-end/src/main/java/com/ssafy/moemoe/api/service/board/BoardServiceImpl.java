@@ -86,7 +86,7 @@ public class BoardServiceImpl implements BoardService {
         List<BoardLoadResp> list = page.getContent();
 
         for (BoardLoadResp cur : list) {
-            cur.setTags(new TagResp((Tag) tagRepository.findByBoardId(cur.getBoardId())));
+            cur.setTags(tagRepository.findByBoardId(cur.getBoardId()));
         }
 
         return page;
