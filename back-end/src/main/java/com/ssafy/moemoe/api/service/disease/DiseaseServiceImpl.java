@@ -1,10 +1,11 @@
 package com.ssafy.moemoe.api.service.disease;
 
 import com.ssafy.moemoe.api.request.disease.DiseaseTimelineRegistReq;
+import com.ssafy.moemoe.api.response.cat.DiseaseTimelineResp;
+import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.disease.Disease;
 import com.ssafy.moemoe.db.entity.disease.DiseaseTimeline;
 import com.ssafy.moemoe.db.entity.member.Member;
-import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.repository.cat.CatRepository;
 import com.ssafy.moemoe.db.repository.disease.DiseaseRepository;
 import com.ssafy.moemoe.db.repository.disease.DiseaseTimelineRepository;
@@ -12,6 +13,7 @@ import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,7 +39,12 @@ public class DiseaseServiceImpl implements DiseaseService{
     }
 
     @Override
-    public List<DiseaseTimeline> getDiseaseTimelines(Long catId) {
-        return null;
+    public List<DiseaseTimelineResp> getDiseaseTimelines(Long catId) {
+        List<DiseaseTimeline> timelines = diseaseTimelineRepository.findByCat_CatId(catId);
+        List<DiseaseTimelineResp> resps = new ArrayList<>();
+        for (DiseaseTimeline t : timelines) {
+            resps.add(new DiseaseTimelineResp(t));
+        }
+        return resps;
     }
 }

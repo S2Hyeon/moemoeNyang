@@ -7,13 +7,12 @@ import com.ssafy.moemoe.api.response.board.CatDetailBoardResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseResultResp;
-import com.ssafy.moemoe.api.response.cat.DiseaseTimeline;
+import com.ssafy.moemoe.api.response.cat.DiseaseTimelineResp;
 import com.ssafy.moemoe.api.service.cat.CatService;
 import com.ssafy.moemoe.api.service.disease.DiseaseService;
 import com.ssafy.moemoe.common.util.TokenUtils;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -92,7 +91,7 @@ public class CatController {
     public ResponseEntity<?> getDiseaseResult(@PathVariable Long catId) {
 
         DiseaseResultResp result = DiseaseResultResp.builder()
-                .disease_id(1)
+                .diseaseId(1)
                 .name("엄청 아픈 병")
                 .explanation("엄청 아프니까 빨리 병원을 데려가세요. 병원에 데려갈 때는 조심히 들고 가주세요. 아프니까요.")
                 .image(tiredCatImage)
@@ -108,41 +107,23 @@ public class CatController {
                                                  @RequestBody DiseaseTimelineRegistReq form) {
         Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
-        Long result = diseaseService.registDiseaseTimeline(memberId, catId, form);
+        diseaseService.registDiseaseTimeline(memberId, catId, form);
 
         Map<String, Object> resultMap = new HashMap<>();
-        if (result == null) {
-            resultMap.put("msg","검사 결과가 등록되었습니다.");
-            return ResponseEntity.ok(resultMap);
-        } else {
-            return new ResponseEntity<>("검사 결과 등록에 실패했습니다.", HttpStatus.BAD_REQUEST);
-        }
+        resultMap.put("msg","검사 결과가 등록되었습니다.");
+        return ResponseEntity.ok(resultMap);
     }
 
 
     @GetMapping("/{catId}/diseases")
     public ResponseEntity<?> getDiseaseTimelines(@PathVariable Long catId) {
 
-        DiseaseResultResp disease = DiseaseResultResp.builder()
-                .disease_id(1)
-                .name("엄청 아픈 병")
-                .explanation("엄청 아프니까 빨리 병원을 데려가세요. 병원에 데려갈 때는 조심히 들고 가주세요. 아프니까요.")
-                .image(tiredCatImage)
-                .build();
+        List<DiseaseTimelineResp> diseases = diseaseService.getDiseaseTimelines(catId);
 
-        List<DiseaseTimeline> diseaseTimelines = new ArrayList<>();
-        for (int i = 1; i <= 6; i++) {
-            diseaseTimelines.add(DiseaseTimeline.builder()
-                            .disease_timeline_id(i)
-                            .created_at(LocalDateTime.now())
-                            .image(tiredCatImage)
-                            .nickname("노찌노찌")
-                            .member_id(1)
-                            .disease(disease)
-                            .build());
-        }
 
-        return ResponseEntity.ok(diseaseTimelines);
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("diseases",diseases);
+        return ResponseEntity.ok(resultMap);
     }
 
     @GetMapping("/{catId}/spot")
