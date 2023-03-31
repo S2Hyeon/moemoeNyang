@@ -10,6 +10,8 @@ import com.ssafy.moemoe.api.service.cat.CatService;
 import com.ssafy.moemoe.common.util.TokenUtils;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +24,15 @@ import java.util.*;
 @RequiredArgsConstructor
 @RequestMapping("/cats")
 public class CatController {
+
+    private final Logger LOGGER = LoggerFactory.getLogger(CatController.class);
     final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
     private final CatService catService;
     private final TokenUtils tokenUtils;
 
     @PostMapping("")
-    public ResponseEntity<?> insertCat(HttpServletRequest request, @RequestBody CatInfoReq catInfoReq) {
+    public ResponseEntity<?> insertCat(HttpServletRequest request, @ModelAttribute CatInfoReq catInfoReq) {
+        LOGGER.info("=========================insertCat===================================");
         Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
 

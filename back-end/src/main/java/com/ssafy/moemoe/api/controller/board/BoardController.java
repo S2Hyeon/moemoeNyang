@@ -5,18 +5,14 @@ import com.ssafy.moemoe.api.request.board.MultipartFileReq;
 import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardResp;
-//import com.ssafy.moemoe.api.service.S3Uploader;
 import com.ssafy.moemoe.api.service.board.BoardService;
 import com.ssafy.moemoe.common.model.BaseResponseBody;
 import com.ssafy.moemoe.common.util.TokenUtils;
 import io.jsonwebtoken.Claims;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,12 +33,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @RequestMapping("/boards")
 public class BoardController {
-    private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
     private final BoardService boardService;
     private final TokenUtils tokenUtils;
 
-    //    @Autowired
-//    S3Uploader s3Uploader;
     @PostMapping
     @ApiOperation(value = "게시물 등록", notes = "<strong>image, BoardSaveReq, TagSaveReq</strong>를 통해 게시물을 생성 한다.")
     @ApiResponses({
@@ -53,18 +46,17 @@ public class BoardController {
     })
     public ResponseEntity<BoardResp> create(
             HttpServletRequest request,
-            @RequestBody BoardSaveReq boardSaveReq,
-            @ModelAttribute @Valid MultipartFileReq multipartFileReq) throws IOException {
+            @ModelAttribute BoardSaveReq boardSaveReq) {
         Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
 
-        MultipartFile multipartFile = multipartFileReq.getImage();
+        MultipartFile multipartFile = boardSaveReq.getImage();
 
         // 게시물 등록
         BoardResp boardResp = boardService.createBoard(memberId, multipartFile, boardSaveReq);
 
         // tag 등록
-        boardService.createTag(boardResp.getBoardId(), boardSaveReq.getTagSaveList());
+//        boardService.createTag(boardResp.getBoardId(), boardSaveReq.getTagSaveList());
 
 
         //보내고 와서 저장까지

@@ -56,7 +56,7 @@ public class CatServiceImpl implements CatService{
 
         // S3에 이미지 등록
         MultipartFile multipartFile = catInfoReq.getImage();
-        String img ="";
+        String img;
         try {
             img = s3Uploader.upload(multipartFile, "cat");
         }
@@ -112,6 +112,4 @@ public class CatServiceImpl implements CatService{
         }
         return boardSpotResps;
     }
-
-
 }
