@@ -20,13 +20,14 @@ export async function getUserInfo(): Promise<GetUserInfoResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
     const response = await Api.get("/members");
+    console.log("getUserInfo", JSON.stringify(response.data))
     return response as GetUserInfoResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
     // console.error(error);
   }
 }
 
-interface PostUserInfoResponse {
+interface PutUserInfoResponse {
   status: number;
   data: {
     nickname: String;
@@ -35,18 +36,24 @@ interface PostUserInfoResponse {
   };
 }
 
-export async function postUserInfo(
+export async function putUserInfo(
   nickname: string,
   university_id: number,
   password: string,
-): Promise<PostUserInfoResponse | undefined> {
+): Promise<PutUserInfoResponse | undefined> {
   try {
-    const response = await Api.post("/members", {
+    console.log("postUserInfo")
+    console.log("nickname", nickname)
+    console.log("university_id", university_id)
+    console.log("password", password)
+
+    const response = await Api.put("/members", {
       nickname,
       university_id,
       password,
     });
-    return response as PostUserInfoResponse;
+    console.log("putUserInfo 결과", response)
+    return response as PutUserInfoResponse;
   } catch (error) {
     console.error(error);
   }
@@ -78,10 +85,36 @@ export async function getUserBadge(): Promise<
   }
 }
 
+interface GetFollowListResponse {
+  status: number;
+  data: {
+    "cats":Array<      {
+      "cat_id":Number,
+      "name":String,
+      "age":Number,
+      "gender":String,
+      "follower_cnt":Number,
+      "url":String
+    }>
+  };
+}
+
+export async function getFollowList(): Promise<
+GetFollowListResponse | undefined
+> {
+  try {
+    const response = await Api.get("/members/follow-list");
+    return response as GetFollowListResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 const User = {
   getUserInfo,
-  postUserInfo,
+  putUserInfo,
   getUserBadge,
+  getFollowList,
 };
 
 export default User;

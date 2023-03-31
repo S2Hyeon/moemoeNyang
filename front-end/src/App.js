@@ -8,6 +8,7 @@ import CatRegisterPage from "./pages/cat/CatRegisterPage";
 import CatDetailPage from "./pages/cat/CatDetailPage";
 import MainPage from "./pages/main/MainPage";
 import MapPage from "./pages/main/MapPage";
+import ModifyUserInfo from "./pages/mypage/ModifyUserInfo";
 import SymptomsPage from "./pages/symptom/SymptomsPage";
 import NotFound404 from "./pages/NotFound404";
 import SignupPage from "./pages/SignupPage";
@@ -35,6 +36,7 @@ function App() {
           <Route path="/" element={<PrivateRoute component={<Layout />} />}>
             <Route path="main" element={<MainPage />} />
             <Route path="mypage" element={<MyPage />} />
+            <Route path="mypage/modify" element={<ModifyUserInfo />} />
             <Route path="catlist" element={<CatPage />} />
             <Route path="catregister" element={<CatRegisterPage />} />
             <Route path="cat/id" element={<CatDetailPage />} />
