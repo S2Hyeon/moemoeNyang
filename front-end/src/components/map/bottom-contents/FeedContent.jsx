@@ -13,6 +13,7 @@ export default function FeedContent() {
   //시작시 스크롤을 가장 아래로 내립니다.
   const chattingRef = useRef();
   useEffect(() => {
+    if (!chattingRef.current) return;
     chattingRef.current.scrollTop = chattingRef.current.scrollHeight;
   }, []);
 
