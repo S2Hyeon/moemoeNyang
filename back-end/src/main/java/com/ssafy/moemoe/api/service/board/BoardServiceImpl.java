@@ -5,6 +5,7 @@ import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
 import com.ssafy.moemoe.api.request.board.TagSaveReq;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardResp;
+import com.ssafy.moemoe.api.response.board.TagResp;
 import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.board.Reaction;
@@ -85,7 +86,7 @@ public class BoardServiceImpl implements BoardService {
         List<BoardLoadResp> list = page.getContent();
 
         for (BoardLoadResp cur : list) {
-            cur.setTags(tagRepository.findByBoardId(cur.getBoardId()));
+            cur.setTags(new TagResp((Tag) tagRepository.findByBoardId(cur.getBoardId())));
         }
 
         return page;
