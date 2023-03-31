@@ -71,7 +71,7 @@ export async function getUserBadge(): Promise<
   GetUserBadgeResponse | undefined
 > {
   try {
-    const response = await Api.post("/members/badge");
+    const response = await Api.get("/members/badge");
     return response as GetUserBadgeResponse;
   } catch (error) {
     console.error(error);
