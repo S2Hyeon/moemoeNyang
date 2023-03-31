@@ -24,7 +24,7 @@ const handleCookies = {
         })
         .find((element) => element.key === targetKey);
     }
-    return result.value || "";
+    return result?.value || "";
   },
 
   //쿠키의 만료시간을 0으로 바꿔서 쿠키를 삭제합니다.

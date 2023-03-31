@@ -20,7 +20,9 @@ const MainPage = () => {
   return (
     <div className="flex flex-col flex-wrap">
       {postList.map((data) => {
-        return <PostCard postInfo={data} />;
+        return (
+          <PostCard postInfo={data} key={"board" + data.board_id.toString()} />
+        );
       })}
     </div>
   );

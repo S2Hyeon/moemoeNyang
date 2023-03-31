@@ -86,7 +86,7 @@ export async function getMainBoardList(
     // const response = await Api.get(`/boards?universityId=${universityId}&tagName=${tagName}&page=${page}`);
     return response as GetBoardListResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
-    // console.error(error);
+    // console.log('에러',error);
   }
 }
 
@@ -108,7 +108,7 @@ export async function patchEmotion(
     const response = await Api.patch("/boards/emotion", { boardId, emotion });
     return response as PatchEmotionResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
-    // console.error(error);
+    // console.log('에러',error);
   }
 }
 
@@ -126,7 +126,7 @@ export async function deleteEmotion(
     const response = await Api.delete(`/boards/emotion/${boardId}`);
     return response as DeleteEmotionResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
-    // console.error(error);
+    // console.log('에러',error);
   }
 }
 
@@ -146,7 +146,7 @@ export async function postFollow(
     const response = await Api.post(`/cats/follow`, { catId });
     return response as PostFollowResponse;
   } catch (error) {
-    // console.error(error);
+    // console.log('에러',error);
   }
 }
 
@@ -166,7 +166,7 @@ export async function deleteUnFollow(
     const response = await Api.delete(`/cats/follow/${catId}`);
     return response as DeleteUnFollowResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
-    // console.error(error);
+    // console.log('에러',error);
   }
 }
 
