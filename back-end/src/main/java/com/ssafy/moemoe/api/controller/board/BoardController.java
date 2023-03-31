@@ -59,14 +59,9 @@ public class BoardController {
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
 
         MultipartFile multipartFile = multipartFileReq.getImage();
-        //이미지 업로드
-//        String img = s3Uploader.upload(, "profile");
-//        logger.info("url >>> " + img);
-
-        String img = "url";
 
         // 게시물 등록
-        BoardResp boardResp = boardService.createBoard(memberId, img, boardSaveReq);
+        BoardResp boardResp = boardService.createBoard(memberId, multipartFile, boardSaveReq);
 
         // tag 등록
         boardService.createTag(boardResp.getBoardId(), boardSaveReq.getTagSaveList());

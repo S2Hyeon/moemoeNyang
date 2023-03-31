@@ -5,6 +5,7 @@ import com.ssafy.moemoe.api.request.cat.CatInfoReq;
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
+import com.ssafy.moemoe.api.service.S3Uploader;
 import com.ssafy.moemoe.api.service.board.BoardService;
 import com.ssafy.moemoe.api.service.university.UniversityService;
 import com.ssafy.moemoe.db.entity.board.Board;
@@ -20,7 +21,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -38,6 +41,7 @@ public class CatServiceImpl implements CatService{
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
     private final BoardService boardService;
+    private final S3Uploader s3Uploader;
 
 
     @Override
@@ -49,12 +53,23 @@ public class CatServiceImpl implements CatService{
             return false;
 
         LOGGER.info("========insertCat : memberId {}, catInfoReq {}", memberId, catInfoReq);
-        String image = "S3로 부터 받아오는 url";
-        Cat cat = new Cat(catInfoReq, university, image);
+
+        // S3에 이미지 등록
+        MultipartFile multipartFile = catInfoReq.getImage();
+        String img ="";
+        try {
+            img = s3Uploader.upload(multipartFile, "cat");
+        }
+        catch (IOException e) {
+            throw new IllegalArgumentException("파일 업로드에 문제가 발생했습니다.(cat)");
+        }
+        LOGGER.info("================url===============\n" + img);
+
+        Cat cat = new Cat(catInfoReq, university, img);
         catRepository.save(cat);
 
         BoardSaveReq boardSaveReq = new BoardSaveReq(cat, catInfoReq.getLat(), catInfoReq.getLng());
-        boardService.createBoard(memberId, image, boardSaveReq);
+        boardService.createBoard(memberId, multipartFile, boardSaveReq);
 
         return true;
     }

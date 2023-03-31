@@ -5,6 +5,7 @@ import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
 import com.ssafy.moemoe.api.request.board.TagSaveReq;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardResp;
+import com.ssafy.moemoe.api.service.S3Uploader;
 import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.board.Reaction;
@@ -18,12 +19,16 @@ import com.ssafy.moemoe.db.repository.cat.CatRepository;
 import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import com.ssafy.moemoe.db.repository.university.UniversityRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -35,19 +40,33 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class BoardServiceImpl implements BoardService {
+
+    Logger LOGGER = LoggerFactory.getLogger(BoardServiceImpl.class);
     private final BoardRepository boardRepository;
     private final TagRepository tagRepository;
     private final MemberRepository memberRepository;
     private final UniversityRepository universityRepository;
     private final ReactionRepository reactionRepository;
     private final CatRepository catRepository;
+    private final S3Uploader s3Uploader;
 
     @Override
     @Transactional
-    public BoardResp createBoard(UUID member_id, String img, BoardSaveReq boardSaveReq) {
+    public BoardResp createBoard(UUID member_id, MultipartFile multiPartFile, BoardSaveReq boardSaveReq) {
         Member member = memberRepository.findById(member_id).orElseThrow(() -> new IllegalArgumentException("해당 유저는 없습니다. id=" + member_id));
         University university = universityRepository.findById(boardSaveReq.getUniversityId()).orElseThrow(() -> new IllegalArgumentException("해당 학교는 없습니다."));
         Cat cat = catRepository.findById(boardSaveReq.getCatId()).orElseThrow(() -> new IllegalArgumentException("해당 고양이는 없습니다."));
+
+        // S3에 이미지 등록
+        String img ="";
+        try {
+            img = s3Uploader.upload(multiPartFile, "board");
+        }
+        catch (IOException e) {
+            throw new IllegalArgumentException("파일 업로드에 문제가 발생했습니다.(board)");
+        }
+        LOGGER.info("================url===============\n" + img);
+
 
         Board board = boardRepository.save(Board.builder().lat(boardSaveReq.getLat()).lng(boardSaveReq.getLng())
                 .content(boardSaveReq.getContent()).image(img).member(member).university(university).cat(cat).build());
