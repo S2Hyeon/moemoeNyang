@@ -16,6 +16,7 @@ export interface CatType {
 
 export interface PostType {
   boardId: number;
+  board_id: number;
   catId: number;
   catImage: string;
   catName: string;
@@ -66,6 +67,7 @@ const initialState = {
   isBottomHigh: false,
   catList: [] as Array<CatType>,
   postList: [] as Array<PostType>,
+  selectedPost: null as PostType,
   feedsList: [] as Array<FeedType>,
   selectedFeed: null as FeedType,
   selectedFeedHistory: null as FeedHistory,
@@ -132,9 +134,12 @@ const mapSlice = createSlice({
     ) => {
       state.centerPosition = action.payload;
     },
-    setSelectedPostId: (state, action: { payload: number }) => {
-      console.log(action.payload);
-      state.selectedPostId = action.payload;
+    // setSelectedPostId: (state, action: { payload: number }) => {
+    //   state.selectedPostId = action.payload;
+    // },
+    setSelectedPost: (state, action: { payload: PostType }) => {
+      state.selectedPost = action.payload;
+      state.selectedPostId = action.payload.board_id;
     },
   },
 });
@@ -150,5 +155,6 @@ export const {
   setSelectedFeed,
   setCatPositions,
   setCenterPosition,
-  setSelectedPostId,
+  // setSelectedPostId,
+  setSelectedPost,
 } = mapSlice.actions;
