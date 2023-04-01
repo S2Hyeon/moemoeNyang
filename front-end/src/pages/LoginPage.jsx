@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { setMemberObject } from "../store/memberSlice";
 import { typedUseSelector } from "../store";
 import { getUserInfo } from "../services/mypage";
+import jwtDecode from "jwt-decode";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -25,18 +26,23 @@ const LoginPage = () => {
     if (!(email.includes("@") && email.includes("."))) {
       return AlertWarning("잘못된 이메일입니다.");
     }
-    postLogin(email, password).then((res) => {
-      const accessToken = res.data.token;
-      getUserInfo().then((res) => {
+    postLogin(email, password)
+      .then((res) => {
+        const accessToken = res.data.token;
+        const decodedTokenObject = jwtDecode(accessToken);
+        const { email, member_id, nickname, university_id } =
+          decodedTokenObject;
+        // getUserInfo().then((res) => {
         dispatch(
           setMemberObject({
             accessToken,
-            universityId: res.data.university_id,
-            nickname: res.data.nickname,
-            email: res.data.email,
+            memberId: member_id,
+            universityId: university_id,
+            nickname: nickname,
+            email: email,
           }),
         );
-
+        return Promise.resolve();
         /*
         badge_id: number;
         email: string | null;
@@ -45,18 +51,22 @@ const LoginPage = () => {
         university_id: number;
         university_name: string;
         */
+        // });
+        // const { access_token, university_id, nickname, email } = res.data;
+        // dispatch(
+        //   setMemberObject({
+        //     accessToken: access_token,
+        //     universityId: university_id,
+        //     nickname: nickname,
+        //     email: email,
+        //   }),
+        // );
+        // setCookie("accessToken", access_token, 180);
+      })
+      .then(() => {
+        AlertSuccess("로그인 되었습니다.");
+        navigate("/main");
       });
-      // const { access_token, university_id, nickname, email } = res.data;
-      // dispatch(
-      //   setMemberObject({
-      //     accessToken: access_token,
-      //     universityId: university_id,
-      //     nickname: nickname,
-      //     email: email,
-      //   }),
-      // );
-      // setCookie("accessToken", access_token, 180);
-    });
   };
 
   const onForget = () => {

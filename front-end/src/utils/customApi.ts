@@ -1,14 +1,14 @@
 import axios from "axios";
 import MockupService from "./MockupService";
-import getHeaders from "./getHeaders";
+// import getHeaders from "./getHeaders";
 import { getCookie } from "./handleCookies";
 
 export const ApiMock = MockupService;
 
 const Api = axios;
 
-// Api.defaults.baseURL = "http://localhost:8081/api";
-Api.defaults.baseURL = "http://j8a801.p.ssafy.io:8081/api";
+Api.defaults.baseURL = "http://localhost:8081/api";
+// Api.defaults.baseURL = "http://j8a801.p.ssafy.io:8081/api";
 Api.defaults.withCredentials = true;
 
 Api.interceptors.request.use(
@@ -17,7 +17,7 @@ Api.interceptors.request.use(
     // config.headers.Authorization = Authorization;
     const accessToken = getCookie("accessToken");
     config.headers["X-AUTH-TOKEN"] = accessToken;
-    console.log(config.headers);
+    // console.log(config.headers);
     return config;
   },
   (error) => {
