@@ -1,5 +1,7 @@
 package com.ssafy.moemoe.api.response.board;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.querydsl.core.annotations.QueryProjection;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.member.MemberDetailResp;
@@ -48,6 +50,7 @@ public class BoardLoadResp {
     private String image;
 
     @ApiModelProperty(name = "createdAt")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime createdAt;
     @ApiModelProperty(name = "recommend")
     private Long recommend;
@@ -63,6 +66,10 @@ public class BoardLoadResp {
 
     @ApiModelProperty(name = "angry")
     private Long angry;
+
+    //내가 해당 게시글에 감정표시를 했는지 담겨있는 필드
+    @ApiModelProperty(name = "myEmotion")
+    private String myEmotion;
 
     @QueryProjection
     public BoardLoadResp(Board board, Cat cat, Member member, University university) {
