@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 유저 모델 관련 디비 쿼리 생성을 위한 구현 정의.
  */
-public class TagRepositoryImpl implements TagRepositoryCustom {
+public class TagCustomRepositoryImpl implements TagCustomRepository {
     @Autowired
     private JPAQueryFactory jpaQueryFactory;
 

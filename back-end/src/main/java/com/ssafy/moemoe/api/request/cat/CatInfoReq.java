@@ -18,4 +18,6 @@ public class CatInfoReq {
     private Integer age;
     private Character gender;
     private MultipartFile image;
+    private Float lat;
+    private Float lng;
 }

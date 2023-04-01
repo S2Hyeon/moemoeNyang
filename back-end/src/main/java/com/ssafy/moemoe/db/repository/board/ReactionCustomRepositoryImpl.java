@@ -3,19 +3,15 @@ package com.ssafy.moemoe.db.repository.board;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
-import com.ssafy.moemoe.api.response.board.QTagLoadResp;
-import com.ssafy.moemoe.api.response.board.TagLoadResp;
 import com.ssafy.moemoe.db.entity.board.QReaction;
-import com.ssafy.moemoe.db.entity.board.QTag;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
 import java.util.UUID;
 
 /**
  * Reaction 관련 디비 쿼리 생성을 위한 구현 정의.
  */
-public class ReactionRepositoryImpl implements ReactionRepositoryCustom {
+public class ReactionCustomRepositoryImpl implements ReactionCustomRepository {
     @Autowired
     private JPAQueryFactory jpaQueryFactory;
 
@@ -33,6 +29,15 @@ public class ReactionRepositoryImpl implements ReactionRepositoryCustom {
                 .delete(qReaction)
                 .where(qReaction.reactionId.in(findDoneId))
                 .execute();
+    }
+
+    @Override
+    public String checkReation(UUID memberId, Long boardId) {
+        return jpaQueryFactory
+                .select(qReaction.react)
+                .from(qReaction)
+                .where(qReaction.member.memberId.eq(memberId), qReaction.board.boardId.eq(boardId))
+                .fetchOne();
     }
 
     private BooleanExpression reactEq(String react) {
