@@ -1,23 +1,39 @@
 package com.ssafy.moemoe.api.controller.cat;
 
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
-import com.ssafy.moemoe.api.response.board.CatDetailBoardResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseResultResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseTimeline;
+<<<<<<< HEAD
+import com.ssafy.moemoe.api.service.cat.CatService;
+import com.ssafy.moemoe.common.util.TokenUtils;
+import io.jsonwebtoken.Claims;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+=======
+>>>>>>> b00643ef4918225adf820d66337f7fc5b2b51075
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+<<<<<<< HEAD
+import java.util.*;
+=======
 import java.util.ArrayList;
 import java.util.List;
+>>>>>>> b00643ef4918225adf820d66337f7fc5b2b51075
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/cats")
 public class CatController {
-
     final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
+<<<<<<< HEAD
+    private final CatService catService;
+    private final TokenUtils tokenUtils;
+=======
+>>>>>>> b00643ef4918225adf820d66337f7fc5b2b51075
 
 
     //고양이 리스트 조회
@@ -84,22 +100,6 @@ public class CatController {
         return ResponseEntity.ok(cat);
     }
 
-    //고양이 상세페이지에서 게시글 조회
-    @GetMapping("/{catId}/boards")
-    public ResponseEntity<?> getCatBoards(@PathVariable Long catId) {
-
-        List<CatDetailBoardResp> catBoards = new ArrayList<>();
-
-        for (int i = 1; i <= 9; i++) {
-            catBoards.add(CatDetailBoardResp.builder()
-                    .board_id(i)
-                    .image(tiredCatImage)
-                    .build());
-        }
-
-        return ResponseEntity.ok(catBoards);
-    }
-
     //질병 검사 결과 조회
     @GetMapping("/{catId}/disease")
     public ResponseEntity<?> getDiseaseResult(@PathVariable Long catId) {
@@ -140,20 +140,18 @@ public class CatController {
     }
 
     @GetMapping("/{catId}/spot")
-    public ResponseEntity<?> getCatSpots(@PathVariable Long catId) {
+    public ResponseEntity<?> getCatSpots(HttpServletRequest request, @PathVariable Long catId) {
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
 
-        List<BoardSpotResp> spots = new ArrayList<>();
+        List<BoardSpotResp> getCatSpots = catService.getCatSpots(memberId, catId);
+        Map<String, List<BoardSpotResp>> map = new HashMap<>();
 
-        for (int i = 1; i <= 10; i++) {
-            spots.add(BoardSpotResp.builder()
-                            .board_id(i)
-                            .created_at(LocalDateTime.now())
-                            .image(tiredCatImage)
-                            .lat(37.501258)
-                            .lng(127.039516)
-                            .build());
+        if(getCatSpots == null) {
+            return new ResponseEntity<>("고양이 최근위치 조회에 실패했습니다.", HttpStatus.NOT_FOUND);
         }
 
-        return ResponseEntity.ok(spots);
+        map.put("boards", getCatSpots);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

@@ -2,6 +2,7 @@ package com.ssafy.moemoe.api.response.board;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.ssafy.moemoe.db.entity.board.Board;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,19 +17,19 @@ import java.time.LocalDateTime;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class BoardSpotResp {
 
-    private long board_id;
+    private Long boardId;
     private String image;
-    private double lat;
-    private double lng;
-    private LocalDateTime created_at;
+    private Float lat;
+    private Float lng;
+    private LocalDateTime createdAt;
 
 
     @Builder
-    public BoardSpotResp(long board_id, String image, double lat, double lng, LocalDateTime created_at) {
-        this.board_id = board_id;
-        this.image = image;
-        this.lat = lat;
-        this.lng = lng;
-        this.created_at = created_at;
+    public BoardSpotResp(Board board) {
+        this.boardId = board.getBoardId();
+        this.image = board.getImage();
+        this.lat = board.getLat();
+        this.lng = board.getLng();
+        this.createdAt = board.getCreatedAt();
     }
 }

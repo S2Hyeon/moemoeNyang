@@ -1,51 +1,45 @@
 package com.ssafy.moemoe.api.controller.university;
 
-import com.ssafy.moemoe.api.response.university.UniversityResultResp;
+import com.ssafy.moemoe.api.service.university.UniversityService;
+import com.ssafy.moemoe.db.entity.university.University;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/univs")
 public class UniversityController {
 
+    private final UniversityService universityService;
+
     @GetMapping("/{keyword}")
     public ResponseEntity<?> getUnivSearchResults(@PathVariable String keyword) {
 
-        List<UniversityResultResp> univs = new ArrayList<>();
+        List<University> univs = universityService.searchUniversity(keyword);
 
-        String[] names = {"서울대학교", "서울무슨대학교","서울산대학교"};
 
-        for (int i = 1; i <= 5; i++) {
-            univs.add(UniversityResultResp.builder()
-                    .university_id(i)
-                    .address("대충 서울 아무 주소")
-                    .name(names[i % 3])
-                    .build());
-        }
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("universities", univs);
 
         return ResponseEntity.ok(univs);
     }
 
     @GetMapping("")
-    public ResponseEntity<?> getUnivs() {
+    public ResponseEntity<?> getAllUnivs() {
 
-        List<UniversityResultResp> univs = new ArrayList<>();
+        List<University> univs = universityService.getAllUniversity();
 
-        String[] names = {"서울대학교", "연세대학교", "카이스트대학교", "하버드대학교","서울무슨대학교","서울산대학교"};
 
-        for (int i = 1; i <= 20; i++) {
-            univs.add(UniversityResultResp.builder()
-                    .university_id(i)
-                    .address("대충 전국에 아무 주소")
-                    .name(names[i % 6])
-                    .build());
-        }
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("universities", univs);
 
         return ResponseEntity.ok(univs);
     }
