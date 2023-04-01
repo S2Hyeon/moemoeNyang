@@ -2,6 +2,7 @@ package com.ssafy.moemoe.api.response.board;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.ssafy.moemoe.db.entity.board.Tag;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,5 +24,13 @@ public class TagResp {
         this.board_id = board_id;
         this.name = name;
         this.rate = rate;
+    }
+
+    @Builder
+    public TagResp(Tag tag) {
+        this.tag_id = tag.getTagId();
+        this.board_id = tag.getBoard().getBoardId();
+        this.name = tag.getName();
+        this.rate = tag.getRate();
     }
 }
