@@ -1,11 +1,10 @@
 package com.ssafy.moemoe.api.response.board;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.querydsl.core.annotations.QueryProjection;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.member.MemberDetailResp;
-import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.board.Board;
+import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import io.swagger.annotations.ApiModel;
@@ -65,10 +64,10 @@ public class BoardLoadResp {
     @ApiModelProperty(name = "angry")
     private Long angry;
 
-    @Builder
-    public BoardLoadResp(Board board, Cat cat, Member member, long universityId) {
+    @QueryProjection
+    public BoardLoadResp(Board board, Cat cat, Member member, University university) {
         this.boardId = board.getBoardId();
-        this.universityId = universityId;
+        this.universityId = university.getUniversityId();
         this.cat = new CatDetailResp(cat);
         this.member = new MemberDetailResp(member);
         //this.tags = tags; //일단 태그는 아무것도 없다고 생각하겠음.
@@ -84,18 +83,18 @@ public class BoardLoadResp {
         this.angry = board.getAngry();
     }
 
-    @QueryProjection
-    public BoardLoadResp(Board board, Cat cat, Member member, University university) {
-        this.boardId = board.getBoardId();
-        this.lat = board.getLat();
-        this.lng = board.getLng();
-        this.recommend = board.getRecommend();
-        this.good = board.getGood();
-        this.impressed = board.getImpressed();
-        this.sad = board.getSad();
-        this.angry = board.getAngry();
-        this.content = board.getContent();
-        this.createdAt = board.getCreatedAt();
-    }
+//    @QueryProjection//빌더랑 비슷한데 쿼리 디에셀에서 아예 한번에 주입해주는 것임
+//    public BoardLoadResp(Board board, Cat cat, Member member, University university) {
+//        this.boardId = board.getBoardId();
+//        this.lat = board.getLat();
+//        this.lng = board.getLng();
+//        this.recommend = board.getRecommend();
+//        this.good = board.getGood();
+//        this.impressed = board.getImpressed();
+//        this.sad = board.getSad();
+//        this.angry = board.getAngry();
+//        this.content = board.getContent();
+//        this.createdAt = board.getCreatedAt();
+//    }
 
 }

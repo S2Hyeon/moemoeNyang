@@ -5,11 +5,10 @@ import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
 import com.ssafy.moemoe.api.request.board.TagSaveReq;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardResp;
-import com.ssafy.moemoe.api.response.board.TagResp;
-import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.board.Reaction;
 import com.ssafy.moemoe.db.entity.board.Tag;
+import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import com.ssafy.moemoe.db.repository.board.BoardRepository;
@@ -19,7 +18,6 @@ import com.ssafy.moemoe.db.repository.cat.CatRepository;
 import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import com.ssafy.moemoe.db.repository.university.UniversityRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -36,18 +34,12 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class BoardServiceImpl implements BoardService {
-    @Autowired
-    BoardRepository boardRepository;
-    @Autowired
-    TagRepository tagRepository;
-    @Autowired
-    MemberRepository memberRepository;
-    @Autowired
-    UniversityRepository universityRepository;
-    @Autowired
-    ReactionRepository reactionRepository;
-    @Autowired
-    CatRepository catRepository;
+    private final BoardRepository boardRepository;
+    private final TagRepository tagRepository;
+    private final MemberRepository memberRepository;
+    private final UniversityRepository universityRepository;
+    private final ReactionRepository reactionRepository;
+    private final CatRepository catRepository;
 
     @Override
     @Transactional
