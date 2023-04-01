@@ -139,7 +139,7 @@ const mapSlice = createSlice({
     // },
     setSelectedPost: (state, action: { payload: PostType }) => {
       state.selectedPost = action.payload;
-      state.selectedPostId = action.payload.board_id;
+      state.selectedPostId = action.payload?.board_id;
     },
   },
 });

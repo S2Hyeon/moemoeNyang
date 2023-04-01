@@ -83,6 +83,7 @@ export async function getMainBoardList(
     universityId = 1;
     page = 1;
     const response = await ApiMock.get(`/boards?universityId=1`);
+    console.log(response);
     // const response = await Api.get(`/boards?universityId=${universityId}&tagName=${tagName}&page=${page}`);
     return response as GetBoardListResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
