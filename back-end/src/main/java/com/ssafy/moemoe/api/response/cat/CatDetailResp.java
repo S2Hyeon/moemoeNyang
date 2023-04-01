@@ -13,23 +13,23 @@ import lombok.ToString;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class CatDetailResp {
 
-    private Long catId;
+    private long cat_id;
     private String name;
-    private Integer age;
-    private Character gender;
-    private Long followerCnt;
+    private int age;
+    private String gender;
+    private int follower_cnt;
     private String image;
-    private Float lat;
-    private Float lng;
+    private double lat;
+    private double lng;
 
 
     @Builder
-    public CatDetailResp(Long catId, String name, Integer age, Character gender, Long followerCnt, String image, Float lat, Float lng) {
-        this.catId = catId;
+    public CatDetailResp(long cat_id, String name, int age, String gender, int follower_cnt, String image, double lat, double lng) {
+        this.cat_id = cat_id;
         this.name = name;
         this.age = age;
         this.gender = gender;
-        this.followerCnt = followerCnt;
+        this.follower_cnt = follower_cnt;
         this.image = image;
         this.lat = lat;
         this.lng = lng;

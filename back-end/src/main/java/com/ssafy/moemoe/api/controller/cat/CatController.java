@@ -1,68 +1,103 @@
 package com.ssafy.moemoe.api.controller.cat;
 
-import com.ssafy.moemoe.api.request.cat.CatInfoReq;
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseResultResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseTimeline;
+<<<<<<< HEAD
 import com.ssafy.moemoe.api.service.cat.CatService;
 import com.ssafy.moemoe.common.util.TokenUtils;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+=======
+>>>>>>> b00643ef4918225adf820d66337f7fc5b2b51075
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+<<<<<<< HEAD
 import java.util.*;
+=======
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> b00643ef4918225adf820d66337f7fc5b2b51075
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cats")
 public class CatController {
     final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
+<<<<<<< HEAD
     private final CatService catService;
     private final TokenUtils tokenUtils;
+=======
+>>>>>>> b00643ef4918225adf820d66337f7fc5b2b51075
 
-    @PostMapping("")
-    public ResponseEntity<?> insertCat(HttpServletRequest request, @RequestBody CatInfoReq catInfoReq) {
-        Claims claims = tokenUtils.getClaimsFromRequest(request);
-        UUID memberId = UUID.fromString(claims.get("member_id").toString());
-
-        boolean result = catService.insertCat(memberId, catInfoReq);
-        if(result) {
-            return new ResponseEntity<>("고양이가 등록되었습니다.", HttpStatus.OK);
-        }
-        else {
-            return new ResponseEntity<>("고양이가 등록에 실패했습니다.", HttpStatus.BAD_REQUEST);
-        }
-    }
 
     //고양이 리스트 조회
     @GetMapping("")
-    public ResponseEntity<?> getCats(HttpServletRequest request, @RequestParam Long universityId) {
-        Claims claims = tokenUtils.getClaimsFromRequest(request);
-        UUID memberId = UUID.fromString(claims.get("member_id").toString());
-
-        List<CatListResp> cats = catService.getCats(memberId, universityId);
-        if(cats == null)
-            return new ResponseEntity<>("고양이 리스트를 조회에 실패하였습니다.", HttpStatus.BAD_REQUEST);
-        return new ResponseEntity<>(cats, HttpStatus.OK);
+    public ResponseEntity<?> getCats(@RequestParam Long universityId) {
+        List<CatListResp> cats = new ArrayList<>();
+        cats.add(CatListResp.builder()
+                        .cat_id(1)
+                        .name("볼록이")
+                        .gender("M")
+                        .age(7)
+                        .follower_cnt(10)
+                        .image(tiredCatImage)
+                        .build());
+        cats.add(CatListResp.builder()
+                .cat_id(2)
+                .name("오목이")
+                .gender("F")
+                .age(7)
+                .follower_cnt(10)
+                .image(tiredCatImage)
+                .build());
+        cats.add(CatListResp.builder()
+                .cat_id(3)
+                .name("울퉁이")
+                .gender("F")
+                .age(7)
+                .follower_cnt(10)
+                .image(tiredCatImage)
+                .build());
+        cats.add(CatListResp.builder()
+                .cat_id(4)
+                .name("불퉁이")
+                .gender("M")
+                .age(7)
+                .follower_cnt(10)
+                .image(tiredCatImage)
+                .build());
+        return ResponseEntity.ok(cats);
+//        return null;
     }
 
     //특정 고양이 상세 조회
     @GetMapping("/{catId}")
-    public ResponseEntity<?> getCat(HttpServletRequest request, @PathVariable Long catId) {
-        Claims claims = tokenUtils.getClaimsFromRequest(request);
-        UUID memberId = UUID.fromString(claims.get("member_id").toString());
+    public ResponseEntity<?> getCat(@PathVariable Long catId) {
+        // catId를 이용해 Cat 객체를 가져오는 코드
+        //Cat cat = catService.getCatById(catId);
 
-        CatDetailResp catDetailResp = catService.getCat(memberId, catId);
-        if(catDetailResp == null) {
-            return new ResponseEntity<>("고양이가 조회에 실패했습니다.", HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(catDetailResp, HttpStatus.OK);
+//        if (cat == null) {
+//            // 존재하지 않는 catId에 대한 요청일 경우 404 응답을 보냅니다.
+//            return ResponseEntity.notFound().build();
+//        }
+
+        CatDetailResp cat = CatDetailResp.builder()
+                .cat_id(1)
+                .name("볼록이")
+                .gender("M")
+                .age(7)
+                .follower_cnt(10)
+                .image(tiredCatImage)
+                .lat(37.501258)
+                .lng(127.039516)
+                .build();
+        return ResponseEntity.ok(cat);
     }
 
     //질병 검사 결과 조회

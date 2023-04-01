@@ -1,0 +1,166 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import TimeAgo from "javascript-time-ago";
+import ko from "javascript-time-ago/locale/ko.json";
+import { patchEmotion, deleteEmotion } from "../../services/main";
+
+import ReactTimeAgo from "react-time-ago";
+
+export default function BoardFooter({ onBottom = false, postInfo }) {
+  TimeAgo.setDefaultLocale(ko.locale);
+  TimeAgo.addLocale(ko);
+
+  const navigate = useNavigate();
+
+  const navigateToTags = (tagName) => {
+    navigate(`/board/${tagName}`);
+  };
+
+  const postDate = new Date(`
+    ${postInfo.created_at[0]}-
+    ${postInfo.created_at[1]}-
+    ${postInfo.created_at[2]} 
+    ${postInfo.created_at[3]}:
+    ${postInfo.created_at[4]}:
+    ${postInfo.created_at[5]}`);
+
+  function onPatchEmotion(emotionName, boardId) {
+    patchEmotion(emotionName, boardId);
+  }
+
+  function onDeleteEmotion(emotionName, boardId) {
+    deleteEmotion(emotionName, boardId);
+  }
+
+  if (onBottom) {
+    const { angry, good, impressed, recommend, sad } = postInfo;
+    const emojiMap = { angry, good, impressed, recommend, sad };
+    const [maxEmoji, maxEmojiCount] = Object.entries(emojiMap).sort((a, b) => {
+      const res = b[1] - a[1];
+      if (res === 0) {
+        return b[0] - a[0];
+      }
+      return res;
+    })[0];
+
+    return (
+      <div className="card-footer p-4 pt-0">
+        <div className="top">
+          <div className="flex">
+            <div className="my-2 w-full flex flex-row">
+              <span
+                className="text-sm"
+                onClick={() => navigateToTags(postInfo.tags[0]["name"])}
+              >
+                {`#${postInfo.tags[0]["name"]} ${postInfo.tags[0][
+                  "rate"
+                ].toFixed(0)}%`}
+              </span>
+            </div>
+            <div className="icons flex flex-row justify-center items-center">
+              <div className="MaxImoji mr-4 flex">
+                <img
+                  src={`/images/emoji/${maxEmoji}.png`}
+                  className="_8-yf5"
+                  height={30}
+                  width={30}
+                  alt="감정이모지"
+                />
+                <div className="text-center p-1">{maxEmojiCount}</div>
+              </div>
+            </div>
+          </div>
+          <div className="post-date">
+            <span className="text-xs text-gray-900">
+              <ReactTimeAgo date={new Date(postDate)} />
+            </span>
+
+            <div className="caption text-sm">{postInfo.content}</div>
+            {/* <div className="caption text-sm font-bold text-center">더보기</div> */}
+          </div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className="card-footer p-4 pt-0">
+      <div className="top">
+        <div className="my-2 w-full flex flex-row justify-around">
+          {postInfo.tags.map((tag) => {
+            return (
+              <div key={tag.name}>
+                <span
+                  className="font-bold text-sm"
+                  onClick={() => navigateToTags(tag.name)}
+                >
+                  # {tag.name}
+                </span>
+                <span className="text-sm"> {tag.rate}% </span>
+              </div>
+            );
+          })}
+        </div>
+        <div className="icons flex flex-row justify-center items-center">
+          <div className="recommend mr-4">
+            <img
+              src="/images/emoji/recommend.png"
+              className="_8-yf5"
+              height={30}
+              width={30}
+              alt="감정이모지"
+            />
+            <div className="text-center p-1">{postInfo.angry}</div>
+          </div>
+          <div className="like mr-4">
+            <img
+              src="/images/emoji/good.png"
+              className="_8-yf5"
+              height={30}
+              width={30}
+              alt="감정이모지"
+            />
+            <div className="text-center p-1">{postInfo.good}</div>
+          </div>
+          <div className="impressed mr-4">
+            <img
+              src="/images/emoji/impressed.png"
+              className="_8-yf5"
+              height={30}
+              width={30}
+              alt="감정이모지"
+            />
+            <div className="text-center p-1">{postInfo.impressed}</div>
+          </div>
+          <div className="sad mr-4">
+            <img
+              src="/images/emoji/recommend.png"
+              className="_8-yf5"
+              height={30}
+              width={30}
+              alt="감정이모지"
+            />
+            <div className="text-center p-1">{postInfo.recommend}</div>
+          </div>
+          <div className="sad">
+            <img
+              src="/images/emoji/sad.png"
+              className="_8-yf5"
+              height={30}
+              width={30}
+              alt="감정이모지"
+            />
+            <div className="text-center p-1">{postInfo.sad}</div>
+          </div>
+        </div>
+
+        <div className="caption text-sm">{postInfo.content}</div>
+        <div className="post-date mt-1">
+          <span className="text-xs text-gray-900">
+            {" "}
+            <ReactTimeAgo date={new Date(postDate)} />
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
