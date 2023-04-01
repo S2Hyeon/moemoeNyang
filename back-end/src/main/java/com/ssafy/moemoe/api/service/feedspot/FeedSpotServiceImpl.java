@@ -49,7 +49,7 @@ public class FeedSpotServiceImpl implements FeedSpotService {
 
     @Override
     public List<FeedSpotMarkerResp> getFeedSpots(Long universityId) {
-        List<FeedSpot> feedSpotList = feedSpotRepository.findByUniversityUniversityId(universityId);
+        List<FeedSpot> feedSpotList = feedSpotRepository.findByUniversity_UniversityId(universityId);
         List<FeedSpotMarkerResp> respList = new ArrayList<>();
         for (FeedSpot f : feedSpotList) {
             Optional<LocalDateTime> recent = feedSpotFeedRepository.findMostRecentCreatedAtByFeedspotId(f.getFeedspotId());
