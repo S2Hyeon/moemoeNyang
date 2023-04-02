@@ -20,7 +20,7 @@ export default function Navbar() {
     navigate("/board");
   };
   const navigateToSymptoms = () => {
-    navigate("/symptoms");
+    navigate("/symptoms/register");
   };
   const navigateToMypage = () => {
     navigate("/mypage");

@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { getCatList } from "../../services/cats";
+import { typedUseSelector } from "../../store";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -10,9 +11,15 @@ function classNames(...classes) {
 export default function Dropdown() {
   const [selected, setSelected] = useState([]);
   const [catList, setCatList] = useState([]);
+  const universityId = typedUseSelector(
+    (state) => state.member.memberObject.universityId,
+  );
 
   useEffect(() => {
-    getCatList().then((res) => setCatList(res.data));
+    console.log("cat list 불러오기");
+    getCatList(universityId)
+      .then((res) => setCatList(res.data))
+      .then(console.log("cat list 불러옴"));
   }, []);
 
   useEffect(() => {
@@ -54,7 +61,7 @@ export default function Dropdown() {
               <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 {catList.map((cat) => (
                   <Listbox.Option
-                    key={cat.id}
+                    key={cat.cat_id}
                     className={({ active }) =>
                       classNames(
                         active ? "bg-indigo-600 text-white" : "text-gray-900",
