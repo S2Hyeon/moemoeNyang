@@ -82,6 +82,15 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
       </div>
     );
   }
+
+  const emojiList = [
+    { key: "angry", cnt: postInfo.angry },
+    { key: "good", cnt: postInfo.good },
+    { key: "impressed", cnt: postInfo.impressed },
+    { key: "recommend", cnt: postInfo.recommend },
+    { key: "sad", cnt: postInfo.sad },
+  ];
+
   return (
     <div className="card-footer p-4 pt-0">
       <div className="top">
@@ -100,57 +109,22 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
             );
           })}
         </div>
+
         <div className="icons flex flex-row justify-center items-center">
-          <div className="recommend mr-4">
-            <img
-              src="/images/emoji/recommend.png"
-              className="_8-yf5"
-              height={30}
-              width={30}
-              alt="감정이모지"
-            />
-            <div className="text-center p-1">{postInfo.angry}</div>
-          </div>
-          <div className="like mr-4">
-            <img
-              src="/images/emoji/good.png"
-              className="_8-yf5"
-              height={30}
-              width={30}
-              alt="감정이모지"
-            />
-            <div className="text-center p-1">{postInfo.good}</div>
-          </div>
-          <div className="impressed mr-4">
-            <img
-              src="/images/emoji/impressed.png"
-              className="_8-yf5"
-              height={30}
-              width={30}
-              alt="감정이모지"
-            />
-            <div className="text-center p-1">{postInfo.impressed}</div>
-          </div>
-          <div className="sad mr-4">
-            <img
-              src="/images/emoji/recommend.png"
-              className="_8-yf5"
-              height={30}
-              width={30}
-              alt="감정이모지"
-            />
-            <div className="text-center p-1">{postInfo.recommend}</div>
-          </div>
-          <div className="sad">
-            <img
-              src="/images/emoji/sad.png"
-              className="_8-yf5"
-              height={30}
-              width={30}
-              alt="감정이모지"
-            />
-            <div className="text-center p-1">{postInfo.sad}</div>
-          </div>
+          {emojiList.map((data) => {
+            return (
+              <div className="recommend mr-4" key={data.key}>
+                <img
+                  src={`/images/emoji/${data.key}.png`}
+                  className="w-8"
+                  height={30}
+                  width={30}
+                  alt="감정이모지"
+                />
+                <div className="text-center p-1">{data.cnt}</div>
+              </div>
+            );
+          })}
         </div>
 
         <div className="caption text-sm">{postInfo.content}</div>
