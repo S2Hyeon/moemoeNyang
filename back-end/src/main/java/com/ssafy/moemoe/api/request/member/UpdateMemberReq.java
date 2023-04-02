@@ -16,11 +16,13 @@ public class UpdateMemberReq {
     private String password;
     private String nickname;
     private long universityId;
+    private long badgeId;
 
     @Builder
-    public UpdateMemberReq(String password, String nickname, long universityId){
+    public UpdateMemberReq(String password, String nickname, long universityId, long badgeId){
         this.password = password;
         this.nickname = nickname;
         this.universityId = universityId;
+        this.badgeId = badgeId;
     }
 }
