@@ -9,6 +9,7 @@ import com.ssafy.moemoe.api.service.follow.FollowService;
 import com.ssafy.moemoe.api.service.member.SignService;
 import com.ssafy.moemoe.api.service.university.UniversityService;
 import com.ssafy.moemoe.common.util.TokenUtils;
+import com.ssafy.moemoe.config.security.JwtTokenProvider;
 import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import io.jsonwebtoken.Claims;
@@ -38,6 +39,7 @@ public class MemberController {
     private final SignService signService;
     private final FollowService followService;
     private final TokenUtils tokenUtils;
+    private final JwtTokenProvider jwtTokenProvider;
 
 
     @GetMapping("/badge")
@@ -77,10 +79,13 @@ public class MemberController {
     public ResponseEntity<?> updateMember(HttpServletRequest request, @RequestBody UpdateMemberReq form) {
         Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
+        String email = claims.get("email").toString();
         signService.updateMember(memberId, form);
+        String token = jwtTokenProvider.createToken(email,null);
 
         Map<String, String> map = new HashMap<>();
         map.put("msg", "회원정보가 수정되었습니다.");
+        map.put("token", token);
         return ResponseEntity.ok(map);
     }
 
