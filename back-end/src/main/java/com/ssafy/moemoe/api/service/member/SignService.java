@@ -5,6 +5,7 @@ import com.ssafy.moemoe.api.request.member.SignUpReq;
 import com.ssafy.moemoe.api.request.member.UpdateMemberReq;
 import com.ssafy.moemoe.db.dto.SignInResultDto;
 import com.ssafy.moemoe.db.dto.SignUpResultDto;
+import com.ssafy.moemoe.db.entity.member.Member;
 
 import java.util.UUID;
 
@@ -20,4 +21,6 @@ public interface SignService {
     void changePasswordByEmail(String email, String newPassword);
 
     void updateMember(UUID memberId, UpdateMemberReq form);
+
+    Member getMember(UUID memberId);
 }

@@ -9,6 +9,7 @@ import com.ssafy.moemoe.api.service.follow.FollowService;
 import com.ssafy.moemoe.api.service.member.SignService;
 import com.ssafy.moemoe.api.service.university.UniversityService;
 import com.ssafy.moemoe.common.util.TokenUtils;
+import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
@@ -58,18 +59,17 @@ public class MemberController {
     @GetMapping("")
     public ResponseEntity<?> getMember(HttpServletRequest request) {
         Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
         String email = claims.get("email").toString();
         String nickname = claims.get("nickname").toString();
         long universityId = Long.parseLong(claims.get("university_id").toString());
 
         University university = universityService.getUniversity(universityId);
+        Member member = signService.getMember(memberId);
         LOGGER.info("토큰에서 꺼낸 닉네임 : {}, 대학교ID : {}",nickname, universityId);
 
         return ResponseEntity.ok(
-                MemberDetailResp.builder()
-                        .nickname(nickname)
-                        .universityName(university.getName())
-                        .build()
+                new MemberDetailResp(member)
         );
     }
 
