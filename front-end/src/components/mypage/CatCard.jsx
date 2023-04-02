@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 export default function CatCard({ catInfo }) {
   const navigate = useNavigate();
 
-  const navigateToCatDetail = (id) => {
-    navigate(`/catlist/${id}`);
+  const navigateToCatDetail = (catId) => {
+    console.log("detail로 이동", catId);
+    navigate(`/cats/${catId}`);
   };
   return (
     <div

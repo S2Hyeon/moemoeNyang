@@ -38,7 +38,7 @@ function App() {
             <Route path="mypage" element={<MyPage />} />
             <Route path="mypage/modify" element={<ModifyUserInfo />} />
             <Route path="catlist" element={<CatPage />} />
-            <Route path="catlist/:catId" element={<CatDetailPage />} />
+            <Route path="cats/:catId" element={<CatDetailPage />} />
             <Route path="catregister" element={<CatRegisterPage />} />
             <Route path="board" element={<PostBoard />} />
             <Route path="board/:tagName" element={<BoardHashTag />} />

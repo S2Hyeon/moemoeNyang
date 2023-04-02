@@ -12,7 +12,7 @@ export default function CatDetailPage() {
 
   useEffect(() => {
     getCatDetail(catId).then((res) => {
-      setCatInfo(res.data).then(console.log(catInfo));
+      setCatInfo(res.data);
     });
   }, []);
 

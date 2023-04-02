@@ -1,19 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
-export default function CatGrid() {
+export default function CatGrid({ catInfo }) {
   const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("/cats/{catId}")
-      .then((response) => {
-        setImages(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   return (
     <div
