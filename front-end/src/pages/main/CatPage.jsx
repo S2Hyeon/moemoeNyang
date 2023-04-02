@@ -4,6 +4,8 @@ import { HiPlusCircle } from "@react-icons/all-files/hi/HiPlusCircle";
 import { useNavigate } from "react-router-dom";
 import { getCatList } from "../../services/cats";
 
+import { typedUseSelector } from "./../../store";
+
 export default function CatPage() {
   const navigate = useNavigate();
 
@@ -12,9 +14,12 @@ export default function CatPage() {
   };
 
   const [catList, setCateList] = useState([]);
+  const universityId = typedUseSelector(
+    (state) => state.member.memberObject.universityId,
+  );
 
   useEffect(() => {
-    getCatList().then((res) => setCateList(res.data));
+    getCatList(universityId).then((res) => setCateList(res.data));
   }, []);
 
   useEffect(() => {
