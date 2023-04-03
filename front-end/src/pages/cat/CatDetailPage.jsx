@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import KakaoMap from "../../components/common/KakaoMap";
 import CatProfileBox from "../../components/cat/CatProfileBox";
 import CatGrid from "../../components/cat/CatGrid";
-import { getCatDetail } from "../../services/cats";
+import { getCatDetail, postCatFollow } from "../../services/cats";
 import { useParams } from "react-router-dom";
 
 export default function CatDetailPage() {
@@ -22,11 +22,18 @@ export default function CatDetailPage() {
     console.log(catInfo);
   }, [catInfo]);
 
+  function onFollow(catId) {
+    postCatFollow(catId);
+  }
+
   return (
     <>
       <div className="flex flex-col justify-center items-center pl-4 pr-4">
         <CatProfileBox catInfo={catInfo} />
-        <button className="grid place-items-center rounded-full w-full h-10 bg-[#e29c9c] text-base mb-6 transition duration-200 ">
+        <button
+          className="grid place-items-center rounded-full w-full h-10 bg-[#e29c9c] text-base mb-6 transition duration-200 "
+          onClick={() => onFollow(catInfo.cat_id)}
+        >
           <div className="font-medium text-white">팔로우</div>
         </button>
         <div
