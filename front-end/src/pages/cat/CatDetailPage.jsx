@@ -15,7 +15,7 @@ export default function CatDetailPage() {
       .then((res) => {
         setCatInfo(res.data);
       })
-      .then(console.log("catInfo", catInfo));
+      .then(() => console.log("catInfo", catInfo));
   }, []);
 
   useEffect(() => {
