@@ -119,11 +119,50 @@ export async function postCatRegist(
   }
 }
 
+interface PostCatFollowResponse {
+  status: Number;
+  data: {
+    "cat_id": Number,
+  };
+}
+
+export async function postCatFollow(
+  cat_id: Number
+): Promise<PostCatFollowResponse | undefined> {
+  try {
+    console.log(cat_id)
+    const response = await Api.post("/cats/follow", { cat_id });
+    return response as PostCatFollowResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+interface DeleteCatFollowResponse {
+  status: Number;
+  data: {
+    "cat_id": Number,
+  };
+}
+
+export async function deleteCatFollow(
+  catId: Number
+): Promise<DeleteCatFollowResponse | undefined> {
+  try {
+    const response = await Api.delete(`/cats/follow/${catId}`);
+    return response as DeleteCatFollowResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 const Cats = {
   getCatList,
   getCatDetail,
   getCatImages,
   postCatRegist,
+  postCatFollow,
+  deleteCatFollow,
 };
 
 export default Cats;
