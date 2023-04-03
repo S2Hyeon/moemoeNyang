@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TimeAgo from "javascript-time-ago";
 import ko from "javascript-time-ago/locale/ko.json";
-import { patchEmotion, deleteEmotion } from "../../services/main";
+import { patchEmoji, deleteEmoji } from "../../services/main";
 
 import ReactTimeAgo from "react-time-ago";
 
@@ -16,6 +16,16 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
     navigate(`/board/${tagName}`);
   };
 
+  function onPatchEmoji(boardId, emotionName) {
+    console.log("patch emoji");
+    patchEmoji(boardId, emotionName);
+  }
+
+  function onDeleteEmoji(boardId, emotion) {
+    console.log(boardId, " ", emotion);
+    deleteEmoji(boardId, emotion);
+  }
+
   const postDate = new Date(`
     ${postInfo.created_at[0]}-
     ${postInfo.created_at[1]}-
@@ -23,14 +33,6 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
     ${postInfo.created_at[3]}:
     ${postInfo.created_at[4]}:
     ${postInfo.created_at[5]}`);
-
-  function onPatchEmotion(emotionName, boardId) {
-    patchEmotion(emotionName, boardId);
-  }
-
-  function onDeleteEmotion(emotionName, boardId) {
-    deleteEmotion(emotionName, boardId);
-  }
 
   if (onBottom) {
     const { angry, good, impressed, recommend, sad } = postInfo;
@@ -65,6 +67,9 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
                   height={30}
                   width={30}
                   alt="감정이모지"
+                  onClick={() =>
+                    onPatchEmoji(postInfo.board_id, postInfo.tags[0]["name"])
+                  }
                 />
                 <div className="text-center p-1">{maxEmojiCount}</div>
               </div>
@@ -114,13 +119,26 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
           {emojiList.map((data) => {
             return (
               <div className="recommend mr-4" key={data.key}>
-                <img
-                  src={`/images/emoji/${data.key}.png`}
-                  className="w-8"
-                  height={30}
-                  width={30}
-                  alt="감정이모지"
-                />
+                {postInfo.my_emotion === data.key ? (
+                  <img
+                    src={`/images/emoji/${data.key}.png`}
+                    className="w-8 bg-amber-500"
+                    height={30}
+                    width={30}
+                    alt="감정이모지"
+                    onClick={() => onDeleteEmoji(postInfo.board_id, data.key)}
+                  />
+                ) : (
+                  <img
+                    src={`/images/emoji/${data.key}.png`}
+                    className="w-8  bg-amber-500"
+                    height={30}
+                    width={30}
+                    alt="감정이모지"
+                    onClick={() => onPatchEmoji(postInfo.board_id, data.key)}
+                  />
+                )}
+
                 <div className="text-center p-1">{data.cnt}</div>
               </div>
             );

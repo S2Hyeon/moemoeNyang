@@ -54,46 +54,6 @@ export async function getMainBoardList(
   }
 }
 
-interface PatchEmotionResponse {
-  status: number;
-  data: {
-    boardId: Number;
-    emotion: String;
-  };
-}
-
-export async function patchEmotion(
-  // 함수의 파라미터로 받을 값의 타입을 정의함
-  boardId: Number,
-  emotion: String,
-): Promise<PatchEmotionResponse | undefined> {
-  //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
-  try {
-    const response = await Api.patch("/boards/emotion", { boardId, emotion });
-    return response as PatchEmotionResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
-  } catch (error) {
-    // console.error(error);
-  }
-}
-
-interface DeleteEmotionResponse {
-  status: number;
-  data: {};
-}
-
-export async function deleteEmotion(
-  // 함수의 파라미터로 받을 값의 타입을 정의함
-  boardId: number,
-): Promise<DeleteEmotionResponse | undefined> {
-  //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
-  try {
-    const response = await Api.delete(`/boards/emotion/${boardId}`);
-    return response as DeleteEmotionResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
-  } catch (error) {
-    // console.error(error);
-  }
-}
-
 interface PostFollowResponse {
   status: number;
   data: {
@@ -127,6 +87,7 @@ export async function deleteUnFollow(
 ): Promise<DeleteUnFollowResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
+    console.log("unfollow ", catId)
     const response = await Api.delete(`/cats/follow/${catId}`);
     return response as DeleteUnFollowResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
@@ -134,11 +95,61 @@ export async function deleteUnFollow(
   }
 }
 
+
+interface PatchEmojiResponse {
+  status: number;
+  data: {
+    board_id: Number,
+    emotion: String,
+  };
+}
+
+export async function patchEmoji(
+  // 함수의 파라미터로 받을 값의 타입을 정의함
+  board_id: number,
+  emotion: String,
+): Promise<PatchEmojiResponse | undefined> {
+  //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
+  try {
+    console.log(board_id, " --- ", emotion)
+    const response = await Api.patch(`/boards/emotion`, { board_id, emotion });
+    console.log("patch emoji result", response)
+    return response as PatchEmojiResponse;
+  } catch (error) {
+    // console.error(error);
+  }
+}
+
+interface DeleteEmojiesponse {
+  status: number;
+  data: {
+    board_id: any | Number,
+    emotion: string,
+  };
+}
+
+export async function deleteEmoji(
+  // 함수의 파라미터로 받을 값의 타입을 정의함
+  board_id: any | Number,
+  emotion: string,
+): Promise<DeleteEmojiesponse | undefined> {
+  //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
+  try {
+    console.log(board_id, "----", emotion)
+    const response = await Api.delete("/boards/emotion",{board_id, emotion });
+    return response as DeleteEmojiesponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
+  } catch (error) {
+    // console.error(error);
+  }
+}
+
+
 const Main = {
   getMainBoardList,
-  patchEmotion,
   postFollow,
   deleteUnFollow,
+  patchEmoji,
+  deleteEmoji,
 };
 
 export default Main;
