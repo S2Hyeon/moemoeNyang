@@ -12,7 +12,12 @@ import java.util.UUID;
 
 public interface FollowRepository extends JpaRepository<Follow, Long> {
 
-    Optional<Follow> findByMember_MemberIdAndCat_CatId(UUID memberId, Long catId);
+    @Query(
+            "select f " +
+                    "from Follow f " +
+                    "where f.member.memberId = :memberId and f.cat.catId = :catId"
+    )
+    Optional<Follow> findByMemberAndCat(@Param("memberId") UUID memberId, @Param("catId") Long catId);
 
     @Query("SELECT f.cat " +
             "FROM Follow f " +
