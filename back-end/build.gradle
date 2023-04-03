@@ -62,14 +62,14 @@ dependencies {
     annotationProcessor 'com.google.guava:guava:29.0-jre'
 
     //Redis
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
     //Email
-    implementation 'org.springframework.boot:spring-boot-starter-mail'
+//    implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 
     //AWS
-//    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 
     //AWS 에러나서 일단 주석처리
 //    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
@@ -83,6 +83,10 @@ dependencies {
 
     // JSON in MySQL
     implementation("com.vladmihalcea:hibernate-types-52:2.16.2")
+
+    // LocalDateTime이 직렬화 과정에 문제가 생겨서 추가 (노정환)
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.0'
+
 }
 
 tasks.named('test') {

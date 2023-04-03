@@ -33,8 +33,8 @@ public class FollowServiceImpl implements FollowService {
         LOGGER.info("===========insertFollow============\nmemberId : {}, catId : {}",memberId, catId);
         Member member = memberRepository.findByMemberId(memberId);
         Cat cat = catRepository.findCatByCatId(catId).orElse(null);
-        Follow isFollowing = followRepository.findByMember_MemberIdAndCat_CatId(memberId, catId).orElse(null);
-        LOGGER.info("===========insertFollow============\nisFollowing : {}",isFollowing);
+        Follow isFollowing = followRepository.findByMemberAndCat(memberId, catId).orElse(null);
+        LOGGER.info("===========insertFollow============\nisFollowing : {}", isFollowing);
         if(cat == null || isFollowing != null)
             return false;
 
@@ -47,7 +47,7 @@ public class FollowServiceImpl implements FollowService {
     @Override
     public boolean deleteFollow(UUID memberId, Long catId) {
         LOGGER.info("===========deleteFollow============\nmemberId : {}, catId : {}",memberId, catId);
-        Follow follow = followRepository.findByMember_MemberIdAndCat_CatId(memberId, catId).orElse(null);
+        Follow follow = followRepository.findByMemberAndCat(memberId, catId).orElse(null);
         Cat cat = catRepository.findCatByCatId(catId).orElse(null);
         if(follow == null || cat == null)
             return false;

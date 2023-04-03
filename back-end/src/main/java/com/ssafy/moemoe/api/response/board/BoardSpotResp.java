@@ -2,6 +2,8 @@ package com.ssafy.moemoe.api.response.board;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.ssafy.moemoe.db.entity.board.Board;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,6 +23,7 @@ public class BoardSpotResp {
     private String image;
     private Float lat;
     private Float lng;
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime createdAt;
 
 

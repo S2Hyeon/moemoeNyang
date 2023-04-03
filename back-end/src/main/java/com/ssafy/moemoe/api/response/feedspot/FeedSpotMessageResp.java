@@ -2,6 +2,8 @@ package com.ssafy.moemoe.api.response.feedspot;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +19,7 @@ import java.util.UUID;
 public class FeedSpotMessageResp {
     private UUID member_id;
     private String nickname;
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime created_at;
 
     @Builder
