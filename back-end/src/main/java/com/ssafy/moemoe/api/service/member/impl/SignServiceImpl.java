@@ -11,9 +11,9 @@ import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.repository.member.BadgeRepository;
 import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import com.ssafy.moemoe.db.repository.university.UniversityRepository;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,26 +23,17 @@ import java.util.UUID;
 
 // 예제 13.25
 @Service
+@RequiredArgsConstructor
 public class SignServiceImpl implements SignService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(SignServiceImpl.class);
 
-    public MemberRepository memberRepository;
-    public UniversityRepository universityRepository;
-    public JwtTokenProvider jwtTokenProvider;
-    public BadgeRepository badgeRepository;
-    public PasswordEncoder passwordEncoder;
+    private final MemberRepository memberRepository;
+    private final UniversityRepository universityRepository;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final BadgeRepository badgeRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public SignServiceImpl(MemberRepository memberRepository, JwtTokenProvider jwtTokenProvider,
-                           PasswordEncoder passwordEncoder, UniversityRepository universityRepository,
-                            BadgeRepository badgeRepository) {
-        this.memberRepository = memberRepository;
-        this.jwtTokenProvider = jwtTokenProvider;
-        this.passwordEncoder = passwordEncoder;
-        this.universityRepository = universityRepository;
-        this.badgeRepository = badgeRepository;
-    }
 
     //이메일 중복체크
     @Override
@@ -68,8 +59,14 @@ public class SignServiceImpl implements SignService {
         member.setNickname(form.getNickname());
         member.setUniversity(universityRepository.getById(form.getUniversityId()));
         member.setPassword(passwordEncoder.encode(form.getPassword()));
+        member.setBadge(badgeRepository.findById(form.getBadgeId()).get());
 
         memberRepository.save(member);
+    }
+
+    @Override
+    public Member getMember(UUID memberId) {
+        return memberRepository.findByMemberId(memberId);
     }
 
     @Override
