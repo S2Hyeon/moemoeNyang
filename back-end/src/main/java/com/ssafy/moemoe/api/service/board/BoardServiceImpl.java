@@ -10,7 +10,6 @@ import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.board.Reaction;
 import com.ssafy.moemoe.db.entity.board.Tag;
-import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import com.ssafy.moemoe.db.repository.board.BoardRepository;
@@ -22,7 +21,6 @@ import com.ssafy.moemoe.db.repository.university.UniversityRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -32,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -111,30 +110,81 @@ public class BoardServiceImpl implements BoardService {
     public void updateReaction(UUID memberId, ReactionDetailReq reactionDetailReq) {
         Member member = memberRepository.findById(memberId).orElseThrow(() -> new IllegalArgumentException("해당 유저는 없습니다. id=" + memberId));
         Board board = boardRepository.findById(reactionDetailReq.getBoardId()).orElseThrow(() -> new IllegalArgumentException("해당 게시물은 없습니다. id=" + reactionDetailReq.getBoardId()));
-        String react = reactionDetailReq.getEmotion();
+        Optional<Reaction> reaction = reactionRepository.findByMemberMemberIdAndBoardBoardId(memberId, board.getBoardId());
+        String nextReact = reactionDetailReq.getEmotion();
+        String prevReact = null;
+        int prevEmo = 0;
+        int nextEmo = 0;
 
-        switch (react) {
+        //reaction 객체가 비어있는지 검사
+        if (reaction.isEmpty()) { //비어있다면
+            //등록한 내용으로 리액션 생성
+            reactionRepository.save(Reaction.builder().react(nextReact).board(board).member(member).build());
+            prevEmo = 0; //이전 감정은 더하거나 뺄 게 없음
+            nextEmo = 1; //이후 감정은 더하기 해야함
+        } else { //있다면
+            //등록한 내용과 같다면
+            prevReact = reaction.get().getReact();
+
+            if(reaction.get().getReact().equals(nextReact)){
+                //등록한 reaction 삭제
+                reactionRepository.deleteReation(memberId, reactionDetailReq);
+
+                prevEmo = -1; //이전 감저은 빼야함
+                nextEmo = 0; //이후 감정은 더하거나 뺄 게 없음
+            } else {//다르다면
+                //등록한 reaction을 지금 등록한 내용으로 수정하기
+                reaction.get().setReact(nextReact);
+                reactionRepository.save(reaction.get());
+                prevEmo = -1; //이전 감정은 빼야함
+                nextEmo = 1; //이후 감정은 더해야함
+            }
+        }
+
+        //등록한 반응의 수를 늘리거나 늘리지 않는 부분
+        switch (nextReact) {
             case "recommend":
-                board.updateRecommend(board.getRecommend() + 1);
+                board.updateRecommend(board.getRecommend() + (1*nextEmo));
                 break;
             case "good":
-                board.updateGood(board.getGood() + 1);
+                board.updateGood(board.getGood() + (1*nextEmo));
                 break;
             case "impressed":
-                board.updateImpressed(board.getImpressed() + 1);
+                board.updateImpressed(board.getImpressed() + (1*nextEmo));
                 break;
             case "sad":
-                board.updateSad(board.getSad() + 1);
+                board.updateSad(board.getSad() + (1*nextEmo));
                 break;
             case "angry":
-                board.updateAngry(board.getAngry() + 1);
+                board.updateAngry(board.getAngry() + (1*nextEmo));
                 break;
             default:
                 throw new IllegalArgumentException("존재하지 않은 이모지 종류입니다.");
         }
 
-        // Reaction 생성
-        reactionRepository.save(Reaction.builder().react(react).board(board).member(member).build());
+        //이전 감정이 있을 때만 수행해야함
+        if (prevReact != null) {
+            //이전에 등록한 반응의 수를 줄이거나 줄이지 않는 부분
+            switch (prevReact) {
+                case "recommend":
+                    board.updateRecommend(board.getRecommend() + (1*prevEmo));
+                    break;
+                case "good":
+                    board.updateGood(board.getGood() + (1*prevEmo));
+                    break;
+                case "impressed":
+                    board.updateImpressed(board.getImpressed() + (1*prevEmo));
+                    break;
+                case "sad":
+                    board.updateSad(board.getSad() + (1*prevEmo));
+                    break;
+                case "angry":
+                    board.updateAngry(board.getAngry() + (1*prevEmo));
+                    break;
+                default:
+                    throw new IllegalArgumentException("존재하지 않은 이모지 종류입니다.");
+            }
+        }
     }
 
     @Override

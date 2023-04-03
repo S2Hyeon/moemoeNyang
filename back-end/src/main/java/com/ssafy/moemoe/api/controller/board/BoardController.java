@@ -92,7 +92,8 @@ public class BoardController {
             @ApiResponse(code = 404, message = "사용자 없음"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity<? extends BaseResponseBody> registerEmotion(HttpServletRequest request, @RequestBody @Valid ReactionDetailReq reactionDetailReq) {
+    public ResponseEntity<? extends BaseResponseBody> registerEmotion(HttpServletRequest request,
+                                                                      @RequestBody @Valid ReactionDetailReq reactionDetailReq) {
 
         Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
