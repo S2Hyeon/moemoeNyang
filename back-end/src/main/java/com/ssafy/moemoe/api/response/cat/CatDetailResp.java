@@ -2,6 +2,7 @@ package com.ssafy.moemoe.api.response.cat;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.ssafy.moemoe.db.entity.cat.Cat;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,15 @@ public class CatDetailResp {
         this.image = image;
         this.lat = lat;
         this.lng = lng;
+    }
+
+    public CatDetailResp(Cat cat) {
+        this.catId = cat.getCatId();
+        this.name = cat.getName();
+        this.age = cat.getAge();
+        this.gender = cat.getGender();
+        this.followerCnt = cat.getFollowerCnt();
+        this.image = cat.getImage();
     }
 
 }

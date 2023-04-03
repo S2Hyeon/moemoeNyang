@@ -3,6 +3,8 @@ package com.ssafy.moemoe.api.response.feedspot;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +24,7 @@ public class FeedSpotMarkerResp {
     private String image;
     private double lat;
     private double lng;
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime recentFeedTime;
     private int isActive;
 

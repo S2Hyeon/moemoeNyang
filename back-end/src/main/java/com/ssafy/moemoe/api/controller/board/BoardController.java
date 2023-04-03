@@ -1,48 +1,35 @@
 package com.ssafy.moemoe.api.controller.board;
 
-<<<<<<< HEAD
+
 import com.ssafy.moemoe.api.request.board.BoardSaveReq;
 import com.ssafy.moemoe.api.request.board.MultipartFileReq;
 import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardResp;
-//import com.ssafy.moemoe.api.service.S3Uploader;
 import com.ssafy.moemoe.api.service.board.BoardService;
 import com.ssafy.moemoe.common.model.BaseResponseBody;
 import com.ssafy.moemoe.common.util.TokenUtils;
 import io.jsonwebtoken.Claims;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-<<<<<<< HEAD
 import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
-=======
-import org.springframework.http.MediaType;
-=======
-import com.ssafy.moemoe.api.response.board.BoardDetailResp;
-import com.ssafy.moemoe.api.response.board.TagResp;
-import com.ssafy.moemoe.api.response.cat.CatDetailResp;
-import com.ssafy.moemoe.api.response.member.MemberDetailResp;
->>>>>>> 8be3a57cf4072cfd5e443edb3ddbf118c433aa6b
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
->>>>>>> b00643ef4918225adf820d66337f7fc5b2b51075
+
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -53,9 +40,13 @@ import java.util.UUID;
 @RequestMapping("/boards")
 public class BoardController {
 
-<<<<<<< HEAD
     //    @Autowired
 //    S3Uploader s3Uploader;
+
+    private final BoardService boardService;
+    private final TokenUtils tokenUtils;
+
+
     @PostMapping
     @ApiOperation(value = "게시물 등록", notes = "<strong>image, BoardSaveReq, TagSaveReq</strong>를 통해 게시물을 생성 한다.")
     @ApiResponses({
@@ -66,8 +57,7 @@ public class BoardController {
     })
     public ResponseEntity<BoardResp> create(
             HttpServletRequest request,
-            @RequestBody BoardSaveReq boardSaveReq,
-            @ModelAttribute @Valid MultipartFileReq multipartFileReq) throws IOException {
+            @ModelAttribute BoardSaveReq boardSaveReq) {
         Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
 
@@ -75,13 +65,6 @@ public class BoardController {
         //이미지 업로드
 //        String img = s3Uploader.upload(, "profile");
 //        logger.info("url >>> " + img);
-=======
-    final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
-
-    @GetMapping("")
-    public ResponseEntity<?> getBoards(@RequestParam Long universityId, String tagName) {
-        List<BoardDetailResp> boards = new ArrayList<>();
->>>>>>> 8be3a57cf4072cfd5e443edb3ddbf118c433aa6b
 
         List<TagResp> tags = new ArrayList<>();
         tags.add(TagResp.builder()
@@ -131,18 +114,22 @@ public class BoardController {
                     .build());
         }
 
-<<<<<<< HEAD
+        MultipartFile multipartFile = boardSaveReq.getImage();
+
+        // 게시물 등록
+        BoardResp boardResp = boardService.createBoard(memberId, multipartFile, boardSaveReq);
+
+        // tag 등록
+//        boardService.createTag(boardResp.getBoardId(), boardSaveReq.getTagSaveList());
+
+
 
         //보내고 와서 저장까지
 
 
 
         return ResponseEntity.status(200).body(boardResp);
-=======
-        return ResponseEntity.ok(boards);
->>>>>>> b00643ef4918225adf820d66337f7fc5b2b51075
     }
-<<<<<<< HEAD
 
     @GetMapping
     @ApiOperation(value = "게시물 전체 and 테그별 공고 조회", notes = "테그명에 따라 조회가 가능하다.")
@@ -287,6 +274,4 @@ public class BoardController {
 //
 //        return ResponseEntity.ok(boards);
 //    }
-=======
->>>>>>> 8be3a57cf4072cfd5e443edb3ddbf118c433aa6b
 }

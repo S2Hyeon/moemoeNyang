@@ -7,6 +7,7 @@ import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardResp;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,7 +17,7 @@ import java.util.UUID;
  */
 public interface BoardService {
     // 게시물 생성
-    BoardResp createBoard(UUID memberId, String img, BoardSaveReq boardSaveReq);
+    BoardResp createBoard(UUID memberId, MultipartFile img, BoardSaveReq boardSaveReq);
 
     void createTag(Long boardId, List<TagSaveReq> tagSaveReqs);
 
