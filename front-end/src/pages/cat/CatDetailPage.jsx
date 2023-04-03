@@ -11,9 +11,11 @@ export default function CatDetailPage() {
   const { catId } = useParams();
 
   useEffect(() => {
-    getCatDetail(catId).then((res) => {
-      setCatInfo(res.data);
-    });
+    getCatDetail(catId)
+      .then((res) => {
+        setCatInfo(res.data);
+      })
+      .then(console.log("catInfo", catInfo));
   }, []);
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export default function CatDetailPage() {
             className="MapContainer w-full h-[13vh] rounded-sm"
             style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
           >
-            <KakaoMap catInfo={catInfo} />
+            <KakaoMap lat={catInfo.lat} lng={catInfo.lng} />
           </div>
         </div>
         <div className="text-left font-bold text-lg mt-4 ml-4">Board</div>
