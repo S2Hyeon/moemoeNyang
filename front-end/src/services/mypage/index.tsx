@@ -38,7 +38,6 @@ interface PutUserInfoResponse {
 }
 
 export async function putUserInfo(
-  badge_id: Number,
   nickname: string,
   university_id: number,
   password: string,
@@ -50,7 +49,6 @@ export async function putUserInfo(
     console.log("password", password)
 
     const response = await Api.put("/members", {
-      badge_id,
       nickname,
       university_id,
       password,

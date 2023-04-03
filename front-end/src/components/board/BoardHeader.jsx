@@ -105,20 +105,6 @@ export default function BoardHeader({ onBottom = false, postInfo }) {
 
       <div className="flex right">
         <div className="flex mr-2 text-center align-baseline">
-          {postInfo.cat.isFollowing === null ? (
-            <img
-              className="w-7 h-7 mr-2"
-              src="/images/button/Star.png"
-              alt="즐겨찾기"
-            />
-          ) : (
-            <img
-              className="w-7 h-7 mr-2"
-              src="/images/button/FillStar.png"
-              alt="즐겨찾기"
-            />
-          )}
-
           <span className="text-lg">{postInfo.member.nickname}</span>
         </div>
         {/* <div className="text-xl mr-2" onClick={showModal}>

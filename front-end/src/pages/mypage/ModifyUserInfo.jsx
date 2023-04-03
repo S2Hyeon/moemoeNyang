@@ -35,7 +35,7 @@ export default function ModifyUserInfo() {
       alert("정보를 수정해주세요.");
       return;
     } else {
-      putUserInfo(userNickname, university.universityId, password)
+      putUserInfo(userNickname, university.university_id, password)
         .then((res) => console.log("put 결과", res))
         .then(navigateToMypage);
     }
