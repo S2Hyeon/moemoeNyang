@@ -3,3 +3,4 @@ application.yml
 build
 .idea
 .gradle
+.vscode
