@@ -34,19 +34,13 @@ public class Member implements UserDetails {
     @Column(name = "member_id", columnDefinition = "BINARY(16)")
     private UUID memberId;
 
-//    자꾸 null 뱉어대서 주석처리
     @ManyToOne
     @JoinColumn(name = "university_id")
     private University university;
-//    @Column(nullable = false)
-//    private long university_id;
 
-//    자꾸 null 뱉어대서 주석처리
     @ManyToOne
     @JoinColumn(name = "badge_id")
     private Badge badge;
-//    @Column(nullable = false)
-//    private long badge_id;
 
     @Column(nullable = false, unique = true)
     private String email; // 회원 ID (JWT 토큰 내 정보)

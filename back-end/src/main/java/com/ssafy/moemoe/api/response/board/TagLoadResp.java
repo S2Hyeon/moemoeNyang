@@ -1,6 +1,7 @@
 package com.ssafy.moemoe.api.response.board;
 
 import com.querydsl.core.annotations.QueryProjection;
+import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.board.Tag;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -17,15 +18,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ApiModel("BoardLoadRes")
 public class TagLoadResp {
+
+    @ApiModelProperty(name = "tag_id")
+    private Long tagId;
     @ApiModelProperty(name = "name")
     private String name;
-
     @ApiModelProperty(name = "rate")
     private Float rate;
+    @ApiModelProperty(name = "board_id")
+    private Long boardId;
 
     @QueryProjection
     public TagLoadResp(Tag tag) {
+        this.tagId = tag.getTagId();
         this.name = tag.getName();
         this.rate = tag.getRate();
+        this.boardId = tag.getBoard().getBoardId();
     }
 }

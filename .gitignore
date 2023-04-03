@@ -1,2 +1,5 @@
 # application.yml 파일 ignore
 application.yml
+build
+.idea
+.gradle
