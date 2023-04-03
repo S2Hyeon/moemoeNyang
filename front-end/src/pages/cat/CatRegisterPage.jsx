@@ -4,7 +4,7 @@ import CatNameButton from "../../components/cat/CatNameButton";
 import CatGenderButton from "../../components/cat/CatGenderButton";
 import CatAgeButton from "../../components/cat/CatAgeButton";
 import CatRegisterButton from "../../components/cat/CatRegisterButton";
-import ImgUpload from "../../components/upload/ImgUpload";
+// import ImgUpload from "../../components/upload/ImgUpload";
 
 
 export default function CatRegisterPage() {
@@ -20,7 +20,6 @@ export default function CatRegisterPage() {
                     <CatGenderButton />
                     <CatAgeButton />
                     <CatRegisterButton />
-
                 </div>
             </div>
         </div>

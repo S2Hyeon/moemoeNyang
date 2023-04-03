@@ -104,7 +104,7 @@ export async function postCatRegist(
   lng: Number,
 ): Promise<PostCatRegistResponse | undefined> {
   try {
-    const response = await Api.post("/cats", {
+    const response = await Api.post("/cat", {
       universityId,
       name,
       age,
