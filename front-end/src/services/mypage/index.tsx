@@ -88,13 +88,14 @@ export async function getUserBadge(): Promise<
 interface GetFollowListResponse {
   status: number;
   data: {
-    "cats":Array<      {
-      "cat_id":Number,
-      "name":String,
-      "age":Number,
-      "gender":String,
-      "follower_cnt":Number,
-      "url":String
+    "cats": Array<      {
+      "cat_id": Number,
+      "name": String,
+      "age": Number,
+      "gender": String,
+      "follower_cnt": Number,
+      "image": String
+      "is_following": null | Number,
     }>
   };
 }
@@ -104,6 +105,7 @@ GetFollowListResponse | undefined
 > {
   try {
     const response = await Api.get("/members/follow-list");
+    console.log(JSON.stringify(response))
     return response as GetFollowListResponse;
   } catch (error) {
     console.error(error);
