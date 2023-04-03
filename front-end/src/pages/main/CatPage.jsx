@@ -31,7 +31,7 @@ export default function CatPage() {
   return (
     <div className="flex flex-wrap pl-4 pr-4">
       {catList.map((cat) => {
-        return <CatCard catInfo={cat} />;
+        return <CatCard catInfo={cat} key={cat.cat_id} />;
       })}
       <HiPlusCircle
         className="z-50 absolute text-lisa-500 w-12 h-12 right-8 bottom-14"

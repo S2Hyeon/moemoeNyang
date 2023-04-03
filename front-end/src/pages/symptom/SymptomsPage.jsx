@@ -12,14 +12,12 @@ export default function SymptomsPage() {
     navigate("/symptoms/register");
   };
 
-  const [catIdx, setCatIdx] = useState("");
-
   const [diseasesList, setDiseasesList] = useState([]);
 
   const { catId } = useParams();
 
   useEffect(() => {
-    getDisease(catId).then((res) => setDiseasesList(res.data));
+    getDisease(catId).then((res) => setDiseasesList(res.data.diseases));
   }, []);
 
   useEffect(() => {
@@ -30,20 +28,21 @@ export default function SymptomsPage() {
 
   return (
     <div className="m-2">
-      <Dropdown parentFunction={setCatIdx} />
+      {console.log(diseasesList)}
       <div className="ml-4 mr-4">
         <ol className="border-l border-neutral-300 dark:border-neutral-500">
           {diseasesList.map((list) => {
             return (
-              <li>
+              <li key={list.disease_timeline_id}>
                 <div className="flex-start flex items-center pt-3">
                   <div className="-ml-[5px] mr-3 h-[12px] w-[12px] rounded-full bg-lisa-300 dark:bg-neutral-500"></div>
                   <p className="text-sm text-neutral-500 dark:text-neutral-300">
-                    2023.03.13
+                    {list.created_at[0]}.{list.created_at[1]}.
+                    {list.created_at[2]}
                   </p>
                 </div>
                 <div className="mt-2 ml-4 mb-6">
-                  <TimeLineCard />
+                  <TimeLineCard diseaseData={list} />
                 </div>
               </li>
             );

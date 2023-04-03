@@ -28,24 +28,26 @@ export default function CatDetailPage() {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center pl-4 pr-4">
+      <div className=" pl-4 pr-4">
         <CatProfileBox catInfo={catInfo} />
-        <button
-          className="grid place-items-center rounded-full w-full h-10 bg-[#e29c9c] text-base mb-6 transition duration-200 "
-          onClick={() => onFollow(catInfo.cat_id)}
-        >
-          <div className="font-medium text-white">팔로우</div>
-        </button>
-        <div
-          className="MapContainer w-full h-[13vh] rounded-sm"
-          style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
-        >
-          <KakaoMap catInfo={catInfo} />
+        <div className="flex flex-col justify-center items-center">
+          <button
+            className="grid place-items-center rounded-full w-full h-10 bg-[#e29c9c] text-base mb-6 transition duration-200 "
+            onClick={() => onFollow(catInfo.cat_id)}
+          >
+            <div className="font-medium text-white">팔로우</div>
+          </button>
+          <div
+            className="MapContainer w-full h-[13vh] rounded-sm"
+            style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
+          >
+            <KakaoMap catInfo={catInfo} />
+          </div>
         </div>
-      </div>
-      <div className="text-left font-bold text-lg mt-4 ml-4">Board</div>
-      <div className="flex flex-col justify-center items-center pl-4 pr-4">
-        <CatGrid catInfo={catInfo} />
+        <div className="text-left font-bold text-lg mt-4 ml-4">Board</div>
+        <div className="flex flex-col justify-center items-center pl-4 pr-4">
+          <CatGrid catInfo={catInfo} />
+        </div>
       </div>
     </>
   );
