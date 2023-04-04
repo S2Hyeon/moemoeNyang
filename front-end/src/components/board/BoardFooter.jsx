@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import TimeAgo from "javascript-time-ago";
 import ko from "javascript-time-ago/locale/ko.json";
 import { patchEmoji, deleteEmoji } from "../../services/main";
@@ -9,12 +8,6 @@ import ReactTimeAgo from "react-time-ago";
 export default function BoardFooter({ onBottom = false, postInfo }) {
   TimeAgo.setDefaultLocale(ko.locale);
   TimeAgo.addLocale(ko);
-
-  const navigate = useNavigate();
-
-  const navigateToTags = (tagName) => {
-    navigate(`/board/${tagName}`);
-  };
 
   function onPatchEmoji(boardId, emotionName) {
     console.log("patch emoji");
@@ -49,16 +42,6 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
       <div className="card-footer p-4 pt-0">
         <div className="top">
           <div className="flex">
-            <div className="my-2 w-full flex flex-row">
-              <span
-                className="text-sm"
-                onClick={() => navigateToTags(postInfo.tags[0]["name"])}
-              >
-                {`#${postInfo.tags[0]["name"]} ${postInfo.tags[0][
-                  "rate"
-                ].toFixed(0)}%`}
-              </span>
-            </div>
             <div className="icons flex flex-row justify-center items-center">
               <div className="MaxImoji mr-4 flex">
                 <img
@@ -99,22 +82,6 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
   return (
     <div className="card-footer p-4 pt-0">
       <div className="top">
-        <div className="my-2 w-full flex flex-row justify-around">
-          {postInfo.tags.map((tag) => {
-            return (
-              <div key={tag.name}>
-                <span
-                  className="font-bold text-sm"
-                  onClick={() => navigateToTags(tag.name)}
-                >
-                  # {tag.name}
-                </span>
-                <span className="text-sm"> {tag.rate}% </span>
-              </div>
-            );
-          })}
-        </div>
-
         <div className="icons flex flex-row justify-center items-center">
           {emojiList.map((data) => {
             return (
