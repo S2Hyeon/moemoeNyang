@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 export default function KakaoMap({ lat, lng }) {
   let map;
   useEffect(() => {
-    console.log(lat, " ", lng);
     let container = document.getElementById("map");
     let options = {
       center: new window.kakao.maps.LatLng(lat, lng),

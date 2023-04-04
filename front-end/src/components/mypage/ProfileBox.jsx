@@ -1,6 +1,7 @@
 import React from "react";
 import { RiSettings4Fill } from "@react-icons/all-files/ri/RiSettings4Fill";
 import { useNavigate } from "react-router-dom";
+import "animate.css";
 
 export default function ProfileBox({ userInfo }) {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ export default function ProfileBox({ userInfo }) {
   return (
     <div className="flex items-center relative p-5">
       <img
-        className="w-20"
+        className="w-20 "
         src={`/images/badgeImg/${badge}.png`}
         alt="대표배지이미지"
       />

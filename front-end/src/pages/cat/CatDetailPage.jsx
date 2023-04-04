@@ -43,7 +43,6 @@ export default function CatDetailPage() {
             className="MapContainer w-full h-[13vh] rounded-sm"
             style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
           >
-            {console.log(catInfo.lat, " --- ", catInfo.lng)}
             <KakaoMap lat={catInfo.lat} lng={catInfo.lng} />
           </div>
         </div>

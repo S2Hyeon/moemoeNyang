@@ -99,20 +99,20 @@ export async function deleteUnFollow(
 interface PatchEmojiResponse {
   status: number;
   data: {
-    board_id: Number,
+    boardId: Number,
     emotion: String,
   };
 }
 
 export async function patchEmoji(
   // 함수의 파라미터로 받을 값의 타입을 정의함
-  board_id: number,
+  boardId: Number,
   emotion: String,
 ): Promise<PatchEmojiResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
-    console.log(board_id, " --- ", emotion)
-    const response = await Api.patch(`/boards/emotion`, { board_id, emotion });
+    console.log(boardId, " --- ", emotion)
+    const response = await Api.patch(`/boards/emotion`, { boardId, emotion });
     console.log("patch emoji result", response)
     return response as PatchEmojiResponse;
   } catch (error) {
@@ -120,24 +120,25 @@ export async function patchEmoji(
   }
 }
 
-interface DeleteEmojiesponse {
+interface DeleteEmojiResponse {
   status: number;
   data: {
-    board_id: any | Number,
+    board_id: Number,
     emotion: string,
   };
 }
 
 export async function deleteEmoji(
   // 함수의 파라미터로 받을 값의 타입을 정의함
-  board_id: any | Number,
+  board_id: Number,
   emotion: string,
-): Promise<DeleteEmojiesponse | undefined> {
+): Promise<DeleteEmojiResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
-    console.log(board_id, "----", emotion)
-    const response = await Api.delete("/boards/emotion",{board_id, emotion });
-    return response as DeleteEmojiesponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
+    console.log(board_id, "  ---  ", emotion)
+    const response = await Api.delete(`/boards/emotion`, {data:{board_id,  emotion}});
+    console.log(response)
+    return response as DeleteEmojiResponse;
   } catch (error) {
     // console.error(error);
   }

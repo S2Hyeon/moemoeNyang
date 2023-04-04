@@ -22,7 +22,7 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
   }
 
   function onDeleteEmoji(boardId, emotion) {
-    console.log(boardId, " ", emotion);
+    console.log("delete ", boardId, " ", emotion);
     deleteEmoji(boardId, emotion);
   }
 
