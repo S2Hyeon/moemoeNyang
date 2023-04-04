@@ -21,7 +21,7 @@ gauth.LocalWebserverAuth()
 drive = GoogleDrive(gauth)
 
 app = Flask(__name__)
-CORS(app, resource={r'*': {'origins': 'http://j8a801.p.ssafy.io:8080/api/'}})
+CORS(app, resource={r'*': {'origins': 'https://j8a801.p.ssafy.io/api'}})
 
 @app.route("/predict", methods=["POST"])
 def predict():
