@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import TimeAgo from "javascript-time-ago";
 import ko from "javascript-time-ago/locale/ko.json";
-import { patchEmoji, deleteEmoji } from "../../services/main";
+import { putEmoji } from "../../services/main";
 
 import ReactTimeAgo from "react-time-ago";
 
-export default function BoardFooter({ onBottom = false, postInfo }) {
+export default function BoardFooter({
+  onBottom = false,
+  postInfo,
+  emojiChange,
+  setEmojiChange,
+}) {
   TimeAgo.setDefaultLocale(ko.locale);
   TimeAgo.addLocale(ko);
 
-  function onPatchEmoji(boardId, emotionName) {
-    console.log("patch emoji");
-    patchEmoji(boardId, emotionName);
-  }
-
-  function onDeleteEmoji(boardId, emotion) {
-    console.log("delete ", boardId, " ", emotion);
-    deleteEmoji(boardId, emotion);
+  function onPutEmoji(boardId, emotionName) {
+    console.log("put emoji");
+    putEmoji(boardId, emotionName).then(() => setEmojiChange(!emojiChange));
   }
 
   const postDate = new Date(`
@@ -51,7 +51,7 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
                   width={30}
                   alt="감정이모지"
                   onClick={() =>
-                    onPatchEmoji(postInfo.board_id, postInfo.tags[0]["name"])
+                    onPutEmoji(postInfo.board_id, postInfo.tags[0]["name"])
                   }
                 />
                 <div className="text-center p-1">{maxEmojiCount}</div>
@@ -86,25 +86,14 @@ export default function BoardFooter({ onBottom = false, postInfo }) {
           {emojiList.map((data) => {
             return (
               <div className="recommend mr-4" key={data.key}>
-                {postInfo.my_emotion === data.key ? (
-                  <img
-                    src={`/images/emoji/${data.key}.png`}
-                    className="w-8 bg-amber-500"
-                    height={30}
-                    width={30}
-                    alt="감정이모지"
-                    onClick={() => onDeleteEmoji(postInfo.board_id, data.key)}
-                  />
-                ) : (
-                  <img
-                    src={`/images/emoji/${data.key}.png`}
-                    className="w-8  bg-amber-500"
-                    height={30}
-                    width={30}
-                    alt="감정이모지"
-                    onClick={() => onPatchEmoji(postInfo.board_id, data.key)}
-                  />
-                )}
+                <img
+                  src={`/images/emoji/${data.key}.png`}
+                  className="w-8  bg-amber-500"
+                  height={30}
+                  width={30}
+                  alt="감정이모지"
+                  onClick={() => onPutEmoji(postInfo.board_id, data.key)}
+                />
 
                 <div className="text-center p-1">{data.cnt}</div>
               </div>
