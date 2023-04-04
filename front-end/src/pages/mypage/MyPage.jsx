@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import BadgeList from "../../components/mypage/BadgeList";
 import ProfileBox from "../../components/mypage/ProfileBox";
 import { getUserInfo } from "../../services/mypage";
@@ -8,15 +8,28 @@ export default function Mypage() {
   const [toggle, setToggle] = useState(true);
 
   const [userInfo, setUserInfo] = useState([]);
+  const [badgeId, setBadgeId] = useState(0);
 
   useEffect(() => {
-    getUserInfo().then((res) => setUserInfo(res.data));
+    getUserInfo().then((res) => {
+      setUserInfo(res.data);
+      setBadgeId(res.data.badge_id);
+    });
     console.log("user Info 불러오기");
     console.log(userInfo);
   }, []);
 
   useEffect(() => {
+    console.log("badgeId가 변경됨 => ", badgeId);
+    getUserInfo().then((res) => {
+      setUserInfo(res.data);
+      setBadgeId(res.data.badge_id);
+    });
+  }, [badgeId]);
+
+  useEffect(() => {
     if (!userInfo.length) return;
+
     console.log("user Info 불러오기");
     console.log(userInfo);
   }, [userInfo]);
@@ -42,7 +55,11 @@ export default function Mypage() {
           고양이 리스트
         </div>
       </div>
-      {toggle ? <BadgeList /> : <FollowCatList />}
+      {toggle ? (
+        <BadgeList badgeId={badgeId} setBadgeId={setBadgeId} />
+      ) : (
+        <FollowCatList />
+      )}
     </div>
   );
 }

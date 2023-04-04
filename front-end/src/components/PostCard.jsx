@@ -9,7 +9,7 @@ export const PostCard = ({ onBottom = false, postInfo, tagName }) => {
       <div className={`flex-shrink-0 ${onBottom ? "h-[30vh]" : ""}`}>
         <img
           className={`aspect-square 
-          object-cover h-full w-full `}
+          object-cover h-[350px] w-full `}
           src={postInfo.image}
           alt="고양이게시물이미지"
         />

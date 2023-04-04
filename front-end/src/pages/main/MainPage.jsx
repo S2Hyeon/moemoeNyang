@@ -7,7 +7,7 @@ const MainPage = () => {
 
   useEffect(() => {
     getMainBoardList().then((res) => {
-      setPostList(res.data);
+      setPostList(res.data.content);
     });
   }, []);
 
@@ -19,8 +19,8 @@ const MainPage = () => {
 
   return (
     <div className="flex flex-col flex-wrap">
-      {postList.map((data) => {
-        return <PostCard postInfo={data} key={data.board_id} />;
+      {postList.map((data, index) => {
+        return <PostCard postInfo={data} key={index} />;
       })}
     </div>
   );

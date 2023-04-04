@@ -8,7 +8,7 @@ export const ApiMock = MockupService;
 const Api = axios;
 
 // Api.defaults.baseURL = "http://localhost:8081/api";
-Api.defaults.baseURL = "http://j8a801.p.ssafy.io:8081/api";
+Api.defaults.baseURL = "https://j8a801.p.ssafy.io/api";
 Api.defaults.withCredentials = true;
 
 Api.interceptors.request.use(
