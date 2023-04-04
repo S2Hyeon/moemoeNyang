@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function CatNameButton() {
+function CatNameButton({ onChange }) {
   const [inputVisible, setInputVisible] = useState(false);
   const [name, setName] = useState("");
   
@@ -10,6 +10,7 @@ function CatNameButton() {
   
   const handleInputChange = (e) => {
     setName(e.target.value);
+    onChange(e.target.value);
   };
   
   const handleInputBlur = () => {
@@ -34,7 +35,8 @@ function CatNameButton() {
           className="rounded-full w-full h-full bg-[#f1ebeb] px-5 py-3 text-base mb-3 font-medium text-black transition duration-200 active:bg-[#e2d5d5]"
           onClick={handleClick}
         >
-          {name || "이름"}
+          {name === "" ? "이름" : name}
+          {/* {name || "이름"} */}
         </button>
       )}
     </div>
