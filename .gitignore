@@ -3,3 +3,9 @@ application.yml
 build
 .idea
 .gradle
+ai/__pycache__
+ai/.idea
+ai/client_secrets.json
+ai/environment.yaml
+
+
