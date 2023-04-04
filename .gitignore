@@ -3,6 +3,7 @@ application.yml
 build
 .idea
 .gradle
+.vscode
 ai/__pycache__
 ai/.idea
 ai/client_secrets.json
