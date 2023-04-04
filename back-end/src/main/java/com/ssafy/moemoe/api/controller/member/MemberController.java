@@ -42,6 +42,17 @@ public class MemberController {
     private final JwtTokenProvider jwtTokenProvider;
 
 
+    @PutMapping("/badge")
+    public ResponseEntity<?> updateBadge(HttpServletRequest request, @RequestParam Long badgeId) {
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
+        signService.updateBadge(memberId,badgeId);
+
+        Map<String, String> map = new HashMap<>();
+        map.put("msg", "뱃지가 변경되었습니다.");
+        return ResponseEntity.ok(map);
+    }
+
     @GetMapping("/badge")
     public ResponseEntity<?> getMemberActivity() {
 
@@ -55,7 +66,7 @@ public class MemberController {
                         .react_cnt((int) ((Math.random() * 10000) % 50))
                         .report_cnt((int) ((Math.random() * 10000) % 50))
                         .build()
-                );
+        );
     }
 
     @GetMapping("")

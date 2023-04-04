@@ -65,6 +65,13 @@ public class SignServiceImpl implements SignService {
     }
 
     @Override
+    public void updateBadge(UUID memberId, Long badgeId) {
+        Member member = memberRepository.findByMemberId(memberId);
+        member.setBadge(badgeRepository.findById(badgeId).get());
+        memberRepository.save(member);
+    }
+
+    @Override
     public Member getMember(UUID memberId) {
         return memberRepository.findByMemberId(memberId);
     }
