@@ -46,6 +46,8 @@ interface GetCatDetailResponse {
   };
 }
 
+Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
+
 export async function getCatDetail(
   catId: Number,
 ): Promise<GetCatDetailResponse | undefined> {

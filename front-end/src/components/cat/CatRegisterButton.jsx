@@ -7,13 +7,14 @@ function CatRegisterButton({ name, age, gender, image, lat, lang, universityId }
     const navigate = useNavigate();
     const onSubmit = (event) => {
         event.preventDefault();
-        postCatRegist(name, age, gender, image, lat, lang, universityId.university_Id).then((res) => {
+        postCatRegist(name, age, gender, image, lat, lang, universityId).then((res) => {
             console.log(res);
             AlertSuccess("고양이를 등록하였습니다.");
             navigate("/catlist");
         })
     }
 
+    
 
     return(
         <form>
