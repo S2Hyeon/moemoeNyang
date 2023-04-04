@@ -22,5 +22,7 @@ public interface SignService {
 
     void updateMember(UUID memberId, UpdateMemberReq form);
 
+    void updateBadge(UUID memberId, Long badgeId);
+
     Member getMember(UUID memberId);
 }
