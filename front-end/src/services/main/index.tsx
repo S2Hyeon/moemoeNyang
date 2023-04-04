@@ -96,7 +96,7 @@ export async function deleteUnFollow(
 }
 
 
-interface PatchEmojiResponse {
+interface PutEmojiResponse {
   status: number;
   data: {
     boardId: Number,
@@ -104,17 +104,17 @@ interface PatchEmojiResponse {
   };
 }
 
-export async function patchEmoji(
+export async function putEmoji(
   // 함수의 파라미터로 받을 값의 타입을 정의함
-  boardId: Number,
+  board_id: Number,
   emotion: String,
-): Promise<PatchEmojiResponse | undefined> {
+): Promise<PutEmojiResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
-    console.log(boardId, " --- ", emotion)
-    const response = await Api.patch(`/boards/emotion`, { boardId, emotion });
-    console.log("patch emoji result", response)
-    return response as PatchEmojiResponse;
+    console.log(board_id, " --- ", emotion)
+    const response = await Api.put(`/boards/emotion`, { board_id, emotion });
+    console.log("put emoji result", response)
+    return response as PutEmojiResponse;
   } catch (error) {
     // console.error(error);
   }
@@ -149,7 +149,7 @@ const Main = {
   getMainBoardList,
   postFollow,
   deleteUnFollow,
-  patchEmoji,
+  putEmoji,
   deleteEmoji,
 };
 
