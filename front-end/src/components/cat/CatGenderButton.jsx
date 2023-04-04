@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function CatGenderButton() {
+function CatGenderButton(props) {
   const [buttonGroupVisible, setButtonGroupVisible] = useState(false);
   const [gender, setGender] = useState("");
 
@@ -11,6 +11,11 @@ function CatGenderButton() {
   const handleButtonGroupClick = (e) => {
     setGender(e.target.getAttribute("gender"));
     setButtonGroupVisible(false);
+  };
+
+  const handleInputChange = (e) => {
+    setGender(e.target.value);
+    props.onGenderChange(e.target.value);
   };
 
   return (

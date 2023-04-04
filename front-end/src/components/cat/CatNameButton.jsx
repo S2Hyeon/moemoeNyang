@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function CatNameButton() {
+function CatNameButton(props) {
   const [inputVisible, setInputVisible] = useState(false);
   const [name, setName] = useState("");
   
@@ -10,6 +10,7 @@ function CatNameButton() {
   
   const handleInputChange = (e) => {
     setName(e.target.value);
+    props.onChange(e.target.value);
   };
   
   const handleInputBlur = () => {
