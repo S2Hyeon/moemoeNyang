@@ -158,7 +158,7 @@ public class CatController {
         byte[] fileContent = multipartFileReq.getImage().getBytes();
 
         // Make a POST request to the Flask API endpoint with the file content as a binary file
-        String url = "http://127.0.0.1:5000/predict/classification";
+        String url = "https://j8a801.p.ssafy.io/disease/predict";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
