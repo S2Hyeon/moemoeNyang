@@ -11,6 +11,7 @@ export default function ProfileBox({ userInfo }) {
   };
 
   const badgeName = [
+    "",
     "cat_regist_cnt_1",
     "cat_regist_cnt_5",
     "cat_regist_cnt_10",
@@ -34,7 +35,7 @@ export default function ProfileBox({ userInfo }) {
     "report_cnt_20",
   ];
 
-  const badge = badgeName[userInfo.badge_id - 1];
+  const badge = badgeName[userInfo.badge_id];
 
   return (
     <div className="flex items-center relative p-5">

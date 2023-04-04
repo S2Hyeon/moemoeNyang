@@ -69,7 +69,7 @@ export async function putUpdateBadge(
 ): Promise<PutUpdateBadgeResponse | undefined> {
   try {
     console.log("badgeId", badgeId)
-    const response = await Api.put("/members/badge", { badgeId  });
+    const response = await Api.put(`/members/badge?badgeId=${badgeId}`);
     console.log("putUpdateBadge 결과", response)
     return response as PutUpdateBadgeResponse;
   } catch (error) {

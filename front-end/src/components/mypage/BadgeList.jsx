@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getUserBadge, putUserInfo } from "../../services/mypage";
-import { typedUseSelector } from "../../store";
+import { getUserBadge, putUpdateBadge } from "../../services/mypage";
+// import { typedUseSelector } from "../../store";
 
-export default function BadgeList() {
+export default function BadgeList({ badgeId, setBadgeId }) {
   const [badgeList, setBadgeList] = useState([]);
 
   useEffect(() => {
@@ -17,32 +17,35 @@ export default function BadgeList() {
   }, [badgeList]);
 
   const badgeName = [
-    { 0: "cat_regist_cnt_1" },
-    { 1: "cat_regist_cnt_5" },
-    { 2: "cat_regist_cnt_10" },
-    { 3: "disease_1" },
-    { 4: "disease_3" },
-    { 5: "disease_6" },
-    { 6: "feed_cnt_1" },
-    { 7: "feed_cnt_10" },
-    { 8: "feed_cnt_20" },
-    { 9: "login_days_cnt_7" },
-    { 10: "login_days_cnt_30" },
-    { 11: "login_days_cnt_100" },
-    { 12: "post_1" },
-    { 13: "post_3" },
-    { 14: "post_6" },
-    { 15: "react_cnt_5" },
-    { 16: "react_cnt_10" },
-    { 17: "react_cnt_20" },
-    { 18: "report_cnt_5" },
-    { 19: "report_cnt_10" },
-    { 20: "report_cnt_20" },
+    { 1: "cat_regist_cnt_1" },
+    { 2: "cat_regist_cnt_5" },
+    { 3: "cat_regist_cnt_10" },
+    { 4: "disease_1" },
+    { 5: "disease_3" },
+    { 6: "disease_6" },
+    { 7: "feed_cnt_1" },
+    { 8: "feed_cnt_10" },
+    { 9: "feed_cnt_20" },
+    { 10: "login_days_cnt_7" },
+    { 11: "login_days_cnt_30" },
+    { 12: "login_days_cnt_100" },
+    { 13: "post_1" },
+    { 14: "post_3" },
+    { 15: "post_6" },
+    { 16: "react_cnt_5" },
+    { 17: "react_cnt_10" },
+    { 18: "react_cnt_20" },
+    { 19: "report_cnt_5" },
+    { 20: "report_cnt_10" },
+    { 21: "report_cnt_20" },
   ];
 
-  const member = typedUseSelector((state) => state.member.memberObject);
-  function onBadgeClick(badgeId) {
-    putUserInfo(badgeId, member.nickname, member.universityId);
+  function onBadgeClick(id) {
+    console.log("click badgeId", badgeId);
+    putUpdateBadge(id)
+      .then(() => console.log("putUpdatebadge 완료"))
+      .then(() => setBadgeId(id))
+      .then(() => console.log("setBadgeId 완료"));
   }
 
   return (
