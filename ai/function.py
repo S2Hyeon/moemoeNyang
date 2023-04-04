@@ -115,8 +115,8 @@ def segm_predict(model, image, idx):
 
     image_name = os.path.join("./img/segmentation", f"A{idx+1}", "predict.png")
 
-    return show_prediction(img, y_true, model=model, model_pred=y_pred,
-                           opt='base', save_path=image_name, show=False)
+    return show_prediction(img, model, model_pred=y_pred,
+                           opt='total', save_path=image_name, show=False)
 
 
 # define function for drawing polygon in image
@@ -142,20 +142,20 @@ def model_predict(image, model):
     return pred
 
 
-def show_prediction(image, mask, model=None, model_pred=None, opt='base', save_path=None, show=True):
+def show_prediction(image, model=None, model_pred=None, opt='base', save_path=None, show=True):
     plt.clf()
 
-    title = ['Input Image', 'True Mask', 'Predicted', 'Mask+Pred']
-
+    title = ['Input Image', 'Predicted Image', 'Result Image']
+    
     if model != None:
         pred = model_predict(image, model)
-        display_list = [image, mask, pred]
+        display_list = [image, pred]
     elif model_pred is not None:
         pred = model_pred
-        display_list = [image, mask, pred]
+        display_list = [image, pred]
     else:
         pred = None
-        display_list = [image, mask]
+        display_list = [image]
 
     if opt == 'base':
         for i in range(len(display_list)):
@@ -170,7 +170,7 @@ def show_prediction(image, mask, model=None, model_pred=None, opt='base', save_p
             return Image.open(buf)
         if show == True:
             plt.show()
-
+    
     elif opt == 'comb':
         show_comb
         if save_path != None:
@@ -186,20 +186,13 @@ def show_prediction(image, mask, model=None, model_pred=None, opt='base', save_p
             plt.subplot(1, len(display_list)+1, i+1)
             plt.title(title[i])
             plt.imshow(tf.keras.utils.array_to_img(display_list[i]))
-            plt.axis('off')
-        plt.subplot(1, len(display_list)+1, len(display_list)+1)
-        height, width, channels = image.shape
-
-        mask = tf.image.resize(mask, (height, width), method="nearest")
-        mask = np.where(mask == 0, image, [0, 1, 0])    # green
-
-        plt.imshow(image)
-        plt.imshow(mask, alpha=0.2)
-        plt.title("ground_truth(green)")
+            plt.axis('off')    
         if pred is not None:
+            plt.subplot(1, len(display_list)+1, len(display_list)+1)
             pred = np.where(pred == 0, image, [0, 0, 1])  # blue
-            plt.imshow(pred, alpha=0.2)
-            plt.title(title[3])
+            plt.imshow(image)
+            plt.imshow(pred, alpha=0.6)
+            plt.title(title[2])
         plt.axis('off')
         if save_path != None:
             buf = io.BytesIO()
@@ -209,5 +202,4 @@ def show_prediction(image, mask, model=None, model_pred=None, opt='base', save_p
         if show == True:
             plt.show()
     else:
-        raise Exception(
-            "fucntion show_pred: Wrong Option, You must choose one of ['base', comb', 'total']")
+        raise Exception("fucntion show_pred: Wrong Option, You must choose one of ['base', comb', 'total']")
