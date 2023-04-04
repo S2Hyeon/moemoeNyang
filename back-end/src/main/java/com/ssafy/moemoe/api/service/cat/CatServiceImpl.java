@@ -95,12 +95,12 @@ public class CatServiceImpl implements CatService{
         Board board = boardRepository.findTop1ByCat_CatIdOrderByCreatedAtDesc(catId).orElse(null);
         Optional<Follow> follow = followRepository.findByMemberAndCat(memberId, catId);
         LOGGER.info("=============getCat=================\nmember : {}, cat : {}, board : {}", member, cat, board);
-        if(member == null || cat == null || board == null)
-            return null;
         Long isFollowing = follow.isEmpty() ? 0L:1;
-
-        return toCatDetailResp(cat, board.getLat(), board.getLng(), isFollowing);
-
+        if(board == null){
+            return toCatDetailResp(cat, null, null, isFollowing);
+        } else {
+            return toCatDetailResp(cat, board.getLat(), board.getLng(), isFollowing);
+        }
     }
 
     @Override
