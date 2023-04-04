@@ -10,11 +10,13 @@ import com.ssafy.moemoe.api.service.board.BoardService;
 import com.ssafy.moemoe.api.service.university.UniversityService;
 import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.cat.Cat;
+import com.ssafy.moemoe.db.entity.follow.Follow;
 import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import com.ssafy.moemoe.db.repository.board.BoardRepository;
 import com.ssafy.moemoe.db.repository.cat.CatCustomRepository;
 import com.ssafy.moemoe.db.repository.cat.CatRepository;
+import com.ssafy.moemoe.db.repository.follow.FollowRepository;
 import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -26,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -37,6 +40,7 @@ public class CatServiceImpl implements CatService{
 
     private final CatRepository catRepository;
     private final CatCustomRepository catCustomRepository;
+    private final FollowRepository followRepository;
     private final UniversityService universityService;
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
@@ -89,11 +93,13 @@ public class CatServiceImpl implements CatService{
         Member member = memberRepository.findByMemberId(memberId);
         Cat cat = catRepository.findCatByCatId(catId).orElse(null);
         Board board = boardRepository.findTop1ByCat_CatIdOrderByCreatedAtDesc(catId).orElse(null);
+        Optional<Follow> follow = followRepository.findByMemberAndCat(memberId, catId);
         LOGGER.info("=============getCat=================\nmember : {}, cat : {}, board : {}", member, cat, board);
         if(member == null || cat == null || board == null)
             return null;
+        Long isFollowing = follow.isEmpty() ? 0L:1;
 
-        return toCatDetailResp(cat, board.getLat(), board.getLng());
+        return toCatDetailResp(cat, board.getLat(), board.getLng(), isFollowing);
 
     }
 

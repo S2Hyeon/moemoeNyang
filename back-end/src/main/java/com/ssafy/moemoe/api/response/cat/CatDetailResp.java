@@ -22,10 +22,12 @@ public class CatDetailResp {
     private String image;
     private Float lat;
     private Float lng;
+    private Long isFollowing;
 
 
     @Builder
-    public CatDetailResp(Long catId, String name, Integer age, Character gender, Long followerCnt, String image, Float lat, Float lng) {
+    public CatDetailResp(Long catId, String name, Integer age, Character gender,
+                         Long followerCnt, String image, Float lat, Float lng, Long isFollowing) {
         this.catId = catId;
         this.name = name;
         this.age = age;
@@ -34,6 +36,7 @@ public class CatDetailResp {
         this.image = image;
         this.lat = lat;
         this.lng = lng;
+        this.isFollowing = isFollowing;
     }
 
     public CatDetailResp(Cat cat) {
