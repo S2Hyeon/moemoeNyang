@@ -71,6 +71,23 @@ public class BoardLoadResp {
     @ApiModelProperty(name = "myEmotion")
     private String myEmotion;
 
+    public BoardLoadResp(Board board) {
+        this.boardId = board.getBoardId();
+        this.cat = new CatDetailResp(board.getCat());
+        this.member = new MemberDetailResp(board.getMember());
+//        this.tags = tags; //일단 태그는 아무것도 없다고 생각하겠음.
+        this.lat = board.getLat();
+        this.lng = board.getLng();
+        this.content = board.getContent();
+        this.image = board.getImage();
+        this.createdAt = board.getCreatedAt();
+        this.recommend = board.getRecommend();
+        this.good = board.getGood();
+        this.impressed = board.getImpressed();
+        this.sad = board.getSad();
+        this.angry = board.getAngry();
+    }
+
     @QueryProjection
     public BoardLoadResp(Board board, Cat cat, Member member, University university) {
         this.boardId = board.getBoardId();

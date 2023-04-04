@@ -14,5 +14,6 @@ import java.util.Optional;
 public interface BoardRepository extends JpaRepository<Board, Long>, BoardCustomRepository {
 
     List<Board> findTop10ByCat_CatIdOrderByCreatedAtDesc(Long catId);
+    List<Board> findByCat_CatIdOrderByCreatedAtDesc(Long catId);
     Optional<Board> findTop1ByCat_CatIdOrderByCreatedAtDesc(Long catId);
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.moemoe.api.request.board.MultipartFileReq;
 import com.ssafy.moemoe.api.request.cat.CatInfoReq;
 import com.ssafy.moemoe.api.request.disease.DiseaseTimelineRegistReq;
+import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
@@ -86,6 +87,19 @@ public class CatController {
             return new ResponseEntity<>("고양이가 조회에 실패했습니다.", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(catDetailResp, HttpStatus.OK);
+    }
+
+    //특정 고양이 상세 조회
+    @GetMapping("/{catId}/boards")
+    public ResponseEntity<?> getCatBoards(HttpServletRequest request, @PathVariable Long catId) {
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
+
+        List<BoardLoadResp> catBoards = catService.getCatBoards(memberId, catId);
+//        if(catDetailResp == null) {
+//            return new ResponseEntity<>("고양이가 조회에 실패했습니다.", HttpStatus.NOT_FOUND);
+//        }
+        return new ResponseEntity<>(catBoards, HttpStatus.OK);
     }
 
     //질병 검사 결과 조회

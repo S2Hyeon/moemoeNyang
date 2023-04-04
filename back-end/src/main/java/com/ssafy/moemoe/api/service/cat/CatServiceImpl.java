@@ -2,6 +2,7 @@ package com.ssafy.moemoe.api.service.cat;
 
 import com.ssafy.moemoe.api.request.board.BoardSaveReq;
 import com.ssafy.moemoe.api.request.cat.CatInfoReq;
+import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
@@ -10,11 +11,15 @@ import com.ssafy.moemoe.api.service.board.BoardService;
 import com.ssafy.moemoe.api.service.university.UniversityService;
 import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.cat.Cat;
+import com.ssafy.moemoe.db.entity.follow.Follow;
 import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import com.ssafy.moemoe.db.repository.board.BoardRepository;
+import com.ssafy.moemoe.db.repository.board.ReactionRepository;
+import com.ssafy.moemoe.db.repository.board.TagRepository;
 import com.ssafy.moemoe.db.repository.cat.CatCustomRepository;
 import com.ssafy.moemoe.db.repository.cat.CatRepository;
+import com.ssafy.moemoe.db.repository.follow.FollowRepository;
 import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -26,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -37,9 +43,12 @@ public class CatServiceImpl implements CatService{
 
     private final CatRepository catRepository;
     private final CatCustomRepository catCustomRepository;
+    private final FollowRepository followRepository;
     private final UniversityService universityService;
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
+    private final ReactionRepository reactionRepository;
+    private final TagRepository tagRepository;
     private final BoardService boardService;
     private final S3Uploader s3Uploader;
 
@@ -89,12 +98,14 @@ public class CatServiceImpl implements CatService{
         Member member = memberRepository.findByMemberId(memberId);
         Cat cat = catRepository.findCatByCatId(catId).orElse(null);
         Board board = boardRepository.findTop1ByCat_CatIdOrderByCreatedAtDesc(catId).orElse(null);
+        Optional<Follow> follow = followRepository.findByMemberAndCat(memberId, catId);
         LOGGER.info("=============getCat=================\nmember : {}, cat : {}, board : {}", member, cat, board);
-        if(member == null || cat == null || board == null)
-            return null;
-
-        return toCatDetailResp(cat, board.getLat(), board.getLng());
-
+        Long isFollowing = follow.isEmpty() ? 0L:1;
+        if(board == null){
+            return toCatDetailResp(cat, null, null, isFollowing);
+        } else {
+            return toCatDetailResp(cat, board.getLat(), board.getLng(), isFollowing);
+        }
     }
 
     @Override
@@ -111,5 +122,24 @@ public class CatServiceImpl implements CatService{
             boardSpotResps.add(new BoardSpotResp(board));
         }
         return boardSpotResps;
+    }
+
+    @Override
+    public List<BoardLoadResp> getCatBoards(UUID memberId, Long catId) {
+        Cat cat = catRepository.findCatByCatId(catId).orElse(null);
+        List<Board> boards = boardRepository.findByCat_CatIdOrderByCreatedAtDesc(catId);
+        Optional<Follow> follow = followRepository.findByMemberAndCat(memberId, catId);
+
+        List<BoardLoadResp> catBoards = new ArrayList<>();
+        for(Board board : boards) {
+//            board.getCat()
+            catBoards.add(new BoardLoadResp(board));
+        }
+
+        for (BoardLoadResp cur : catBoards) {
+            cur.setMyEmotion(reactionRepository.checkReation(memberId, cur.getBoardId()));
+            cur.setTags(tagRepository.findByBoardId(cur.getBoardId()));
+        }
+        return catBoards;
     }
 }
