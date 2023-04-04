@@ -5,7 +5,8 @@ import { AlertSuccess } from "../../utils/alertToastify";
 
 function CatRegisterButton({ name, age, gender, image, lat, lang, universityId }) {
     const navigate = useNavigate();
-    const onSubmit = () => {
+    const onSubmit = (event) => {
+        event.preventDefault();
         postCatRegist(name, age, gender, image, lat, lang, universityId.university_Id).then((res) => {
             console.log(res);
             AlertSuccess("고양이를 등록하였습니다.");
@@ -15,6 +16,7 @@ function CatRegisterButton({ name, age, gender, image, lat, lang, universityId }
 
 
     return(
+        <form>
         <button 
         style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
         className="flex justify-center items-center w-[335px] h-[66px] rounded-[30px] bg-[#e87f7f]"
@@ -24,6 +26,7 @@ function CatRegisterButton({ name, age, gender, image, lat, lang, universityId }
         등록
         </p>
         </button>
+        </form>
     )
 }
 

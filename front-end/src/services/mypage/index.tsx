@@ -30,6 +30,7 @@ export async function getUserInfo(): Promise<GetUserInfoResponse | undefined> {
 interface PutUserInfoResponse {
   status: number;
   data: {
+    badge_id: Number,
     nickname: String;
     university_id: Number;
     password: String;
@@ -37,6 +38,7 @@ interface PutUserInfoResponse {
 }
 
 export async function putUserInfo(
+  badge_id: Number,
   nickname: string,
   university_id: number,
   password: string,
@@ -48,6 +50,7 @@ export async function putUserInfo(
     console.log("password", password)
 
     const response = await Api.put("/members", {
+      badge_id,
       nickname,
       university_id,
       password,
@@ -88,13 +91,14 @@ export async function getUserBadge(): Promise<
 interface GetFollowListResponse {
   status: number;
   data: {
-    "cats":Array<      {
-      "cat_id":Number,
-      "name":String,
-      "age":Number,
-      "gender":String,
-      "follower_cnt":Number,
-      "url":String
+    "cats": Array<      {
+      "cat_id": Number,
+      "name": String,
+      "age": Number,
+      "gender": String,
+      "follower_cnt": Number,
+      "image": String
+      "is_following": null | Number,
     }>
   };
 }
@@ -104,6 +108,7 @@ GetFollowListResponse | undefined
 > {
   try {
     const response = await Api.get("/members/follow-list");
+    console.log(JSON.stringify(response))
     return response as GetFollowListResponse;
   } catch (error) {
     console.error(error);

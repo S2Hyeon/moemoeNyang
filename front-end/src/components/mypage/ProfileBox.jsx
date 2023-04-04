@@ -9,11 +9,37 @@ export default function ProfileBox({ userInfo }) {
     navigate("/mypage/modify");
   };
 
+  const badgeName = [
+    "cat_regist_cnt_1",
+    "cat_regist_cnt_5",
+    "cat_regist_cnt_10",
+    "disease_1",
+    "disease_3",
+    "disease_6",
+    "feed_cnt_1",
+    "feed_cnt_10",
+    "feed_cnt_20",
+    "login_days_cnt_7",
+    "login_days_cnt_30",
+    "login_days_cnt_100",
+    "post_1",
+    "post_3",
+    "post_6",
+    "react_cnt_5",
+    "react_cnt_10",
+    "react_cnt_20",
+    "report_cnt_5",
+    "report_cnt_10",
+    "report_cnt_20",
+  ];
+
+  const badge = badgeName[userInfo.badge_id - 1];
+
   return (
     <div className="flex items-center relative p-5">
       <img
         className="w-20"
-        src="/images/badgeImg/cat_1.png"
+        src={`/images/badgeImg/${badge}.png`}
         alt="대표배지이미지"
       />
       <div className="ml-4">

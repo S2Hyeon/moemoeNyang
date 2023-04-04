@@ -52,7 +52,6 @@ export async function getCatDetail(
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
     const response = await Api.get(`/cats/${catId}`);
-    console.log("나이", JSON.stringify(response.data.age));
     return response as GetCatDetailResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
     // console.error(error);
@@ -119,11 +118,50 @@ export async function postCatRegist(
   }
 }
 
+interface PostCatFollowResponse {
+  status: Number;
+  data: {
+    "cat_id": Number,
+  };
+}
+
+export async function postCatFollow(
+  cat_id: Number
+): Promise<PostCatFollowResponse | undefined> {
+  try {
+    console.log(cat_id)
+    const response = await Api.post("/cats/follow", { cat_id });
+    return response as PostCatFollowResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+interface DeleteCatFollowResponse {
+  status: Number;
+  data: {
+    "cat_id": Number,
+  };
+}
+
+export async function deleteCatFollow(
+  catId: Number
+): Promise<DeleteCatFollowResponse | undefined> {
+  try {
+    const response = await Api.delete(`/cats/follow/${catId}`);
+    return response as DeleteCatFollowResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 const Cats = {
   getCatList,
   getCatDetail,
   getCatImages,
   postCatRegist,
+  postCatFollow,
+  deleteCatFollow,
 };
 
 export default Cats;
