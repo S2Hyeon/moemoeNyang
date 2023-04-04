@@ -1,11 +1,15 @@
 package com.ssafy.moemoe.api.controller.board;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.moemoe.api.request.board.BoardSaveReq;
 import com.ssafy.moemoe.api.request.board.MultipartFileReq;
 import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardResp;
+import com.ssafy.moemoe.api.response.disease.JsonDiseaseResp;
 import com.ssafy.moemoe.api.service.board.BoardService;
+import com.ssafy.moemoe.api.service.disease.DiseaseService;
 import com.ssafy.moemoe.common.model.BaseResponseBody;
 import com.ssafy.moemoe.common.util.TokenUtils;
 import io.jsonwebtoken.Claims;
@@ -119,39 +123,6 @@ public class BoardController {
         boardService.deleteReaction(memberId, reactionDetailReq);
 
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "게시물 이모지 취소 완료!"));
-    }
-
-    @PostMapping(path = "/disease", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @ApiOperation(value = "질병분석 - 피부", notes = "이미지를 전달하여 분석한다.")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "성공"),
-            @ApiResponse(code = 401, message = "인증 실패"),
-            @ApiResponse(code = 404, message = "사용자 없음"),
-            @ApiResponse(code = 500, message = "서버 오류")
-    })
-    public ResponseEntity<?> analysisDisease(
-            @ModelAttribute @Valid MultipartFileReq multipartFileReq) throws IOException {
-        // Read the contents of the MultipartFile into a byte array
-        byte[] fileContent = multipartFileReq.getImage().getBytes();
-
-        // Make a POST request to the Flask API endpoint with the file content as a binary file
-        String url = "http://127.0.0.1:5000/predict/classification";
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-        ByteArrayResource contentsAsResource = new ByteArrayResource(fileContent) {
-            @Override
-            public String getFilename() {
-                return multipartFileReq.getImage().getOriginalFilename();
-            }
-        };
-        body.add("file", contentsAsResource);
-        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, String.class);
-
-        // Return the response from the Flask API
-        return response;
     }
 
     //    final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
