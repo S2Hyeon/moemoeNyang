@@ -1,6 +1,7 @@
 package com.ssafy.moemoe.api.service.cat;
 
 import com.ssafy.moemoe.api.request.cat.CatInfoReq;
+import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
@@ -18,6 +19,7 @@ public interface CatService {
 
     List<BoardSpotResp> getCatSpots(UUID memberId, Long catId);
 
+    List<BoardLoadResp> getCatBoards(UUID memberId, Long catId);
 
     default CatDetailResp toCatDetailResp(Cat cat, Float lat, Float lng, Long isFollowing) {
         return CatDetailResp.builder()

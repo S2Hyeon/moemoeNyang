@@ -2,6 +2,7 @@ package com.ssafy.moemoe.api.service.cat;
 
 import com.ssafy.moemoe.api.request.board.BoardSaveReq;
 import com.ssafy.moemoe.api.request.cat.CatInfoReq;
+import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
@@ -14,6 +15,8 @@ import com.ssafy.moemoe.db.entity.follow.Follow;
 import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import com.ssafy.moemoe.db.repository.board.BoardRepository;
+import com.ssafy.moemoe.db.repository.board.ReactionRepository;
+import com.ssafy.moemoe.db.repository.board.TagRepository;
 import com.ssafy.moemoe.db.repository.cat.CatCustomRepository;
 import com.ssafy.moemoe.db.repository.cat.CatRepository;
 import com.ssafy.moemoe.db.repository.follow.FollowRepository;
@@ -44,6 +47,8 @@ public class CatServiceImpl implements CatService{
     private final UniversityService universityService;
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
+    private final ReactionRepository reactionRepository;
+    private final TagRepository tagRepository;
     private final BoardService boardService;
     private final S3Uploader s3Uploader;
 
@@ -117,5 +122,24 @@ public class CatServiceImpl implements CatService{
             boardSpotResps.add(new BoardSpotResp(board));
         }
         return boardSpotResps;
+    }
+
+    @Override
+    public List<BoardLoadResp> getCatBoards(UUID memberId, Long catId) {
+        Cat cat = catRepository.findCatByCatId(catId).orElse(null);
+        List<Board> boards = boardRepository.findByCat_CatIdOrderByCreatedAtDesc(catId);
+        Optional<Follow> follow = followRepository.findByMemberAndCat(memberId, catId);
+
+        List<BoardLoadResp> catBoards = new ArrayList<>();
+        for(Board board : boards) {
+//            board.getCat()
+            catBoards.add(new BoardLoadResp(board));
+        }
+
+        for (BoardLoadResp cur : catBoards) {
+            cur.setMyEmotion(reactionRepository.checkReation(memberId, cur.getBoardId()));
+            cur.setTags(tagRepository.findByBoardId(cur.getBoardId()));
+        }
+        return catBoards;
     }
 }
