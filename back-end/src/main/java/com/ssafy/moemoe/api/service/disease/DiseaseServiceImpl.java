@@ -2,6 +2,7 @@ package com.ssafy.moemoe.api.service.disease;
 
 import com.ssafy.moemoe.api.request.disease.DiseaseTimelineRegistReq;
 import com.ssafy.moemoe.api.response.cat.DiseaseTimelineResp;
+import com.ssafy.moemoe.api.response.disease.DiseaseDetailResp;
 import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.disease.Disease;
 import com.ssafy.moemoe.db.entity.disease.DiseaseTimeline;
@@ -36,6 +37,37 @@ public class DiseaseServiceImpl implements DiseaseService{
         diseaseTimelineRepository.save(diseaseTimeline);
 
         return diseaseTimeline.getDiseaseTimelineId();
+    }
+
+    @Override
+    public DiseaseDetailResp getDiseaseDetail(String diseaseName) {
+        DiseaseDetailResp diseaseDetailResp;
+        switch(diseaseName) {
+            case "A1" :
+                diseaseDetailResp = new DiseaseDetailResp(diseaseRepository.findById(1L).orElseThrow(() -> new IllegalArgumentException("해당 Disease는 없습니다.")));
+                break;
+            case "A2" :
+                diseaseDetailResp = new DiseaseDetailResp(diseaseRepository.findById(2L).orElseThrow(() -> new IllegalArgumentException("해당 Disease는 없습니다.")));
+                break;
+            case "A3" :
+                diseaseDetailResp = new DiseaseDetailResp(diseaseRepository.findById(3L).orElseThrow(() -> new IllegalArgumentException("해당 Disease는 없습니다.")));
+                break;
+            case "A4" :
+                diseaseDetailResp = new DiseaseDetailResp(diseaseRepository.findById(4L).orElseThrow(() -> new IllegalArgumentException("해당 Disease는 없습니다.")));
+                break;
+            case "A5" :
+                diseaseDetailResp = new DiseaseDetailResp(diseaseRepository.findById(5L).orElseThrow(() -> new IllegalArgumentException("해당 Disease는 없습니다.")));
+                break;
+            case "A6" :
+                diseaseDetailResp = new DiseaseDetailResp(diseaseRepository.findById(6L).orElseThrow(() -> new IllegalArgumentException("해당 Disease는 없습니다.")));
+                break;
+            default :
+                diseaseDetailResp = null;
+                System.out.println("예상되는 질병이 없습니다.");
+                break;
+        }
+
+        return diseaseDetailResp;
     }
 
     @Override
