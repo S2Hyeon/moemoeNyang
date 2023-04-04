@@ -62,9 +62,39 @@ export async function getDiseaseList(
 }
 
 
+interface PostDiseaseResponse {
+  status: number;
+  data: {
+    "disease_id":Number,
+    "image":String,
+  };
+}
+
+export async function postDisease(
+  catId:Number,
+  disease_id:Number,
+  image: String,
+): Promise<PostDiseaseResponse | undefined> {
+  try {
+    const response = await Api.post(`/cats/${catId}/disease`, {
+      disease_id,
+      image,
+    })
+    return response as PostDiseaseResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
+
+
 const Symptom = {
   getDisease,
   getDiseaseList,
 };
+
+
 
 export default Symptom;

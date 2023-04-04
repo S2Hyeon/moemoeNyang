@@ -46,6 +46,8 @@ interface GetCatDetailResponse {
   };
 }
 
+Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
+
 export async function getCatDetail(
   catId: Number,
 ): Promise<GetCatDetailResponse | undefined> {
@@ -103,7 +105,7 @@ export async function postCatRegist(
   lng: Number,
 ): Promise<PostCatRegistResponse | undefined> {
   try {
-    const response = await Api.post("/cats", {
+    const response = await Api.post("/cat", {
       universityId,
       name,
       age,

@@ -1,14 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import CatImageRegister from "../../components/cat/CatImageRegister";
 import CatNameButton from "../../components/cat/CatNameButton";
 import CatGenderButton from "../../components/cat/CatGenderButton";
 import CatAgeButton from "../../components/cat/CatAgeButton";
 import CatRegisterButton from "../../components/cat/CatRegisterButton";
-import ImgUpload from "../../components/upload/ImgUpload";
+
+// import ImgUpload from "../../components/upload/ImgUpload";
 
 
 export default function CatRegisterPage() {
-
 
     return(
         <div className="flex justify-center items-center">
@@ -20,7 +20,6 @@ export default function CatRegisterPage() {
                     <CatGenderButton />
                     <CatAgeButton />
                     <CatRegisterButton />
-
                 </div>
             </div>
         </div>
