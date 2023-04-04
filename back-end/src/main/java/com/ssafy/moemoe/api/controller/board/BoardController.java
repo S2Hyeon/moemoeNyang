@@ -88,7 +88,7 @@ public class BoardController {
         return ResponseEntity.status(200).body(boardService.searchAllBoard(memberId, universityId, tagName, pageable));
     }
 
-    @PatchMapping("/emotion")
+    @PutMapping("/emotion")
     @ApiOperation(value = "게시물 이모지 등록", notes = "게시물의 이모지 등록이 가능하다.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "성공"),
