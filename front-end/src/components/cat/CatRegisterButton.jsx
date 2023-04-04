@@ -3,11 +3,13 @@ import { useNavigate } from "react-router";
 import { postCatRegist } from "../../services/cats";
 import { AlertSuccess } from "../../utils/alertToastify";
 
-function CatRegisterButton({ name, age, gender, image, lat, lang, universityId }) {
+function CatRegisterButton({ catData}) {
     const navigate = useNavigate();
     const onSubmit = (event) => {
+        console.log("버튼 컴포넌트", catData)
+        const {name , age, gender, image } = catData
         event.preventDefault();
-        postCatRegist(name, age, gender, image, lat, lang, universityId).then((res) => {
+        postCatRegist(name , age, gender, image).then((res) => {
             console.log(res);
             AlertSuccess("고양이를 등록하였습니다.");
             navigate("/catlist");

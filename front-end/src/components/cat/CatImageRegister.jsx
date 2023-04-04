@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { AiFillCamera } from "@react-icons/all-files/ai/AiFillCamera";
 
-export default function ImageUpload() {
+export default function ImageUpload({onChange}) {
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef();
 
@@ -12,6 +12,7 @@ export default function ImageUpload() {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setImgFile(reader.result);
+      onChange(reader.result)
     };
   };
 
