@@ -1,6 +1,8 @@
 // import { ApiMock } from "../../utils/customApi"; //목업 API를 불러옴
 import Api from "../../utils/customApi"; // 목업 API가 아닌 찐 API 쓸 때
 
+Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
+
 /* --------타입스크립트를 사용하는 경우-------- */
 
 //응답 객체의 타입을 정의한다. API 명세서의 Response 부분 참고
@@ -46,7 +48,6 @@ interface GetCatDetailResponse {
   };
 }
 
-Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
 
 export async function getCatDetail(
   catId: Number,
@@ -93,6 +94,7 @@ interface PostCatRegistResponse {
     lat: Number; // 고양이 등록시 이미지의 메타데이터를 이용해 첫 게시글 작성
     lng: Number;
   };
+  // header: { "Content-Type": "multipart/form-data", };
 }
 
 export async function postCatRegist(

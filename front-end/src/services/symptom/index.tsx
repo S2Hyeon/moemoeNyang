@@ -1,5 +1,7 @@
 import Api from "../../utils/customApi"; // 목업 API가 아닌 찐 API 쓸 때
 
+Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
+
 
 interface GetDiseaseResponse {
   status: number;
@@ -68,6 +70,7 @@ interface PostDiseaseResponse {
     "disease_id":Number,
     "image":String,
   };
+  // header: { "Content-Type": "multipart/form-data", };
 }
 
 export async function postDisease(
