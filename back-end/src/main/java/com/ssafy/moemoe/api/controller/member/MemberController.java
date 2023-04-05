@@ -54,19 +54,14 @@ public class MemberController {
     }
 
     @GetMapping("/badge")
-    public ResponseEntity<?> getMemberActivity() {
+    public ResponseEntity<?> getMemberActivity(HttpServletRequest request) {
 
-        return ResponseEntity.ok(
-                MemberActivityResp.builder()
-                        .feed_cnt((int) ((Math.random() * 10000) % 50))
-                        .cat_regist_cnt((int) ((Math.random() * 10000) % 50))
-                        .disease_regist_cnt((int) ((Math.random() * 10000) % 50))
-                        .login_days_cnt((int) ((Math.random() * 10000) % 50))
-                        .post_cnt((int) ((Math.random() * 10000) % 50))
-                        .react_cnt((int) ((Math.random() * 10000) % 50))
-                        .report_cnt((int) ((Math.random() * 10000) % 50))
-                        .build()
-        );
+        Claims claims = tokenUtils.getClaimsFromRequest(request);
+        UUID memberId = UUID.fromString(claims.get("member_id").toString());
+
+        MemberActivityResp activitiy = signService.getActivity(memberId);
+
+        return ResponseEntity.ok(activitiy);
     }
 
     @GetMapping("")
