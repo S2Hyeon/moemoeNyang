@@ -3,6 +3,7 @@ package com.ssafy.moemoe.api.service.member;
 
 import com.ssafy.moemoe.api.request.member.SignUpReq;
 import com.ssafy.moemoe.api.request.member.UpdateMemberReq;
+import com.ssafy.moemoe.api.response.member.MemberActivityResp;
 import com.ssafy.moemoe.db.dto.SignInResultDto;
 import com.ssafy.moemoe.db.dto.SignUpResultDto;
 import com.ssafy.moemoe.db.entity.member.Member;
@@ -25,4 +26,6 @@ public interface SignService {
     void updateBadge(UUID memberId, Long badgeId);
 
     Member getMember(UUID memberId);
+
+    MemberActivityResp getActivity(UUID memberId);
 }
