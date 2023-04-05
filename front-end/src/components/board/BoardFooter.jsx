@@ -39,7 +39,7 @@ export default function BoardFooter({
     })[0];
 
     return (
-      <div className="card-footer p-4 pt-0">
+      <div className="card-footer ml-4 mr-4 mt-2 mb-2">
         <div className="top">
           <div className="flex">
             <div className="icons flex flex-row justify-center items-center">
@@ -80,20 +80,30 @@ export default function BoardFooter({
   ];
 
   return (
-    <div className="card-footer p-4 pt-0">
+    <div className="card-footer ml-4 mr-4 mt-1 mb-1">
       <div className="top">
-        <div className="icons flex flex-row justify-center items-center">
+        <div className="icons flex justify-center items-center">
           {emojiList.map((data) => {
             return (
-              <div className="recommend mr-4" key={data.key}>
-                <img
-                  src={`/images/emoji/${data.key}.png`}
-                  className="w-8  bg-amber-500"
-                  height={30}
-                  width={30}
-                  alt="감정이모지"
-                  onClick={() => onPutEmoji(postInfo.board_id, data.key)}
-                />
+              <div
+                className="recommend mr-3 flex flex-col justify-center content-center"
+                key={data.key}
+              >
+                <div
+                  className={`p-1 ${
+                    postInfo.my_emotion === data.key
+                      ? "bg-lisa-200 rounded-xl"
+                      : ""
+                  }`}
+                >
+                  <img
+                    src={`/images/emoji/${data.key}.png`}
+                    height={30}
+                    width={30}
+                    alt="감정이모지"
+                    onClick={() => onPutEmoji(postInfo.board_id, data.key)}
+                  />
+                </div>
 
                 <div className="text-center p-1">{data.cnt}</div>
               </div>
