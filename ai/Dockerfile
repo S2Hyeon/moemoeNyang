@@ -5,6 +5,8 @@ COPY . /home/A801
 # 작업 디렉토리 생성
 WORKDIR /home/A801
 
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
+
 # 필요한 패키지 설치
 RUN pip install -r requirements.txt
 
