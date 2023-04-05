@@ -28,5 +28,12 @@ export async function getFeedLog(feedspotId: number) {
   return response;
 }
 
-const MapService = { getFeedsList, getFeedLog };
+export async function postFeed(feedspotId: number) {
+  const response = (await Api.post(`/feedspots/${feedspotId}`)) as {
+    data: { msg: string };
+  };
+  return response;
+}
+
+const MapService = { getFeedsList, getFeedLog, postFeed };
 export default MapService;
