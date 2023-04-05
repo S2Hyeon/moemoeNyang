@@ -8,13 +8,14 @@ import {
 } from "../../store/mapSlice";
 import { getFeedLog } from "../../services/map";
 
-export default function FeedPin({ feedspotId }) {
+export default function FeedPin({ feedspotId=null }) {
   const dispatch = useDispatch();
   const feedlist = typedUseSelector(
     (state) => state.map.feedsList,
     shallowEqual,
   );
   const onFeedSelect = () => {
+    if(!feedspotId) return
     const selectedElement = feedlist.find(
       (element) => element.feedspot_id === feedspotId,
     );
@@ -29,7 +30,7 @@ export default function FeedPin({ feedspotId }) {
 
   return (
     <div className="w-[78px] h-[66px]" onClick={onFeedSelect}>
-      <img src="/images/map/feed-pin.png" className="object-cover" />,
+      <img src="/images/map/feed-pin.png" className="object-cover" />
     </div>
   );
 }

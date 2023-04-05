@@ -22,7 +22,7 @@ function CatRegisterButton({ catData}) {
     
 
     return(
-        <form enctype="multipart/form-data">
+        <form encType="multipart/form-data">
         <button 
         style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
         className="flex justify-center items-center w-[335px] h-[66px] rounded-[30px] bg-[#e87f7f]"

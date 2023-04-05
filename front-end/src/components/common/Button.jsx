@@ -4,6 +4,7 @@ export default function Button({
   children,
   style = "primary",
   shadow = false,
+  className = "",
   onClick = () => {},
 }) {
   let bgColor;
@@ -25,12 +26,12 @@ export default function Button({
 
   return (
     <div
-      className={`w-full h-9 rounded-[10px] ${bgColor} flex justify-center items-center border border-slate-100`}
+      className={`w-full h-9 rounded-[10px] ${bgColor} flex justify-center items-center border border-slate-100 `}
       role={style === "disabled" ? "none" : "button"}
       onClick={style === "disabled" ? () => {} : onClick}
       style={{ boxShadow: shadow && "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
     >
-      <p className={`text-base font-bold text-center ${fontColor}`}>
+      <p className={`text-base font-bold text-center ${fontColor} ${className}`}>
         {children}
       </p>
     </div>

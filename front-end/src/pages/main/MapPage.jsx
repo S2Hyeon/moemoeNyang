@@ -13,6 +13,8 @@ import {
 } from "../../store/mapSlice";
 import { IoMdArrowDropup } from "@react-icons/all-files/io/IoMdArrowDropup"
 import { IoMdArrowDropdown } from "@react-icons/all-files/io/IoMdArrowDropdown"
+import Button from "../../components/common/Button";
+import { useNavigate } from "react-router-dom";
 
 /*지도 페이지
 isHigh - 바텀 슬라이드가 올라가 있는지 체크
@@ -27,6 +29,7 @@ selected 캣이 변했을 때 게시글 목록 가져옴
 */
 const MapPage = () => {
   const dispatch = useDispatch();
+  const naviagte = useNavigate()
   const isHigh = typedUseSelector((state) => state.map.isBottomHigh);
   const bottomSlideRef = useRef();
 
@@ -96,18 +99,27 @@ const MapPage = () => {
         className="z-[1] absolute bottom-[46px] w-screen flex justify-center pt-6 overflow-hidden"
         ref={bottomSlideRef}
       >
+
         <div
           className={`BottomSheet bg-slate-50 w-[100vw] ${
             isHigh ? "h-[65vh]" : "h-[20vh]"
           } shadow-md rounded-t-2xl transition-[height]`}
         >
+
+                  <div className={mode==="Feed"? "absolute -top-[0px] right-4 w-1/5 ":"hidden"}>          
+                  <Button className="text-xs" onClick={()=>naviagte("/map/feed")}>
+                  급식소 추가
+</Button>
+</div>
           <div
             className="absolute top-[0px] left-1/2 transform -translate-x-1/2 rounded-full bg-orange-300 w-12 h-12"
             onClick={() => {
               dispatch(setBottomToggle());
             }}
           >{isHigh? <i><IoMdArrowDropdown className="w-full h-full text-white"/></i> : <i><IoMdArrowDropup className="w-full h-full text-white" /></i>}</div>
+          
           <div className="BottomContainer mt-6 h-4/5">{bottomContent}</div>
+          
         </div>
       </div>
     </div>

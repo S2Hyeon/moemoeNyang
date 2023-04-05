@@ -35,5 +35,21 @@ export async function postFeed(feedspotId: number) {
   return response;
 }
 
-const MapService = { getFeedsList, getFeedLog, postFeed };
+export async function postFeedspots(
+  universityId: number,
+  feedspotsData: FormData,
+) {
+  const response = (await Api.post(
+    `/feedspots/feedspots?universityId=${universityId}`,
+    feedspotsData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    },
+  )) as { data: { msg: string } };
+  return response;
+}
+
+const MapService = { getFeedsList, getFeedLog, postFeed, postFeedspots };
 export default MapService;
