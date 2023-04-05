@@ -11,6 +11,8 @@ import {
   setCatList,
   setSelectedCat,
 } from "../../store/mapSlice";
+import { IoMdArrowDropup } from "@react-icons/all-files/io/IoMdArrowDropup"
+import { IoMdArrowDropdown } from "@react-icons/all-files/io/IoMdArrowDropdown"
 
 /*지도 페이지
 isHigh - 바텀 슬라이드가 올라가 있는지 체크
@@ -104,7 +106,7 @@ const MapPage = () => {
             onClick={() => {
               dispatch(setBottomToggle());
             }}
-          ></div>
+          >{isHigh? <i><IoMdArrowDropdown className="w-full h-full text-white"/></i> : <i><IoMdArrowDropup className="w-full h-full text-white" /></i>}</div>
           <div className="BottomContainer mt-6 h-4/5">{bottomContent}</div>
         </div>
       </div>

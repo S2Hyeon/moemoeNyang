@@ -25,7 +25,7 @@ export default function TopFlick(
         const { cat_id: catId, name, image } = element;
 
         return (
-          <Panel key={catId}>
+          <Panel key={catId.toString() + "index"+ i.toString}>
             <div
               className="text-center text-xs ml-3"
               onClick={() => {

@@ -145,7 +145,7 @@ export default function FeedContent() {
                 className="flex flex-col flex-grow h-0 p-4 overflow-auto"
                 ref={chattingRef}
               >
-                {!selectedFeedLog.length ? (
+                {!selectedFeedLog?.length ? (
                   <div className="flex justify-center h-full">
                     <div className="상대가쓴밥줬어요">
                       <div className="pr-5">
