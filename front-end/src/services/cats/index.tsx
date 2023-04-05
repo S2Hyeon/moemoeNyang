@@ -26,6 +26,7 @@ export async function getCatList(
 ): Promise<CatListResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
+    console.log("universityId -> ", universityId);
     const response = await Api.get(`/cats?universityId=${universityId}`);
     // console.log(JSON.stringify(response))
     return response as CatListResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
