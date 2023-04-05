@@ -6,10 +6,10 @@ import { AlertSuccess } from "../../utils/alertToastify";
 function CatRegisterButton({ catData}) {
     const navigate = useNavigate();
     const onSubmit = (event) => {
-        // console.log("버튼 컴포넌트", catData)
+        console.log("버튼 컴포넌트", catData)
         const {name , age, gender, image } = catData
-        // console.log("제출할때 젠더", gender)
-        // console.log("제출할때 이미지", image)
+        console.log("제출할때 젠더", gender)
+        console.log("제출할때 이미지", image)
 
         event.preventDefault();
         postCatRegist(name, age, gender, image).then((res) => {

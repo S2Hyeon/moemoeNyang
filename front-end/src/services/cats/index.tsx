@@ -111,7 +111,7 @@ export async function postCatRegist(
     console.log("axios요청 젠더", gender)
     console.log("axios요청 이미지", image)
     try {
-      const response = await Api.post("/cat", {
+      const response = await Api.post("/cats", {
         headers: {
           "Content-Type": "multipart/form-data"
         },
