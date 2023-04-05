@@ -76,7 +76,7 @@ export default function FeedContent() {
   return (
     selectedFeed && (
       <div>
-        <div className="flex 임시로 만든 선택창">
+        {/* <div className="flex 임시로 만든 선택창">
           {feedsList.map((element, index) => {
             return (
               <div
@@ -90,7 +90,7 @@ export default function FeedContent() {
               </div>
             );
           })}
-        </div>
+        </div> */}
         <div className="grid gap-3 w-11/12 mx-auto pt-2">
           <div
             className="FeedSpotInfo  h-32 left-[15.5px] top-[321.5px] rounded-[10px] bg-white flex justify-around py-2"
