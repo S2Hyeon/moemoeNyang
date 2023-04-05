@@ -19,7 +19,7 @@ export default function SymptomsRegister() {
   // 질병 등록 이벤트 핸들러
   const onSubmit = (catId, disease_id, image) => {
     postDisease(catId, disease_id, image).then((res) => {
-      // console.log(res);
+      console.log(res);
       AlertSuccess("질병을 등록하였습니다.");
       setModalOpen(true);
     });

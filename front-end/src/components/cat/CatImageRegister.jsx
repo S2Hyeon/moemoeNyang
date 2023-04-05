@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { AiFillCamera } from "@react-icons/all-files/ai/AiFillCamera";
 
-export default function ImageUpload({onChange}) {
+export default function CatImageRegister({onChange}) {
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef();
 
