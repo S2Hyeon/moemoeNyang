@@ -111,4 +111,4 @@ if __name__ == "__main__":
     # app.run(host="0.0.0.0", port="5000")
     print(("* Loading classification model and Flask starting server...",
           "please wait until server has fully started"))
-    app.run(host="https://j8a801.p.ssafy.io/disease", port="5000")
+    app.run(host="127.0.0.1", port="5000")
