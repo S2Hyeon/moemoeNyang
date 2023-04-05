@@ -14,11 +14,10 @@ function CatGenderButton({ onChange }) {
     setButtonGroupVisible(false);
   };
 
-  const handleInputChange = (e) => {
-    setGender(e.target.value);
-    onChange(e.target.value);
-    // props.onGenderChange(e.target.value);
-  };
+  // const handleInputChange = (e) => {
+  //   setGender(e.target.value);
+  //   props.onGenderChange(e.target.value);
+  // };
 
   return (
     <div

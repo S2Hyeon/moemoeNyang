@@ -8,9 +8,12 @@ function CatRegisterButton({ catData}) {
     const onSubmit = (event) => {
         console.log("버튼 컴포넌트", catData)
         const {name , age, gender, image } = catData
+        console.log("제출할때 젠더", gender)
+        console.log("제출할때 이미지", image)
+
         event.preventDefault();
-        postCatRegist(name , age, gender, image).then((res) => {
-            console.log(res);
+        postCatRegist(name, age, gender, image).then((res) => {
+            // console.log(res);
             AlertSuccess("고양이를 등록하였습니다.");
             navigate("/catlist");
         })

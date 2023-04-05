@@ -24,6 +24,7 @@ export default function CatRegisterPage() {
 
   const handleGenderChange = (gender) => {
     setCatData({ ...catData, gender });
+    console.log("최상단 젠더", gender)
   };
 
   const handleAgeChange = (age) => {
