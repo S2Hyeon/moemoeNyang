@@ -48,10 +48,9 @@ interface GetCatDetailResponse {
   };
 }
 
-
 export async function getCatDetail(
   catId: Number,
-  ): Promise<GetCatDetailResponse | undefined> {
+): Promise<GetCatDetailResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
     const response = await Api.get(`/cats/${catId}`);
@@ -73,28 +72,28 @@ interface GetCatImagesResponse {
 
 export async function getCatImages(
   catId: Number,
-  ): Promise<GetCatImagesResponse | undefined> {
-    //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
-    try {
-      const response = await Api.get(`/cats/${catId}/boards`);
-      return response as GetCatImagesResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
-    } catch (error) {
-      // console.error(error);
-    }
+): Promise<GetCatImagesResponse | undefined> {
+  //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
+  try {
+    const response = await Api.get(`/cats/${catId}/boards`);
+    return response as GetCatImagesResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
+  } catch (error) {
+    // console.error(error);
   }
-  
-  // Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
+}
 
-  interface PostCatRegistResponse {
-    status: Number;
-    data: {
-      universityId: Number;
-      name: String;
-      age: Number;
-      gender: "M" | "F";
-      image: String; // <<< 이부분 게시글이랑 같은거
-      lat: Number; // 고양이 등록시 이미지의 메타데이터를 이용해 첫 게시글 작성
-      lng: Number;
+// Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
+
+interface PostCatRegistResponse {
+  status: Number;
+  data: {
+    universityId: Number;
+    name: String;
+    age: Number;
+    gender: "M" | "F";
+    image: String; // <<< 이부분 게시글이랑 같은거
+    lat: Number; // 고양이 등록시 이미지의 메타데이터를 이용해 첫 게시글 작성
+    lng: Number;
   };
   // header: { "Content-Type": "multipart/form-data", };
 }
@@ -107,23 +106,23 @@ export async function postCatRegist(
   universityId: Number,
   lat: Number,
   lng: Number,
-  ): Promise<PostCatRegistResponse | undefined> {
-    console.log("axios요청 젠더", gender)
-    console.log("axios요청 이미지", image)
-    try {
-      const response = await Api.post("/cats", {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        },
-        name,
-        age,
-        gender,
-        image,
-        universityId,
-        lat,
-        lng,
-      });
-      return response as PostCatRegistResponse;
+): Promise<PostCatRegistResponse | undefined> {
+  console.log("axios요청 젠더", gender);
+  console.log("axios요청 이미지", image);
+  try {
+    const response = await Api.post("/cats", {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      name,
+      age,
+      gender,
+      image,
+      universityId,
+      lat,
+      lng,
+    });
+    return response as PostCatRegistResponse;
   } catch (error) {
     console.error(error);
   }
@@ -132,15 +131,15 @@ export async function postCatRegist(
 interface PostCatFollowResponse {
   status: Number;
   data: {
-    "cat_id": Number,
+    cat_id: Number;
   };
 }
 
 export async function postCatFollow(
-  cat_id: Number
+  cat_id: Number,
 ): Promise<PostCatFollowResponse | undefined> {
   try {
-    console.log(cat_id)
+    console.log(cat_id);
     const response = await Api.post("/cats/follow", { cat_id });
     return response as PostCatFollowResponse;
   } catch (error) {
@@ -151,12 +150,12 @@ export async function postCatFollow(
 interface DeleteCatFollowResponse {
   status: Number;
   data: {
-    "cat_id": Number,
+    cat_id: Number;
   };
 }
 
 export async function deleteCatFollow(
-  catId: Number
+  catId: Number,
 ): Promise<DeleteCatFollowResponse | undefined> {
   try {
     const response = await Api.delete(`/cats/follow/${catId}`);
