@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { postCatRegist } from "../../services/cats";
-import { AlertSuccess } from "../../utils/alertToastify";
+// import { AlertSuccess } from "../../utils/alertToastify";
 
 function CatRegisterButton({ catData}) {
     const navigate = useNavigate();
@@ -13,8 +13,8 @@ function CatRegisterButton({ catData}) {
 
         event.preventDefault();
         postCatRegist(name, age, gender, image).then((res) => {
-            // console.log(res);
-            AlertSuccess("고양이를 등록하였습니다.");
+            console.log(res);
+            // AlertSuccess("고양이를 등록하였습니다.");
             navigate("/catlist");
         })
     }

@@ -10,7 +10,7 @@ interface GetDiseaseResponse {
       "disease_timeline_id":Number,
       "member_id":Number,
       "nickname":String,
-      "image":String,
+      "image":FormData,
       "created_at":Date,
       "disease":{
         "disease_id":Number,
@@ -27,6 +27,10 @@ export async function getDisease(
 ): Promise<GetDiseaseResponse | undefined> {
   try {
     const response = await Api.get(`/cats/${catId}/diseases`);
+    // const encodedBase64string = btoa(image);
+    // const decodedString = atob(Image);
+    // console.log(encodedBase64string)
+    // console.log(decodedString)
     return response as GetDiseaseResponse;
   } catch (error) {
     console.log("에러", error);
@@ -76,13 +80,13 @@ interface PostDiseaseResponse {
 export async function postDisease(
   catId:Number,
   disease_id:Number,
-  image: String,
+  image: FormData,
   ): Promise<PostDiseaseResponse | undefined> {
     try {
     const response = await Api.post(`/cats/${catId}/disease`, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      },
+      // headers: {
+      //   "Content-Type": "multipart/form-data"
+      // },
       disease_id,
       image,
     })
@@ -99,6 +103,7 @@ export async function postDisease(
 const Symptom = {
   getDisease,
   getDiseaseList,
+  postDisease,
 };
 
 
