@@ -13,16 +13,17 @@ import lombok.ToString;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class MemberActivityResp {
 
-    private int feed_cnt;
-    private int post_cnt;
-    private int cat_regist_cnt;
-    private int react_cnt;
-    private int disease_regist_cnt;
-    private int report_cnt;
-    private int login_days_cnt;
+    private Long feed_cnt;
+    private Long post_cnt;
+    private Long cat_regist_cnt;
+    private Long react_cnt;
+    private Long disease_regist_cnt;
+    private Long report_cnt;
+    private Long login_days_cnt;
 
     @Builder
-    public MemberActivityResp(int feed_cnt, int post_cnt, int cat_regist_cnt, int react_cnt, int disease_regist_cnt, int report_cnt, int login_days_cnt) {
+    public MemberActivityResp(Long feed_cnt, Long post_cnt, Long cat_regist_cnt,
+                              Long react_cnt, Long disease_regist_cnt, Long report_cnt, Long login_days_cnt) {
         this.feed_cnt = feed_cnt;
         this.post_cnt = post_cnt;
         this.cat_regist_cnt = cat_regist_cnt;

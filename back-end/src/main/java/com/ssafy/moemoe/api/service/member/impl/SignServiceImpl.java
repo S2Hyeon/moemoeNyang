@@ -2,12 +2,16 @@ package com.ssafy.moemoe.api.service.member.impl;
 
 import com.ssafy.moemoe.api.request.member.SignUpReq;
 import com.ssafy.moemoe.api.request.member.UpdateMemberReq;
+import com.ssafy.moemoe.api.response.member.MemberActivityResp;
 import com.ssafy.moemoe.api.service.member.SignService;
 import com.ssafy.moemoe.common.CommonResponse;
 import com.ssafy.moemoe.config.security.JwtTokenProvider;
 import com.ssafy.moemoe.db.dto.SignInResultDto;
 import com.ssafy.moemoe.db.dto.SignUpResultDto;
 import com.ssafy.moemoe.db.entity.member.Member;
+import com.ssafy.moemoe.db.repository.board.BoardRepository;
+import com.ssafy.moemoe.db.repository.disease.DiseaseTimelineRepository;
+import com.ssafy.moemoe.db.repository.feedspot.FeedRepository;
 import com.ssafy.moemoe.db.repository.member.BadgeRepository;
 import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import com.ssafy.moemoe.db.repository.university.UniversityRepository;
@@ -29,6 +33,9 @@ public class SignServiceImpl implements SignService {
     private final Logger LOGGER = LoggerFactory.getLogger(SignServiceImpl.class);
 
     private final MemberRepository memberRepository;
+    private final FeedRepository feedRepository;
+    private final BoardRepository boardRepository;
+    private final DiseaseTimelineRepository diseaseTimelineRepository;
     private final UniversityRepository universityRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final BadgeRepository badgeRepository;
@@ -74,6 +81,28 @@ public class SignServiceImpl implements SignService {
     @Override
     public Member getMember(UUID memberId) {
         return memberRepository.findByMemberId(memberId);
+    }
+
+    @Override
+    public MemberActivityResp getActivity(UUID memberId) {
+        Long diseaseRegistCnt = diseaseTimelineRepository.countByMember_MemberId(memberId); //질병 등록 횟수
+        Long feedCnt = feedRepository.countByMember_MemberId(memberId); //밥줬어요 등록 횟수
+        Long postCnt = boardRepository.countByMember_MemberId(memberId); //게시글 등록 횟수
+        Long reactCnt = boardRepository.findTotalReactByMemberId(memberId); //받은 반응들 합계
+
+        LOGGER.info("[getActivity] 작성한 게시글의 반응 갯수 합계 조회 : {}", reactCnt);
+
+        MemberActivityResp activity = MemberActivityResp.builder()
+                .feed_cnt(feedCnt==null?0L:feedCnt)
+                .post_cnt(postCnt==null?0L:postCnt)
+                .cat_regist_cnt(1L)
+                .react_cnt(reactCnt==null?0L:reactCnt)
+                .disease_regist_cnt(diseaseRegistCnt==null?0L:diseaseRegistCnt)
+                .report_cnt(1L)
+                .login_days_cnt(1L)
+                .build();
+
+        return activity;
     }
 
     @Override
