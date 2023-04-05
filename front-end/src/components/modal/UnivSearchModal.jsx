@@ -44,11 +44,11 @@ export default function UnivSearchModal({ setModalOpen, setUniversity }) {
           {!univArray.length ? (
             <div className="text-lg mb-6">검색된 학교가 없습니다.</div>
           ) : (
-            univArray.map((e) => {
+            univArray.map((e, i) => {
               return (
                 <div
                   className="flex items-baseline mb-1"
-                  key={e.universityId}
+                  key={e.universityId + i.toString}
                   onClick={() => {
                     setSelected(e);
                   }}

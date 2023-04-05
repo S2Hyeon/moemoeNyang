@@ -1,6 +1,6 @@
 function useTimeParser(localDateArray: number[]): string {
   const day = `${localDateArray[0]}-${localDateArray[1]}-${localDateArray[2]}`;
-  const time = `${localDateArray[3]}:${localDateArray[4]}:${localDateArray[5]}.${localDateArray[6]}`;
+  const time = `${localDateArray[3]}:${localDateArray[4]}:${localDateArray[5]}`;
   const parse = `${day} ${time}`;
   const date = new Date(parse);
   const result = gapGetter(date);

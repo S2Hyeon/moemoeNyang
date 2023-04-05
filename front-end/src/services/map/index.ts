@@ -15,7 +15,7 @@ export async function getFeedsList(
     )) as FeedsListResponse;
     return response as FeedsListResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
-    // console.error(error);
+    // console.log('에러',error);
   }
 }
 

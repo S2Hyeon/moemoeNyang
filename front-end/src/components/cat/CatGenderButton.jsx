@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function CatGenderButton( {onChange }) {
+function CatGenderButton({ onChange }) {
   const [buttonGroupVisible, setButtonGroupVisible] = useState(false);
   const [gender, setGender] = useState("");
 
@@ -20,7 +20,10 @@ function CatGenderButton( {onChange }) {
   // };
 
   return (
-    <div className="mb-4" style={{ position: "relative", width: "335px", height: "41.79px" }}>
+    <div
+      className="mb-4"
+      style={{ position: "relative", width: "335px", height: "41.79px" }}
+    >
       {buttonGroupVisible ? (
         <div style={{ position: "absolute", width: "100%" }}>
           <div className="flex justify-center flex-wrap">

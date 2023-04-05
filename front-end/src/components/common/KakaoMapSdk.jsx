@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 export default function KakaoMapSdk({
   center = { lat: 37.550749, lng: 126.941303 },
   isPanto = false,
   children,
+  className = "w-full h-full",
 }) {
+  const mapRef = useRef();
+  useEffect(() => {
+    const map = mapRef.current;
+    if (map) {
+      map.relayout();
+    }
+  }, [className]);
+
   return (
     <Map
       // center={{ lat: lat || 37.550749, lng: lng || 126.941303 }}
       center={center}
       isPanto={isPanto}
-      className="w-full h-full"
+      ref={mapRef}
+      className={className}
     >
       {children}
     </Map>

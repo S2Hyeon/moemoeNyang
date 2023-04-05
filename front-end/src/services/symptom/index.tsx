@@ -29,27 +29,26 @@ export async function getDisease(
     const response = await Api.get(`/cats/${catId}/diseases`);
     return response as GetDiseaseResponse;
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 
 interface GetDiseaseListResponse {
   status: number;
   data: {
-    "diseases":Array<
-    {
-      "disease_timeline_id":Number,
-      "member_id":Number,
-      "nickname":String,
-      "image":String,
-      "created_at":String,
-      "disease":{
-        "disease_id":Number,
-        "name":String,
-        "explanation":String,
-        "url":String,
-      }
-    }>
+    diseases: Array<{
+      disease_timeline_id: Number;
+      member_id: Number;
+      nickname: String;
+      image: String;
+      created_at: String;
+      disease: {
+        disease_id: Number;
+        name: String;
+        explanation: String;
+        url: String;
+      };
+    }>;
   };
 }
 
@@ -59,7 +58,7 @@ export async function getDiseaseList(
     const response = await Api.get("/cats/4/diseases");
     return response as GetDiseaseListResponse;
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 

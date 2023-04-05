@@ -15,26 +15,26 @@ export interface CatType {
 }
 
 export interface PostType {
-  "boardId":Number,
-  "catId" : Number,
-  "catImage" : String,
-  "catName" : String,
-  "memberNickname" : String,
-  "boardImage": String,
-  "tags" : Array<    {
-    "name" : String,
-    "rate" : Number,
-  }>
-  "lat": Number, 
-  "lng": Number,
-  "recommand" : Number,
-  "good" : Number,
-  "impressed" : Number,
-  "sad" : Number,
-  "angry" : Number,
-  "myEmotion" : String,
-  "content" : String,
-  "createdAt" : String,
+  boardId: Number;
+  catId: Number;
+  catImage: String;
+  catName: String;
+  memberNickname: String;
+  boardImage: String;
+  tags: Array<{
+    name: String;
+    rate: Number;
+  }>;
+  lat: Number;
+  lng: Number;
+  recommand: Number;
+  good: Number;
+  impressed: Number;
+  sad: Number;
+  angry: Number;
+  myEmotion: String;
+  content: String;
+  createdAt: String;
 }
 
 export interface FeedType {
@@ -66,6 +66,7 @@ const initialState = {
   isBottomHigh: false,
   catList: [] as Array<CatType>,
   postList: [] as Array<PostType>,
+  selectedPost: null as PostType,
   feedsList: [] as Array<FeedType>,
   selectedFeed: null as FeedType,
   selectedFeedHistory: null as FeedHistory,
@@ -132,8 +133,13 @@ const mapSlice = createSlice({
     ) => {
       state.centerPosition = action.payload;
     },
-    setSelectedPostId: (state, action: { payload: number }) => {
-      state.selectedPostId = action.payload;
+    // setSelectedPostId: (state, action: { payload: number }) => {
+    //   state.selectedPostId = action.payload;
+    // },
+    setSelectedPost: (state, action) => {
+      state.selectedPost = action.payload;
+      console.log(action.payload);
+      state.selectedPostId = action.payload?.board_id;
     },
   },
 });
@@ -149,5 +155,6 @@ export const {
   setSelectedFeed,
   setCatPositions,
   setCenterPosition,
-  setSelectedPostId,
+  // setSelectedPostId,
+  setSelectedPost,
 } = mapSlice.actions;
