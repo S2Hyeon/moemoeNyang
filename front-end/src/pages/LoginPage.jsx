@@ -115,14 +115,17 @@ const LoginPage = () => {
             className={isForgotPassword && "invisible"}
           />
           {FormButton}
-          <p
+
+          {/* 비밀번호 초기화기능 배제 */}
+          {/* <p
             className="text-[15px] text-center py-4 text-[#727272]"
             onClick={() => {
               setIsForgetPassword((prev) => !prev);
             }}
           >
             {isForgotPassword ? "로그인 하시겠어요?" : "비밀번호를 잊으셨나요?"}
-          </p>
+          </p> */}
+          <p className="비밀번호초기화용클래스 text-[15px] text-center py-4 text-[#727272]"></p>
         </div>
 
         <div className="flex gap-[5px]">

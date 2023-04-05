@@ -137,6 +137,7 @@ const SignupPage = () => {
   //무결성검증 결과
   const [canSubmit, setCanSubmit] = useState(false);
   useEffect(() => {
+    console.log(university)
     if (errorMessage) return setCanSubmit(false);
     else if (
       email &&
@@ -151,7 +152,7 @@ const SignupPage = () => {
 
   const onSubmit = () => {
     if (!canSubmit) return;
-    postSignup(email, password, nickname, university.universityId).then(
+    postSignup(email, password, nickname, university.university_id).then(
       (res) => {
         AlertSuccess("회원가입에 성공하였습니다.");
         navigate("/login");
