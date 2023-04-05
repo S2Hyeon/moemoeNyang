@@ -23,6 +23,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import store, { persistor } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
+import TestBoard from "./pages/board/TestBoard";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="cats/:catId" element={<CatDetailPage />} />
             <Route path="catregister" element={<CatRegisterPage />} />
             <Route path="board" element={<PostBoard />} />
+            <Route path="test" element={<TestBoard />} />
             <Route path="board/:tagName" element={<BoardHashTag />} />
             <Route path="cats/:catId/diseases" element={<SymptomsPage />} />
             <Route path="symptoms/register" element={<SymptomsRegister />} />

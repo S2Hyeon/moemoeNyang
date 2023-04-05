@@ -8,7 +8,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Dropdown() {
+export default function Dropdown({ formData, setFormData }) {
   const [selected, setSelected] = useState([]);
   const [catList, setCatList] = useState([]);
   const universityId = typedUseSelector(
@@ -18,7 +18,9 @@ export default function Dropdown() {
   useEffect(() => {
     console.log("cat list 불러오기");
     getCatList(universityId)
-      .then((res) => setCatList(res.data))
+      .then((res) => {
+        setCatList(res.data);
+      })
       .then(console.log("cat list 불러옴"));
   }, []);
 
@@ -30,7 +32,15 @@ export default function Dropdown() {
   }, [catList]);
 
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox
+      value={selected}
+      onChange={() => {
+        setSelected();
+        setFormData(formData.append("catId", selected));
+        console.log("cat list에서 선택함");
+        for (const keyValue of formData) console.log(keyValue);
+      }}
+    >
       {({ open }) => (
         <>
           <div className="relative mt-2">
