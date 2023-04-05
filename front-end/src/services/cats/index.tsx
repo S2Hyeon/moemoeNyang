@@ -100,21 +100,26 @@ export async function getCatImages(
 }
 
 export async function postCatRegist(
-  universityId: Number,
   name: String,
   age: Number,
   gender: "M" | "F",
   image: String,
+  universityId: Number,
   lat: Number,
   lng: Number,
   ): Promise<PostCatRegistResponse | undefined> {
+    console.log("axios요청 젠더", gender)
+    console.log("axios요청 이미지", image)
     try {
       const response = await Api.post("/cat", {
-        universityId,
+        headers: {
+          "Content-Type": "multipart/form-data"
+        },
         name,
         age,
         gender,
         image,
+        universityId,
         lat,
         lng,
       });
