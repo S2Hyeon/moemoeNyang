@@ -61,7 +61,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/cat_regist_cnt_1.png"
           alt=""
-          onClick={() => onBadgeClick(0)}
+          onClick={() => onBadgeClick(1)}
         />
       )}
       {badgeList.cat_regist_cnt >= 10 ? (
@@ -69,7 +69,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/cat_regist_cnt_5.png"
           alt=""
-          onClick={() => onBadgeClick(1)}
+          onClick={() => onBadgeClick(2)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -79,7 +79,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/cat_regist_cnt_10.png"
           alt=""
-          onClick={() => onBadgeClick(2)}
+          onClick={() => onBadgeClick(3)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -92,7 +92,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/disease_1.png"
           alt=""
-          onClick={() => onBadgeClick(3)}
+          onClick={() => onBadgeClick(4)}
         />
       )}
 
@@ -101,7 +101,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/disease_3.png"
           alt=""
-          onClick={() => onBadgeClick(4)}
+          onClick={() => onBadgeClick(5)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -111,7 +111,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/disease_6.png"
           alt=""
-          onClick={() => onBadgeClick(5)}
+          onClick={() => onBadgeClick(6)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -124,7 +124,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/feed_cnt_1.png"
           alt=""
-          onClick={() => onBadgeClick(6)}
+          onClick={() => onBadgeClick(7)}
         />
       )}
       {badgeList.feed_cnt >= 10 ? (
@@ -132,7 +132,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/feed_cnt_10.png"
           alt=""
-          onClick={() => onBadgeClick(7)}
+          onClick={() => onBadgeClick(8)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -142,7 +142,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/feed_cnt_20.png"
           alt=""
-          onClick={() => onBadgeClick(8)}
+          onClick={() => onBadgeClick(9)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -155,7 +155,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/login_days_cnt_7.png"
           alt=""
-          onClick={() => onBadgeClick(9)}
+          onClick={() => onBadgeClick(10)}
         />
       )}
       {badgeList.login_days_cnt >= 7 ? (
@@ -163,7 +163,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/login_days_cnt_30.png"
           alt=""
-          onClick={() => onBadgeClick(10)}
+          onClick={() => onBadgeClick(11)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -173,7 +173,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/login_days_cnt_100.png"
           alt=""
-          onClick={() => onBadgeClick(11)}
+          onClick={() => onBadgeClick(12)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -186,7 +186,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/post_1.png"
           alt=""
-          onClick={() => onBadgeClick(12)}
+          onClick={() => onBadgeClick(13)}
         />
       )}
       {badgeList.post_cnt >= 15 ? (
@@ -194,7 +194,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/post_3.png"
           alt=""
-          onClick={() => onBadgeClick(13)}
+          onClick={() => onBadgeClick(14)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -204,7 +204,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/post_6.png"
           alt=""
-          onClick={() => onBadgeClick(14)}
+          onClick={() => onBadgeClick(15)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -217,7 +217,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/react_cnt_5.png"
           alt=""
-          onClick={() => onBadgeClick(15)}
+          onClick={() => onBadgeClick(16)}
         />
       )}
       {badgeList.react_cnt >= 10 ? (
@@ -225,7 +225,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/react_cnt_10.png"
           alt=""
-          onClick={() => onBadgeClick(16)}
+          onClick={() => onBadgeClick(17)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -235,7 +235,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/react_cnt_20.png"
           alt=""
-          onClick={() => onBadgeClick(17)}
+          onClick={() => onBadgeClick(18)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -248,7 +248,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/report_cnt_5.png"
           alt=""
-          onClick={() => onBadgeClick(18)}
+          onClick={() => onBadgeClick(19)}
         />
       )}
       {badgeList.report_cnt >= 15 ? (
@@ -256,7 +256,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/report_cnt_10.png"
           alt=""
-          onClick={() => onBadgeClick(19)}
+          onClick={() => onBadgeClick(20)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
@@ -266,7 +266,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
           className="w-1/3"
           src="/images/badgeImg/report_cnt_20.png"
           alt=""
-          onClick={() => onBadgeClick(20)}
+          onClick={() => onBadgeClick(21)}
         />
       ) : (
         <img className="w-1/3" src="/images/badgeImg/nobadge.png" alt="" />
