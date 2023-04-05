@@ -4,6 +4,7 @@ import lombok.*;
 
 // 예제 13.30
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString

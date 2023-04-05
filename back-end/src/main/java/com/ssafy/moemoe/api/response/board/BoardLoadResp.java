@@ -35,9 +35,6 @@ public class BoardLoadResp {
     @ApiModelProperty(name = "Member")
     private MemberDetailResp member;
 
-    @ApiModelProperty(name = "Tags")
-    private List<TagLoadResp> tags;
-
     @ApiModelProperty(name = "lat")
     private Float lat;
 
