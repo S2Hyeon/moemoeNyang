@@ -16,7 +16,9 @@ Api.interceptors.request.use(
   (config) => {
     // const { Authorization } = getHeaders();
     // config.headers.Authorization = Authorization;
-    const accessToken = getCookie("accessToken");
+    const accessToken =
+      getCookie("accessToken") ||
+      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzc2FmeXRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InNzYWZ5dGVzdEB0ZXN0LmNvbSIsIm1lbWJlcl9pZCI6IjdkNGM0MGY4LWQ3YTItNGYxZS1hZmM2LTZlY2ZiODkxMDVkYSIsInVuaXZlcnNpdHlfaWQiOjEsIm5pY2tuYW1lIjoic2Rpc2RpIiwiaWF0IjoxNjgwNTcyODgzLCJleHAiOjE2ODMxNjQ4ODN9.4Oh7zVG9HS7kbxblJiVwmpeR4WtE8o2z4XX29_k_Syw";
     config.headers["X-AUTH-TOKEN"] = accessToken;
     // console.log(config.headers);
     return config;
