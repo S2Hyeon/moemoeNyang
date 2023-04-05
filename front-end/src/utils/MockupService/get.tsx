@@ -618,7 +618,11 @@ const get = (urls: string, ...rest): Object => {
           sad: 9,
           angry: 7,
         },
-      ];
+      ].map((e) => {
+        e.lat += Math.random() / 500;
+        e.lng += Math.random() / 500;
+        return e;
+      });
 
     default:
       break;

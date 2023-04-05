@@ -28,7 +28,7 @@ export async function postLogin(
     setCookie("accessToken", accessToken, 3);
     return response as LoginResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 
@@ -54,7 +54,7 @@ export async function postSignup(
     });
     return response as PostSignupResponse;
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 
@@ -74,7 +74,7 @@ export async function getCheckEmail(
     const response = await Api.get(`/auth/check-email?email=${email}`);
     return response as CheckEmailResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 
@@ -98,7 +98,7 @@ export async function getSearchUnivs(
     const response = await Api.get(`/univs/${keyword}`);
     return response as GetSearchUnivsResponse;
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 
@@ -113,7 +113,7 @@ export async function postFindPassword(
     const response = await Api.post(`/auth/find-pwd`, { email });
     return response as FindPasswordResponse;
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 
