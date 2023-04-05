@@ -53,13 +53,7 @@ public class Board {
 
     // OneToMany 관계 설정
     @OneToMany(mappedBy = "board")
-    private List<Tag> tagList;
-
-    @OneToMany(mappedBy = "board")
     private List<Reaction> reactionList;
-
-    @OneToMany(mappedBy = "board")
-    private List<ReportBoard> reportBoardList;
 
     // ManyToOne 관계 설정
     @ManyToOne(fetch = FetchType.LAZY)

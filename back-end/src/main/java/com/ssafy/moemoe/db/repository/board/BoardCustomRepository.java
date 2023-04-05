@@ -15,9 +15,8 @@ public interface BoardCustomRepository { // Board 생성 Method
      * 메인페이지 - 게시물 리스트 조회
      *
      * @param universityId      대학교 id
-     * @param tagName    인터뷰 상태
      * @return 검색 결과
      */
-    Page<BoardLoadResp> findBoardByIdAndTag(Long universityId, String tagName, Pageable pageable);
+    Page<BoardLoadResp> findBoardByIdAndTag(Long universityId, Pageable pageable);
 
 }

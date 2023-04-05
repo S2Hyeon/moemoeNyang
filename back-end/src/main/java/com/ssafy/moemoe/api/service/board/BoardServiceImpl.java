@@ -2,19 +2,16 @@ package com.ssafy.moemoe.api.service.board;
 
 import com.ssafy.moemoe.api.request.board.BoardSaveReq;
 import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
-import com.ssafy.moemoe.api.request.board.TagSaveReq;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardResp;
 import com.ssafy.moemoe.api.service.S3Uploader;
 import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.board.Reaction;
-import com.ssafy.moemoe.db.entity.board.Tag;
 import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import com.ssafy.moemoe.db.repository.board.BoardRepository;
 import com.ssafy.moemoe.db.repository.board.ReactionRepository;
-import com.ssafy.moemoe.db.repository.board.TagRepository;
 import com.ssafy.moemoe.db.repository.cat.CatRepository;
 import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import com.ssafy.moemoe.db.repository.university.UniversityRepository;
@@ -43,7 +40,6 @@ public class BoardServiceImpl implements BoardService {
 
     Logger LOGGER = LoggerFactory.getLogger(BoardServiceImpl.class);
     private final BoardRepository boardRepository;
-    private final TagRepository tagRepository;
     private final MemberRepository memberRepository;
     private final UniversityRepository universityRepository;
     private final ReactionRepository reactionRepository;
@@ -77,29 +73,12 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    @Transactional
-    public void createTag(Long boardId, List<TagSaveReq> tagSaveReqs) {
-        Board board = boardRepository.findById(boardId).orElseThrow(() -> new IllegalArgumentException("해당 게시물은 없습니다. id=" + boardId));
-
-        List<Tag> tags = new ArrayList<>();
-
-        for (TagSaveReq tagSaveReq : tagSaveReqs) {
-            Tag tag = Tag.builder().name(tagSaveReq.getName()).rate(tagSaveReq.getRate()).board(board).build();
-
-            tags.add(tag);
-        }
-
-        tagRepository.saveAll(tags);
-    }
-
-    @Override
-    public Page<BoardLoadResp> searchAllBoard(UUID memberId, Long universityId, String tagName, Pageable pageable) {
-        Page<BoardLoadResp> page = boardRepository.findBoardByIdAndTag(universityId, tagName, pageable);
+    public Page<BoardLoadResp> searchAllBoard(UUID memberId, Long universityId, Pageable pageable) {
+        Page<BoardLoadResp> page = boardRepository.findBoardByIdAndTag(universityId, pageable);
         List<BoardLoadResp> list = page.getContent();
 
         for (BoardLoadResp cur : list) {
             cur.setMyEmotion(reactionRepository.checkReation(memberId, cur.getBoardId()));
-            cur.setTags(tagRepository.findByBoardId(cur.getBoardId()));
         }
 
         return page;

@@ -18,31 +18,29 @@ import java.util.List;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class BoardDetailResp {
 
-    private long board_id;
-    private long university_id;
+    private Long board_id;
+    private Long university_id;
     private CatDetailResp cat;
     private MemberDetailResp member;
-    private List<TagResp> tags;
-    private double lat;
-    private double lng;
+    private Float lat;
+    private Float lng;
     private String content;
     private String image;
     private LocalDateTime created_at;
-    private long recommend;
-    private long good;
-    private long impressed;
-    private long sad;
-    private long angry;
+    private Long recommend;
+    private Long good;
+    private Long impressed;
+    private Long sad;
+    private Long angry;
 
     @Builder
-    public BoardDetailResp(long board_id, long university_id, CatDetailResp cat, MemberDetailResp member, List<TagResp> tags,
-                            double lat, double lng, String content, String image, LocalDateTime created_at,
-                            long recommend, long good, long impressed, long sad, long angry){
+    public BoardDetailResp(Long board_id, Long university_id, CatDetailResp cat, MemberDetailResp member,
+                           Float lat, Float lng, String content, String image, LocalDateTime created_at,
+                           Long recommend, Long good, Long impressed, Long sad, Long angry){
         this.board_id = board_id;
         this.university_id = university_id;
         this.cat = cat;
         this.member = member;
-        this.tags = tags;
         this.lat = lat;
         this.lng = lng;
         this.content = content;
