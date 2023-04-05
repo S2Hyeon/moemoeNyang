@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y libopencv-dev python3-opencv
 # 필요한 패키지 설치
 RUN pip install -r requirements.txt
 
-RUN pip uninstall tensorflow
+RUN yes | pip uninstall tensorflow
 
 RUN pip install tensorflow==2.10.0
 
