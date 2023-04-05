@@ -18,6 +18,7 @@ export default function TopFlick(
   const dispatch = useDispatch();
   const catList = typedUseSelector((state) => state.map.catList, shallowEqual);
 
+  if (!catList.length) return <></>;
   return (
     <Flicking align="prev" circular={true}>
       {catList.map((element, i) => {

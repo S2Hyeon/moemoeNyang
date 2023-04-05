@@ -65,7 +65,12 @@ export default function FeedContent() {
 
   useEffect(() => {
     if (!selectedFeed) return;
-    setFeedTimeMessge(timeParser(selectedFeed.recent_feed_time));
+    const newMessage = timeParser(selectedFeed.recent_feed_time);
+    if (typeof newMessage[0] === "number") {
+      setFeedTimeMessge(newMessage);
+    } else {
+      setFeedTimeMessge("새 급식소");
+    }
   }, [selectedFeed]);
 
   return (
@@ -91,7 +96,10 @@ export default function FeedContent() {
             className="FeedSpotInfo  h-32 left-[15.5px] top-[321.5px] rounded-[10px] bg-white flex justify-around py-2"
             style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
           >
-            <img src="image-19.png" className="w-[113px] h-28  object-cover" />
+            <img
+              src={selectedFeed.image}
+              className="w-[113px] h-28  object-cover"
+            />
             <div className="w-52 h-28 grid left-[147px] top-[338px] text-[10px] text-left text-black py-2 gap-1">
               <div>
                 <span className="w-52 h-28 text-[10px] font-bold text-left text-black">
