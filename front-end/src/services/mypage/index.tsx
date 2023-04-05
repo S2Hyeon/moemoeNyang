@@ -23,42 +23,57 @@ export async function getUserInfo(): Promise<GetUserInfoResponse | undefined> {
     console.log("getUserInfo", JSON.stringify(response.data))
     return response as GetUserInfoResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
-    // console.error(error);
+    // console.log('에러',error);
   }
 }
 
 interface PutUserInfoResponse {
   status: number;
   data: {
-    badge_id: Number,
-    nickname: String;
-    university_id: Number;
-    password: String;
+    nickname: String,
+    password: String,
+    university_id: Number,
   };
 }
 
 export async function putUserInfo(
-  badge_id: Number,
-  nickname: string,
-  university_id: number,
-  password: string,
+  nickname: String,
+  password: String,
+  university_id: Number,
 ): Promise<PutUserInfoResponse | undefined> {
   try {
     console.log("postUserInfo")
-    console.log("nickname", nickname)
-    console.log("university_id", university_id)
-    console.log("password", password)
-
     const response = await Api.put("/members", {
-      badge_id,
       nickname,
-      university_id,
       password,
+      university_id,
     });
-    console.log("putUserInfo 결과", response)
+    console.log("토큰 변경 전, ", document.cookie)
+    document.cookie = `accessToken=${response.data.token}`;
+    console.log("토큰 변경 후, ", document.cookie)
     return response as PutUserInfoResponse;
   } catch (error) {
     console.error(error);
+  }
+}
+
+interface PutUpdateBadgeResponse {
+  status: number;
+  data: {
+    badgeId: Number,
+  };
+}
+
+export async function putUpdateBadge(
+  badgeId: Number,
+): Promise<PutUpdateBadgeResponse | undefined> {
+  try {
+    console.log("badgeId", badgeId)
+    const response = await Api.put(`/members/badge?badgeId=${badgeId}`);
+    console.log("putUpdateBadge 결과", response)
+    return response as PutUpdateBadgeResponse;
+  } catch (error) {
+    console.log("에러", error);
   }
 }
 
@@ -84,7 +99,7 @@ export async function getUserBadge(): Promise<
     const response = await Api.get("/members/badge");
     return response as GetUserBadgeResponse;
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 
@@ -120,6 +135,7 @@ const User = {
   putUserInfo,
   getUserBadge,
   getFollowList,
+  putUpdateBadge,
 };
 
 export default User;

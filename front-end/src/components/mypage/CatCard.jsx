@@ -19,7 +19,7 @@ export default function CatCard({ catInfo }) {
           src={catInfo.image}
           alt="고양이프로필사진"
         />
-        {catInfo.isFollowing === null ? (
+        {catInfo.is_following === null ? (
           <img
             className="absolute bottom-1 w-5 h-5 right-2"
             src="/images/button/Star.png"

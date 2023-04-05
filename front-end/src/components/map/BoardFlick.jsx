@@ -4,7 +4,11 @@ import "@egjs/react-flicking/dist/flicking.css";
 import Panel from "../common/Panel";
 import { PostCard } from "../PostCard";
 import { typedUseSelector } from "../../store";
-import { setCenterPosition, setSelectedPostId } from "../../store/mapSlice";
+import {
+  setCenterPosition,
+  setSelectedPost,
+  setSelectedPostId,
+} from "../../store/mapSlice";
 import { useDispatch } from "react-redux";
 
 export default function BoardFlick() {
@@ -14,31 +18,28 @@ export default function BoardFlick() {
     return state.map.postList;
   });
 
-  const [selectedPost, setSelectedPost] = useState(() => postList[0]);
-
+  const selectedPost = typedUseSelector((state) => state.map.selectedPost);
   useEffect(() => {
-    if (!selectedPost) return;
-    dispatch(setSelectedPostId(selectedPost.boardId));
-  }, [selectedPost]);
+    dispatch(setSelectedPost(postList[0]));
+  }, [postList]);
 
   const willChange = (e) => {
     const newPost = postList[e.index];
     const { lat, lng } = newPost;
     const newPosition = {
-      //작은 화면에서 가운데 정렬을 못하겠어서 하드코딩해버림
-      lat: lat - 0.0024,
+      lat: lat,
       lng,
     };
-    setSelectedPost(newPost);
+    dispatch(setSelectedPost(newPost));
     dispatch(setCenterPosition(newPosition));
   };
 
   return (
     <Flicking align="prev" circular={true} onWillChange={willChange}>
-      {/* {postList &&
+      {postList.length &&
         postList.map((postInfo, i) => {
           return (
-            <div className="w-full" key={postInfo.board_id}>
+            <div className="w-full" key={postInfo.board_id + i.toString()}>
               <Panel>
                 <div className="mx-auto w-4/5 ">
                   <div className="border rounded-md mt-2 h-[53vh]">
@@ -48,7 +49,7 @@ export default function BoardFlick() {
               </Panel>
             </div>
           );
-        })} */}
+        })}
     </Flicking>
   );
 }

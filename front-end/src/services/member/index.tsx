@@ -28,7 +28,7 @@ export async function postLogin(
     setCookie("accessToken", accessToken, 3);
     return response as LoginResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 
@@ -54,7 +54,7 @@ export async function postSignup(
     });
     return response as PostSignupResponse;
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 
@@ -71,10 +71,12 @@ export async function getCheckEmail(
 ): Promise<CheckEmailResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
-    const response = await Api.get(`/auth/check-email?email=${email}`);
+    const response = await Api.get(
+      `https://j8a801.p.ssafy.io/api/auth/check-email?email=${email}`,
+    );
     return response as CheckEmailResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 
@@ -98,7 +100,7 @@ export async function getSearchUnivs(
     const response = await Api.get(`/univs/${keyword}`);
     return response as GetSearchUnivsResponse;
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 
@@ -113,7 +115,7 @@ export async function postFindPassword(
     const response = await Api.post(`/auth/find-pwd`, { email });
     return response as FindPasswordResponse;
   } catch (error) {
-    console.error(error);
+    console.log("에러", error);
   }
 }
 

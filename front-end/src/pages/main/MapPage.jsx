@@ -73,7 +73,7 @@ const MapPage = () => {
 
   return (
     <div onClick={clickOutside}>
-      <MapContainer />
+      <MapContainer mode={mode} />
       <div
         className="absolute top-14 right-20 bg-slate-400 z-[1]"
         onClick={() => {
@@ -95,7 +95,7 @@ const MapPage = () => {
         ref={bottomSlideRef}
       >
         <div
-          className={`BottomSheet bg-slate-50 w-[98vw] ${
+          className={`BottomSheet bg-slate-50 w-[100vw] ${
             isHigh ? "h-[65vh]" : "h-[20vh]"
           } shadow-md rounded-t-2xl transition-[height]`}
         >

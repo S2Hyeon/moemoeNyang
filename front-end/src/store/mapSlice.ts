@@ -15,26 +15,26 @@ export interface CatType {
 }
 
 export interface PostType {
-  boardId: number;
-  catId: number;
-  catImage: string;
-  catName: string;
-  memberNickname: string;
-  boardImage: number;
+  boardId: Number;
+  catId: Number;
+  catImage: String;
+  catName: String;
+  memberNickname: String;
+  boardImage: String;
   tags: Array<{
-    name: string;
-    rate: number;
+    name: String;
+    rate: Number;
   }>;
-  lat: number;
-  lng: number;
-  recommand: number;
-  good: number;
-  impressed: number;
-  sad: number;
-  angry: number;
-  myEmotion: string;
-  content: string;
-  createdAt: string;
+  lat: Number;
+  lng: Number;
+  recommand: Number;
+  good: Number;
+  impressed: Number;
+  sad: Number;
+  angry: Number;
+  myEmotion: String;
+  content: String;
+  createdAt: String;
 }
 
 export interface FeedType {
@@ -60,12 +60,18 @@ export interface CatPositionType {
   latlng: { lat: number; lng: number };
 }
 
+export interface FeedPositionType {
+  feedspotId: string;
+  latlng: { lat: number; lng: number };
+}
+
 const initialState = {
   mapInfo: null as MapInfoType,
   selectedCat: null as CatType,
   isBottomHigh: false,
   catList: [] as Array<CatType>,
   postList: [] as Array<PostType>,
+  selectedPost: null as PostType,
   feedsList: [] as Array<FeedType>,
   selectedFeed: null as FeedType,
   selectedFeedHistory: null as FeedHistory,
@@ -77,11 +83,22 @@ const initialState = {
       latlng: { lat: 37.550749, lng: 126.941303 },
     },
   ] as Array<CatPositionType>,
+  feedPositions: [
+    {
+      feedspotId: "noresult",
+      latlng: { lat: 37.550749, lng: 126.941303 },
+    },
+  ] as Array<FeedPositionType>,
   centerPosition: {
     lat: 37.550749,
     lng: 126.941303,
   },
   selectedPostId: -1,
+  selectedFeedLog: [] as Array<{
+    member_id: number;
+    nickname: string;
+    created_at: Date;
+  }>,
 };
 
 const mapSlice = createSlice({
@@ -126,14 +143,36 @@ const mapSlice = createSlice({
         state.catPositions = action.payload;
       }
     },
+    setFeedPositions: (state, action: { payload: Array<FeedPositionType> }) => {
+      //예외처리
+      if (!action.payload.length) {
+        state.feedPositions = [
+          {
+            feedspotId: "noresult",
+            latlng: { lat: 37.550749, lng: 126.941303 },
+          },
+        ];
+      } else {
+        state.feedPositions = action.payload;
+      }
+    },
     setCenterPosition: (
       state,
       action: { payload: { lat: number; lng: number } },
     ) => {
       state.centerPosition = action.payload;
     },
-    setSelectedPostId: (state, action: { payload: number }) => {
-      state.selectedPostId = action.payload;
+    // setSelectedPostId: (state, action: { payload: number }) => {
+    //   state.selectedPostId = action.payload;
+    // },
+    setSelectedPost: (state, action) => {
+      state.selectedPost = action.payload;
+      state.selectedPostId = action.payload.board_id;
+    },
+    setSelectedFeedLog: (state, action) => {
+      if (action.payload.length) {
+        state.selectedFeedLog = action.payload;
+      } else state.selectedFeedLog = [];
     },
   },
 });
@@ -149,5 +188,8 @@ export const {
   setSelectedFeed,
   setCatPositions,
   setCenterPosition,
-  setSelectedPostId,
+  setFeedPositions,
+  // setSelectedPostId,
+  setSelectedPost,
+  setSelectedFeedLog,
 } = mapSlice.actions;

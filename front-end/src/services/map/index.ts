@@ -15,9 +15,18 @@ export async function getFeedsList(
     )) as FeedsListResponse;
     return response as FeedsListResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
-    // console.error(error);
+    // console.log('에러',error);
   }
 }
 
-const MapService = { getFeedsList };
+export async function getFeedLog(feedspotId: number) {
+  const response = (await Api.get(`/feedspots/${feedspotId}`)) as Array<{
+    member_id: number;
+    nickname: string;
+    created_at: Date;
+  }>;
+  return response;
+}
+
+const MapService = { getFeedsList, getFeedLog };
 export default MapService;
