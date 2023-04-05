@@ -15,26 +15,26 @@ export interface CatType {
 }
 
 export interface PostType {
-  "boardId":Number,
-  "catId" : Number,
-  "catImage" : String,
-  "catName" : String,
-  "memberNickname" : String,
-  "boardImage": String,
-  "tags" : Array<    {
-    "name" : String,
-    "rate" : Number,
-  }>
-  "lat": Number, 
-  "lng": Number,
-  "recommand" : Number,
-  "good" : Number,
-  "impressed" : Number,
-  "sad" : Number,
-  "angry" : Number,
-  "myEmotion" : String,
-  "content" : String,
-  "createdAt" : String,
+  boardId: Number;
+  catId: Number;
+  catImage: String;
+  catName: String;
+  memberNickname: String;
+  boardImage: String;
+  tags: Array<{
+    name: String;
+    rate: Number;
+  }>;
+  lat: Number;
+  lng: Number;
+  recommand: Number;
+  good: Number;
+  impressed: Number;
+  sad: Number;
+  angry: Number;
+  myEmotion: String;
+  content: String;
+  createdAt: String;
 }
 
 export interface FeedType {
@@ -136,8 +136,9 @@ const mapSlice = createSlice({
     // setSelectedPostId: (state, action: { payload: number }) => {
     //   state.selectedPostId = action.payload;
     // },
-    setSelectedPost: (state, action: { payload: PostType }) => {
+    setSelectedPost: (state, action) => {
       state.selectedPost = action.payload;
+      console.log(action.payload);
       state.selectedPostId = action.payload?.board_id;
     },
   },

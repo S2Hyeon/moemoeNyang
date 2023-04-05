@@ -19,7 +19,7 @@ export default function FeedContent() {
 
   const feedsList = typedUseSelector((state) => state.map.feedsList);
   const selectedFeed = typedUseSelector((state) => state.map.selectedFeed);
-  const [feedTimeMessage, setFeedTimeMessgae] = useState("");
+  const [feedTimeMessage, setFeedTimeMessge] = useState("");
 
   const universityId = typedUseSelector(
     (state) => state.member.memberObject.universityId,
@@ -27,7 +27,6 @@ export default function FeedContent() {
   const user = typedUseSelector((state) => state.member.memberObject);
   useEffect(() => {
     getFeedsList(universityId || 1).then((res) => {
-      console.log("피드리스트", res.data.feedspots);
       dispatch(setFeedsList(res.data.feedspots));
       dispatch(setSelectedFeed(res.data.feedspots[0]));
     });
@@ -39,7 +38,7 @@ export default function FeedContent() {
 
   useEffect(() => {
     if (!selectedFeed) return;
-    setFeedTimeMessgae(timeParser(selectedFeed.recent_feed_time));
+    setFeedTimeMessge(timeParser(selectedFeed.recent_feed_time));
   }, [selectedFeed]);
 
   return (
