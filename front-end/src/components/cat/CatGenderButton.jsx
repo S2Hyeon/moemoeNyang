@@ -8,7 +8,16 @@ function CatGenderButton( {onChange }) {
     setButtonGroupVisible(true);
   };
 
+  const handleButtonGroupClick = (e) => {
+    setGender(e.target.getAttribute("gender"));
+    onChange(e.target.getAttribute("gender"));
+    setButtonGroupVisible(false);
+  };
 
+  // const handleInputChange = (e) => {
+  //   setGender(e.target.value);
+  //   props.onGenderChange(e.target.value);
+  // };
 
   return (
     <div className="mb-4" style={{ position: "relative", width: "335px", height: "41.79px" }}>
