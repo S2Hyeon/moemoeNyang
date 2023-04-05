@@ -172,4 +172,3 @@ wordcloud
 wrapt
 yarl
 zipp
-libgl1-mesa-glx
