@@ -1,2 +1,12 @@
 # application.yml 파일 ignore
 application.yml
+build
+.idea
+.gradle
+.vscode
+ai/__pycache__
+ai/.idea
+ai/client_secrets.json
+ai/environment.yaml
+
+

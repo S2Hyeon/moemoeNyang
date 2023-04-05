@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: r_proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./pre/properties/r_proxy:/etc/nginx/conf.d/
+      - nginx-certs:/etc/letsencrypt
+    depends_on:
+      - front-end
+      - back-end
+    restart: always
+
+  front-end:
+    image: nyang_front:latest
+    container_name: nyang_front
+    ports:
+      - "3000:3000"
+    restart: always
+
+  back-end:
+    image: nyang_back:latest
+    container_name: nyang_back
+    ports:
+      - "8080:8080"
+    restart: always
+
+  disease-ai:
+    image: nyang_disease_ai:latest
+    container_name: nyang_disease_ai
+    ports:
+      - "5000:5000"
+    restart: always
+
+volumes:
+  nginx-certs:
+    external: true
