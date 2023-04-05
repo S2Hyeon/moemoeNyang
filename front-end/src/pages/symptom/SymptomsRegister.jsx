@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dropdown from "../../components/dropdown/Dropdown";
 import Asymptomatic from "../../components/modal/Asymptomatic";
 import ImgUpload from "../../components/upload/ImgUpload";
@@ -11,24 +11,28 @@ export default function SymptomsRegister() {
 
   // 이미지 업로드 함수
   const [image, setImage] = useState("");
+  const [catId, setCatId] = useState("");
 
-  const handleImageUpload = (uploadedImage) => {
-    setImage(uploadedImage);
-  };
 
   // 질병 등록 이벤트 핸들러
-  const onSubmit = (catId, disease_id, image) => {
-    postDisease(catId, disease_id, image).then((res) => {
-      console.log(res);
-      AlertSuccess("질병을 등록하였습니다.");
-      setModalOpen(true);
-    });
+  // 질병분석 API 나오면 아래에 주석처리된 부분 지우면 될듯.
+  const onSubmit = () => {
+    let disease_id = 2
+    // 질병분석API(catId, image).then(res=>{
+    //   disease_id = res.data.disease_detail_resp.disease_id
+      postDisease(catId, disease_id, image).then((res) => {
+        console.log(res);
+        AlertSuccess("질병을 등록하였습니다.");
+        setModalOpen(true);
+      });
+    // })
+
   };
 
   return (
     <div className="m-4">
-      <Dropdown />
-      <ImgUpload onImageUpload={handleImageUpload} />
+      <Dropdown setCatId={setCatId}/>
+      <ImgUpload setImage={setImage} />
       <div
         className="grid place-items-center w-full h-10 mt-4 mb-4 bg-lisa-200 rounded-xl"
         onClick={onSubmit}
