@@ -19,9 +19,13 @@ export default function BoardFlick() {
   });
 
   const selectedPost = typedUseSelector((state) => state.map.selectedPost);
-  dispatch(setSelectedPost(postList[0]));
+  useEffect(() => {
+    dispatch(setSelectedPost(postList[0]));
+  }, [postList]);
 
   const willChange = (e) => {
+    console.log("이벤트");
+    console.log(e.index);
     const newPost = postList[e.index];
     const { lat, lng } = newPost;
     const newPosition = {
@@ -34,10 +38,10 @@ export default function BoardFlick() {
 
   return (
     <Flicking align="prev" circular={true} onWillChange={willChange}>
-      {/* {postList &&
+      {postList.length &&
         postList.map((postInfo, i) => {
           return (
-            <div className="w-full" key={postInfo.board_id}>
+            <div className="w-full" key={postInfo.board_id + i.toString()}>
               <Panel>
                 <div className="mx-auto w-4/5 ">
                   <div className="border rounded-md mt-2 h-[53vh]">
@@ -47,7 +51,7 @@ export default function BoardFlick() {
               </Panel>
             </div>
           );
-        })} */}
+        })}
     </Flicking>
   );
 }

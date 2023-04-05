@@ -42,9 +42,12 @@ export default function MapContainer() {
                 key={`${index.toString() + "id" + position.boardId}`}
                 position={position.latlng}
               >
-                <div className="w-[78px] h-[66px]">
-                  <BoardPin boardId={position.boardId} />
-                  {/* {position.boardId === selectedPostId ? (
+                {/* <div className="w-[78px] h-[66px]"> */}
+                <BoardPin
+                  boardId={position.boardId}
+                  catImage={position.catImage}
+                />
+                {/* {position.boardId === selectedPostId ? (
                     <img src="/images/map/pin.png" className="object-cover" />
                   ) : (
                     <img
@@ -53,11 +56,11 @@ export default function MapContainer() {
                     />
                   )} */}
 
-                  <img
+                {/* <img
                     src={position.catImage}
                     className="w-[37px] h-[37px] relative left-1/2 -top-[57%] translate-x-[-50%] translate-y-[-50%] rounded-[54px] object-cover"
-                  />
-                </div>
+                  /> */}
+                {/* </div> */}
               </CustomOverlayMap>
             );
           })}

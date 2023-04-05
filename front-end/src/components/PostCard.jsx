@@ -6,8 +6,8 @@ import { useEffect } from "react";
 export const PostCard = ({
   onBottom = false,
   postInfo,
-  childChange,
-  setChildChange,
+  childChange = false,
+  setChildChange = () => {},
 }) => {
   const [emojiChange, setEmojiChange] = useState(false);
 

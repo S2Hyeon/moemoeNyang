@@ -17,7 +17,6 @@ const memberSlice = createSlice({
   initialState,
   reducers: {
     setMemberObject: (state, action) => {
-      console.log(action);
       state.memberObject = action.payload;
     },
   },
