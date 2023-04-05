@@ -141,7 +141,7 @@ const SignupPage = () => {
     else if (
       email &&
       nickname &&
-      university.universityId &&
+      university.university_id &&
       password &&
       passwordConfirm
     ) {
