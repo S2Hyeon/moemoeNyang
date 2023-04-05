@@ -1,7 +1,7 @@
 // import { ApiMock } from "../../utils/customApi"; //목업 API를 불러옴
 import Api from "../../utils/customApi"; // 목업 API가 아닌 찐 API 쓸 때
 
-Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
+// Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
 
 /* --------타입스크립트를 사용하는 경우-------- */
 
@@ -83,7 +83,7 @@ export async function getCatImages(
     }
   }
   
-  Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
+  // Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
 
   interface PostCatRegistResponse {
     status: Number;
