@@ -80,7 +80,7 @@ public class BoardController {
     })
     public ResponseEntity<Page<BoardLoadResp>> searchAllBoard(
             HttpServletRequest request,
-            @RequestParam Long universityId, @PageableDefault(size = 20) Pageable pageable) {
+            @RequestParam Long universityId, @PageableDefault(size = 100) Pageable pageable) {
         Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
 
