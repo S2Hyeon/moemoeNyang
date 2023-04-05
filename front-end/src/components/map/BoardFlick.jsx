@@ -34,22 +34,22 @@ export default function BoardFlick() {
     dispatch(setCenterPosition(newPosition));
   };
 
+  if (!postList.length) return <></>;
   return (
     <Flicking align="prev" circular={true} onWillChange={willChange}>
-      {postList.length &&
-        postList.map((postInfo, i) => {
-          return (
-            <div className="w-full" key={postInfo.board_id + i.toString()}>
-              <Panel>
-                <div className="mx-auto w-4/5 ">
-                  <div className="border rounded-md mt-2 h-[53vh]">
-                    <PostCard onBottom={true} postInfo={postInfo} />
-                  </div>
+      {postList.map((postInfo, i) => {
+        return (
+          <div className="w-full" key={postInfo.board_id + i.toString()}>
+            <Panel>
+              <div className="mx-auto w-4/5 ">
+                <div className="border rounded-md mt-2 h-[53vh]">
+                  <PostCard onBottom={true} postInfo={postInfo} />
                 </div>
-              </Panel>
-            </div>
-          );
-        })}
+              </div>
+            </Panel>
+          </div>
+        );
+      })}
     </Flicking>
   );
 }
