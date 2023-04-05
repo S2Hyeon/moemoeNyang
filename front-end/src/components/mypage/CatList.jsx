@@ -19,7 +19,7 @@ export default function CatList() {
   return (
     <div className="flex flex-wrap pl-4 pr-4">
       {catList.map((cat) => {
-        return <CatCard catInfo={cat} key={cat.cat_id} />;
+        return <CatCard catInfo={cat} />;
       })}
       <HiPlusCircle className="z-50 absolute text-lisa-500 w-12 h-12 right-6 bottom-16" />
     </div>

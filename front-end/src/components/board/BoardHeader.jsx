@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ReportModal from "../modal/ReportModal";
 import { deleteUnFollow, postFollow } from "../../services/main";
+import { useNavigate } from "react-router-dom";
 
 export default function BoardHeader({ onBottom = false, postInfo }) {
+  const navigate = useNavigate();
+
+  const navigateToCatDetail = (catId) => {
+    navigate(`/cats/${catId}`);
+  };
+
   // 모달창 노출 여부 state
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -29,7 +36,10 @@ export default function BoardHeader({ onBottom = false, postInfo }) {
   if (onBottom) {
     return (
       <div className="header border-b p-2 flex justify-between items-center">
-        <div className="left flex flex-row items-center">
+        <div
+          className="left flex flex-row items-center"
+          onClick={() => navigateToCatDetail(postInfo.cat.cat_id)}
+        >
           <div
             className={`rounded-full p-[1.5px] mr-4 ${
               true
@@ -64,7 +74,10 @@ export default function BoardHeader({ onBottom = false, postInfo }) {
   }
   return (
     <div className="header border-b p-2 flex justify-between items-center">
-      <div className="left flex flex-row items-center">
+      <div
+        className="left flex flex-row items-center"
+        onClick={() => navigateToCatDetail(postInfo.cat.cat_id)}
+      >
         <div
           className={`rounded-full p-[1.5px] mr-4 ${
             true
@@ -91,27 +104,13 @@ export default function BoardHeader({ onBottom = false, postInfo }) {
       </div>
 
       <div className="flex right">
-        <div className="flex mr-6 text-center align-baseline">
-          {postInfo.cat.isFollowing === null ? (
-            <img
-              className="w-7 h-7 mr-2"
-              src="/images/button/Star.png"
-              alt="즐겨찾기"
-            />
-          ) : (
-            <img
-              className="w-7 h-7 mr-2"
-              src="/images/button/FillStar.png"
-              alt="즐겨찾기"
-            />
-          )}
-
+        <div className="flex mr-2 text-center align-baseline">
           <span className="text-lg">{postInfo.member.nickname}</span>
         </div>
-        <div className="text-xl mr-2" onClick={showModal}>
+        {/* <div className="text-xl mr-2" onClick={showModal}>
           🚨
         </div>
-        {modalOpen && <ReportModal setModalOpen={setModalOpen} />}
+        {modalOpen && <ReportModal setModalOpen={setModalOpen} />} */}
       </div>
     </div>
   );

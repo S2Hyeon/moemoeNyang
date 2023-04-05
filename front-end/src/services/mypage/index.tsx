@@ -20,33 +20,58 @@ export async function getUserInfo(): Promise<GetUserInfoResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
     const response = await Api.get("/members");
+    console.log("getUserInfo", JSON.stringify(response.data))
     return response as GetUserInfoResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
   } catch (error) {
     // console.log('에러',error);
   }
 }
 
-interface PostUserInfoResponse {
+interface PutUserInfoResponse {
   status: number;
   data: {
-    nickname: String;
-    university_id: Number;
-    password: String;
+    nickname: String,
+    password: String,
+    university_id: Number,
   };
 }
 
-export async function postUserInfo(
-  nickname: string,
-  university_id: number,
-  password: string,
-): Promise<PostUserInfoResponse | undefined> {
+export async function putUserInfo(
+  nickname: String,
+  password: String,
+  university_id: Number,
+): Promise<PutUserInfoResponse | undefined> {
   try {
-    const response = await Api.post("/members", {
+    console.log("postUserInfo")
+    const response = await Api.put("/members", {
       nickname,
-      university_id,
       password,
+      university_id,
     });
-    return response as PostUserInfoResponse;
+    console.log("토큰 변경 전, ", document.cookie)
+    document.cookie = `accessToken=${response.data.token}`;
+    console.log("토큰 변경 후, ", document.cookie)
+    return response as PutUserInfoResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+interface PutUpdateBadgeResponse {
+  status: number;
+  data: {
+    badgeId: Number,
+  };
+}
+
+export async function putUpdateBadge(
+  badgeId: Number,
+): Promise<PutUpdateBadgeResponse | undefined> {
+  try {
+    console.log("badgeId", badgeId)
+    const response = await Api.put(`/members/badge?badgeId=${badgeId}`);
+    console.log("putUpdateBadge 결과", response)
+    return response as PutUpdateBadgeResponse;
   } catch (error) {
     console.log("에러", error);
   }
@@ -71,17 +96,46 @@ export async function getUserBadge(): Promise<
   GetUserBadgeResponse | undefined
 > {
   try {
-    const response = await Api.post("/members/badge");
+    const response = await Api.get("/members/badge");
     return response as GetUserBadgeResponse;
   } catch (error) {
     console.log("에러", error);
   }
 }
 
+interface GetFollowListResponse {
+  status: number;
+  data: {
+    "cats": Array<      {
+      "cat_id": Number,
+      "name": String,
+      "age": Number,
+      "gender": String,
+      "follower_cnt": Number,
+      "image": String
+      "is_following": null | Number,
+    }>
+  };
+}
+
+export async function getFollowList(): Promise<
+GetFollowListResponse | undefined
+> {
+  try {
+    const response = await Api.get("/members/follow-list");
+    console.log(JSON.stringify(response))
+    return response as GetFollowListResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 const User = {
   getUserInfo,
-  postUserInfo,
+  putUserInfo,
   getUserBadge,
+  getFollowList,
+  putUpdateBadge,
 };
 
 export default User;

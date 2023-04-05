@@ -15,27 +15,26 @@ export interface CatType {
 }
 
 export interface PostType {
-  boardId: number;
-  board_id: number;
-  catId: number;
-  catImage: string;
-  catName: string;
-  memberNickname: string;
-  boardImage: number;
-  tags: Array<{
-    name: string;
-    rate: number;
-  }>;
-  lat: number;
-  lng: number;
-  recommand: number;
-  good: number;
-  impressed: number;
-  sad: number;
-  angry: number;
-  myEmotion: string;
-  content: string;
-  createdAt: string;
+  "boardId":Number,
+  "catId" : Number,
+  "catImage" : String,
+  "catName" : String,
+  "memberNickname" : String,
+  "boardImage": String,
+  "tags" : Array<    {
+    "name" : String,
+    "rate" : Number,
+  }>
+  "lat": Number, 
+  "lng": Number,
+  "recommand" : Number,
+  "good" : Number,
+  "impressed" : Number,
+  "sad" : Number,
+  "angry" : Number,
+  "myEmotion" : String,
+  "content" : String,
+  "createdAt" : String,
 }
 
 export interface FeedType {

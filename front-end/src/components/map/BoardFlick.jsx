@@ -34,7 +34,7 @@ export default function BoardFlick() {
 
   return (
     <Flicking align="prev" circular={true} onWillChange={willChange}>
-      {postList &&
+      {/* {postList &&
         postList.map((postInfo, i) => {
           return (
             <div className="w-full" key={postInfo.board_id}>
@@ -47,7 +47,7 @@ export default function BoardFlick() {
               </Panel>
             </div>
           );
-        })}
+        })} */}
     </Flicking>
   );
 }

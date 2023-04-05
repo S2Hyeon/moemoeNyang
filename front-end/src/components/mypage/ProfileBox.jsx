@@ -1,32 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { RiSettings4Fill } from "@react-icons/all-files/ri/RiSettings4Fill";
-import { getUserInfo, postUserInfo } from "../../services/mypage";
 import { useNavigate } from "react-router-dom";
+import "animate.css";
 
-export default function ProfileBox() {
+export default function ProfileBox({ userInfo }) {
   const navigate = useNavigate();
 
   const navigateToModifyUserInfo = () => {
     navigate("/mypage/modify");
   };
 
-  const [userInfo, setUserInfo] = useState([]);
+  const badgeName = [
+    "",
+    "cat_regist_cnt_1",
+    "cat_regist_cnt_5",
+    "cat_regist_cnt_10",
+    "disease_1",
+    "disease_3",
+    "disease_6",
+    "feed_cnt_1",
+    "feed_cnt_10",
+    "feed_cnt_20",
+    "login_days_cnt_7",
+    "login_days_cnt_30",
+    "login_days_cnt_100",
+    "post_1",
+    "post_3",
+    "post_6",
+    "react_cnt_5",
+    "react_cnt_10",
+    "react_cnt_20",
+    "report_cnt_5",
+    "report_cnt_10",
+    "report_cnt_20",
+  ];
 
-  useEffect(() => {
-    getUserInfo().then((res) => setUserInfo(res.data));
-  }, []);
-
-  useEffect(() => {
-    if (!userInfo.length) return;
-    console.log("user Info 불러오기");
-    console.log(userInfo);
-  }, [userInfo]);
+  const badge = badgeName[userInfo.badge_id];
 
   return (
     <div className="flex items-center relative p-5">
       <img
-        className="w-20"
-        src="/images/badgeImg/cat_1.png"
+        className="w-20 "
+        src={`/images/badgeImg/${badge}.png`}
         alt="대표배지이미지"
       />
       <div className="ml-4">
