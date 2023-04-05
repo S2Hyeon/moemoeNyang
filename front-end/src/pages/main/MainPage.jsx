@@ -30,7 +30,7 @@ const MainPage = () => {
         return (
           <PostCard
             postInfo={data}
-            key={index}
+            key={index.toString() + data.board_id.toString()}
             childChange={childChange}
             setChildChange={setChildChange}
           />
