@@ -14,6 +14,8 @@ import matplotlib
 
 matplotlib.use('agg')
 
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+
 #Authenticate and create PyDrive client
 # gauth = GoogleAuth()
 # gauth.REDIRECT_URI = 'https://j8a801.p.ssafy.io/disease'

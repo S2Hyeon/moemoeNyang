@@ -40,7 +40,7 @@ public class BoardCustomRepositoryImpl implements BoardCustomRepository {
                 .leftJoin(qBoard.university, qUniversity)
 //                .where(wordEq(word), categoryEq(categoryName), qInterview.interviewState.eq(4), qApplicant.user.id.isNull().or(qApplicant.user.id.ne(user_id)))
                 .where(qUniversity.universityId.eq(universityId))
-                .orderBy(qBoard.createdAt.asc())
+                .orderBy(qBoard.createdAt.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();

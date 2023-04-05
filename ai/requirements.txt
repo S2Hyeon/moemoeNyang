@@ -130,8 +130,6 @@ python-crfsuite
 python-dateutil
 python-stdnum
 pytz
-pywin32
-pywinpty
 PyYAML
 pyzmq
 regex
@@ -170,8 +168,6 @@ wcwidth
 webencodings
 Werkzeug
 widgetsnbextension
-win-inet-pton
-wincertstore
 wordcloud
 wrapt
 yarl
