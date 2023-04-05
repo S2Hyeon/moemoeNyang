@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import BadgeList from "../../components/mypage/BadgeList";
 import ProfileBox from "../../components/mypage/ProfileBox";
 import { getUserInfo } from "../../services/mypage";

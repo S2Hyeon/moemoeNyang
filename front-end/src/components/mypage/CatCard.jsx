@@ -8,6 +8,7 @@ export default function CatCard({ catInfo }) {
     console.log("detail로 이동", catId);
     navigate(`/cats/${catId}`);
   };
+
   return (
     <div
       className="flex flex-col w-2/5 rounded-xl shadow-lg m-4"
