@@ -51,7 +51,7 @@ interface GetCatDetailResponse {
 
 export async function getCatDetail(
   catId: Number,
-): Promise<GetCatDetailResponse | undefined> {
+  ): Promise<GetCatDetailResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
     const response = await Api.get(`/cats/${catId}`);
@@ -73,26 +73,28 @@ interface GetCatImagesResponse {
 
 export async function getCatImages(
   catId: Number,
-): Promise<GetCatImagesResponse | undefined> {
-  //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
-  try {
-    const response = await Api.get(`/cats/${catId}/boards`);
-    return response as GetCatImagesResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
-  } catch (error) {
-    // console.error(error);
+  ): Promise<GetCatImagesResponse | undefined> {
+    //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
+    try {
+      const response = await Api.get(`/cats/${catId}/boards`);
+      return response as GetCatImagesResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
+    } catch (error) {
+      // console.error(error);
+    }
   }
-}
+  
+  Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
 
-interface PostCatRegistResponse {
-  status: Number;
-  data: {
-    universityId: Number;
-    name: String;
-    age: Number;
-    gender: "M" | "F";
-    image: String; // <<< 이부분 게시글이랑 같은거
-    lat: Number; // 고양이 등록시 이미지의 메타데이터를 이용해 첫 게시글 작성
-    lng: Number;
+  interface PostCatRegistResponse {
+    status: Number;
+    data: {
+      universityId: Number;
+      name: String;
+      age: Number;
+      gender: "M" | "F";
+      image: String; // <<< 이부분 게시글이랑 같은거
+      lat: Number; // 고양이 등록시 이미지의 메타데이터를 이용해 첫 게시글 작성
+      lng: Number;
   };
   // header: { "Content-Type": "multipart/form-data", };
 }
@@ -105,18 +107,18 @@ export async function postCatRegist(
   image: String,
   lat: Number,
   lng: Number,
-): Promise<PostCatRegistResponse | undefined> {
-  try {
-    const response = await Api.post("/cat", {
-      universityId,
-      name,
-      age,
-      gender,
-      image,
-      lat,
-      lng,
-    });
-    return response as PostCatRegistResponse;
+  ): Promise<PostCatRegistResponse | undefined> {
+    try {
+      const response = await Api.post("/cat", {
+        universityId,
+        name,
+        age,
+        gender,
+        image,
+        lat,
+        lng,
+      });
+      return response as PostCatRegistResponse;
   } catch (error) {
     console.error(error);
   }
