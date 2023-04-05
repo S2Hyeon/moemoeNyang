@@ -24,8 +24,6 @@ export default function BoardFlick() {
   }, [postList]);
 
   const willChange = (e) => {
-    console.log("이벤트");
-    console.log(e.index);
     const newPost = postList[e.index];
     const { lat, lng } = newPost;
     const newPosition = {

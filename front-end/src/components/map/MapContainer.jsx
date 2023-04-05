@@ -5,8 +5,9 @@ import { typedUseSelector } from "../../store";
 import { setCenterPosition } from "../../store/mapSlice";
 import KakaoMapSdk from "../common/KakaoMapSdk";
 import BoardPin from "./BoardPin";
+import FeedPin from "./FeedPin";
 
-export default function MapContainer() {
+export default function MapContainer({ mode }) {
   const dispatch = useDispatch();
 
   const catPositions = typedUseSelector((state) => state.map.catPositions);
@@ -16,6 +17,10 @@ export default function MapContainer() {
   useEffect(() => {
     dispatch(setCenterPosition(catPositions[0].latlng));
   }, [catPositions]);
+
+  useEffect(() => {
+    if (!mode) return;
+  }, [mode]);
 
   //이동하는 예제
   // useEffect(() => {
@@ -64,6 +69,8 @@ export default function MapContainer() {
               </CustomOverlayMap>
             );
           })}
+
+        {/* {mode === "Feed"} */}
       </KakaoMapSdk>
     </div>
   );

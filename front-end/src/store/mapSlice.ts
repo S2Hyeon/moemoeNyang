@@ -60,6 +60,11 @@ export interface CatPositionType {
   latlng: { lat: number; lng: number };
 }
 
+export interface FeedPositionType {
+  feedspotId: string;
+  latlng: { lat: number; lng: number };
+}
+
 const initialState = {
   mapInfo: null as MapInfoType,
   selectedCat: null as CatType,
@@ -78,11 +83,22 @@ const initialState = {
       latlng: { lat: 37.550749, lng: 126.941303 },
     },
   ] as Array<CatPositionType>,
+  feedPositions: [
+    {
+      feedspotId: "noresult",
+      latlng: { lat: 37.550749, lng: 126.941303 },
+    },
+  ] as Array<FeedPositionType>,
   centerPosition: {
     lat: 37.550749,
     lng: 126.941303,
   },
   selectedPostId: -1,
+  selectedFeedLog: [] as Array<{
+    member_id: number;
+    nickname: string;
+    created_at: Date;
+  }>,
 };
 
 const mapSlice = createSlice({
@@ -127,6 +143,19 @@ const mapSlice = createSlice({
         state.catPositions = action.payload;
       }
     },
+    setFeedPositions: (state, action: { payload: Array<FeedPositionType> }) => {
+      //예외처리
+      if (!action.payload.length) {
+        state.feedPositions = [
+          {
+            feedspotId: "noresult",
+            latlng: { lat: 37.550749, lng: 126.941303 },
+          },
+        ];
+      } else {
+        state.feedPositions = action.payload;
+      }
+    },
     setCenterPosition: (
       state,
       action: { payload: { lat: number; lng: number } },
@@ -138,8 +167,12 @@ const mapSlice = createSlice({
     // },
     setSelectedPost: (state, action) => {
       state.selectedPost = action.payload;
-      console.log("페이로드", action.payload);
       state.selectedPostId = action.payload.board_id;
+    },
+    setSelectedFeedLog: (state, action) => {
+      if (action.payload.length) {
+        state.selectedFeedLog = action.payload;
+      } else state.selectedFeedLog = [];
     },
   },
 });
@@ -155,6 +188,8 @@ export const {
   setSelectedFeed,
   setCatPositions,
   setCenterPosition,
+  setFeedPositions,
   // setSelectedPostId,
   setSelectedPost,
+  setSelectedFeedLog,
 } = mapSlice.actions;

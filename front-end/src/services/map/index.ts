@@ -19,5 +19,14 @@ export async function getFeedsList(
   }
 }
 
-const MapService = { getFeedsList };
+export async function getFeedLog(feedspotId: number) {
+  const response = (await Api.get(`/feedspots/${feedspotId}`)) as Array<{
+    member_id: number;
+    nickname: string;
+    created_at: Date;
+  }>;
+  return response;
+}
+
+const MapService = { getFeedsList, getFeedLog };
 export default MapService;

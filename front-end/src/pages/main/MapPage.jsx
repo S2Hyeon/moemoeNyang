@@ -73,7 +73,7 @@ const MapPage = () => {
 
   return (
     <div onClick={clickOutside}>
-      <MapContainer />
+      <MapContainer mode={mode} />
       <div
         className="absolute top-14 right-20 bg-slate-400 z-[1]"
         onClick={() => {
