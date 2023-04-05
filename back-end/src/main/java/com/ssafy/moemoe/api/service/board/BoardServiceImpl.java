@@ -49,9 +49,9 @@ public class BoardServiceImpl implements BoardService {
     @Override
     @Transactional
     public BoardResp createBoard(UUID member_id, MultipartFile multiPartFile, BoardSaveReq boardSaveReq) {
-        Member member = memberRepository.findById(member_id).orElseThrow(() -> new IllegalArgumentException("해당 유저는 없습니다. id=" + member_id));
-        University university = universityRepository.findById(boardSaveReq.getUniversityId()).orElseThrow(() -> new IllegalArgumentException("해당 학교는 없습니다."));
-        Cat cat = catRepository.findById(boardSaveReq.getCatId()).orElseThrow(() -> new IllegalArgumentException("해당 고양이는 없습니다."));
+        Member member = memberRepository.findById(member_id).orElseThrow(() -> new IllegalArgumentException("사용자 ID 확인해달라 냥!"));
+        University university = universityRepository.findById(boardSaveReq.getUniversityId()).orElseThrow(() -> new IllegalArgumentException("학교 ID 확인해달라 냥!"));
+        Cat cat = catRepository.findById(boardSaveReq.getCatId()).orElseThrow(() -> new IllegalArgumentException("고양이 ID 확인해달라 냥!"));
 
         // S3에 이미지 등록
         String img ="";
@@ -59,7 +59,7 @@ public class BoardServiceImpl implements BoardService {
             img = s3Uploader.upload(multiPartFile, "board");
         }
         catch (IOException e) {
-            throw new IllegalArgumentException("파일 업로드에 문제가 발생했습니다.(board)");
+//            throw new IllegalArgumentException("파일 업로드에 문제가 발생했습니다.(board)");
         }
         LOGGER.info("================url===============\n" + img);
 
