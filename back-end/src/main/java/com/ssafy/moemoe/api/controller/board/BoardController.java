@@ -80,12 +80,11 @@ public class BoardController {
     })
     public ResponseEntity<Page<BoardLoadResp>> searchAllBoard(
             HttpServletRequest request,
-            @RequestParam Long universityId, @RequestParam(required = false) String tagName,
-            @PageableDefault(size = 20) Pageable pageable) {
+            @RequestParam Long universityId, @PageableDefault(size = 20) Pageable pageable) {
         Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
 
-        return ResponseEntity.status(200).body(boardService.searchAllBoard(memberId, universityId, tagName, pageable));
+        return ResponseEntity.status(200).body(boardService.searchAllBoard(memberId, universityId, pageable));
     }
 
     @PutMapping("/emotion")

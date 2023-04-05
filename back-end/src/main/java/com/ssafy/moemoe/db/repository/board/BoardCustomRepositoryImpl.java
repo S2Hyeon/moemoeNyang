@@ -8,7 +8,6 @@ import com.ssafy.moemoe.api.response.board.QBoardLoadResp;
 import com.ssafy.moemoe.db.entity.cat.QCat;
 import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.board.QBoard;
-import com.ssafy.moemoe.db.entity.board.QTag;
 import com.ssafy.moemoe.db.entity.member.QMember;
 import com.ssafy.moemoe.db.entity.university.QUniversity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,23 +25,21 @@ public class BoardCustomRepositoryImpl implements BoardCustomRepository {
     private JPAQueryFactory jpaQueryFactory;
 
     QBoard qBoard = QBoard.board;
-    QTag qTag = QTag.tag;
     QUniversity qUniversity = QUniversity.university;
     QCat qCat = QCat.cat;
     QMember qMember = QMember.member;
 
     @Override
-    public Page<BoardLoadResp> findBoardByIdAndTag(Long universityId, String tagName, Pageable pageable) {
+    public Page<BoardLoadResp> findBoardByIdAndTag(Long universityId, Pageable pageable) {
 
         List<BoardLoadResp> content = jpaQueryFactory
                 .select(new QBoardLoadResp(qBoard, qCat, qMember, qUniversity))
                 .from(qBoard)
-                .leftJoin(qBoard.tagList, qTag)
                 .leftJoin(qBoard.cat, qCat)
                 .leftJoin(qBoard.member, qMember)
                 .leftJoin(qBoard.university, qUniversity)
 //                .where(wordEq(word), categoryEq(categoryName), qInterview.interviewState.eq(4), qApplicant.user.id.isNull().or(qApplicant.user.id.ne(user_id)))
-                .where(tagNameEq(tagName), qUniversity.universityId.eq(universityId))
+                .where(qUniversity.universityId.eq(universityId))
                 .orderBy(qBoard.createdAt.asc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -51,17 +48,8 @@ public class BoardCustomRepositoryImpl implements BoardCustomRepository {
         JPAQuery<Board> countQuery = jpaQueryFactory
                 .select(qBoard)
                 .from(qBoard)
-                .where(tagNameEq(tagName), qUniversity.universityId.eq(universityId));
+                .where(qUniversity.universityId.eq(universityId));
 
         return PageableExecutionUtils.getPage(content, pageable, () -> countQuery.fetchCount());
-    }
-
-    private BooleanExpression tagNameEq(String tagName) {
-        if(tagName == null){
-            return null;
-        }else{
-            return qTag.name.eq(tagName);
-        }
-//        return tagName.isEmpty() ? null :
     }
 }

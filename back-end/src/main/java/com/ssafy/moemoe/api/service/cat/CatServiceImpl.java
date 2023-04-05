@@ -16,7 +16,6 @@ import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import com.ssafy.moemoe.db.repository.board.BoardRepository;
 import com.ssafy.moemoe.db.repository.board.ReactionRepository;
-import com.ssafy.moemoe.db.repository.board.TagRepository;
 import com.ssafy.moemoe.db.repository.cat.CatCustomRepository;
 import com.ssafy.moemoe.db.repository.cat.CatRepository;
 import com.ssafy.moemoe.db.repository.follow.FollowRepository;
@@ -48,7 +47,6 @@ public class CatServiceImpl implements CatService{
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
     private final ReactionRepository reactionRepository;
-    private final TagRepository tagRepository;
     private final BoardService boardService;
     private final S3Uploader s3Uploader;
 
@@ -138,7 +136,6 @@ public class CatServiceImpl implements CatService{
 
         for (BoardLoadResp cur : catBoards) {
             cur.setMyEmotion(reactionRepository.checkReation(memberId, cur.getBoardId()));
-            cur.setTags(tagRepository.findByBoardId(cur.getBoardId()));
         }
         return catBoards;
     }
