@@ -1,47 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { typedUseSelector } from "../../store";
+import { shallowEqual, useDispatch } from "react-redux";
+import {
+  setCenterPosition,
+  setSelectedFeed,
+  setSelectedFeedLog,
+} from "../../store/mapSlice";
+import { getFeedLog } from "../../services/map";
 
-export default function FeedPin() {
-  return <div></div>;
+export default function FeedPin({ feedspotId }) {
+  const dispatch = useDispatch();
+  const feedlist = typedUseSelector(
+    (state) => state.map.feedsList,
+    shallowEqual,
+  );
+  const onFeedSelect = () => {
+    const selectedElement = feedlist.find(
+      (element) => element.feedspot_id === feedspotId,
+    );
+    dispatch(setSelectedFeed(selectedElement));
+    getFeedLog(selectedElement.feedspot_id).then((res) => {
+      dispatch(setSelectedFeedLog(res.data.feeds));
+    });
+    dispatch(
+      setCenterPosition({ lat: selectedElement.lat, lng: selectedElement.lng }),
+    );
+  };
+
+  return (
+    <div className="w-[78px] h-[66px]" onClick={onFeedSelect}>
+      <img src="/images/map/feed-pin.png" className="object-cover" />,
+    </div>
+  );
 }
-
-// import React, { useEffect, useState } from "react";
-// import { typedUseSelector } from "../../store";
-
-// export default function BoardPin({ boardId, catImage }) {
-//   const selectedPostId = typedUseSelector((state) => state.map.selectedPostId);
-//   const [img, setImg] = useState(
-//     <img src="/images/map/pin.png" className="object-cover" />,
-//   );
-
-//   useEffect(() => {
-//     console.log(selectedPostId);
-//     if (selectedPostId === boardId) {
-//       return setImg(
-//         <img src="/images/map/selected-pin.png" className="object-cover" />,
-//       );
-//     } else {
-//       setImg(<img src="/images/map/pin.png" className="object-cover" />);
-//     }
-//   }, [selectedPostId]);
-
-//   return (
-//     <div
-//       className={`w-[78px] h-[66px] ${
-//         selectedPostId === boardId ? "relative z-10" : ""
-//       }`}
-//     >
-//       {img}
-//       <img
-//         src={catImage}
-//         className="w-[37px] h-[37px] relative left-1/2 -top-[57%] translate-x-[-50%] translate-y-[-50%] rounded-[54px] object-cover"
-//       />
-//     </div>
-//   );
-
-//   // if (boardId === selectedPostId) {
-//   //   return <img src="/images/map/pin.png" className="object-cover" />;
-//   // } else {
-//   //   return <img src="/images/map/selected-pin.png" className="object-cover" />;
-//   // }
-// }

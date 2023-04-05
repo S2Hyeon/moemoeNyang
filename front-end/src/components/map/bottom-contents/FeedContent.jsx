@@ -48,23 +48,6 @@ export default function FeedContent() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   const args = [universityId, ""];
-  //   if (selectedCatId) args.push(selectedCatId);
-  //   getMainBoardList(...args).then((res) => {
-  //     const postList = res.data.content;
-  //     dispatch(setPostList(postList));
-  //     const positions = postList.map((e) => {
-  //       return {
-  //         boardId: e.board_id,
-  //         catImage: e.cat.image,
-  //         latlng: { lat: e.lat, lng: e.lng },
-  //       };
-  //     });
-  //     dispatch(setCatPositions(positions));
-  //   });
-  // }, [selectedCatId]);
-
   const onFeedSelect = (element) => {
     dispatch(setSelectedFeed(element));
     getFeedLog(element.feedspot_id).then((res) => {
