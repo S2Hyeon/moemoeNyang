@@ -1,20 +1,20 @@
 import React, { useState, useRef } from "react";
 import { AiFillCamera } from "@react-icons/all-files/ai/AiFillCamera";
 
-export default function ImageUpload({setImage}) {
+export default function ImageUpload({ setImage }) {
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef();
 
   // 이미지 업로드 input의 onChange
   const saveImgFile = (e) => {
-    if(!e.target.files[0]) return; //이미지 업로드를 취소하면 반환
+    if (!e.target.files[0]) return; //이미지 업로드를 취소하면 반환
     const file = imgRef.current.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setImgFile(reader.result);
       console.log("image upload", e.target.files[0]);
-      setImage(e.target.files[0])
+      setImage(e.target.files[0]);
       // console.log("image upload", e.target.files[0]);
       // formData.append("catId", 2);
       // formData.append("universityId", 1);
