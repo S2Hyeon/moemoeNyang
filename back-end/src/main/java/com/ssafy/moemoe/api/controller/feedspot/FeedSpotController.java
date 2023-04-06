@@ -1,6 +1,5 @@
 package com.ssafy.moemoe.api.controller.feedspot;
 
-import com.ssafy.moemoe.api.controller.auth.AuthController;
 import com.ssafy.moemoe.api.request.feedspot.RegistFeedSpotReq;
 import com.ssafy.moemoe.api.response.feedspot.FeedSpotMarkerResp;
 import com.ssafy.moemoe.api.response.feedspot.FeedSpotMessageResp;
@@ -8,8 +7,6 @@ import com.ssafy.moemoe.api.service.feedspot.FeedSpotService;
 import com.ssafy.moemoe.common.util.TokenUtils;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,21 +21,15 @@ import java.util.UUID;
 @RequestMapping("/feedspots")
 public class FeedSpotController {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
-    final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
-
     private final FeedSpotService feedSpotService;
     private final TokenUtils tokenUtils;
 
-
-
     @PostMapping("/feedspots")
     public ResponseEntity<?> registFeedSpot(HttpServletRequest request,
-                                            @RequestParam Long universityId,
-                                            @RequestBody RegistFeedSpotReq form) {
+                                            @ModelAttribute RegistFeedSpotReq form) {
         Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
-        feedSpotService.registFeedSpot(memberId,universityId, form);
+        feedSpotService.registFeedSpot(memberId, form);
 
         Map<String, String> map = new HashMap<>();
         map.put("msg", "급식소가 등록되었습니다.");

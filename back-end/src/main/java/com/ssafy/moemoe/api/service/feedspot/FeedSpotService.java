@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface FeedSpotService {
 
-    Long registFeedSpot(UUID memberId, Long universityId, RegistFeedSpotReq registFeedSpotReq);
+    Long registFeedSpot(UUID memberId, RegistFeedSpotReq form);
     List<FeedSpotMarkerResp> getFeedSpots(Long universityId);
     Long createFeed(UUID memberId, Long feedspotId);
     List<FeedSpotMessageResp> getFeeds(Long feedspotId);

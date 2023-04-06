@@ -3,6 +3,7 @@ package com.ssafy.moemoe.api.service.feedspot;
 import com.ssafy.moemoe.api.request.feedspot.RegistFeedSpotReq;
 import com.ssafy.moemoe.api.response.feedspot.FeedSpotMarkerResp;
 import com.ssafy.moemoe.api.response.feedspot.FeedSpotMessageResp;
+import com.ssafy.moemoe.api.service.S3Uploader;
 import com.ssafy.moemoe.db.entity.feedspot.Feed;
 import com.ssafy.moemoe.db.entity.feedspot.FeedSpot;
 import com.ssafy.moemoe.db.repository.feedspot.FeedRepository;
@@ -12,7 +13,9 @@ import com.ssafy.moemoe.db.repository.university.UniversityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,20 +31,30 @@ public class FeedSpotServiceImpl implements FeedSpotService {
     private final UniversityRepository universityRepository;
     private final MemberRepository memberRepository;
     private final FeedRepository feedSpotFeedRepository;
-
+    private final S3Uploader s3Uploader;
 
 
     @Override
-    public Long registFeedSpot(UUID memberId, Long universityId, RegistFeedSpotReq form) {
+    public Long registFeedSpot(UUID memberId, RegistFeedSpotReq form) {
+
+        MultipartFile multipartFile = form.getImage();
+        String img;
+        try {
+            img = s3Uploader.upload(multipartFile, "feedspot");
+        }
+        catch (IOException e) {
+            throw new IllegalArgumentException("파일 업로드에 문제가 발생했습니다.(feedspot)");
+        }
+
         FeedSpot feedSpot = FeedSpot.builder()
-                .university(universityRepository.findById(universityId).get())
+                .university(universityRepository.findById(form.getUniversityId()).get())
                 .member(memberRepository.findByMemberId(memberId))
                 .lng(form.getLng())
                 .name(form.getName())
                 .description(form.getDescription())
                 .isActive(true)
                 .lat(form.getLat())
-                .image(form.getImage())
+                .image(img)
                 .build();
         feedSpotRepository.save(feedSpot);
         return feedSpot.getFeedspotId();

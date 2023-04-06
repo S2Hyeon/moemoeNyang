@@ -3,6 +3,7 @@ package com.ssafy.moemoe.api.request.feedspot;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
 
@@ -13,6 +14,9 @@ import javax.validation.constraints.NotBlank;
 @Builder
 public class RegistFeedSpotReq {
 
+    @ApiModelProperty(example = "", name = "대학 Id")
+    @NotBlank(message = "대학 Id를 확인해주세요.")
+    private Long universityId;
     @ApiModelProperty(example = "", name = "급식소 이름")
     @NotBlank(message = "급식소 이름을 확인해주세요.")
     private String name;
@@ -23,7 +27,7 @@ public class RegistFeedSpotReq {
 
     @ApiModelProperty(example = "", name = "이미지")
     @NotBlank(message = "이미지를 확인해주세요.")
-    private String image;
+    private MultipartFile image;
 
     @ApiModelProperty(example = "", name = "경도")
     @NotBlank(message = "경도(lat)를 확인해주세요.")
