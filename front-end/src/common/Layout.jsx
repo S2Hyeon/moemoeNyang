@@ -41,14 +41,14 @@ const Layout = () => {
     );
   }
 
-  const [innerHeight, setInnerHeight] = useState(0);
-  useEffect(() => {
-    setInnerHeight(window.innerHeight);
-  }, []);
+  const [innerHeight, setInnerHeight] = useState(0)
+  useEffect(()=>{
+    setInnerHeight(window.innerHeight)
+  },[])
 
   const StyledContainer = styled.div`
     height: ${innerHeight}px;
-  `;
+  `
   // 테일윈드 레이아웃 https://stackoverflow.com/questions/59812003/tailwindcss-fixed-sticky-footer-on-the-bottom
   return (
     <StyledContainer className="flex flex-col top-0 sticky justify-between overflow-hidden">

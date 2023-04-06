@@ -1,13 +1,12 @@
 package com.ssafy.moemoe.db.repository.board;
 
-import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.QBoardLoadResp;
-import com.ssafy.moemoe.db.entity.cat.QCat;
 import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.board.QBoard;
+import com.ssafy.moemoe.db.entity.cat.QCat;
 import com.ssafy.moemoe.db.entity.member.QMember;
 import com.ssafy.moemoe.db.entity.university.QUniversity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,6 @@ public class BoardCustomRepositoryImpl implements BoardCustomRepository {
                 .leftJoin(qBoard.cat, qCat)
                 .leftJoin(qBoard.member, qMember)
                 .leftJoin(qBoard.university, qUniversity)
-//                .where(wordEq(word), categoryEq(categoryName), qInterview.interviewState.eq(4), qApplicant.user.id.isNull().or(qApplicant.user.id.ne(user_id)))
                 .where(qUniversity.universityId.eq(universityId))
                 .orderBy(qBoard.createdAt.desc())
                 .offset(pageable.getOffset())

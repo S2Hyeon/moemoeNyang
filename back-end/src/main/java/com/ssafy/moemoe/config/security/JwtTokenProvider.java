@@ -43,7 +43,6 @@ public class JwtTokenProvider {
 
     @Value("${springboot.jwt.secret}")
     private String secretKey = "secretKey";
-//    private final long tokenValidMillisecond = 1000L * 60 * 60; // 1시간 토큰 유효
     private final long tokenValidMillisecond = 1000L * 60 * 60 * 24 * 30; // 30일 토큰 유효
     /**
      * SecretKey 에 대해 인코딩 수행
@@ -63,13 +62,10 @@ public class JwtTokenProvider {
     public String createToken(String userUid, List<String> roles) {
         LOGGER.info("[createToken] 토큰 생성 시작");
         Claims claims = Jwts.claims().setSubject(userUid); //sub가 필요없긴 하지만 쓰는 메소드가 있어서 일단 쓰기로
-//        Claims claims = Jwts.claims();
         Member member = memberRepository.getByEmail(userUid);
         //여기서 token에 필요한 정보들을 담을 수 있음
-//        claims.put("roles", roles);
         claims.put("email", userUid);
         claims.put("member_id", member.getMemberId());
-//        claims.put("university_id", member.getUniversity().getId());
         claims.put("university_id", member.getUniversity().getUniversityId());
         claims.put("nickname", member.getNickname());
 

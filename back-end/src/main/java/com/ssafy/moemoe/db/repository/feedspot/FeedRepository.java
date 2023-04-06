@@ -16,7 +16,6 @@ public interface FeedRepository extends JpaRepository<Feed, Long> {
 
     @Query("SELECT MAX(f.createdAt) FROM Feed f WHERE f.feedspot.feedspotId = :feedspotId ORDER BY f.createdAt DESC")
     Optional<LocalDateTime> findMostRecentCreatedAtByFeedspotId(@Param("feedspotId") Long feedspotId);
-//    Optional<LocalDateTime> findTop1ByFeedspotFeedspotIdOrderByCreatedAtDesc(Long feedspotId);
 
     //사용자 id로 검색해서 작성한 글 갯수 조회
     Long countByMember_MemberId(UUID memberId);

@@ -10,9 +10,6 @@ import os
 import io
 import cv2
 
-# Create an empty list to store the predictions
-# predictions = [0, 0, 0, 0, 0, 0, 0]
-
 class_labels = ['A1', 'A2',
                 'A3', 'A4', 'A5', 'A6', '증상이 확인되지 않습니다.']
 
@@ -33,7 +30,6 @@ def do_floor(x, digit=0):
 
 
 def preprocess_image(image_string):
-    # image_string = tf.io.read_file(image_path)
 
     image = tf.image.decode_jpeg(image_string, channels=3)
 
@@ -181,18 +177,13 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
         if show == True:
             plt.show()
 
-    elif opt == 'total':
-        for i in range(len(display_list)):
-            plt.subplot(1, len(display_list)+1, i+1)
-            plt.title(title[i])
-            plt.imshow(tf.keras.utils.array_to_img(display_list[i]))
-            plt.axis('off')    
+    elif opt == 'total': 
         if pred is not None:
-            plt.subplot(1, len(display_list)+1, len(display_list)+1)
+            fig, ax = plt.subplots(figsize=(4, 4))
             pred = np.where(pred == 0, image, [0, 0, 1])  # blue
             plt.imshow(image)
             plt.imshow(pred, alpha=0.6)
-            plt.title(title[2])
+            plt.title("Analysis Image")
         plt.axis('off')
         if save_path != None:
             buf = io.BytesIO()

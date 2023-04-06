@@ -36,7 +36,6 @@ public class DiseaseTimelineResp {
         this.nickname = timeline.getMember().getNickname();
         this.image = timeline.getImage();
         this.created_at = timeline.getCreatedAt();
-//        this.created_at = LocalDateTime.now();
         this.disease = new DiseaseResultResp(timeline.getDisease());
     }
 }
