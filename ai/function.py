@@ -146,12 +146,14 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
     plt.clf()
 
     title = ['Input Image', 'Predicted Image', 'Result Image']
+    # title = ['Result Image']
     
     if model != None:
         pred = model_predict(image, model)
         display_list = [image, pred]
     elif model_pred is not None:
         pred = model_pred
+        # display_list = [image, pred]
         display_list = [image, pred]
     else:
         pred = None
@@ -164,6 +166,7 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
             plt.imshow(tf.keras.utils.array_to_img(display_list[i]))
             plt.axis('off')
         if save_path != None:
+            # plt.savefig(save_path)
             buf = io.BytesIO()
             plt.savefig(buf, format='png')
             buf.seek(0)
@@ -174,6 +177,7 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
     elif opt == 'comb':
         show_comb
         if save_path != None:
+            # plt.savefig(save_path)
             buf = io.BytesIO()
             plt.savefig(buf, format='png')
             buf.seek(0)
@@ -181,20 +185,16 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
         if show == True:
             plt.show()
 
-    elif opt == 'total':
-        for i in range(len(display_list)):
-            plt.subplot(1, len(display_list)+1, i+1)
-            plt.title(title[i])
-            plt.imshow(tf.keras.utils.array_to_img(display_list[i]))
-            plt.axis('off')    
+    elif opt == 'total': 
         if pred is not None:
-            plt.subplot(1, len(display_list)+1, len(display_list)+1)
+            fig, ax = plt.subplots(figsize=(4, 4))
             pred = np.where(pred == 0, image, [0, 0, 1])  # blue
             plt.imshow(image)
             plt.imshow(pred, alpha=0.6)
-            plt.title(title[2])
+            plt.title("Analysis Image")
         plt.axis('off')
         if save_path != None:
+            # plt.savefig(save_path)
             buf = io.BytesIO()
             plt.savefig(buf, format='png')
             buf.seek(0)
