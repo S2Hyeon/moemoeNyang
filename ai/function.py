@@ -166,7 +166,7 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
             plt.imshow(tf.keras.utils.array_to_img(display_list[i]))
             plt.axis('off')
         if save_path != None:
-            plt.savefig(save_path)
+            # plt.savefig(save_path)
             buf = io.BytesIO()
             plt.savefig(buf, format='png')
             buf.seek(0)
@@ -177,7 +177,7 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
     elif opt == 'comb':
         show_comb
         if save_path != None:
-            plt.savefig(save_path)
+            # plt.savefig(save_path)
             buf = io.BytesIO()
             plt.savefig(buf, format='png')
             buf.seek(0)
@@ -194,7 +194,7 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
             plt.title("Analysis Image")
         plt.axis('off')
         if save_path != None:
-            plt.savefig(save_path)
+            # plt.savefig(save_path)
             buf = io.BytesIO()
             plt.savefig(buf, format='png')
             buf.seek(0)
