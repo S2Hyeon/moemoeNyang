@@ -7,20 +7,10 @@ from PIL import Image
 from flask import Flask, request, jsonify, redirect
 from flask_cors import CORS
 import matplotlib
-# from pydrive.auth import GoogleAuth
-# from pydrive.drive import GoogleDrive
-# from google.oauth2.credentials import Credentials
-# from google_auth_oauthlib.flow import InstalledAppFlow
 
 matplotlib.use('agg')
 
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
-
-#Authenticate and create PyDrive client
-# gauth = GoogleAuth()
-# gauth.REDIRECT_URI = 'https://j8a801.p.ssafy.io/disease'
-# gauth.LocalWebserverAuth()
-# drive = GoogleDrive(gauth)
 
 app = Flask(__name__)
 CORS(app, resource={r'*': {'origins': 'https://j8a801.p.ssafy.io/api'}})
@@ -45,20 +35,10 @@ def predict():
             image2 = preprocess_image(image_byte_string)
 
             data["predictions"] = []
-
-            # Check if the file already exists
-            # if not os.path.exists('./model/classification/1.h5'):
-            #     # Download the file
-            #     file_id = '1pM3Zrsfh8FZ92UkRht59p0YSBuIaCp9Z'
-            #     downloaded = drive.CreateFile({'id': file_id})
-            #     downloaded.GetContentFile('./model/classification/1.h5')
-            #     print('Downloaded content to "{}"'.format('./model/classification/1.h5'))
-            # else:
-            #     print('File already exists at "{}"'.format('./model/classification/1.h5'))
-
             # classification 불러오기
-            model = tf.keras.models.load_model(
-                './model/classification/model_A1_A2_A3_A4_A5_A6.h5', compile=False)
+            model_path = os.path.join(os.path.dirname(__file__), 'model', 'classification',
+                                      'model_A1_A2_A3_A4_A5_A6.h5')
+            model = tf.keras.models.load_model(filepath=model_path, compile=False)
             optimizer = tf.keras.optimizers.SGD(
                 learning_rate=TEST_LEARNING_RATE, momentum=0.999, nesterov=True)
             model.compile(loss=LOSS, optimizer=optimizer, metrics=['acc', tf.keras.metrics.Precision(
@@ -71,22 +51,10 @@ def predict():
             data["predictions"].append(test[1][1])
 
 
-            # Check if the file already exists
-            # if not os.path.exists(f'./model/segmentation/{test[0]+1}.h5'):
-            #     # Download the file
-            #     file_list = drive.ListFile(
-            #         {'q': "'14d4w_EGpCBy4euIIR8alivZX-L3uMZ0u' in parents and trashed=false"}).GetList()
-            #     for file2 in file_list:
-            #         if file2['title'] == f'A{test[0]+1}_model.h5':
-            #             file2.GetContentFile(f'./model/segmentation/{test[0]+1}.h5')
-            #             break
-            # else:
-            #     print('File already exists at "{}"'.format(f'./model/segmentation/{test[0]+1}.h5'))
-
-
             # segmentation 시작
-            model = tf.keras.models.load_model(
-                f'./model/segmentation/A{test[0]+1}_model.h5', compile=False)
+            model_path = os.path.join(os.path.dirname(__file__), 'model', 'segmentation',
+                                      f'A{test[0]+1}_model.h5')
+            model = tf.keras.models.load_model(filepath=model_path, compile=False)
             model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=LEARNING_RATE[0]), loss=tf.keras.losses.CategoricalCrossentropy(),
                           metrics=['acc', tf.keras.metrics.Precision(name='precision'),
                                    tf.keras.metrics.Recall(name='recall'),
