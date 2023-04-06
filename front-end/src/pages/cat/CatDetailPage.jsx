@@ -13,6 +13,9 @@ import { getMainBoardList } from "../../services/main";
 import { setPostList } from "../../store/mapSlice";
 import { useDispatch } from "react-redux";
 import { typedUseSelector } from "../../store";
+import KakaoMapSdk from "../../components/common/KakaoMapSdk";
+import BoardPin from "../../components/map/BoardPin";
+import { CustomOverlayMap } from "react-kakao-maps-sdk";
 
 export default function CatDetailPage() {
   const [catInfo, setCatInfo] = useState([]);
@@ -24,10 +27,20 @@ export default function CatDetailPage() {
   );
   const dispatch = useDispatch();
 
+  const [boardId, setBoardId] = useState("");
+  const [catImage, setCatImage] = useState("");
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
+
   useEffect(() => {
     getMainBoardList(universityId, catId).then((res) => {
       const postList = res.data.content;
       dispatch(setPostList(postList));
+      const latestPost = postList[0];
+      setBoardId(latestPost.board_id);
+      setCatImage(latestPost.image);
+      setLat(latestPost.lat);
+      setLng(latestPost.lng);
     });
   }, []);
 
@@ -86,7 +99,12 @@ export default function CatDetailPage() {
             className="MapContainer w-full h-[13vh] rounded-sm"
             style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
           >
-            <KakaoMap lat={catInfo.lat} lng={catInfo.lng} />
+            {/* <KakaoMap lat={catInfo.lat} lng={catInfo.lng} /> */}
+            <KakaoMapSdk center={{ lat: lat, lng: lng }}>
+              <CustomOverlayMap position={{ lat: lat, lng: lng }}>
+                <BoardPin boardId={boardId} catImage={catImage} />
+              </CustomOverlayMap>
+            </KakaoMapSdk>
           </div>
         </div>
         <div className="text-left font-bold text-xl mt-6 ">📚 Board</div>
