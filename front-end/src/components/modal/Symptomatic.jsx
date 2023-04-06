@@ -55,7 +55,7 @@ export default function Symptomatic({ setModalOpen, data, jsonRes, catId }) {
     <S.Modal>
       {/* <div className="w-full h-8 pt-8"> */}
       <img
-        className="object-none max-h-56 "
+        className="object-none max-h-48"
         src={imageUrl}
         alt="고양이피부병이미지"
       />
@@ -64,6 +64,10 @@ export default function Symptomatic({ setModalOpen, data, jsonRes, catId }) {
         <div className="mb-2">
           <span className="font-bold">질병명 : </span>
           <span>{name}</span>
+        </div>
+        <div className="mb-2">
+          <span className="font-bold">AI 일치율 : </span>
+          <span>{(accuracy * 100).toFixed(2) + "%"}</span>
         </div>
         <div>
           <div className="font-bold mb-2">질병 설명</div>
