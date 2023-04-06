@@ -49,9 +49,7 @@ export async function getMainBoardList(
     const response = await Api.get(`/boards?universityId=${universityId}`);
     // const response = await Api.get(`/boards?universityId=${universityId}&tagName=${tagName}&page=${page}`);
     return response as GetBoardListResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
-  } catch (error) {
-    // console.log('에러',error);
-  }
+  } catch (error) {}
 }
 
 interface PostFollowResponse {
@@ -69,9 +67,7 @@ export async function postFollow(
   try {
     const response = await Api.post(`/cats/follow`, { catId });
     return response as PostFollowResponse;
-  } catch (error) {
-    // console.log('에러',error);
-  }
+  } catch (error) {}
 }
 
 interface DeleteUnFollowResponse {
@@ -87,20 +83,16 @@ export async function deleteUnFollow(
 ): Promise<DeleteUnFollowResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
-    console.log("unfollow ", catId)
     const response = await Api.delete(`/cats/follow/${catId}`);
     return response as DeleteUnFollowResponse; //마지막으로 응답객체 response에 타입을 덮어씌워줌
-  } catch (error) {
-    // console.log('에러',error);
-  }
+  } catch (error) {}
 }
-
 
 interface PutEmojiResponse {
   status: number;
   data: {
-    boardId: Number,
-    emotion: String,
+    boardId: Number;
+    emotion: String;
   };
 }
 
@@ -111,20 +103,16 @@ export async function putEmoji(
 ): Promise<PutEmojiResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
-    console.log(board_id, " --- ", emotion)
     const response = await Api.put(`/boards/emotion`, { board_id, emotion });
-    console.log("put emoji result", response)
     return response as PutEmojiResponse;
-  } catch (error) {
-    // console.log('에러',error);
-  }
+  } catch (error) {}
 }
 
 interface DeleteEmojiResponse {
   status: number;
   data: {
-    board_id: Number,
-    emotion: string,
+    board_id: Number;
+    emotion: string;
   };
 }
 
@@ -135,15 +123,12 @@ export async function deleteEmoji(
 ): Promise<DeleteEmojiResponse | undefined> {
   //함수가 리턴하는 값의 타입을 정의함. Promise<> 안에 위에서 정의한 응답객체 타입을 넣어주면 됨. 에러인 경우에는 undefined가 반환되므로 Promise<LoginResponse | undefined>
   try {
-    console.log(board_id, "  ---  ", emotion)
-    const response = await Api.delete(`/boards/emotion`, {data:{board_id,  emotion}});
-    console.log(response)
+    const response = await Api.delete(`/boards/emotion`, {
+      data: { board_id, emotion },
+    });
     return response as DeleteEmojiResponse;
-  } catch (error) {
-    // console.log('에러',error);
-  }
+  } catch (error) {}
 }
-
 
 const Main = {
   getMainBoardList,

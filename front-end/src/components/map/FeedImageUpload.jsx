@@ -9,21 +9,19 @@ export default function FeedImageUpload({ setImage }) {
 
   // 이미지 업로드 input의 onChange
   const saveImgFile = (e) => {
-    if(!e.target.files[0]) return; //이미지 업로드를 취소하면 반환
+    if (!e.target.files[0]) return; //이미지 업로드를 취소하면 반환
     const file = imgRef.current.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setImgFile(reader.result);
-      console.log("image upload", e.target.files[0]);
-      setImage(e.target.files[0])
+      setImage(e.target.files[0]);
       // formData.append("catId", 2);
       // formData.append("universityId", 1);
       // formData.append("lng", 36.234);
       // formData.append("content", "컨텐트내용");
       // formData.append("image", e.target.files[0]);
       // formData.append("lat", 12.123);
-      // for (const keyValue of formData) console.log(keyValue);
       // setData(formData);
     };
   };

@@ -8,11 +8,9 @@ export default function ModifyUserInfo() {
   const [password, setPassword] = useState(null);
 
   function onNickNameChange(e) {
-    console.log("닉네임", e.target.value);
     setNickName(e.target.value);
   }
   function onPasswordChange(e) {
-    console.log("비밀번호", e.target.value);
     setPassword(e.target.value);
   }
 
@@ -35,9 +33,9 @@ export default function ModifyUserInfo() {
       alert("정보를 수정해주세요.");
       return;
     } else {
-      putUserInfo(userNickname, password, university.university_id)
-        .then((res) => console.log("put 결과", res))
-        .then(navigateToMypage);
+      putUserInfo(userNickname, password, university.university_id).then(
+        navigateToMypage,
+      );
     }
   }
 

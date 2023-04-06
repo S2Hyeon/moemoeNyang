@@ -9,7 +9,6 @@ export default function KakaoMap({ lat, lng }) {
       level: 5,
     };
     map = new window.kakao.maps.Map(container, options);
-    console.log("loading kakaomap");
   }, [lat, lng]);
 
   return <div id="map" className="w-full h-full rounded" />;

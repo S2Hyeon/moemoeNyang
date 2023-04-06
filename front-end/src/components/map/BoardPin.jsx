@@ -8,7 +8,6 @@ export default function BoardPin({ boardId, catImage }) {
   );
 
   useEffect(() => {
-    console.log(selectedPostId);
     if (selectedPostId === boardId) {
       return setImg(
         <img src="/images/map/selected-pin.png" className="object-cover" />,

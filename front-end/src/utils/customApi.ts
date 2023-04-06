@@ -27,16 +27,13 @@ Api.interceptors.request.use(
 
 Api.interceptors.response.use(
   (response) => {
-    console.log(response);
     return response;
   },
   (error) => {
-    console.log(error);
     const status = error.response.status;
     if (status < 400 || status > 500)
       AlertError("알 수 없는 오류가 발생했습니다");
     else if (status === 500) {
-      console.log("콘피그", error.config.url);
       if (error.config.url === "/auth/login")
         AlertWarning("잘못된 사용자 정보입니다.");
       else AlertError("서버에서 오류가 발생했습니다");

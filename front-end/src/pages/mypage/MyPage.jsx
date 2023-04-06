@@ -15,12 +15,9 @@ export default function Mypage() {
       setUserInfo(res.data);
       setBadgeId(res.data.badge_id);
     });
-    console.log("user Info 불러오기");
-    console.log(userInfo);
   }, []);
 
   useEffect(() => {
-    console.log("badgeId가 변경됨 => ", badgeId);
     getUserInfo().then((res) => {
       setUserInfo(res.data);
       setBadgeId(res.data.badge_id);
@@ -29,9 +26,6 @@ export default function Mypage() {
 
   useEffect(() => {
     if (!userInfo.length) return;
-
-    console.log("user Info 불러오기");
-    console.log(userInfo);
   }, [userInfo]);
 
   return (

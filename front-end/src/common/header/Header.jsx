@@ -9,14 +9,10 @@ export default function Header() {
 
   useEffect(() => {
     getUserInfo().then((res) => setUserInfo(res.data));
-    console.log("user Info 불러오기");
-    console.log(userInfo);
   }, []);
 
   useEffect(() => {
     if (!userInfo.length) return;
-    console.log("user Info 불러오기");
-    console.log(userInfo);
   }, [userInfo]);
 
   const navigate = useNavigate();

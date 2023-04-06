@@ -24,9 +24,7 @@ export async function getCatlist(
   try {
     const response = await ApiMock.get("/catlist", { name, age, gender });
     return response as CatResponse;
-  } catch (error) {
-    console.log("에러", error);
-  }
+  } catch (error) {}
 }
 
 const Catlist = {

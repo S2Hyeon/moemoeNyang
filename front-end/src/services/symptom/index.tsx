@@ -28,12 +28,8 @@ export async function getDisease(
     const response = await Api.get(`/cats/${catId}/diseases`);
     // const encodedBase64string = btoa(image);
     // const decodedString = atob(Image);
-    // console.log(encodedBase64string)
-    // console.log(decodedString)
     return response as GetDiseaseResponse;
-  } catch (error) {
-    console.log("에러", error);
-  }
+  } catch (error) {}
 }
 
 interface GetDiseaseListResponse {
@@ -61,9 +57,7 @@ export async function getDiseaseList(): Promise<
   try {
     const response = await Api.get("/cats/4/diseases");
     return response as GetDiseaseListResponse;
-  } catch (error) {
-    console.log("에러", error);
-  }
+  } catch (error) {}
 }
 
 interface PostDiseaseResponse {
@@ -87,9 +81,7 @@ export async function postDisease(
       },
     });
     return response as PostDiseaseResponse;
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 }
 
 export async function postDiseaseRes(formData) {
