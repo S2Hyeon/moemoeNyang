@@ -6,13 +6,13 @@ interface PostBoardResponse {
     // cat_id:Number,
     // university_id: Number,
     // lat: Number,
-    file:FormData,
+    file: FormData;
     // lng: Number,
   };
 }
 
 export async function postBoard(
-  boardData:FormData,
+  boardData: FormData,
 ): Promise<PostBoardResponse | undefined> {
   try {
     // if(cat_id === null || university_id === null || lng === null || content === null || file === null || lat === null ||
@@ -20,15 +20,15 @@ export async function postBoard(
     //   return;
     // }
     console.log("post ----------");
-    console.log(boardData.get("catId"))
-    console.log(boardData.get("image"))
-    boardData.forEach((e,key)=>console.log(key, e))
+    console.log(boardData.get("catId"));
+    console.log(boardData.get("image"));
+    boardData.forEach((e, key) => console.log(key, e));
     const response = await Api.post("/boards", boardData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        "Content-Type": "multipart/form-data",
       },
-      });
-    console.log("게시물 등록 완료", response)
+    });
+    console.log("게시물 등록 완료", response);
     return response as PostBoardResponse;
   } catch (error) {
     console.error(error);

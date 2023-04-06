@@ -1,15 +1,48 @@
 import React, { useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
+import { getCookie } from "../utils/handleCookies";
+import { AlertSuccess } from "../utils/alertToastify";
+import jwtDecode from "jwt-decode";
+import { typedUseSelector } from "../store";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setMemberObject } from "../store/memberSlice";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [accessToken, setAccessToken] = useState(() => {
+    const token = getCookie("accessToken");
+    return token;
+  });
+  const universityId = typedUseSelector(
+    (state) => state.member.memberObject.universityId,
+  );
+
   useEffect(() => {
-    //1초 후 로그인 화면으로 이동합니다.
-    setTimeout(() => {
-      navigate("/login");
-    }, 1 * 1500);
-  }, []);
+    if (!accessToken) return;
+    const decodedTokenObject = jwtDecode(accessToken);
+    const { email, member_id, nickname, university_id } = decodedTokenObject;
+    dispatch(
+      setMemberObject({
+        accessToken,
+        memberId: member_id,
+        universityId: university_id,
+        nickname: nickname,
+        email: email,
+      }),
+    );
+  }, [accessToken]);
+
+  setTimeout(() => {
+    // if (universityId) {
+    //   AlertSuccess("로그인 되었습니다.");
+    //   navigate("/main");
+    // } else {
+    navigate("/login");
+    // }
+  }, 1 * 1500);
 
   // const navigateToMain = () => {
   //   navigate("/main");
