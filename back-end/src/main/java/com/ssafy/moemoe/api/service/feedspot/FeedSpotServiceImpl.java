@@ -104,7 +104,7 @@ public class FeedSpotServiceImpl implements FeedSpotService {
         for (Feed f : feeds) {
             UUID uid = f.getMember().getMemberId();
             respList.add(FeedSpotMessageResp.builder()
-                    .created_at(LocalDateTime.now())
+                    .created_at(f.getCreatedAt())
                     .member_id(uid)
                     .nickname(memberRepository.findByMemberId(uid).getNickname())
                     .build());
