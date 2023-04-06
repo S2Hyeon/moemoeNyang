@@ -92,7 +92,7 @@ export default function BoardFooter({
                 <div
                   className={`p-1 ${
                     postInfo.my_emotion === data.key
-                      ? "bg-lisa-200 rounded-xl"
+                      ? "bg-rose-200 rounded-xl"
                       : ""
                   }`}
                 >

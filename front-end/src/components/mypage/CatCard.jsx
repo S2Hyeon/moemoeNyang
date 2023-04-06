@@ -20,19 +20,11 @@ export default function CatCard({ catInfo }) {
           src={catInfo.image}
           alt="고양이프로필사진"
         />
-        {catInfo.is_following === null ? (
-          <img
-            className="absolute bottom-1 w-5 h-5 right-2"
-            src="/images/button/Star.png"
-            alt="즐겨찾기"
-          />
-        ) : (
-          <img
-            className="absolute bottom-1 w-5 h-5 right-2"
-            src="/images/button/FillStar.png"
-            alt="즐겨찾기"
-          />
-        )}
+        <img
+          className="absolute bottom-1 w-5 h-5 right-2"
+          src="/images/button/FillStar.png"
+          alt="즐겨찾기"
+        />
       </div>
       <div>
         <div className="font-bold text-lg m-1 ml-4">이름 : {catInfo.name}</div>
