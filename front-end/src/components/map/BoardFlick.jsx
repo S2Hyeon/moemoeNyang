@@ -20,6 +20,7 @@ export default function BoardFlick() {
 
   const selectedPost = typedUseSelector((state) => state.map.selectedPost);
   useEffect(() => {
+    if(!postList?.length) return
     dispatch(setSelectedPost(postList[0]));
   }, [postList]);
 

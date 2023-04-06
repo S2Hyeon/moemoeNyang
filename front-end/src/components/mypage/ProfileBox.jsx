@@ -43,6 +43,7 @@ export default function ProfileBox({ userInfo }) {
   const onLogout = () => {
     delCookie("accessToken");
     sessionStorage.clear();
+    localStorage.clear();
     AlertSuccess("로그아웃 되었습니다.");
     navigate("/login");
   };

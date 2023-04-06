@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { typedUseSelector } from "../store";
 import Navbar from "./footer/Navbar";
@@ -7,6 +7,7 @@ import { AlertError } from "../utils/alertToastify";
 import { useDispatch } from "react-redux";
 import { setMemberObject } from "../store/memberSlice";
 import { setCookie } from "../utils/handleCookies";
+import styled from "styled-components";
 
 const Layout = () => {
   const member = typedUseSelector((state) => state.member.memberObject);
@@ -40,15 +41,23 @@ const Layout = () => {
     );
   }
 
+  const [innerHeight, setInnerHeight] = useState(0)
+  useEffect(()=>{
+    setInnerHeight(window.innerHeight)
+  },[])
+
+  const StyledContainer = styled.div`
+    height: ${innerHeight}px;
+  `
   // 테일윈드 레이아웃 https://stackoverflow.com/questions/59812003/tailwindcss-fixed-sticky-footer-on-the-bottom
   return (
-    <div className="flex flex-col h-screen top-0 sticky justify-between overflow-hidden">
+    <StyledContainer className="flex flex-col top-0 sticky justify-between overflow-hidden">
       <Header className="w-screen" />
       <div className="mb-auto w-screen overflow-scroll">
         <Outlet />
       </div>
       <Navbar className="w-screen z-10" />
-    </div>
+    </StyledContainer>
   );
 };
 

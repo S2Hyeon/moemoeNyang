@@ -2,14 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface MemberType {
   accessToken: string;
-  memberId: number;
+  memberId: string;
   universityId: number;
   nickname: string;
   email: string;
 }
 
 const initialState = {
-  memberObject: null as MemberType,
+  memberObject: {
+    accessToken: "",
+    memberId: "",
+    universityId: 1,
+    nickname: "",
+    email: "",
+  } as MemberType,
 };
 
 const memberSlice = createSlice({
