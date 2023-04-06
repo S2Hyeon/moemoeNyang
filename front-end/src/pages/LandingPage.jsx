@@ -36,12 +36,12 @@ const LandingPage = () => {
   }, [accessToken]);
 
   setTimeout(() => {
-    if (universityId) {
-      AlertSuccess("로그인 되었습니다.");
-      navigate("/main");
-    } else {
-      navigate("/login");
-    }
+    // if (universityId) {
+    //   AlertSuccess("로그인 되었습니다.");
+    //   navigate("/main");
+    // } else {
+    navigate("/login");
+    // }
   }, 1 * 1500);
 
   // const navigateToMain = () => {
