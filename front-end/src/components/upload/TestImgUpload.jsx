@@ -27,7 +27,7 @@ export default function TestImageUpload({ data, setData }) {
   };
 
   return (
-    <form className="mt-4 " enctype="multipart/form-data">
+    <form className="mt-4 " encType="multipart/form-data">
       <label className="imgUpload" htmlFor="imgUploadInput">
         {imgFile === "" ? (
           <div className="flex justify-center items-center w-full h-80 rounded-xl bg-slate-200">

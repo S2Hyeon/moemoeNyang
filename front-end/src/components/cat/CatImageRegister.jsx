@@ -1,7 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { AiFillCamera } from "@react-icons/all-files/ai/AiFillCamera";
+import EXIF from "exif-js";
 
-export default function CatImageRegister({onChange}) {
+export default function CatImageRegister({onChange, handleLatlngChange}) {
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef();
 
@@ -15,6 +16,23 @@ export default function CatImageRegister({onChange}) {
       onChange(reader.result)
     };
   };
+
+
+  useEffect(()=>{
+    if(!imgFile) return
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(imgFile);
+    reader.onload = function (event) {
+      const exifData = EXIF.readFromBinaryFile(event.target.result);
+      let latitude = exifData.GPSLatitude;
+      if(!latitude) latitude=37.5019+imgFile.size.toString().slice(0,4)/8000000
+      let longitude = exifData.GPSLongitude;
+      if(!longitude) longitude=127.04+imgFile.size.toString().slice(0,4)/8000000
+      handleLatlngChange(latitude, longitude)
+    }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imgFile])
+
 
   return (
     <form className="mt-4">

@@ -8,7 +8,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Dropdown({ formData, setFormData }) {
+export default function Dropdown({ 
+  // formData, setFormData
+  setCatId
+ }) {
   const [selected, setSelected] = useState([]);
   const [catList, setCatList] = useState([]);
   const universityId = typedUseSelector(
@@ -36,9 +39,10 @@ export default function Dropdown({ formData, setFormData }) {
       value={selected}
       onChange={() => {
         setSelected();
-        setFormData(formData.append("catId", selected));
+        setCatId(selected)
+        // setFormData(formData.append("catId", selected));
         console.log("cat list에서 선택함");
-        for (const keyValue of formData) console.log(keyValue);
+        // for (const keyValue of formData) console.log(keyValue);
       }}
     >
       {({ open }) => (

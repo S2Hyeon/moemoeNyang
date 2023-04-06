@@ -12,11 +12,17 @@ export default function CatRegisterPage() {
     name: "",
     gender: "",
     age: "",
+    lat: "",
+    lng: "",
   });
 
   const handleImageChange = (image) => {
     setCatData({ ...catData, image });
   };
+
+  const handleLatlngChange = (lat, lng) => {
+    setCatData({ ...catData, lat, lng })
+  }
 
   const handleNameChange = (name) => {
     setCatData({ ...catData, name });
@@ -35,7 +41,7 @@ export default function CatRegisterPage() {
   return (
     <div className="flex justify-center items-center">
       <div className="w-auto grid gap-4 py-4">
-        <CatImageRegister onChange={handleImageChange} />
+        <CatImageRegister onChange={handleImageChange} handleLatlngChange={handleLatlngChange} />
         <div className="grid place-items-center w-full mt-4 mb-4 ">
           <CatNameButton onChange={handleNameChange} />
           <CatGenderButton onChange={handleGenderChange} />

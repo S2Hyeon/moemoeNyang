@@ -1,9 +1,11 @@
 import React, { useState, useRef } from "react";
 import { AiFillCamera } from "@react-icons/all-files/ai/AiFillCamera";
 
-export default function ImageUpload({setImage}) {
+export default function FeedImageUpload({ setImage }) {
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef();
+
+  // const formData = new FormData();
 
   // 이미지 업로드 input의 onChange
   const saveImgFile = (e) => {
@@ -15,7 +17,6 @@ export default function ImageUpload({setImage}) {
       setImgFile(reader.result);
       console.log("image upload", e.target.files[0]);
       setImage(e.target.files[0])
-      // console.log("image upload", e.target.files[0]);
       // formData.append("catId", 2);
       // formData.append("universityId", 1);
       // formData.append("lng", 36.234);
@@ -28,10 +29,10 @@ export default function ImageUpload({setImage}) {
   };
 
   return (
-    <form className="mt-4 " encType="multipart/form-data">
+    <form className="w-full h-full" encType="multipart/form-data">
       <label className="imgUpload" htmlFor="imgUploadInput">
         {imgFile === "" ? (
-          <div className="flex justify-center items-center w-full h-80 rounded-xl bg-slate-200">
+          <div className="flex justify-center items-center w-full h-full rounded-xl bg-slate-200">
             <AiFillCamera className="w-14 h-14 text-slate-400" />
           </div>
         ) : (

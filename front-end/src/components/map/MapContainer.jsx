@@ -37,8 +37,8 @@ export default function MapContainer({ mode }) {
         isPanto={true}
         className={isHigh ? "w-full h-2/5" : "w-full h-5/6"}
       >
-        {catPositions &&
-          mode == "Board" &&
+        {
+          mode == "Board" &&catPositions &&
           catPositions.map((position, index) => {
             return (
               <CustomOverlayMap
@@ -52,7 +52,7 @@ export default function MapContainer({ mode }) {
               </CustomOverlayMap>
             );
           })}
-        {mode === "Feed" &&
+        {mode === "Feed" && feedPositions &&
           feedPositions.map((position, index) => {
             return (
               <CustomOverlayMap

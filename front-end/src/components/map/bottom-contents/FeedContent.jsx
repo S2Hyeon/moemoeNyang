@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { shallowEqual, useDispatch } from "react-redux";
-import { getFeedLog, getFeedsList } from "../../../services/map";
+import { getFeedLog, getFeedsList, postFeed } from "../../../services/map";
 import { typedUseSelector } from "../../../store";
 import {
   setFeedPositions,
@@ -10,6 +10,7 @@ import {
 } from "../../../store/mapSlice";
 import timeParser from "../../../utils/timeParser";
 import Button from "../../common/Button";
+import { AlertSuccess, AlertWarning } from "../../../utils/alertToastify";
 
 export default function FeedContent() {
   //채팅창디자인 https://codepen.io/robstinson/pen/oNLaLMN
@@ -145,7 +146,7 @@ export default function FeedContent() {
                 className="flex flex-col flex-grow h-0 p-4 overflow-auto"
                 ref={chattingRef}
               >
-                {!selectedFeedLog.length ? (
+                {!selectedFeedLog?.length ? (
                   <div className="flex justify-center h-full">
                     <div className="상대가쓴밥줬어요">
                       <div className="pr-5">
@@ -205,7 +206,17 @@ export default function FeedContent() {
             </div>
           </div>
           <div className="하단버튼부">
-            <Button shadow={true}>밥줬다냥</Button>
+            <Button shadow={true} onClick={()=> {
+              const timeMsg = timeParser(selectedFeedLog[0].created_at)
+              if(timeMsg.endsWith('분 전') || timeMsg==="방금 전") return AlertWarning("너무 자주 밥주면 뚱뚱해진다냥")
+              postFeed(selectedFeed.feedspot_id).then(res => {
+                AlertSuccess(res.data.msg)
+                getFeedLog(selectedFeed.feedspot_id).then((res) => {
+                  dispatch(setSelectedFeedLog(res.data.feeds));
+                })
+              }
+                )
+              }}>밥줬다냥</Button>
           </div>
         </div>
       </div>

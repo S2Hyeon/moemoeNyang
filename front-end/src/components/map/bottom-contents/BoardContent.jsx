@@ -55,7 +55,9 @@ export default function BoardContent(
       // setSelectedCat={setSelectedCat}
       />
       <div className={isHigh ? "" : "hidden"}>
+        <div className="absolute top-[35vh] left-3 text-lg">{"<"}</div>
         <BoardFlick />
+        <div className="absolute top-[35vh] right-3 text-lg">{">"}</div>
       </div>
     </>
   );

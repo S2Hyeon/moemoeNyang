@@ -39,7 +39,7 @@ export default function BoardFlick() {
     <Flicking align="prev" circular={true} onWillChange={willChange}>
       {postList.map((postInfo, i) => {
         return (
-          <div className="w-full" key={postInfo.board_id + i.toString()}>
+          <div className="w-full" key={postInfo.board_id +"index"+ i.toString()}>
             <Panel>
               <div className="mx-auto w-4/5 ">
                 <div className="border rounded-md mt-2 h-[53vh]">
