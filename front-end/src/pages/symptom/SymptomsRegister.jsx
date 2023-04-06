@@ -60,7 +60,6 @@ export default function SymptomsRegister() {
 
     // disease_id = res.data.disease_detail_resp.disease_id
     // postDisease(catId, disease_id, image).then((res) => {
-    //   console.log(res);
     //   AlertSuccess("질병을 등록하였습니다.");
     //   setModalOpen(true);
     // });

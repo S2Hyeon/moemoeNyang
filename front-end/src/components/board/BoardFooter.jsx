@@ -15,7 +15,6 @@ export default function BoardFooter({
   TimeAgo.addLocale(ko);
 
   function onPutEmoji(boardId, emotionName) {
-    console.log("put emoji");
     putEmoji(boardId, emotionName).then(() => setEmojiChange(!emojiChange));
   }
 

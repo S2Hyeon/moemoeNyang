@@ -6,14 +6,11 @@ export default function BadgeList({ badgeId, setBadgeId }) {
   const [badgeList, setBadgeList] = useState([]);
 
   useEffect(() => {
-    console.log("badge list 불러오기");
     getUserBadge().then((res) => setBadgeList(res.data));
   }, []);
 
   useEffect(() => {
     if (!badgeList.length) return;
-    console.log("badge list 불러오기");
-    console.log(badgeList);
   }, [badgeList]);
 
   const badgeName = [
@@ -41,11 +38,7 @@ export default function BadgeList({ badgeId, setBadgeId }) {
   ];
 
   function onBadgeClick(id) {
-    console.log("click badgeId", badgeId);
-    putUpdateBadge(id)
-      .then(() => console.log("putUpdatebadge 완료"))
-      .then(() => setBadgeId(id))
-      .then(() => console.log("setBadgeId 완료"));
+    putUpdateBadge(id).then(() => setBadgeId(id));
   }
 
   return (

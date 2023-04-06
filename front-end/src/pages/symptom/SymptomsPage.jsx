@@ -22,13 +22,10 @@ export default function SymptomsPage() {
 
   useEffect(() => {
     if (!diseasesList.length) return;
-    console.log("diseases list 불러오기");
-    console.log(diseasesList);
   }, [diseasesList]);
 
   return (
     <div className="m-2">
-      {console.log(diseasesList)}
       <div className="ml-4 mr-4">
         <ol className="border-l border-neutral-300 dark:border-neutral-500">
           {diseasesList.map((list) => {

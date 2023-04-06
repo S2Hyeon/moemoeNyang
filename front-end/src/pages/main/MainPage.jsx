@@ -20,17 +20,15 @@ const MainPage = () => {
 
   useEffect(() => {
     if (!postList.length) return;
-    console.log("post list 불러오기");
-    console.log(postList);
   }, [postList]);
 
   return (
     <div className="flex flex-col flex-wrap">
-      {postList.map((data, index) => {
+      {postList.map((data) => {
         return (
           <PostCard
             postInfo={data}
-            key={index.toString() + data.board_id.toString()}
+            key={data.board_id}
             childChange={childChange}
             setChildChange={setChildChange}
           />
