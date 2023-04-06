@@ -3,6 +3,7 @@ package com.ssafy.moemoe.api.service.disease;
 import com.ssafy.moemoe.api.request.disease.DiseaseTimelineRegistReq;
 import com.ssafy.moemoe.api.response.cat.DiseaseTimelineResp;
 import com.ssafy.moemoe.api.response.disease.DiseaseDetailResp;
+import com.ssafy.moemoe.api.service.S3Uploader;
 import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.disease.Disease;
 import com.ssafy.moemoe.db.entity.disease.DiseaseTimeline;
@@ -12,8 +13,12 @@ import com.ssafy.moemoe.db.repository.disease.DiseaseRepository;
 import com.ssafy.moemoe.db.repository.disease.DiseaseTimelineRepository;
 import com.ssafy.moemoe.db.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -22,10 +27,12 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class DiseaseServiceImpl implements DiseaseService{
 
+    private final Logger LOGGER = LoggerFactory.getLogger(DiseaseServiceImpl.class);
     private final MemberRepository memberRepository;
     private final CatRepository catRepository;
     private final DiseaseRepository diseaseRepository;
     private final DiseaseTimelineRepository diseaseTimelineRepository;
+    private final S3Uploader s3Uploader;
 
     @Override
     public Long registDiseaseTimeline(UUID memberId, Long catId, DiseaseTimelineRegistReq form) {
@@ -33,7 +40,19 @@ public class DiseaseServiceImpl implements DiseaseService{
         Member member = memberRepository.findByMemberId(memberId);
         Cat cat = catRepository.findCatByCatId(catId).get();
         Disease disease = diseaseRepository.findByDiseaseId(form.getDiseaseId());
-        DiseaseTimeline diseaseTimeline = new DiseaseTimeline(member, cat, disease, form.getImage());
+
+        // S3에 이미지 등록
+        MultipartFile multipartFile = form.getImage();
+        String img;
+        try {
+            img = s3Uploader.upload(multipartFile, "disease");
+        }
+        catch (IOException e) {
+            throw new IllegalArgumentException("파일 업로드에 문제가 발생했습니다.(disease)");
+        }
+        LOGGER.info("================url===============\n" + img);
+
+        DiseaseTimeline diseaseTimeline = new DiseaseTimeline(member, cat, disease, img);
         diseaseTimelineRepository.save(diseaseTimeline);
 
         return diseaseTimeline.getDiseaseTimelineId();
