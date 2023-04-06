@@ -100,28 +100,13 @@ interface PostCatRegistResponse {
 }
 
 export async function postCatRegist(
-  name: String,
-  age: Number,
-  gender: "M" | "F",
-  image: String,
-  universityId: Number,
-  lat: Number,
-  lng: Number,
+  formData,
 ): Promise<PostCatRegistResponse | undefined> {
-  console.log("axios요청 젠더", gender);
-  console.log("axios요청 이미지", image);
   try {
-    const response = await Api.post("/cats", {
+    const response = await Api.post("/cats", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-      name,
-      age,
-      gender,
-      image,
-      universityId,
-      lat,
-      lng,
     });
     return response as PostCatRegistResponse;
   } catch (error) {

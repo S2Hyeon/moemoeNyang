@@ -1,10 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../components/common/Button";
 import KakaoMap from "../../components/common/KakaoMap";
+import FeedImageUpload from "../../components/map/FeedImageUpload";
+import EXIF from 'exif-js';
+import { AlertSuccess, AlertWarning } from "../../utils/alertToastify";
+import { typedUseSelector } from "../../store";
+import { postFeedspots } from "../../services/map";
+import KakaoMapSdk from "../../components/common/KakaoMapSdk";
+import { CustomOverlayMap } from "react-kakao-maps-sdk";
+import FeedPin from "../../components/map/FeedPin";
+
 
 export default function FeedRegisterPage() {
   //이미지 메타정보 얻기 : https://blog.naver.com/PostView.naver?blogId=hj_kim97&logNo=222309039397&parentCategoryNo=&categoryNo=16&viewDate=&isShowPopularPosts=true&from=search
   //
+  const formData = new FormData();
+  const [name, setName] = useState("")
+  const [description, setDescription] = useState("")
+  const [image, setImage] = useState(null)
+  const [lat, setLat] = useState(()=>{
+    return 37.5019+Math.random()/1000
+  })
+  const [lng, setLng] = useState(()=>{
+    return 127.04+Math.random()/1000
+  })
+
+  const universityId = typedUseSelector(state => state.member.memberObject.universityId)
+
+
+  useEffect(()=>{
+    if(!image) return
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(image);
+    reader.onload = function (event) {
+      const exifData = EXIF.readFromBinaryFile(event.target.result);
+      const latitude = exifData.GPSLatitude;
+      if(latitude) setLat(latitude)
+      else setLat(37.5019+image.size.toString().slice(0,4)/8000000)
+      const longitude = exifData.GPSLongitude;
+      if(longitude) setLng(longitude);
+      else setLng(127.04+image.size.toString().slice(0,4)/8000000)
+    }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [image])
+
+  const onSubmitHandler = (e) => {
+    if(!image || !name || !description) return AlertWarning("모든 정보를 작성해주세요")
+    if(!universityId) return AlertWarning("다시 로그인해주세요")
+    formData.append('name', name)
+    formData.append('description', description)
+    formData.append('lat', lat)
+    formData.append('lng', lng)
+    formData.append('image', image)
+    postFeedspots(universityId, formData).then(res=> AlertSuccess(res.data.msg))
+  }
+
+
   return (
     <div className="flex justify-center items-center">
       <div className="w-11/12 grid gap-4 py-4">
@@ -14,21 +65,27 @@ export default function FeedRegisterPage() {
           style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
           placeholder="급식소명"
           type="text"
+          value={name}
+          onChange={(e)=>setName(e.target.value)}
         />
         <textarea
-          autoFocus={true}
           className={`text-lg font-bold text-center w-full rounded border px-2 py-2 focus:outline-none active:outline-none bg-[#F1EBEB] border-gray-300`}
           style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
           placeholder="급식소 설명"
           rows="4"
           maxLength={80}
-          type="number"
+          value={description}
+          onChange={e=>setDescription(e.target.value)}
+          type="text"
         />
-        <div
+        <div className="w-full aspect-square max-h-[30vh]">
+        <FeedImageUpload setImage={setImage}></FeedImageUpload>
+        </div>
+        {/* <div
           className="w-full aspect-square max-h-[30vh] rounded-[10px] bg-[#faeaea]"
           style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
         >
-          <label For="dropzone-file">
+          <label htmlFor="dropzone-file">
             <svg
               width={37}
               height={37}
@@ -48,21 +105,28 @@ export default function FeedRegisterPage() {
               />
             </svg>
           </label>
-        </div>
+        </div> */}
         <div
           className="MapContainer w-full h-[20vh]"
           style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
         >
-          <KakaoMap />
+          <KakaoMapSdk center={{lat:lat, lng:lng}}>
+          <CustomOverlayMap
+
+                position={{lat:lat, lng:lng}}
+              >
+                <FeedPin />
+              </CustomOverlayMap>
+          </KakaoMapSdk>
         </div>
         <div className="하단버튼부">
-          <Button shadow={true}>등록</Button>
+          <Button shadow={true} onClick={onSubmitHandler}>등록</Button>
         </div>
         {/* <div
         className="w-[335px] h-[335px] absolute left-[28.5px] top-[126.5px] rounded-[10px] bg-[#faeaea] "
         style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
       >
-        <label For="dropzone-file">
+        <label htmlFor="dropzone-file">
           <svg
             width={37}
             height={37}

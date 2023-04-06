@@ -18,10 +18,10 @@ export const PostCard = ({
   return (
     <div className="FeedItem">
       <BoardHeader onBottom={onBottom} postInfo={postInfo} />
-      <div className={`flex-shrink-0 ${onBottom ? "h-[30vh]" : ""}`}>
+      <div className={`flex-shrink-0 ${onBottom ? "h-[35vh] pb-2" : ""}`}>
         <img
           className={`aspect-square 
-          object-cover h-[350px] w-full `}
+          object-cover ${onBottom? "h-full" : "h-[350px]"}  w-full `}
           src={postInfo.image}
           alt="고양이게시물이미지"
         />

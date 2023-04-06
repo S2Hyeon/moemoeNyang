@@ -77,17 +77,14 @@ interface PostDiseaseResponse {
 
 // Api.defaults.headers.post["Content-Type"] = "multipart/form-data";
 export async function postDisease(
-  catId: Number,
-  disease_id: Number,
-  image: FormData,
+  catId,
+  formData: FormData,
 ): Promise<PostDiseaseResponse | undefined> {
   try {
-    const response = await Api.post(`/cats/${catId}/disease`, {
-      // headers: {
-      //   "Content-Type": "multipart/form-data"
-      // },
-      disease_id,
-      image,
+    const response = await Api.post(`/cats/${catId}/disease`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     });
     return response as PostDiseaseResponse;
   } catch (error) {
@@ -95,10 +92,20 @@ export async function postDisease(
   }
 }
 
+export async function postDiseaseRes(formData) {
+  const response = await Api.post("/cats/disease", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return response;
+}
+
 const Symptom = {
   getDisease,
   getDiseaseList,
   postDisease,
+  postDiseaseRes,
 };
 
 export default Symptom;
