@@ -73,7 +73,7 @@ export default function CatDetailPage() {
             <KakaoMap lat={catInfo.lat} lng={catInfo.lng} />
           </div>
         </div>
-        <div className="text-left font-bold text-lg mt-4 ml-4">Board</div>
+        <div className="text-left font-bold text-xl mt-6 ">📚 Board</div>
         <div className="flex flex-col justify-center items-center pl-4 pr-4">
           <CatGrid catInfo={catInfo} />
         </div>
