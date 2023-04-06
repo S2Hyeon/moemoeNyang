@@ -5,9 +5,9 @@ import com.ssafy.moemoe.api.request.board.ReactionDetailReq;
 import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardResp;
 import com.ssafy.moemoe.api.service.S3Uploader;
-import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.board.Board;
 import com.ssafy.moemoe.db.entity.board.Reaction;
+import com.ssafy.moemoe.db.entity.cat.Cat;
 import com.ssafy.moemoe.db.entity.member.Member;
 import com.ssafy.moemoe.db.entity.university.University;
 import com.ssafy.moemoe.db.repository.board.BoardRepository;
@@ -25,7 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -54,12 +53,12 @@ public class BoardServiceImpl implements BoardService {
         Cat cat = catRepository.findById(boardSaveReq.getCatId()).orElseThrow(() -> new IllegalArgumentException("고양이 ID 확인해달라 냥!"));
 
         // S3에 이미지 등록
-        String img ="";
+        String img;
         try {
             img = s3Uploader.upload(multiPartFile, "board");
         }
         catch (IOException e) {
-//            throw new IllegalArgumentException("파일 업로드에 문제가 발생했습니다.(board)");
+            throw new IllegalArgumentException("파일 업로드에 문제가 발생했습니다.(board)");
         }
         LOGGER.info("================url===============\n" + img);
 

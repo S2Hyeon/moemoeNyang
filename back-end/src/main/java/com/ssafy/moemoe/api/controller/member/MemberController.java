@@ -33,8 +33,6 @@ import java.util.UUID;
 public class MemberController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
-    final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
-
     private final UniversityService universityService;
     private final SignService signService;
     private final FollowService followService;

@@ -66,7 +66,6 @@ public class SignServiceImpl implements SignService {
         member.setNickname(form.getNickname());
         member.setUniversity(universityRepository.getById(form.getUniversityId()));
         member.setPassword(passwordEncoder.encode(form.getPassword()));
-//        member.setBadge(badgeRepository.findById(form.getBadgeId()).get());
 
         memberRepository.save(member);
     }

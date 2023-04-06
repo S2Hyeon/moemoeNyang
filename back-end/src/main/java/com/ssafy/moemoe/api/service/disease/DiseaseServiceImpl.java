@@ -36,7 +36,6 @@ public class DiseaseServiceImpl implements DiseaseService{
 
     @Override
     public Long registDiseaseTimeline(UUID memberId, Long catId, DiseaseTimelineRegistReq form) {
-        //Member, Cat, Disease 객체 받아와야함
         Member member = memberRepository.findByMemberId(memberId);
         Cat cat = catRepository.findCatByCatId(catId).get();
         Disease disease = diseaseRepository.findByDiseaseId(form.getDiseaseId());

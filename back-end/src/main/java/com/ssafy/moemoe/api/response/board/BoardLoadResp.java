@@ -14,7 +14,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * Board 전체 정보 조회 API ([GET] /) 요청에 대한 응답값 정의.
@@ -72,7 +71,6 @@ public class BoardLoadResp {
         this.boardId = board.getBoardId();
         this.cat = new CatDetailResp(board.getCat());
         this.member = new MemberDetailResp(board.getMember());
-//        this.tags = tags; //일단 태그는 아무것도 없다고 생각하겠음.
         this.lat = board.getLat();
         this.lng = board.getLng();
         this.content = board.getContent();
@@ -91,7 +89,6 @@ public class BoardLoadResp {
         this.universityId = university.getUniversityId();
         this.cat = new CatDetailResp(cat);
         this.member = new MemberDetailResp(member);
-        //this.tags = tags; //일단 태그는 아무것도 없다고 생각하겠음.
         this.lat = board.getLat();
         this.lng = board.getLng();
         this.content = board.getContent();
@@ -103,19 +100,5 @@ public class BoardLoadResp {
         this.sad = board.getSad();
         this.angry = board.getAngry();
     }
-
-//    @QueryProjection//빌더랑 비슷한데 쿼리 디에셀에서 아예 한번에 주입해주는 것임
-//    public BoardLoadResp(Board board, Cat cat, Member member, University university) {
-//        this.boardId = board.getBoardId();
-//        this.lat = board.getLat();
-//        this.lng = board.getLng();
-//        this.recommend = board.getRecommend();
-//        this.good = board.getGood();
-//        this.impressed = board.getImpressed();
-//        this.sad = board.getSad();
-//        this.angry = board.getAngry();
-//        this.content = board.getContent();
-//        this.createdAt = board.getCreatedAt();
-//    }
 
 }

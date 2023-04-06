@@ -10,9 +10,6 @@ import os
 import io
 import cv2
 
-# Create an empty list to store the predictions
-# predictions = [0, 0, 0, 0, 0, 0, 0]
-
 class_labels = ['A1', 'A2',
                 'A3', 'A4', 'A5', 'A6', '증상이 확인되지 않습니다.']
 
@@ -33,7 +30,6 @@ def do_floor(x, digit=0):
 
 
 def preprocess_image(image_string):
-    # image_string = tf.io.read_file(image_path)
 
     image = tf.image.decode_jpeg(image_string, channels=3)
 
@@ -146,14 +142,12 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
     plt.clf()
 
     title = ['Input Image', 'Predicted Image', 'Result Image']
-    # title = ['Result Image']
     
     if model != None:
         pred = model_predict(image, model)
         display_list = [image, pred]
     elif model_pred is not None:
         pred = model_pred
-        # display_list = [image, pred]
         display_list = [image, pred]
     else:
         pred = None
@@ -166,7 +160,6 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
             plt.imshow(tf.keras.utils.array_to_img(display_list[i]))
             plt.axis('off')
         if save_path != None:
-            # plt.savefig(save_path)
             buf = io.BytesIO()
             plt.savefig(buf, format='png')
             buf.seek(0)
@@ -177,7 +170,6 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
     elif opt == 'comb':
         show_comb
         if save_path != None:
-            # plt.savefig(save_path)
             buf = io.BytesIO()
             plt.savefig(buf, format='png')
             buf.seek(0)
@@ -194,7 +186,6 @@ def show_prediction(image, model=None, model_pred=None, opt='base', save_path=No
             plt.title("Analysis Image")
         plt.axis('off')
         if save_path != None:
-            # plt.savefig(save_path)
             buf = io.BytesIO()
             plt.savefig(buf, format='png')
             buf.seek(0)

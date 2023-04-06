@@ -9,7 +9,6 @@ import com.ssafy.moemoe.api.response.board.BoardLoadResp;
 import com.ssafy.moemoe.api.response.board.BoardSpotResp;
 import com.ssafy.moemoe.api.response.cat.CatDetailResp;
 import com.ssafy.moemoe.api.response.cat.CatListResp;
-import com.ssafy.moemoe.api.response.cat.DiseaseResultResp;
 import com.ssafy.moemoe.api.response.cat.DiseaseTimelineResp;
 import com.ssafy.moemoe.api.response.disease.JsonDiseaseResp;
 import com.ssafy.moemoe.api.service.cat.CatService;
@@ -46,7 +45,6 @@ import java.util.UUID;
 public class CatController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(CatController.class);
-    final String tiredCatImage = "https://i.ibb.co/9q6ZT22/image.jpg"; //피곤한 냥이 이미지
     private final CatService catService;
     private final DiseaseService diseaseService;
     private final TokenUtils tokenUtils;
@@ -74,7 +72,7 @@ public class CatController {
 
         List<CatListResp> cats = catService.getCats(memberId, universityId);
         if(cats == null)
-            return new ResponseEntity<>("고양이 리스트를 조회에 실패하였습니다.", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("고양이 리스트 조회에 실패하였습니다.", HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(cats, HttpStatus.OK);
     }
 
@@ -86,7 +84,7 @@ public class CatController {
 
         CatDetailResp catDetailResp = catService.getCat(memberId, catId);
         if(catDetailResp == null) {
-            return new ResponseEntity<>("고양이가 조회에 실패했습니다.", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("고양이 조회에 실패했습니다.", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(catDetailResp, HttpStatus.OK);
     }
@@ -98,24 +96,10 @@ public class CatController {
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
 
         List<BoardLoadResp> catBoards = catService.getCatBoards(memberId, catId);
-//        if(catDetailResp == null) {
-//            return new ResponseEntity<>("고양이가 조회에 실패했습니다.", HttpStatus.NOT_FOUND);
-//        }
+        if(catBoards == null) {
+            return new ResponseEntity<>("고양이가 게시물 조회에 실패했습니다.", HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(catBoards, HttpStatus.OK);
-    }
-
-    //질병 검사 결과 조회
-    @GetMapping("/{catId}/disease")
-    public ResponseEntity<?> getDiseaseResult(@PathVariable Long catId) {
-
-        DiseaseResultResp result = DiseaseResultResp.builder()
-                .diseaseId(1)
-                .name("엄청 아픈 병")
-                .explanation("엄청 아프니까 빨리 병원을 데려가세요. 병원에 데려갈 때는 조심히 들고 가주세요. 아프니까요.")
-                .image(tiredCatImage)
-                .build();
-
-        return ResponseEntity.ok(result);
     }
 
     //질병 검사 결과 등록
@@ -176,7 +160,6 @@ public class CatController {
 
         // Make a POST request to the Flask API endpoint with the file content as a binary file
         String url = "https://j8a801.p.ssafy.io/disease/predict";
-//        String url = "http://127.0.0.1:5000/predict";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
