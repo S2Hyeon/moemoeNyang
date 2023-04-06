@@ -1,4 +1,4 @@
-import { AlertError } from "./alertToastify";
+import { AlertError, AlertWarning } from "./alertToastify";
 import axios from "axios";
 import MockupService from "./MockupService";
 // import getHeaders from "./getHeaders";
@@ -35,7 +35,12 @@ Api.interceptors.response.use(
     const status = error.response.status;
     if (status < 400 || status > 500)
       AlertError("알 수 없는 오류가 발생했습니다");
-    else if (status === 500) AlertError("서버에서 오류가 발생했습니다");
+    else if (status === 500) {
+      console.log("콘피그", error.config.url);
+      if (error.config.url === "/auth/login")
+        AlertWarning("잘못된 사용자 정보입니다.");
+      else AlertError("서버에서 오류가 발생했습니다");
+    }
     if (error.response && error.response.data)
       return Promise.reject(error.response.data);
     else return Promise.reject(error.message);

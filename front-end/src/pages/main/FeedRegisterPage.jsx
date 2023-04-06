@@ -9,6 +9,7 @@ import { postFeedspots } from "../../services/map";
 import KakaoMapSdk from "../../components/common/KakaoMapSdk";
 import { CustomOverlayMap } from "react-kakao-maps-sdk";
 import FeedPin from "../../components/map/FeedPin";
+import { useNavigate } from "react-router-dom";
 
 
 export default function FeedRegisterPage() {
@@ -24,6 +25,7 @@ export default function FeedRegisterPage() {
   const [lng, setLng] = useState(()=>{
     return 127.04+Math.random()/1000
   })
+  const navigate = useNavigate()
 
   const universityId = typedUseSelector(state => state.member.memberObject.universityId)
 
@@ -52,7 +54,10 @@ export default function FeedRegisterPage() {
     formData.append('lat', lat)
     formData.append('lng', lng)
     formData.append('image', image)
-    postFeedspots(universityId, formData).then(res=> AlertSuccess(res.data.msg))
+    postFeedspots(universityId, formData).then(res=> {
+      AlertSuccess(res.data.msg)
+      navigate("/map")
+    })
   }
 
 

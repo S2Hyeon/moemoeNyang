@@ -66,12 +66,10 @@ export default function FeedContent() {
 
   useEffect(() => {
     if (!selectedFeed) return;
+    onFeedSelect(selectedFeed)
+    if(selectedFeed.recent_feed_time[0] < 0) return setFeedTimeMessge("새 급식소");
     const newMessage = timeParser(selectedFeed.recent_feed_time);
-    if (typeof newMessage[0] === "number") {
-      setFeedTimeMessge(newMessage);
-    } else {
-      setFeedTimeMessge("새 급식소");
-    }
+    setFeedTimeMessge(newMessage);
   }, [selectedFeed]);
 
   return (
@@ -159,10 +157,12 @@ export default function FeedContent() {
                     </div>
                   </div>
                 ) : (
-                  selectedFeedLog.map((e) => {
+                  selectedFeedLog.map((e, i) => {
                     if (e.member_id === memberId) {
                       return (
-                        <div className="내가쓴밥줬어요 flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
+                        <div 
+                        key={i + "id" + e.member_id}
+                        className="내가쓴밥줬어요 flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
                           <div className="pl-5">
                             <div className="text-sm text-end font-bold text-gray-500 leading-none py-1">
                               {e.nickname}
@@ -178,7 +178,8 @@ export default function FeedContent() {
                       );
                     } else {
                       return (
-                        <div className="상대가쓴밥줬어요 flex w-full mt-2 space-x-3 max-w-xs">
+                        <div 
+                        key={i + "id" + e.member_id}className="상대가쓴밥줬어요 flex w-full mt-2 space-x-3 max-w-xs">
                           <div className="pr-5">
                             <div className="text-sm font-bold text-gray-500 leading-none py-1">
                               {e.nickname}
@@ -207,8 +208,10 @@ export default function FeedContent() {
           </div>
           <div className="하단버튼부">
             <Button shadow={true} onClick={()=> {
-              const timeMsg = timeParser(selectedFeedLog[0].created_at)
-              if(timeMsg.endsWith('분 전') || timeMsg==="방금 전") return AlertWarning("너무 자주 밥주면 뚱뚱해진다냥")
+              if(selectedFeedLog[0]){
+                const timeMsg = timeParser(selectedFeedLog[0].created_at)
+                if(timeMsg.endsWith('분 전') || timeMsg==="방금 전") return AlertWarning("너무 자주 밥주면 뚱뚱해진다냥")
+              }
               postFeed(selectedFeed.feedspot_id).then(res => {
                 AlertSuccess(res.data.msg)
                 getFeedLog(selectedFeed.feedspot_id).then((res) => {

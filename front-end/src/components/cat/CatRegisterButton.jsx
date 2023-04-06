@@ -22,17 +22,17 @@ function CatRegisterButton({ catData}) {
         const formData = new FormData()
         formData.append("universityId", universityId)
         formData.append("name", name)
-        if(age) formData.append("age", age)
-        if(gender) formData.append("gender", gender)
+        formData.append("age", age)
+        formData.append("gender", gender)
         formData.append("image", image)
         formData.append("lat", lat)
         formData.append("lng", lng)
 
 
         postCatRegist(formData).then((res) => {
-            AlertSuccess(res.data.msg)
+            // AlertSuccess(res.data.msg)
             console.log(res);
-            // AlertSuccess("고양이를 등록하였습니다.");
+            AlertSuccess("고양이를 등록하였습니다.");
             navigate("/catlist");
         })
     }
