@@ -49,7 +49,7 @@ export default function SymptomsRegister() {
           catId={catId}
         />,
       );
-      alert(res);
+      // alert(res);
     });
   };
 

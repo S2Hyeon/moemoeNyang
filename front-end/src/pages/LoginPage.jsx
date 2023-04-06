@@ -43,25 +43,6 @@ const LoginPage = () => {
           }),
         );
         return Promise.resolve();
-        /*
-        badge_id: number;
-        email: string | null;
-        member_id: string | null;
-        nickname: string;
-        university_id: number;
-        university_name: string;
-        */
-        // });
-        // const { access_token, university_id, nickname, email } = res.data;
-        // dispatch(
-        //   setMemberObject({
-        //     accessToken: access_token,
-        //     universityId: university_id,
-        //     nickname: nickname,
-        //     email: email,
-        //   }),
-        // );
-        // setCookie("accessToken", access_token, 180);
       })
       .then(() => {
         AlertSuccess("로그인 되었습니다.");
