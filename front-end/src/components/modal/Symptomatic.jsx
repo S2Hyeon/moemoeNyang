@@ -45,11 +45,9 @@ export default function Symptomatic({ setModalOpen, data, jsonRes, catId }) {
 
   return (
     <S.Modal>
-      <img
-        className="w-full h-full m-auto"
-        src={imageUrl}
-        alt="고양이피부병이미지"
-      />
+      <div className="w-full h-full">
+        <img className="object-none" src={imageUrl} alt="고양이피부병이미지" />
+      </div>
       <div className="mt-4">
         <div className="mb-2">
           <span className="font-bold">질병명 : </span>
