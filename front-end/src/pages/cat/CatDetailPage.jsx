@@ -6,6 +6,7 @@ import {
   getCatDetail,
   postCatFollow,
   deleteCatFollow,
+  getCatImages,
 } from "../../services/cats";
 import { useParams } from "react-router-dom";
 import BoardFlick from "../../components/map/BoardFlick";
@@ -25,6 +26,7 @@ export default function CatDetailPage() {
   const universityId = typedUseSelector(
     (state) => state.member.memberObject.universityId,
   );
+  const storePostList = typedUseSelector((state) => state.map.postList);
   const dispatch = useDispatch();
 
   const [boardId, setBoardId] = useState("");
@@ -33,8 +35,13 @@ export default function CatDetailPage() {
   const [lng, setLng] = useState("");
 
   useEffect(() => {
-    getMainBoardList(universityId, catId).then((res) => {
-      const postList = res.data.content;
+    if (!universityId) return;
+    getMainBoardList(universityId).then((res) => {
+      const postListData = res.data.content;
+      let postList = postListData.filter((e) => {
+        return e.cat.cat_id === ~~catId;
+      });
+      if (!postList.length) postList = postListData;
       dispatch(setPostList(postList));
       const latestPost = postList[0];
       setBoardId(latestPost.board_id);
@@ -42,7 +49,7 @@ export default function CatDetailPage() {
       setLat(latestPost.lat);
       setLng(latestPost.lng);
     });
-  }, []);
+  }, [universityId]);
 
   useEffect(() => {
     getCatDetail(catId)
@@ -111,7 +118,7 @@ export default function CatDetailPage() {
         <div className="flex flex-col justify-center items-center pl-4 pr-4">
           {/* <CatGrid catInfo={catInfo} /> */}
           <div className="max-w-full">
-            <BoardFlick />
+            {storePostList && storePostList.length ? <BoardFlick /> : <></>}
           </div>
         </div>
       </div>
