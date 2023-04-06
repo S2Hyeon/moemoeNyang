@@ -8,12 +8,28 @@ import {
   deleteCatFollow,
 } from "../../services/cats";
 import { useParams } from "react-router-dom";
+import BoardFlick from "../../components/map/BoardFlick";
+import { getMainBoardList } from "../../services/main";
+import { setPostList } from "../../store/mapSlice";
+import { useDispatch } from "react-redux";
+import { typedUseSelector } from "../../store";
 
 export default function CatDetailPage() {
   const [catInfo, setCatInfo] = useState([]);
   const [isFollowing, setIsFollowing] = useState(null);
 
   const { catId } = useParams();
+  const universityId = typedUseSelector(
+    (state) => state.member.memberObject.universityId,
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getMainBoardList(universityId, catId).then((res) => {
+      const postList = res.data.content;
+      dispatch(setPostList(postList));
+    });
+  }, []);
 
   useEffect(() => {
     getCatDetail(catId)
@@ -75,7 +91,10 @@ export default function CatDetailPage() {
         </div>
         <div className="text-left font-bold text-lg mt-4 ml-4">Board</div>
         <div className="flex flex-col justify-center items-center pl-4 pr-4">
-          <CatGrid catInfo={catInfo} />
+          {/* <CatGrid catInfo={catInfo} /> */}
+          <div className="max-w-full">
+            <BoardFlick />
+          </div>
         </div>
       </div>
     </>
