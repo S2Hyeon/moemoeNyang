@@ -36,6 +36,7 @@ export default function CatDetailPage() {
 
   useEffect(() => {
     if (!universityId) return;
+    //고양이별로 분류하기
     getMainBoardList(universityId).then((res) => {
       const postListData = res.data.content;
       let postList = postListData.filter((e) => {

@@ -30,10 +30,15 @@ export default function BoardContent(
   const isHigh = typedUseSelector((state) => state.map.isBottomHigh);
 
   useEffect(() => {
-    const args = [universityId, ""];
-    if (selectedCatId) args.push(selectedCatId);
-    getMainBoardList(...args).then((res) => {
-      const postList = res.data.content;
+    getMainBoardList(universityId).then((res) => {
+      const postListData = res.data.content;
+      let postList;
+      if (selectedCatId) {
+        postList = postListData.filter((e) => {
+          return e.cat.cat_id === ~~selectedCatId;
+        });
+      }
+      if (!postList.length) postList = postListData;
       dispatch(setPostList(postList));
       const positions = postList.map((e) => {
         return {
