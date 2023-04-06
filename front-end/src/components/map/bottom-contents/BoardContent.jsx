@@ -38,7 +38,7 @@ export default function BoardContent(
           return e.cat.cat_id === ~~selectedCatId;
         });
       }
-      if (!postList.length) postList = postListData;
+      if (!postList?.length) postList = postListData;
       dispatch(setPostList(postList));
       const positions = postList.map((e) => {
         return {

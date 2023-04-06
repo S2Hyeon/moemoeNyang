@@ -24,11 +24,11 @@ const MainPage = () => {
 
   return (
     <div className="flex flex-col flex-wrap">
-      {postList.map((data) => {
+      {postList.map((data, index) => {
         return (
           <PostCard
             postInfo={data}
-            key={data.board_id}
+            key={"board" + data.board_id + "index" + index}
             childChange={childChange}
             setChildChange={setChildChange}
           />
