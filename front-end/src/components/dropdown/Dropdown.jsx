@@ -8,10 +8,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Dropdown({ 
+export default function Dropdown({
   // formData, setFormData
-  setCatId
- }) {
+  setCatId,
+}) {
   const [selected, setSelected] = useState([]);
   const [catList, setCatList] = useState([]);
   const universityId = typedUseSelector(
@@ -34,14 +34,18 @@ export default function Dropdown({
     setSelected(catList[0]);
   }, [catList]);
 
+  useEffect(() => {
+    if (selected.cat_id) setCatId(selected.cat_id);
+  }, [selected]);
+
   return (
     <Listbox
       value={selected}
       onChange={() => {
-        setSelected();
-        setCatId(selected)
+        // setSelected(selected);
+        // setCatId(selected);
         // setFormData(formData.append("catId", selected));
-        console.log("cat list에서 선택함");
+        // console.log("cat list에서 선택함");
         // for (const keyValue of formData) console.log(keyValue);
       }}
     >
@@ -83,6 +87,7 @@ export default function Dropdown({
                       )
                     }
                     value={cat}
+                    onClick={() => setSelected(cat)}
                   >
                     {({ selected, active }) => (
                       <>
