@@ -35,8 +35,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -120,7 +122,8 @@ public class CatController {
     @PostMapping("/{catId}/disease")
     public ResponseEntity<?> registDiseaseResult(HttpServletRequest request,
                                                  @PathVariable Long catId,
-                                                 @RequestBody DiseaseTimelineRegistReq form) {
+                                                 @ModelAttribute DiseaseTimelineRegistReq form) {
+        LOGGER.info("==============registDiseaseResultController==============\n{}", form);
         Claims claims = tokenUtils.getClaimsFromRequest(request);
         UUID memberId = UUID.fromString(claims.get("member_id").toString());
         diseaseService.registDiseaseTimeline(memberId, catId, form);
