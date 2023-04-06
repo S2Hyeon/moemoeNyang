@@ -19,18 +19,13 @@ export default function Dropdown({
   );
 
   useEffect(() => {
-    console.log("cat list 불러오기");
-    getCatList(universityId)
-      .then((res) => {
-        setCatList(res.data);
-      })
-      .then(console.log("cat list 불러옴"));
+    getCatList(universityId).then((res) => {
+      setCatList(res.data);
+    });
   }, []);
 
   useEffect(() => {
     if (!catList.length) return;
-    console.log("cat list 불러오기");
-    console.log(catList);
     setSelected(catList[0]);
   }, [catList]);
 
@@ -45,8 +40,6 @@ export default function Dropdown({
         // setSelected(selected);
         // setCatId(selected);
         // setFormData(formData.append("catId", selected));
-        // console.log("cat list에서 선택함");
-        // for (const keyValue of formData) console.log(keyValue);
       }}
     >
       {({ open }) => (
