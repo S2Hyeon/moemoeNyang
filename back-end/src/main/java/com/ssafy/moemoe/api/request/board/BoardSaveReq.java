@@ -22,12 +22,10 @@ public class BoardSaveReq {
     private Long universityId;
 
     @ApiModelProperty(example = "", name = "경도")
-    @Builder.Default()
-    private Float lat = 37.5012716000f;
+    private Float lat;
 
     @ApiModelProperty(example = "", name = "위도")
-    @Builder.Default()
-    private Float lng = 127.0396074000f;
+    private Float lng;
 
     @ApiModelProperty(example = "", name = "내용")
     private String content;
