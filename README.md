@@ -33,6 +33,7 @@
 ### Back-End
 
 - **노정환** <br/>
+ 팀장 | JWT를 활용한 사용자 인증,인가 | ERD 설계 | 사용자(Member), 급식소(Feed Spot), 질병 분석(Disease) API 설계 및 구현
 - **이영준** <br/>
   인공지능 담당 | AI 모델 분석 | 데이터셋 전처리 | 모델 학습 및 테스트 | 플라스크 전체 구현 | Backend : Board 및 AI 관련 API 구현
 - **송승현** <br/>
